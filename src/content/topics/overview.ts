@@ -4,6 +4,43 @@ export const overviewContent: TopicContent = {
   title: "Vue d'ensemble du projet",
   subtitle: 'Qui fait quoi, quels dessins, et comment coordonner avec les autres corps de métier',
   blocks: [
+    { type: 'heading', text: "🔷 Le cycle de vie d'un projet" },
+    {
+      type: 'text',
+      text: "Avant de détailler qui fait quoi, voici comment un projet évolue concrètement : d'un terrain vide jusqu'au bâtiment livré, en passant par la conception électrique.",
+    },
+    {
+      type: 'image',
+      source: require('../../../assets/reference/project_lifecycle_1_land.jpg'),
+      caption: 'Le propriétaire (Owner) possède un terrain et souhaite y construire un projet',
+      height: 280,
+    },
+    {
+      type: 'image',
+      source: require('../../../assets/reference/project_lifecycle_2_vision.jpg'),
+      caption: 'Il définit sa vision avec le consultant : le bâtiment à concevoir',
+      height: 280,
+    },
+    {
+      type: 'image',
+      source: require('../../../assets/reference/project_lifecycle_3_construction.jpg'),
+      caption: "L'entrepreneur (Contractor) transforme les plans en réalité sur le chantier",
+      height: 280,
+    },
+    {
+      type: 'image',
+      source: require('../../../assets/reference/project_lifecycle_4_supervision.jpg'),
+      caption: 'Le superviseur vérifie que la construction respecte les plans, la sécurité et le planning',
+      height: 280,
+    },
+    {
+      type: 'image',
+      source: require('../../../assets/reference/project_lifecycle_5_electrical_office.jpg'),
+      caption: "En parallèle, l'ingénieur électricité du bureau technique prépare les dessins d'exécution",
+      height: 320,
+    },
+    { type: 'divider' },
+
     { type: 'heading', text: '🔷 Les 4 parties prenantes' },
     {
       type: 'text',

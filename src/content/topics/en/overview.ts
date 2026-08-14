@@ -4,6 +4,43 @@ export const overviewContent: TopicContent = {
   title: 'Project Overview',
   subtitle: 'Who does what, which drawings, and how to coordinate with other trades',
   blocks: [
+    { type: 'heading', text: "🔷 A project's lifecycle" },
+    {
+      type: 'text',
+      text: "Before detailing who does what, here is how a project actually unfolds: from an empty plot to the delivered building, passing through electrical design along the way.",
+    },
+    {
+      type: 'image',
+      source: require('../../../../assets/reference/project_lifecycle_1_land.jpg'),
+      caption: 'The Owner owns a plot of land and wants to build a project on it',
+      height: 280,
+    },
+    {
+      type: 'image',
+      source: require('../../../../assets/reference/project_lifecycle_2_vision.jpg'),
+      caption: 'Together with the Consultant, they define their vision: the building to be designed',
+      height: 280,
+    },
+    {
+      type: 'image',
+      source: require('../../../../assets/reference/project_lifecycle_3_construction.jpg'),
+      caption: 'The Contractor turns the drawings into reality on site',
+      height: 280,
+    },
+    {
+      type: 'image',
+      source: require('../../../../assets/reference/project_lifecycle_4_supervision.jpg'),
+      caption: 'The Supervisor checks that construction follows the drawings, safety rules, and schedule',
+      height: 280,
+    },
+    {
+      type: 'image',
+      source: require('../../../../assets/reference/project_lifecycle_5_electrical_office.jpg'),
+      caption: "In parallel, the technical office's electrical engineer prepares the shop drawings",
+      height: 320,
+    },
+    { type: 'divider' },
+
     { type: 'heading', text: '🔷 The 4 stakeholders' },
     {
       type: 'text',
