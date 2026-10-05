@@ -10,6 +10,9 @@ import CircuitBreakerScreen from './src/screens/CircuitBreakerScreen';
 import NotesHomeScreen from './src/screens/notes/NotesHomeScreen';
 import NotesTopicScreen from './src/screens/notes/NotesTopicScreen';
 import { getTopicContent } from './src/content/registry';
+import { getSolarTopicContent } from './src/content/solarRegistry';
+import { NOTES_TOPICS } from './src/data/notesTopics';
+import { SOLAR_NOTES_TOPICS } from './src/data/solarNotesTopics';
 import { colors, radius, spacing } from './src/theme/theme';
 import { LanguageProvider, useLanguage } from './src/lib/language';
 
@@ -22,16 +25,22 @@ const CALC_TABS = [
   { key: 'breaker', icon: '🛡️', label: 'Disjoncteurs', labelEn: 'Breakers', Component: CircuitBreakerScreen },
 ] as const;
 
-type AppMode = 'calculators' | 'notes';
+type AppMode = 'calculators' | 'notes' | 'solar';
 
 function AppShell() {
   const [mode, setMode] = useState<AppMode>('calculators');
   const [activeCalc, setActiveCalc] = useState<(typeof CALC_TABS)[number]['key']>('load');
   const [activeTopicId, setActiveTopicId] = useState<string | null>(null);
+  const [activeSolarTopicId, setActiveSolarTopicId] = useState<string | null>(null);
   const { lang, toggle, t } = useLanguage();
 
   const ActiveCalcComponent = CALC_TABS.find((tab) => tab.key === activeCalc)!.Component;
   const activeTopicContent = activeTopicId ? getTopicContent(lang, activeTopicId) : undefined;
+  const activeSolarTopicContent = activeSolarTopicId ? getSolarTopicContent(lang, activeSolarTopicId) : undefined;
+
+  function selectMode(next: AppMode) {
+    setMode(next);
+  }
 
   return (
     <SafeAreaView style={styles.safe}>
@@ -41,7 +50,7 @@ function AppShell() {
           <View style={styles.modeSwitch}>
             <TouchableOpacity
               style={[styles.modeButton, mode === 'calculators' && styles.modeButtonActive]}
-              onPress={() => setMode('calculators')}
+              onPress={() => selectMode('calculators')}
             >
               <Text style={[styles.modeText, mode === 'calculators' && styles.modeTextActive]}>
                 {t('🧮 Calculateurs', '🧮 Calculators')}
@@ -49,10 +58,18 @@ function AppShell() {
             </TouchableOpacity>
             <TouchableOpacity
               style={[styles.modeButton, mode === 'notes' && styles.modeButtonActive]}
-              onPress={() => setMode('notes')}
+              onPress={() => selectMode('notes')}
             >
               <Text style={[styles.modeText, mode === 'notes' && styles.modeTextActive]}>
                 {t('📚 Notes de cours', '📚 Course Notes')}
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={[styles.modeButton, mode === 'solar' && styles.modeButtonActive]}
+              onPress={() => selectMode('solar')}
+            >
+              <Text style={[styles.modeText, mode === 'solar' && styles.modeTextActive]}>
+                {t('☀️ Solaire PV', '☀️ Solar PV')}
               </Text>
             </TouchableOpacity>
           </View>
@@ -90,10 +107,32 @@ function AppShell() {
       <View style={styles.content}>
         {mode === 'calculators' ? (
           <ActiveCalcComponent />
-        ) : activeTopicContent ? (
-          <NotesTopicScreen content={activeTopicContent} onBack={() => setActiveTopicId(null)} />
+        ) : mode === 'notes' ? (
+          activeTopicContent ? (
+            <NotesTopicScreen content={activeTopicContent} onBack={() => setActiveTopicId(null)} />
+          ) : (
+            <NotesHomeScreen
+              topics={NOTES_TOPICS}
+              getContent={getTopicContent}
+              title="Notes de cours"
+              titleEn="Course Notes"
+              subtitle="Révise les notions du cours d'électricité, avec formules, tableaux et schémas"
+              subtitleEn="Review the electrical course concepts, with formulas, tables, and diagrams"
+              onSelectTopic={setActiveTopicId}
+            />
+          )
+        ) : activeSolarTopicContent ? (
+          <NotesTopicScreen content={activeSolarTopicContent} onBack={() => setActiveSolarTopicId(null)} />
         ) : (
-          <NotesHomeScreen onSelectTopic={setActiveTopicId} />
+          <NotesHomeScreen
+            topics={SOLAR_NOTES_TOPICS}
+            getContent={getSolarTopicContent}
+            title="Solaire PV"
+            titleEn="Solar PV"
+            subtitle="Dimensionnement de systèmes photovoltaïques : charges, panneaux, batteries, régulateurs"
+            subtitleEn="Sizing photovoltaic systems: loads, panels, batteries, controllers"
+            onSelectTopic={setActiveSolarTopicId}
+          />
         )}
       </View>
       <StatusBar style="auto" />
@@ -122,8 +161,8 @@ const styles = StyleSheet.create({
     gap: spacing.sm,
   },
   brand: { fontSize: 15, fontWeight: '700', color: colors.text, letterSpacing: 0.2 },
-  headerRight: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm },
-  modeSwitch: { flexDirection: 'row', backgroundColor: colors.bg, borderRadius: radius.pill, padding: 3, gap: 2 },
+  headerRight: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm, flexWrap: 'wrap' },
+  modeSwitch: { flexDirection: 'row', backgroundColor: colors.bg, borderRadius: radius.pill, padding: 3, gap: 2, flexWrap: 'wrap' },
   modeButton: { paddingVertical: 6, paddingHorizontal: spacing.md, borderRadius: radius.pill },
   modeButtonActive: { backgroundColor: colors.accent },
   modeText: { fontSize: 12, fontWeight: '700', color: colors.textMuted },

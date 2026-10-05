@@ -1,31 +1,32 @@
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { NOTES_TOPICS } from '../../data/notesTopics';
-import { getTopicContent } from '../../content/registry';
+import { NotesTopic } from '../../data/notesTopics';
 import { ScreenContainer, Subtitle, Title } from '../../components/ui';
 import { colors, radius, shadow, spacing } from '../../theme/theme';
-import { useLanguage } from '../../lib/language';
+import { Lang, useLanguage } from '../../lib/language';
+import { TopicContent } from '../../content/types';
 
 type Props = {
+  topics: NotesTopic[];
+  getContent: (lang: Lang, id: string) => TopicContent | undefined;
+  title: string;
+  titleEn: string;
+  subtitle: string;
+  subtitleEn: string;
   onSelectTopic: (topicId: string) => void;
 };
 
-export default function NotesHomeScreen({ onSelectTopic }: Props) {
+export default function NotesHomeScreen({ topics, getContent, title, titleEn, subtitle, subtitleEn, onSelectTopic }: Props) {
   const { lang, t } = useLanguage();
 
   return (
     <ScreenContainer>
-      <Title>{t('Notes de cours', 'Course Notes')}</Title>
-      <Subtitle>
-        {t(
-          "Révise les notions du cours d'électricité, avec formules, tableaux et schémas",
-          'Review the electrical course concepts, with formulas, tables, and diagrams'
-        )}
-      </Subtitle>
+      <Title>{lang === 'fr' ? title : titleEn}</Title>
+      <Subtitle>{lang === 'fr' ? subtitle : subtitleEn}</Subtitle>
 
       <View style={styles.grid}>
-        {NOTES_TOPICS.map((topic) => {
-          const available = !!getTopicContent(lang, topic.id);
+        {topics.map((topic) => {
+          const available = !!getContent(lang, topic.id);
           return (
             <TouchableOpacity
               key={topic.id}
