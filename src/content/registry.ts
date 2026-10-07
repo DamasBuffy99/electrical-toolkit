@@ -1,24 +1,28 @@
 import { TopicContent } from './types';
 import { Lang } from '../lib/language';
 
+import { projectPartiesContent } from './topics/projectParties';
+import { drawingsCoordinationContent } from './topics/drawingsCoordination';
+import { designStepsContent } from './topics/designSteps';
+import { architecturalDrawingsContent } from './topics/architecturalDrawings';
 import { loadEstimationContent } from './topics/loadEstimation';
 import { demandDiversityContent } from './topics/demandDiversity';
 import { transformerGeneratorContent } from './topics/transformerGenerator';
 import { lightingContent } from './topics/lighting';
-import { overviewContent } from './topics/overview';
-import { architecturalDrawingsContent } from './topics/architecturalDrawings';
 import { panelScheduleContent } from './topics/panelSchedule';
 import { circuitBreakerContent } from './topics/circuitBreaker';
 import { feedersContent } from './topics/feeders';
 import { cableSizingContent } from './topics/cableSizing';
 import { notionsDiversesContent } from './topics/notionsDiverses';
 
+import { projectPartiesContent as projectPartiesContentEn } from './topics/en/projectParties';
+import { drawingsCoordinationContent as drawingsCoordinationContentEn } from './topics/en/drawingsCoordination';
+import { designStepsContent as designStepsContentEn } from './topics/en/designSteps';
+import { architecturalDrawingsContent as architecturalDrawingsContentEn } from './topics/en/architecturalDrawings';
 import { loadEstimationContent as loadEstimationContentEn } from './topics/en/loadEstimation';
 import { demandDiversityContent as demandDiversityContentEn } from './topics/en/demandDiversity';
 import { transformerGeneratorContent as transformerGeneratorContentEn } from './topics/en/transformerGenerator';
 import { lightingContent as lightingContentEn } from './topics/en/lighting';
-import { overviewContent as overviewContentEn } from './topics/en/overview';
-import { architecturalDrawingsContent as architecturalDrawingsContentEn } from './topics/en/architecturalDrawings';
 import { panelScheduleContent as panelScheduleContentEn } from './topics/en/panelSchedule';
 import { circuitBreakerContent as circuitBreakerContentEn } from './topics/en/circuitBreaker';
 import { feedersContent as feedersContentEn } from './topics/en/feeders';
@@ -26,12 +30,14 @@ import { cableSizingContent as cableSizingContentEn } from './topics/en/cableSiz
 import { notionsDiversesContent as notionsDiversesContentEn } from './topics/en/notionsDiverses';
 
 export const TOPIC_CONTENT_FR: Record<string, TopicContent | undefined> = {
-  'load-estimation': loadEstimationContent,
+  'project-parties': projectPartiesContent,
+  'drawings-coordination': drawingsCoordinationContent,
+  'design-steps': designStepsContent,
+  'architectural-drawings': architecturalDrawingsContent,
   'demand-diversity': demandDiversityContent,
+  'load-estimation': loadEstimationContent,
   'transformer-generator': transformerGeneratorContent,
   lighting: lightingContent,
-  overview: overviewContent,
-  'architectural-drawings': architecturalDrawingsContent,
   'panel-schedule': panelScheduleContent,
   'circuit-breaker': circuitBreakerContent,
   feeders: feedersContent,
@@ -40,21 +46,20 @@ export const TOPIC_CONTENT_FR: Record<string, TopicContent | undefined> = {
 };
 
 export const TOPIC_CONTENT_EN: Record<string, TopicContent | undefined> = {
-  'load-estimation': loadEstimationContentEn,
+  'project-parties': projectPartiesContentEn,
+  'drawings-coordination': drawingsCoordinationContentEn,
+  'design-steps': designStepsContentEn,
+  'architectural-drawings': architecturalDrawingsContentEn,
   'demand-diversity': demandDiversityContentEn,
+  'load-estimation': loadEstimationContentEn,
   'transformer-generator': transformerGeneratorContentEn,
   lighting: lightingContentEn,
-  overview: overviewContentEn,
-  'architectural-drawings': architecturalDrawingsContentEn,
   'panel-schedule': panelScheduleContentEn,
   'circuit-breaker': circuitBreakerContentEn,
   feeders: feedersContentEn,
   'cable-sizing': cableSizingContentEn,
   'notions-diverses': notionsDiversesContentEn,
 };
-
-/** Backward-compatible default export (French) — prefer getTopicContent(lang, id) in new code. */
-export const TOPIC_CONTENT = TOPIC_CONTENT_FR;
 
 export function getTopicContent(lang: Lang, id: string): TopicContent | undefined {
   return (lang === 'en' ? TOPIC_CONTENT_EN : TOPIC_CONTENT_FR)[id];

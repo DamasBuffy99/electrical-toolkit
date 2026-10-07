@@ -8,10 +8,11 @@ import LightingScreen from './src/screens/LightingScreen';
 import PanelScheduleScreen from './src/screens/PanelScheduleScreen';
 import CircuitBreakerScreen from './src/screens/CircuitBreakerScreen';
 import NotesHomeScreen from './src/screens/notes/NotesHomeScreen';
-import NotesTopicScreen from './src/screens/notes/NotesTopicScreen';
+import CourseHomeScreen from './src/screens/notes/CourseHomeScreen';
+import LessonView from './src/components/notes/LessonView';
 import { getTopicContent } from './src/content/registry';
 import { getSolarTopicContent } from './src/content/solarRegistry';
-import { NOTES_TOPICS } from './src/data/notesTopics';
+import { FLAT_LESSONS } from './src/content/course';
 import { SOLAR_NOTES_TOPICS } from './src/data/solarNotesTopics';
 import { colors, radius, spacing } from './src/theme/theme';
 import { LanguageProvider, useLanguage } from './src/lib/language';
@@ -37,6 +38,20 @@ function AppShell() {
   const ActiveCalcComponent = CALC_TABS.find((tab) => tab.key === activeCalc)!.Component;
   const activeTopicContent = activeTopicId ? getTopicContent(lang, activeTopicId) : undefined;
   const activeSolarTopicContent = activeSolarTopicId ? getSolarTopicContent(lang, activeSolarTopicId) : undefined;
+
+  const availableLessons = FLAT_LESSONS.filter((l) => !!getTopicContent(lang, l.lesson.id));
+  const lessonPos = availableLessons.findIndex((l) => l.lesson.id === activeTopicId);
+  const currentLesson = lessonPos >= 0 ? availableLessons[lessonPos] : undefined;
+  const prevLesson = lessonPos > 0 ? availableLessons[lessonPos - 1] : undefined;
+  const nextLesson = lessonPos >= 0 ? availableLessons[lessonPos + 1] : undefined;
+  const lessonTitle = (l: (typeof FLAT_LESSONS)[number]) => (lang === 'fr' ? l.lesson.title : l.lesson.titleEn);
+  const lessonEyebrow = currentLesson
+    ? `${currentLesson.section.id === 'appendix' ? t('Annexe', 'Appendix') : `${t('Section', 'Section')} ${currentLesson.sectionIndex + 1}`} · ${t('Leçon', 'Lesson')} ${currentLesson.number}`
+    : undefined;
+
+  const solarPos = SOLAR_NOTES_TOPICS.findIndex((s) => s.id === activeSolarTopicId);
+  const prevSolar = solarPos > 0 ? SOLAR_NOTES_TOPICS[solarPos - 1] : undefined;
+  const nextSolar = solarPos >= 0 ? SOLAR_NOTES_TOPICS[solarPos + 1] : undefined;
 
   function selectMode(next: AppMode) {
     setMode(next);
@@ -108,21 +123,37 @@ function AppShell() {
         {mode === 'calculators' ? (
           <ActiveCalcComponent />
         ) : mode === 'notes' ? (
-          activeTopicContent ? (
-            <NotesTopicScreen content={activeTopicContent} onBack={() => setActiveTopicId(null)} />
-          ) : (
-            <NotesHomeScreen
-              topics={NOTES_TOPICS}
-              getContent={getTopicContent}
-              title="Notes de cours"
-              titleEn="Course Notes"
-              subtitle="Révise les notions du cours d'électricité, avec formules, tableaux et schémas"
-              subtitleEn="Review the electrical course concepts, with formulas, tables, and diagrams"
-              onSelectTopic={setActiveTopicId}
+          activeTopicContent && activeTopicId ? (
+            <LessonView
+              key={`${activeTopicId}-${lang}`}
+              content={activeTopicContent}
+              eyebrow={lessonEyebrow}
+              backLabel={t('Parcours', 'Journey')}
+              onBack={() => setActiveTopicId(null)}
+              prev={prevLesson ? { title: lessonTitle(prevLesson), onPress: () => setActiveTopicId(prevLesson.lesson.id) } : undefined}
+              next={
+                nextLesson
+                  ? {
+                      title: lessonTitle(nextLesson),
+                      transition: lang === 'fr' ? currentLesson?.lesson.transition : currentLesson?.lesson.transitionEn,
+                      onPress: () => setActiveTopicId(nextLesson.lesson.id),
+                    }
+                  : undefined
+              }
             />
+          ) : (
+            <CourseHomeScreen isAvailable={(id) => !!getTopicContent(lang, id)} onOpenLesson={setActiveTopicId} />
           )
-        ) : activeSolarTopicContent ? (
-          <NotesTopicScreen content={activeSolarTopicContent} onBack={() => setActiveSolarTopicId(null)} />
+        ) : activeSolarTopicContent && activeSolarTopicId ? (
+          <LessonView
+            key={`${activeSolarTopicId}-${lang}`}
+            content={activeSolarTopicContent}
+            eyebrow={t('Solaire PV', 'Solar PV')}
+            backLabel={t('Solaire PV', 'Solar PV')}
+            onBack={() => setActiveSolarTopicId(null)}
+            prev={prevSolar ? { title: lang === 'fr' ? prevSolar.title : prevSolar.titleEn, onPress: () => setActiveSolarTopicId(prevSolar.id) } : undefined}
+            next={nextSolar ? { title: lang === 'fr' ? nextSolar.title : nextSolar.titleEn, onPress: () => setActiveSolarTopicId(nextSolar.id) } : undefined}
+          />
         ) : (
           <NotesHomeScreen
             topics={SOLAR_NOTES_TOPICS}
