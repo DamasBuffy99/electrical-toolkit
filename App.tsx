@@ -152,7 +152,15 @@ function AppShell() {
             backLabel={t('Solaire PV', 'Solar PV')}
             onBack={() => setActiveSolarTopicId(null)}
             prev={prevSolar ? { title: lang === 'fr' ? prevSolar.title : prevSolar.titleEn, onPress: () => setActiveSolarTopicId(prevSolar.id) } : undefined}
-            next={nextSolar ? { title: lang === 'fr' ? nextSolar.title : nextSolar.titleEn, onPress: () => setActiveSolarTopicId(nextSolar.id) } : undefined}
+            next={
+              nextSolar
+                ? {
+                    title: lang === 'fr' ? nextSolar.title : nextSolar.titleEn,
+                    transition: lang === 'fr' ? SOLAR_NOTES_TOPICS[solarPos].transition : SOLAR_NOTES_TOPICS[solarPos].transitionEn,
+                    onPress: () => setActiveSolarTopicId(nextSolar.id),
+                  }
+                : undefined
+            }
           />
         ) : (
           <NotesHomeScreen

@@ -16,8 +16,11 @@ import {
 import { Coordination, DrawingSheet, DrawingsEvolution } from './sceneDrawings';
 import { DesignRoadmap } from './sceneRoadmap';
 import { PlanSymbols } from './scenePlans';
+import { BatteryBank, MpptWindow, PeakSunHours, PvArray, PvStc, PvSystem, PvWaveforms } from './sceneSolar';
 
 export type IllustrationProps = Record<string, string | number | boolean | undefined>;
+
+const num = (v: IllustrationProps[string]) => (typeof v === 'number' ? v : undefined);
 
 export function Illustration({ name, props, lang }: { name: string; props?: IllustrationProps; lang: Lang }) {
   const p = props ?? {};
@@ -52,6 +55,39 @@ export function Illustration({ name, props, lang }: { name: string; props?: Illu
       return <Coordination lang={lang} variant={p.variant as 'architect' | 'civil' | 'mechanical'} />;
     case 'design-roadmap':
       return <DesignRoadmap lang={lang} step={typeof p.step === 'number' ? p.step : 0} />;
+    case 'pv-system':
+      return <PvSystem lang={lang} highlight={typeof p.highlight === 'string' ? p.highlight : undefined} />;
+    case 'pv-waveforms':
+      return <PvWaveforms lang={lang} />;
+    case 'battery-bank':
+      return (
+        <BatteryBank
+          lang={lang}
+          series={num(p.series)}
+          parallel={num(p.parallel)}
+          battV={num(p.battV)}
+          battAh={num(p.battAh)}
+          current={num(p.current)}
+        />
+      );
+    case 'pv-array':
+      return <PvArray lang={lang} series={num(p.series)} parallel={num(p.parallel)} voc={num(p.voc)} />;
+    case 'mppt-window':
+      return (
+        <MpptWindow
+          lang={lang}
+          max={num(p.max)}
+          design={num(p.design)}
+          cold={num(p.cold)}
+          nec={num(p.nec)}
+          rangeMin={num(p.rangeMin)}
+          rangeMax={num(p.rangeMax)}
+        />
+      );
+    case 'pv-stc':
+      return <PvStc lang={lang} />;
+    case 'peak-sun-hours':
+      return <PeakSunHours lang={lang} hours={num(p.hours)} />;
     case 'plan-symbols':
       return <PlanSymbols lang={lang} variant={p.variant as 'stairs' | 'shaft' | 'doors'} />;
     default:
