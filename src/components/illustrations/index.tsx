@@ -6,6 +6,7 @@ import {
   EngDesign,
   EngExecution,
   EngineerRoles,
+  EngShopDrawing,
   EngSupervision,
   EngTechnicalOffice,
   OrgChart,
@@ -41,6 +42,8 @@ export function Illustration({ name, props, lang }: { name: string; props?: Illu
       return <EngExecution lang={lang} />;
     case 'eng-technical-office':
       return <EngTechnicalOffice lang={lang} />;
+    case 'eng-shop-drawing':
+      return <EngShopDrawing lang={lang} />;
     case 'drawings-evolution':
       return <DrawingsEvolution lang={lang} />;
     case 'drawing-sheet':

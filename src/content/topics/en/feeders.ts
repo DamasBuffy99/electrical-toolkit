@@ -10,34 +10,23 @@ export const feedersContent: TopicContent = {
     },
     { type: 'divider' },
 
-    { type: 'heading', text: '🔷 Continuous load and the 80% / 100% rule' },
+    { type: 'heading', text: '🔷 Reminder: continuous load (80% / 100% rule)' },
     {
       type: 'text',
-      text: "A continuous load is one whose maximum current is expected to last 3 hours or more (lighting, air conditioning…). It requires an additional margin on the breaker.",
+      text: 'A continuous load is one whose maximum current is expected to last 3 hours or more. It requires an extra margin on the breaker (except with a 100% breaker).',
     },
     { type: 'formula', text: 'I_r = 1.25 × I_continuous + I_non-continuous' },
-    {
-      type: 'table',
-      headers: ['Standard', 'Rule'],
-      rows: [
-        ['80% rated design', 'Non-continuous load + 1.25 × continuous load = total minimum load'],
-        ['100% rated design', 'Non-continuous load + continuous load (no coefficient) = total minimum load'],
-      ],
-    },
-    {
-      type: 'note',
-      text: '⚠️ Exception: for a breaker certified "100% rated", add continuous + non-continuous load with no 1.25 coefficient.',
-    },
     { type: 'divider' },
 
     { type: 'heading', text: '🔷 Motor protection — breaker selection (NEC)' },
     {
       type: 'bullets',
       items: [
-        "For a single motor: find its FLC (Full Load Current) in NEC table 430.248 (single-phase) or 430.250 (three-phase).",
-        "Apply the coefficient from NEC table 430.52 to the FLC to find the max protection rating.",
-        "Then check the nearest standard rating in NEC table 240.6.",
-        "If the breaker provides both overload and short-circuit protection → a single device is enough. For a separate device (fuse), use a coefficient of 1.75 (or 2.25 if insufficient for starting).",
+        "Find the motor's FLC in NEC table 430.248 (single-phase) or 430.250 (three-phase), from its horsepower.",
+        'Apply the coefficient from NEC table 430.52 to the FLC.',
+        "Choose the rating in NEC table 240.6(A); if the value isn't standard, take the next one.",
+        'One device for overload + short-circuit → 1.25 × FLA (nameplate).',
+        'Separate devices → short-circuit: 2.5 × FLC (breaker) or 1.75 × FLC (fuse) per 430.52; overload: NEC 430.32.',
       ],
     },
     {
@@ -57,7 +46,11 @@ export const feedersContent: TopicContent = {
     { type: 'heading', text: '🔷 Examples — fuse protection (NEC 440, air conditioning)' },
     {
       type: 'text',
-      text: "For an air-conditioning compressor/motor, the fuse rating is calculated from the nameplate FLA (Full Load Amps): 1.75 × FLA + auxiliary FLA. If this value is insufficient for starting, it can go up to 2.25 × FLA + auxiliaries, within the maximum rating shown on the manufacturer's nameplate.",
+      text: 'For air conditioning, refer to the nameplate in most cases. Sometimes only fuses are requested; otherwise use table 430.52: table coefficient × FLA of the largest motor (the compressor) + FLA of the small motor (the fan).',
+    },
+    {
+      type: 'text',
+      text: "Fuse: 1.75 × compressor FLA + fan FLA. If this value isn't enough for the motor to start, you can go up to 2.25 × compressor FLA + fan FLA.",
     },
     { type: 'formula', text: 'Example 1: 1.75 × 27 + 2.2 = 49.45 A → 50A fuse (up to 2.25 × 27 + 2.2 = 62.95 A → 60A max)' },
     {
@@ -85,7 +78,16 @@ export const feedersContent: TopicContent = {
     { type: 'heading', text: '🔷 Feeder for a motor panel (multiple motors combined)' },
     {
       type: 'text',
-      text: "When a single feeder protects several motors, their individual protections must be combined to find the common breaker rating.",
+      text: 'When a single feeder protects several motors, their individual protections must be combined to find the common breaker rating:',
+    },
+    {
+      type: 'bullets',
+      items: [
+        '1 → Look up the FLC of each motor (NEC tables).',
+        "2 → Apply the appropriate coefficient (430.52) and choose each motor's breaker from table 240.6(A).",
+        '3 → Add the largest breaker rating + the FLC of the other motors.',
+        '4 → The feeder breaker must be less than or equal to this new value (standard rating just below).',
+      ],
     },
     {
       type: 'image',
@@ -111,7 +113,17 @@ export const feedersContent: TopicContent = {
     { type: 'heading', text: '🔷 General feeder for a panel (overall calculation)' },
     {
       type: 'text',
-      text: "To size the main breaker for a complete panel (mix of continuous, non-continuous, and motor loads), the NEC method runs in 4 steps.",
+      text: 'To size the main breaker for a complete panel (mix of continuous, non-continuous and motor loads):',
+    },
+    {
+      type: 'bullets',
+      items: [
+        '1 → Non-continuous loads: add them up (taking demand factors into account). Add the motors too, plus 25% of the largest motor. Make the sum.',
+        '2 → Continuous loads: add them all up.',
+        '3 → Total = 1.25 × continuous loads + non-continuous loads.',
+        '4 → Derive the current I.',
+        '5 → Choose the breaker from table 240.6(A).',
+      ],
     },
     {
       type: 'image',
@@ -158,7 +170,7 @@ export const feedersContent: TopicContent = {
     {
       type: 'bullets',
       items: [
-        "Motor protection circuit breaker: provides overload protection.",
+        'The motor protection circuit breaker provides both overload and short-circuit protection.',
         "A short-circuit breaker alone does not protect against overload.",
         "MCP (Motor Circuit Protector) + overload relay = complete motor protection.",
       ],

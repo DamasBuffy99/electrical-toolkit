@@ -42,7 +42,7 @@ export const notionsDiversesContent: TopicContent = {
     },
     {
       type: 'note',
-      text: "💡 ELCB (Earth Leakage Circuit Breaker) and RCCB (Residual Current Circuit Breaker) refer to the same family of earth-leakage protection devices, alongside MCB/MCCB/ACB.",
+      text: '💡 ELCBs and RCCBs protect against earth leakage, but not against short-circuits (that needs an MCB). Details in the "Circuit breakers & protection" lesson.',
     },
   ],
 };

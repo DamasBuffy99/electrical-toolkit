@@ -13,28 +13,37 @@ export const drawingsCoordinationContent: TopicContent = {
     { type: 'heading', text: '1 · Dessins conceptuels' },
     {
       type: 'text',
-      text: "Préparés par le bureau technique du consultant, ils montrent les circuits de puissance et d'éclairage. Chaque dessin utilise des lignes, des symboles, des dimensions et des annotations.",
+      text: "Préparés par l'ingénieur du bureau technique du consultant (bureau d'études), ils montrent les circuits de puissance et d'éclairage du projet architectural. Ils se composent de lignes, de symboles, de dimensions et d'annotations.",
     },
     { type: 'illustration', name: 'drawing-sheet', props: { variant: 'conceptual' }, caption: 'Luminaires, prises et circuits sur le plan conceptuel' },
 
     { type: 'heading', text: "2 · Dessins d'exécution (shop drawings)" },
     {
       type: 'text',
-      text: "Préparés par le bureau technique de l'entrepreneur, pour deux raisons :",
+      text: "Préparés par l'ingénieur du bureau technique de l'entreprise (entrepreneur), ils reprennent les dessins conceptuels et y ajoutent des informations supplémentaires :",
     },
     {
       type: 'bullets',
-      items: [
-        'Technique — le consultant ne détaille pas tout : distances, sections de câbles…',
-        "Contractuelle — aucun travail ne peut démarrer sans dessins d'exécution approuvés.",
-      ],
+      items: ['Les distances', 'Le nombre de conducteurs des câbles (cores)', 'Les sections', 'Les caractéristiques des équipements…'],
+    },
+    {
+      type: 'note',
+      text: "📌 Aucun travail ne démarre sans dessins d'exécution approuvés : c'est aussi un document contractuel.",
     },
     { type: 'illustration', name: 'drawing-sheet', props: { variant: 'shop' }, caption: 'Cotes, sections de câbles et visa d’approbation' },
 
     { type: 'heading', text: '3 · Dessins as-built (tels que construits)' },
     {
       type: 'text',
-      text: "Ils reflètent ce qui a réellement été construit. Ils peuvent différer des dessins d'exécution à cause des contraintes de chantier ou de modifications demandées, et sont remis au propriétaire en fin de projet.",
+      text: "Préparés par l'entrepreneur, ils reflètent ce qui a réellement été construit. Il arrive que les conditions du chantier obligent l'ingénieur d'exécution à réaliser les travaux légèrement différemment des dessins d'exécution, pour plusieurs raisons :",
+    },
+    {
+      type: 'bullets',
+      items: [
+        'Pour faciliter la mise en œuvre des travaux',
+        'Une modification demandée par le propriétaire ou le consultant lors de la réception des travaux',
+        "Une modification de l'ingénieur civil (structure)",
+      ],
     },
     { type: 'note', text: "💡 En résumé : dessins as-built = dessins d'exécution, sauf si quelque chose a changé sur le chantier." },
     { type: 'illustration', name: 'drawing-sheet', props: { variant: 'asbuilt' }, caption: 'Les modifications de chantier sont entourées en rouge' },

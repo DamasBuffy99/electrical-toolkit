@@ -147,21 +147,24 @@ export function EngineerRoles({ lang }: SceneProps) {
   const L = pick(lang);
   return (
     <SceneFrame>
-      <Rect x={12} y={34} width={184} height={248} rx={16} fill={P.white} opacity={0.85} />
-      <Rect x={204} y={34} width={184} height={248} rx={16} fill={P.white} opacity={0.85} />
-      <Tag x={104} y={54} w={150} text={L("Bureau d'études", 'Consulting firm')} />
-      <Tag x={296} y={54} w={150} text={L('Entreprise', 'Construction co.')} fill={P.yellow} color={P.ink} />
+      <Rect x={10} y={34} width={150} height={250} rx={16} fill={P.white} opacity={0.85} />
+      <Rect x={168} y={34} width={222} height={250} rx={16} fill={P.white} opacity={0.85} />
+      <Tag x={85} y={54} w={132} text={L("Bureau d'études", 'Consulting firm')} />
+      <Tag x={279} y={54} w={150} text={L('Entreprise', 'Contractor')} fill={P.yellow} color={P.ink} />
 
-      <Person x={62} y={234} s={0.92} shirt={P.white} pants={P.navy} tie={P.blue} skin={P.skin2} accessory="laptop" />
-      <Person x={148} y={234} s={0.92} shirt={P.navy} pants={P.navyDark} helmet={P.white} vest={P.yellow} hairStyle="bun" accessory="clipboard" />
-      <Person x={252} y={234} s={0.92} shirt={P.blue} pants={P.navyDark} helmet={P.yellow} vest={P.orange} skin={P.skin3} accessory="cable" />
-      <Person x={340} y={234} s={0.92} shirt="#5a6f7f" pants={P.navyDark} hair={P.hair3} hairStyle="long" accessory="tablet" />
+      <Person x={50} y={232} s={0.86} shirt={P.white} pants={P.navy} tie={P.blue} skin={P.skin2} accessory="laptop" />
+      <Person x={120} y={232} s={0.86} shirt={P.navy} pants={P.navyDark} helmet={P.white} vest={P.yellow} hairStyle="bun" accessory="clipboard" />
+      <Person x={206} y={232} s={0.86} shirt={P.blue} pants={P.navyDark} helmet={P.yellow} vest={P.orange} skin={P.skin3} accessory="cable" />
+      <Person x={279} y={232} s={0.86} shirt="#5a6f7f" pants={P.navyDark} hair={P.hair3} hairStyle="long" accessory="briefcase" />
+      <Person x={352} y={232} s={0.86} shirt="#7fa7cf" pants={P.navyDark} skin={P.skin2} hairStyle="side" accessory="plans" />
 
-      <Label x={62} y={254} text={L('Conception', 'Design')} size={11} />
-      <Label x={148} y={254} text="Supervision" size={11} />
-      <Label x={252} y={254} text={L('Exécution', 'Execution')} size={11} />
-      <Label x={340} y={254} text={L('Bureau', 'Technical')} size={11} />
-      <Label x={340} y={268} text={L('technique', 'office')} size={11} />
+      <Label x={50} y={252} text={L('Conception', 'Design')} size={10.5} />
+      <Label x={120} y={252} text="Supervision" size={10.5} />
+      <Label x={206} y={252} text={L('Exécution', 'Execution')} size={10.5} />
+      <Label x={279} y={252} text={L('Bureau tech.', 'Tech. office')} size={10.5} />
+      <Label x={279} y={266} text={L('(achats)', '(procurement)')} size={9.5} color={P.inkSoft} weight="600" />
+      <Label x={352} y={252} text="Shop" size={10.5} />
+      <Label x={352} y={266} text="drawings" size={10.5} />
     </SceneFrame>
   );
 }
@@ -239,31 +242,66 @@ export function EngExecution({ lang }: SceneProps) {
   );
 }
 
+/** Technical office / procurement engineer: contacts suppliers to buy the equipment. */
 export function EngTechnicalOffice({ lang }: SceneProps) {
+  const L = pick(lang);
+  const suppliers = [L('Câbles', 'Cables'), L('Disjoncteurs', 'Breakers'), L('Transformateurs', 'Transformers')];
+  return (
+    <SceneFrame>
+      {suppliers.map((s, i) => {
+        const y = 70 + i * 62;
+        return (
+          <G key={s}>
+            <Path d={`M 170 150 Q 210 ${y + 25} 246 ${y + 25}`} stroke={P.green} strokeWidth={1.6} strokeDasharray="4 3" fill="none" />
+            <Rect x={246} y={y} width={138} height={50} rx={10} fill={P.white} stroke={P.line} strokeWidth={1.2} />
+            <Rect x={258} y={y + 12} width={26} height={26} rx={4} fill="#d6b07c" />
+            <Line x1={271} y1={y + 12} x2={271} y2={y + 38} stroke="#a77f4c" strokeWidth={2.5} />
+            <Label x={294} y={y + 22} text={s} size={10.5} anchor="start" />
+            <Label x={294} y={y + 37} text={L('Devis reçu ✓', 'Quote received ✓')} size={9} color={P.greenMid} weight="600" anchor="start" />
+          </G>
+        );
+      })}
+      <Tag x={124} y={34} w={196} text={L('Contact des fournisseurs', 'Contacting suppliers')} />
+
+      <Desk x={18} y={206} w={176} />
+      <Rect x={34} y={182} width={52} height={24} rx={3} fill={P.paper} stroke={P.line} />
+      <Line x1={42} y1={190} x2={78} y2={190} stroke={P.inkSoft} strokeWidth={1} />
+      <Line x1={42} y1={197} x2={70} y2={197} stroke={P.inkSoft} strokeWidth={1} />
+      <Rect x={140} y={188} width={36} height={18} rx={3} fill={P.screen} />
+      <Person x={106} y={272} s={1.08} shirt="#5a6f7f" pants={P.navyDark} hair={P.hair3} hairStyle="long" accessory="tablet" />
+    </SceneFrame>
+  );
+}
+
+/** Shop drawing engineer: details the conceptual drawing for execution (distances, cable cores, sections). */
+export function EngShopDrawing({ lang }: SceneProps) {
   const L = pick(lang);
   return (
     <SceneFrame>
-      <Sheet x={238} y={30} w={138} h={100} title="SHOP DWG" />
-      <Rect x={252} y={46} width={60} height={50} fill="none" stroke={P.blue} strokeWidth={1.2} />
-      <Line x1={282} y1={46} x2={282} y2={96} stroke={P.blue} strokeWidth={1} />
-      <Line x1={252} y1={104} x2={312} y2={104} stroke={P.inkSoft} strokeWidth={0.8} />
-      <G transform="rotate(-12 334 70)">
-        <Rect x={300} y={58} width={70} height={22} rx={4} fill="none" stroke={P.greenMid} strokeWidth={2} />
-        <Label x={335} y={73} text={L('APPROUVÉ', 'APPROVED')} size={9.5} color={P.greenMid} />
+      <Sheet x={196} y={30} w={184} h={150} title="SHOP DWG" />
+      <Rect x={212} y={46} width={96} height={80} fill="none" stroke={P.blue} strokeWidth={1.3} />
+      <Line x1={260} y1={46} x2={260} y2={126} stroke={P.blue} strokeWidth={1} />
+      <Circle cx={236} cy={70} r={4} fill="none" stroke={P.orange} strokeWidth={1.4} />
+      <Circle cx={284} cy={70} r={4} fill="none" stroke={P.orange} strokeWidth={1.4} />
+      <Path d="M 236 74 L 236 100 L 284 100 L 284 74" stroke={P.orange} strokeWidth={1.2} fill="none" />
+      {/* dimension line */}
+      <Line x1={212} y1={140} x2={308} y2={140} stroke={P.inkSoft} strokeWidth={0.9} />
+      <Line x1={212} y1={135} x2={212} y2={145} stroke={P.inkSoft} strokeWidth={0.9} />
+      <Line x1={308} y1={135} x2={308} y2={145} stroke={P.inkSoft} strokeWidth={0.9} />
+      <Label x={260} y={154} text="4.20 m" size={8.5} color={P.inkSoft} />
+      <Label x={316} y={92} text="3×2.5 mm²" size={8.5} color={P.orange} anchor="start" />
+      <Label x={316} y={106} text="Cu/PVC" size={8} color={P.inkSoft} anchor="start" weight="600" />
+      <G transform="rotate(-10 340 60)">
+        <Rect x={308} y={48} width={64} height={20} rx={4} fill="none" stroke={P.greenMid} strokeWidth={2} />
+        <Label x={340} y={62} text={L('APPROUVÉ', 'APPROVED')} size={8.5} color={P.greenMid} />
       </G>
 
-      <Person x={150} y={268} s={1.12} shirt={P.navy} pants={P.navyDark} hair={P.hair3} hairStyle="long" accessory="tablet" />
-      <Desk x={22} y={200} w={250} />
-      <Rect x={44} y={184} width={46} height={16} rx={2} fill={P.paper} stroke={P.line} />
-      <Rect x={46} y={172} width={46} height={12} rx={2} fill={P.paper} stroke={P.line} />
-      <Rect x={44} y={162} width={46} height={10} rx={2} fill={P.sky} stroke={P.line} />
-      <Rect x={200} y={186} width={56} height={14} rx={2} fill={P.paper} stroke={P.line} />
-
-      <Rect x={296} y={206} width={70} height={56} rx={3} fill="#c9a06a" />
-      <Line x1={331} y1={206} x2={331} y2={262} stroke="#a77f4c" strokeWidth={4} />
-      <Rect x={310} y={176} width={48} height={32} rx={3} fill="#d6b07c" />
-      <Line x1={334} y1={176} x2={334} y2={208} stroke="#a77f4c" strokeWidth={3} />
-      <Label x={331} y={282} text={L('Achats matériel', 'Procurement')} size={10.5} color={P.inkSoft} weight="600" />
+      <Desk x={20} y={206} w={200} />
+      <Monitor x={40} y={118} w={104} h={70} dark />
+      <Person x={176} y={272} s={1.08} shirt="#7fa7cf" pants={P.navyDark} skin={P.skin2} hairStyle="side" accessory="pen" />
+      <Tag x={110} y={34} w={176} text={L("Dessins d'exécution", 'Executive drawings')} />
+      <Label x={300} y={214} text={L('Distances · conducteurs', 'Distances · cores')} size={10.5} color={P.inkSoft} weight="600" />
+      <Label x={300} y={230} text={L('sections · caractéristiques', 'sections · characteristics')} size={10.5} color={P.inkSoft} weight="600" />
     </SceneFrame>
   );
 }

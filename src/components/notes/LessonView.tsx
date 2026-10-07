@@ -220,7 +220,6 @@ function VisualStage({
       break;
     }
   }
-  if (target === -1) target = scenes.findIndex((s) => s.visuals.length > 0);
 
   // Which visual of the target scene the reader picked (resets to the first one when the scene changes).
   const [pick, setPick] = useState({ scene: target, idx: 0 });
@@ -284,13 +283,17 @@ function VisualStage({
           ) : (
             <TouchableOpacity style={styles.flexFill} activeOpacity={0.92} onPress={() => setZoomed(true)}>
               <VisualContent visual={visual} lang={lang} />
-              <View style={styles.zoomHint}>
-                <Text style={styles.zoomHintText}>⤢</Text>
-              </View>
             </TouchableOpacity>
           )}
         </View>
-        {visual?.caption ? <Text style={styles.caption}>{visual.caption}</Text> : null}
+        {visual ? (
+          <View style={styles.captionRow}>
+            <Text style={[styles.caption, styles.captionFlex]}>{visual.caption ?? ''}</Text>
+            <TouchableOpacity onPress={() => setZoomed(true)} style={styles.zoomButton} hitSlop={{ top: 6, bottom: 6, left: 6, right: 6 }}>
+              <Text style={styles.zoomButtonText}>⤢ {lang === 'fr' ? 'Agrandir' : 'Enlarge'}</Text>
+            </TouchableOpacity>
+          </View>
+        ) : null}
       </Animated.View>
 
       {count > 1 ? (
@@ -385,18 +388,10 @@ const styles = StyleSheet.create({
   dotActive: { backgroundColor: colors.accent, width: 18 },
   frame: { width: '100%', aspectRatio: 4 / 3, borderRadius: radius.md, overflow: 'hidden', backgroundColor: '#fff' },
   stageImage: { width: '100%', height: '100%' },
-  zoomHint: {
-    position: 'absolute',
-    right: 8,
-    bottom: 8,
-    width: 28,
-    height: 28,
-    borderRadius: 14,
-    backgroundColor: 'rgba(15, 23, 42, 0.55)',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  zoomHintText: { color: '#fff', fontSize: 15, fontWeight: '700' },
+  captionRow: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm, marginTop: spacing.xs },
+  captionFlex: { flex: 1, marginTop: 0, textAlign: 'left' },
+  zoomButton: { paddingVertical: 4, paddingHorizontal: 10, borderRadius: radius.pill, backgroundColor: colors.accentSoft },
+  zoomButtonText: { fontSize: 11.5, fontWeight: '700', color: colors.accent },
   pager: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: spacing.md, marginTop: spacing.md },
   pagerButton: {
     width: 30,

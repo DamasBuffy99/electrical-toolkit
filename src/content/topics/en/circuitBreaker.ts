@@ -2,106 +2,170 @@ import { TopicContent } from '../../types';
 
 export const circuitBreakerContent: TopicContent = {
   title: 'Circuit Breakers & Protection',
-  subtitle: 'Sizing a breaker and choosing its trip curve',
+  subtitle: 'Sizing a breaker, choosing its curve, and knowing the breaker and trip unit types',
   blocks: [
     {
       type: 'text',
-      text: "A circuit breaker protects a circuit against overloads and short-circuits. Choosing one correctly requires calculating the circuit's real current, applying a safety margin, then selecting a standard rating and a trip curve suited to the load.",
+      text: 'A circuit breaker protects a circuit against overloads and short-circuits. Selecting one takes four steps: load current, breaker current with a safety factor, standard rating, then trip curve.',
     },
     {
-      type: 'image',
-      source: require('../../../../assets/diagrams/en/breaker_selection_steps.png'),
-      caption: 'The 6 steps of selecting a circuit breaker',
-      height: 520,
-    },
-    { type: 'divider' },
-
-    { type: 'heading', text: '🔷 Step 1 — Calculate the load current' },
-    { type: 'formula', text: 'Single-phase: I_load = (S × 1000) / V' },
-    { type: 'formula', text: 'Three-phase: I_load = (S × 1000) / (√3 × V)' },
-    {
-      type: 'text',
-      text: 'S = apparent power in kVA, V = voltage (phase-neutral for single-phase, phase-phase for three-phase). This current represents the actual load flowing through the circuit.',
-    },
-    { type: 'divider' },
-
-    { type: 'heading', text: '🔷 Step 2 — Apply a safety margin' },
-    {
-      type: 'text',
-      text: "The breaker rating should never sit exactly at the load current — a margin absorbs normal spikes and avoids nuisance tripping.",
-    },
-    {
-      type: 'table',
-      headers: ['Reference', 'Margin applied'],
-      rows: [
-        ['Load Factor rule (FC)', '+25%'],
-        ['IEC', '+20%'],
-        ['NEC', '+10%'],
+      type: 'bullets',
+      items: [
+        '1 → Calculate the load current I_load',
+        '2 → Calculate the breaker current I_CB (safety factor)',
+        '3 → Select the standard rating',
+        '4 → Select the trip curve (B, C or D)',
       ],
     },
-    { type: 'formula', text: 'I_r = I_load × (1 + margin)' },
     { type: 'divider' },
 
-    { type: 'heading', text: '🔷 Step 3 — Continuous loads: the 80% / 100% rule' },
+    { type: 'heading', text: '1 · Calculate the load current (I_load)' },
+    { type: 'text', text: 'This is the rated load current.' },
+    { type: 'formula', text: 'Single-phase: I_load = (S × 1000) / V' },
+    { type: 'formula', text: 'Three-phase: I_load = (S × 1000) / (√3 × V)' },
+    { type: 'text', text: 'S = apparent power in kVA, V = voltage (phase-neutral for single-phase, phase-phase for three-phase).' },
+    { type: 'formula', text: 'Example: 5 kVA at 220 V → I_load = 5 × 1000 / 220 = 22.7 A' },
+    { type: 'divider' },
+
+    { type: 'heading', text: '2 · Calculate the breaker current (I_CB)' },
+    { type: 'text', text: 'A safety factor is applied to the load current. Its value depends on the code used:' },
+    { type: 'formula', text: 'I_CB = safety factor × I_load' },
     {
-      type: 'text',
-      text: "For a continuous load (running ≥ 3h uninterrupted, e.g. lighting, air conditioning), the breaker must be sized with an additional margin to avoid prolonged overheating.",
+      type: 'table',
+      headers: ['Code', 'Margin', 'Factor'],
+      rows: [
+        ['EC', '+25%', '1.25'],
+        ['IEC', '+20%', '1.2'],
+        ['NEC (overload)', '+10%', '1.1'],
+      ],
     },
-    { type: 'formula', text: 'I_r = 1.25 × I_continuous + I_non-continuous' },
+    { type: 'formula', text: 'IEC example: I_CB = 1.2 × 22.7 = 27.3 A' },
+    { type: 'divider' },
+
+    { type: 'heading', text: '3 · Select the standard rating' },
+    { type: 'text', text: 'Take the next available standard rating above I_CB — never the one below.' },
     {
       type: 'note',
-      text: '📐 In practice: a standard breaker (100%) should only be loaded to 80% of its rating continuously, unless it is specifically certified "100% rated" for full continuous-load use.',
-    },
-    { type: 'divider' },
-
-    { type: 'heading', text: '🔷 Step 4 — Choose the standard rating' },
-    {
-      type: 'text',
-      text: "From the standard series, select the rating directly above I_r. If the gap between I_r and the available rating is too large, consider an adjustable breaker (variable rating) set to a lower value to avoid excessive oversizing.",
+      text: '⚠️ Exception: when the gap between I_CB and the available ratings is very large, you may choose the previous or the next rating, or an adjustable breaker.',
     },
     {
       type: 'formula',
       text: 'Standard ratings (A): 6·10·16·20·25·32·40·50·63·80·100·125·160·200·250·320·400·500·630·800·1000·1250',
     },
+    { type: 'formula', text: 'Example: I_CB = 27.3 A → 32 A breaker' },
     { type: 'divider' },
 
-    { type: 'heading', text: '🔷 Step 5 — Choose the trip curve' },
+    { type: 'heading', text: '4 · Select the trip curve' },
     {
       type: 'text',
-      text: "The curve sets the magnetic (short-circuit) tripping threshold, expressed as a multiple of the rated current In. It must match the type of load supplied, to avoid nuisance tripping at switch-on.",
+      text: 'The curve sets the magnetic trip threshold, as a multiple of the rated current In. It depends on the starting current of the protected load.',
     },
     {
       type: 'table',
-      headers: ['Curve', 'Magnetic threshold', 'Typical use'],
+      headers: ['Curve', 'Magnetic threshold', 'Protected loads'],
       rows: [
-        ['B', '3 – 5 × In', 'Resistive circuits, static loads, long lines'],
-        ['C', '5 – 10 × In', 'General use, loads with moderate inrush current (motors, luminaires)'],
-        ['D', '10 – 20 × In', 'High inrush at start-up: transformers, large motors'],
+        ['B', '3 – 5 × In', 'Static loads: lighting, heaters, sockets'],
+        ['C', '5 – 10 × In', 'Loads with high starting current: motors'],
+        ['D', '10 – 20 × In', 'Very high starting currents: transformers'],
       ],
     },
+    { type: 'note', text: '💡 MCBs come in curves B, C, D and Z (curve Z, 2 – 3 × In, is for very sensitive electronic circuits).' },
     { type: 'divider' },
 
-    { type: 'heading', text: '🔷 Breaker types' },
+    { type: 'heading', text: 'Breaker types: MCB, MCCB, ACB' },
     {
       type: 'table',
       headers: ['Type', 'Description'],
       rows: [
-        ['MCB', 'Miniature Circuit Breaker — low-power circuits, up to ~100A'],
-        ['MCCB', 'Moulded Case Circuit Breaker — medium to high power, adjustable rating'],
-        ['ACB', 'Air Circuit Breaker — main incoming feeds, high currents (main switchboards)'],
-        ['RCD / RCCB', 'Residual current device — protects people against earth leakage'],
+        ['MCB', 'Miniature Circuit Breaker — small ratings, final circuits'],
+        ['MCCB', 'Moulded Case Circuit Breaker — medium to high ratings'],
+        ['ACB', 'Air Circuit Breaker — main incomers, high currents (main switchboard)'],
       ],
     },
     {
       type: 'text',
-      text: "MCB sub-types found on drawings: FIU, FMU, MTU, MCP — each designates a housing variant or function (isolation, motor protection, etc.) depending on the manufacturer; always check the drawing legend for the exact meaning.",
+      text: "Ampere Frame: up to this current value, the breaker's structure (dimensions) stays the same. It depends on the manufacturer.",
     },
     { type: 'divider' },
 
-    { type: 'heading', text: '🔷 Motor protection (NEC)' },
+    { type: 'heading', text: 'Residual current protection: ELCB and RCCB' },
+    { type: 'text', text: 'ELCB (earth leakage): the leakage must flow to earth for the ELCB to detect the potential difference.' },
     {
       type: 'text',
-      text: "Motor circuit protection follows different logic than static loads: the breaker must let the high starting current through while still protecting the cable in steady state. The NEC covers this via several dedicated tables: 430.52 (max short-circuit protection rating, as % of FLC), 240.6 (standard ratings), 430.248/430.250 (full-load currents — FLC — of single/three-phase motors).",
+      text: 'RCCB: disconnects the power supply when it detects a leakage current to ground, typically due to an insulation failure or accidental contact with a conductor.',
+    },
+    { type: 'note', text: '⚠️ An RCCB only protects against leakage current, not short-circuits. For short-circuits, you need an MCB.' },
+    {
+      type: 'table',
+      headers: ['RCD type', 'Leakage currents detected'],
+      rows: [
+        ['Type AC', 'Sinusoidal AC'],
+        ['Type A', 'AC + pulsating DC'],
+        ['Type B', 'AC, pulsating DC and smooth DC'],
+      ],
+    },
+    { type: 'divider' },
+
+    { type: 'heading', text: 'Trip units' },
+    { type: 'text', text: 'Ir = overload (thermal) setting · Im = short-circuit (magnetic) setting.' },
+    {
+      type: 'table',
+      headers: ['Trip unit', 'Settings', 'Use'],
+      rows: [
+        ['FTU', 'Fixed Ir and Im', 'General use'],
+        ['FMU', 'Adjustable Ir, fixed Im', 'General use'],
+        ['ATU', 'Adjustable Ir and Im', 'Fine-tuned protection'],
+        ['MTU', 'No overload protection — magnetic only, adjustable', 'When overload is handled externally (overload relay) — e.g. generator application'],
+        ['MCP', 'Instantaneous trip (magnetic only)', 'Motor short-circuit protection'],
+      ],
+    },
+    { type: 'formula', text: 'MCP + overload relay = full motor protection' },
+    { type: 'divider' },
+
+    { type: 'heading', text: 'Overcurrent protection (branch circuit, NEC)' },
+    { type: 'text', text: 'Continuous load: a load where the maximum current is expected to continue for three hours or more.' },
+    { type: 'formula', text: 'I_r = 1.25 × I_continuous + I_non-continuous' },
+    { type: 'text', text: "If the operating time isn't known yet, assume all loads are continuous:" },
+    { type: 'formula', text: 'I_r = 1.25 × ΣI' },
+    { type: 'note', text: "⚠️ Exception: with a 100% breaker, add continuous and non-continuous loads without oversizing." },
+    {
+      type: 'table',
+      headers: ['Design', 'Total minimum load'],
+      rows: [
+        ['Standard 80%-rated', 'Non-continuous load + 125% of continuous load'],
+        ['Standard 100%-rated', 'Non-continuous load + continuous load'],
+      ],
+    },
+    { type: 'note', text: '📌 When they trip, circuit breakers are required to open all ungrounded conductors of the circuit.' },
+    { type: 'divider' },
+
+    { type: 'heading', text: 'Motor protection (NEC)' },
+    {
+      type: 'bullets',
+      items: [
+        "To find a motor's full-load current (FLC), don't use I = S / 230: read NEC table 430.248 (single-phase) or 430.250 (three-phase) from the horsepower.",
+        'Apply the coefficient from NEC table 430.52 to the FLC.',
+        'Choose the rating from the NEC 240.6(A) standard ratings table.',
+      ],
+    },
+    {
+      type: 'note',
+      text: "⚠️ Exceptions: if the calculated value isn't a standard rating, always take the next one. And if necessary (starting), you may exceed the value given by the table.",
+    },
+    {
+      type: 'table',
+      headers: ['Current', 'Source', 'Use'],
+      rows: [
+        ['FLC (Full Load Current)', 'NEC tables', 'Sizing short-circuit protection'],
+        ['FLA (Full Load Amps)', "Motor's nameplate", 'Overload protection, or any NEC exception'],
+      ],
+    },
+    {
+      type: 'bullets',
+      items: [
+        'One device for overload + short-circuit: breaker selected at 1.25 × FLA.',
+        'Separate devices: short-circuit per table 430.52 (2.5 × FLC for a breaker, 1.75 × FLC for a fuse); overload per NEC 430.32 (1.25 × FLA — up to 1.4 as an exception — or 1.15 × FLA for other motors).',
+      ],
     },
     {
       type: 'image',
@@ -115,17 +179,10 @@ export const circuitBreakerContent: TopicContent = {
       caption: 'NEC Table 240.6(A) — Standard Ampere Ratings for Fuses and Inverse Time Circuit Breakers',
       height: 260,
     },
-    {
-      type: 'note',
-      text: "⚠️ These NEC tables contain precise numeric values per motor power — always refer to the current NEC edition rather than a memorized value, as tables are revised between editions.",
-    },
     { type: 'divider' },
 
-    { type: 'heading', text: '🔷 Example 1 — Single-phase motor, 2 HP, 230V' },
-    {
-      type: 'text',
-      text: 'FLC (table 430.248) = 12A · Breaker rating = 2.5 × FLC = 2.5 × 12 = 30A (standard value, table 240.6).',
-    },
+    { type: 'heading', text: 'Example 1 — Single-phase motor, 2 HP, 230 V' },
+    { type: 'text', text: 'FLC (table 430.248) = 12 A · Breaker rating = 2.5 × FLC = 2.5 × 12 = 30 A (standard value, table 240.6).' },
     {
       type: 'image',
       source: require('../../../../assets/reference/breaker_motor_example1_2hp.png'),
@@ -134,11 +191,8 @@ export const circuitBreakerContent: TopicContent = {
     },
     { type: 'divider' },
 
-    { type: 'heading', text: '🔷 Example 2 — Three-phase motor, 7.5 HP, 230V' },
-    {
-      type: 'text',
-      text: 'FLC (table 430.250) = 22A · Calculated rating = 2.5 × 22 = 55A → nearest standard rating: 60A.',
-    },
+    { type: 'heading', text: 'Example 2 — Three-phase motor, 7.5 HP, 230 V' },
+    { type: 'text', text: 'FLC (table 430.250) = 22 A · Calculated rating = 2.5 × 22 = 55 A → not a standard rating → next one: 60 A.' },
     {
       type: 'image',
       source: require('../../../../assets/reference/breaker_motor_example2_7hp5.png'),

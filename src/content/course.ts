@@ -168,8 +168,15 @@ export const COURSE_SECTIONS: CourseSection[] = [
         id: 'cable-sizing',
         title: 'Dimensionnement des câbles (CSA)',
         titleEn: 'Cable sizing (CSA)',
-        transition: 'Câbles et protections définis, il reste à assembler les tableaux et le schéma unifilaire.',
-        transitionEn: 'With cables and protection defined, what remains is assembling the panels and the single-line diagram.',
+        transition: "Une section qui supporte le courant ne suffit pas : il faut aussi vérifier la chute de tension jusqu'à la charge.",
+        transitionEn: 'A section that carries the current is not enough: the voltage drop to the load must be checked too.',
+      },
+      {
+        id: 'voltage-drop',
+        title: 'Chute de tension',
+        titleEn: 'Voltage drop',
+        transition: 'Câbles et protections validés, il reste à les loger dans les tableaux.',
+        transitionEn: 'With cables and protection validated, what remains is housing them in the panels.',
       },
     ],
   },
@@ -180,7 +187,13 @@ export const COURSE_SECTIONS: CourseSection[] = [
     titleEn: 'Panel boards & single-line diagram',
     intro: 'Construction des tableaux, schéma unifilaire et inverseur de source.',
     introEn: 'Panel board construction, single-line diagram and transfer switch.',
-    lessons: [],
+    lessons: [
+      {
+        id: 'panel-basics',
+        title: 'Tableaux : CT et indices IP',
+        titleEn: 'Panels: CTs and IP ratings',
+      },
+    ],
   },
   {
     id: 'appendix',

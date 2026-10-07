@@ -59,6 +59,7 @@ export const cableSizingContent: TopicContent = {
     { type: 'formula', text: 'I_rated = (40 × 746) / (√3 × 380 × 0.8) = 56.6 A' },
     { type: 'formula', text: 'I_CB = I_rated × 1.25 = 56.6 × 1.25 = 70.75 A' },
     { type: 'formula', text: 'I_câble = I_CB / facteur de dérating' },
+    { type: 'formula', text: 'Avec un facteur de 0.82 : I_câble = 70.75 / 0.82 = 86.28 A' },
     {
       type: 'image',
       source: require('../../../assets/reference/cable_40hp_worked_example.png'),
@@ -162,7 +163,7 @@ export const cableSizingContent: TopicContent = {
     { type: 'divider' },
 
     { type: 'heading', text: '🔷 Sélection du câble avec facteur de correction (IEC)' },
-    { type: 'formula', text: 'I_z ≥ I_n' },
+    { type: 'formula', text: 'I_z ≥ I_CB / facteur de correction' },
     {
       type: 'text',
       text: "Cette règle doit être vérifiée après application des facteurs de correction de la norme IEC 60364-5-52 :",
@@ -189,7 +190,7 @@ export const cableSizingContent: TopicContent = {
     { type: 'formula', text: 'S ≥ (I × √t) / k' },
     {
       type: 'text',
-      text: 't = durée maximale du défaut (s) ; k = constante du matériau, dépendant du conducteur et de son isolant.',
+      text: 'I = courant de court-circuit (A) ; t = durée maximale du défaut (s) ; k = constante du matériau, qui dépend du conducteur, de son isolant, etc.',
     },
     {
       type: 'note',

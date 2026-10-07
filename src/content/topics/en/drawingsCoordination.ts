@@ -13,28 +13,34 @@ export const drawingsCoordinationContent: TopicContent = {
     { type: 'heading', text: '1 · Conceptual drawings' },
     {
       type: 'text',
-      text: "Prepared by the consultant's technical office, they show the power and lighting circuits. Each drawing uses lines, symbols, dimensions and annotations.",
+      text: "Prepared by the engineer of the consulting company's technical office, they show the power and lighting circuits of the architectural project. They consist of lines, symbols, dimensions and notations.",
     },
     { type: 'illustration', name: 'drawing-sheet', props: { variant: 'conceptual' }, caption: 'Luminaires, sockets and circuits on the conceptual drawing' },
 
     { type: 'heading', text: '2 · Shop drawings' },
     {
       type: 'text',
-      text: "Prepared by the contractor's technical office, for two reasons:",
+      text: "Also called executive drawings, they are prepared by the engineer of the contracting company's technical office. They take the conceptual drawings and add further information:",
     },
     {
       type: 'bullets',
-      items: [
-        "Technical — the consultant doesn't detail everything: distances, cable sizes…",
-        'Contractual — no work can start without approved shop drawings.',
-      ],
+      items: ['Distances', 'Cable cores', 'Sections', 'Equipment characteristics…'],
     },
+    { type: 'note', text: '📌 No work starts without approved shop drawings: they are also a contractual document.' },
     { type: 'illustration', name: 'drawing-sheet', props: { variant: 'shop' }, caption: 'Dimensions, cable sizes and approval stamp' },
 
     { type: 'heading', text: '3 · As-built drawings' },
     {
       type: 'text',
-      text: 'They reflect what was actually built. They may differ from the shop drawings because of site constraints or requested changes, and are handed over to the owner at the end of the project.',
+      text: 'Prepared by the contractor, they reflect what was actually built. Site conditions sometimes require the execution engineer to carry out the work slightly differently from the shop drawings, for several reasons:',
+    },
+    {
+      type: 'bullets',
+      items: [
+        'To make the work easier to implement',
+        'A modification requested by the owner or the consultant while receiving the works',
+        "A civil (structural) engineer's modification",
+      ],
     },
     { type: 'note', text: '💡 In short: as-built drawings = shop drawings, unless something changed on site.' },
     { type: 'illustration', name: 'drawing-sheet', props: { variant: 'asbuilt' }, caption: 'Site changes are clouded in red' },

@@ -10,34 +10,23 @@ export const feedersContent: TopicContent = {
     },
     { type: 'divider' },
 
-    { type: 'heading', text: '🔷 Charge continue et règle 80% / 100%' },
+    { type: 'heading', text: '🔷 Rappel : charge continue (règle 80% / 100%)' },
     {
       type: 'text',
-      text: "Une charge continue est une charge dont le courant maximal est censé durer 3 heures ou plus (éclairage, climatisation…). Elle impose une marge supplémentaire sur le disjoncteur.",
+      text: "Une charge continue est une charge dont le courant maximal est censé durer 3 heures ou plus. Elle impose une marge supplémentaire sur le disjoncteur (sauf disjoncteur « 100 % »).",
     },
     { type: 'formula', text: 'I_r = 1.25 × I_continue + I_non-continue' },
-    {
-      type: 'table',
-      headers: ['Standard', 'Règle'],
-      rows: [
-        ['80% rated design', 'Charge non-continue + 1.25 × charge continue = charge minimale totale'],
-        ['100% rated design', 'Charge non-continue + charge continue (sans coefficient) = charge minimale totale'],
-      ],
-    },
-    {
-      type: 'note',
-      text: "⚠️ Exception : pour un disjoncteur certifié « 100% rated », additionner charge continue + non-continue sans coefficient 1.25.",
-    },
     { type: 'divider' },
 
     { type: 'heading', text: '🔷 Protection moteur — sélection du disjoncteur (NEC)' },
     {
       type: 'bullets',
       items: [
-        "Pour un moteur seul : trouver son FLC (Full Load Current) dans la table NEC 430.248 (monophasé) ou 430.250 (triphasé).",
-        "Appliquer le coefficient de la table NEC 430.52 au FLC pour trouver le calibre max de protection.",
-        "Vérifier ensuite le calibre standard le plus proche dans la table NEC 240.6.",
-        "Si le disjoncteur assure à la fois protection surcharge et court-circuit → un seul dispositif suffit. S'il s'agit d'un dispositif séparé (fusible), utiliser un coefficient 1.75 (ou 2.25 si insuffisant au démarrage).",
+        "Trouver le FLC du moteur dans la table NEC 430.248 (monophasé) ou 430.250 (triphasé), à partir de sa puissance en HP.",
+        "Appliquer le coefficient de la table NEC 430.52 au FLC.",
+        "Choisir le calibre dans la table NEC 240.6(A) ; si la valeur n'est pas standard, prendre le calibre suivant.",
+        "Un seul appareil pour surcharge + court-circuit → 1.25 × FLA (plaque signalétique).",
+        "Appareils séparés → court-circuit : 2.5 × FLC (disjoncteur) ou 1.75 × FLC (fusible) selon 430.52 ; surcharge : NEC 430.32.",
       ],
     },
     {
@@ -57,7 +46,11 @@ export const feedersContent: TopicContent = {
     { type: 'heading', text: '🔷 Exemples — protection par fusible (NEC 440, climatisation)' },
     {
       type: 'text',
-      text: "Pour un compresseur/moteur de climatisation, le calibre de fusible se calcule à partir du FLA (Full Load Amps) de la plaque signalétique : 1.75 × FLA + FLA des auxiliaires. Si cette valeur est insuffisante pour le démarrage, on peut monter jusqu'à 2.25 × FLA + auxiliaires, dans la limite du calibre maximal indiqué sur la plaque du fabricant.",
+      text: "Pour la climatisation, on se réfère à la plaque signalétique dans la plupart des cas. Parfois, seuls des fusibles sont demandés ; sinon, on utilise la table 430.52 : coefficient de la table × FLA du plus gros moteur (le compresseur) + FLA du petit moteur (le ventilateur).",
+    },
+    {
+      type: 'text',
+      text: "Fusible : 1.75 × FLA compresseur + FLA ventilateur. Si cette valeur ne suffit pas au démarrage du moteur, on peut monter jusqu'à 2.25 × FLA compresseur + FLA ventilateur.",
     },
     { type: 'formula', text: 'Exemple 1 : 1.75 × 27 + 2.2 = 49.45 A → fusible 50A (jusqu\'à 2.25 × 27 + 2.2 = 62.95 A → 60A max)' },
     {
@@ -85,7 +78,16 @@ export const feedersContent: TopicContent = {
     { type: 'heading', text: '🔷 Feeder pour un panneau de moteurs (plusieurs moteurs combinés)' },
     {
       type: 'text',
-      text: "Quand un même départ protège plusieurs moteurs, il faut combiner leurs protections individuelles pour trouver le calibre du disjoncteur commun.",
+      text: "Quand un même départ protège plusieurs moteurs, il faut combiner leurs protections individuelles pour trouver le calibre du disjoncteur commun :",
+    },
+    {
+      type: 'bullets',
+      items: [
+        '1 → Chercher le FLC de chaque moteur (tables NEC).',
+        '2 → Appliquer le coefficient approprié (430.52) et choisir le disjoncteur de chaque moteur dans la table 240.6(A).',
+        '3 → Additionner le calibre du plus gros disjoncteur + les FLC des autres moteurs.',
+        '4 → Le disjoncteur du feeder doit être inférieur ou égal à cette nouvelle valeur (calibre standard juste en dessous).',
+      ],
     },
     {
       type: 'image',
@@ -111,7 +113,17 @@ export const feedersContent: TopicContent = {
     { type: 'heading', text: '🔷 Feeder général d\'un panneau (calcul global)' },
     {
       type: 'text',
-      text: "Pour dimensionner le disjoncteur principal d'un panneau complet (mélange de charges continues, non-continues et moteurs), la méthode NEC se déroule en 4 étapes.",
+      text: "Pour dimensionner le disjoncteur principal d'un panneau complet (mélange de charges continues, non-continues et moteurs) :",
+    },
+    {
+      type: 'bullets',
+      items: [
+        '1 → Charges non continues : les additionner (en tenant compte des facteurs de demande). Pour les moteurs, les additionner aussi, en ajoutant 25 % du plus gros moteur. Faire la somme.',
+        '2 → Charges continues : les additionner toutes.',
+        '3 → Total = 1.25 × charges continues + charges non continues.',
+        '4 → En déduire le courant I.',
+        '5 → Choisir le disjoncteur dans la table 240.6(A).',
+      ],
     },
     {
       type: 'image',
@@ -158,7 +170,7 @@ export const feedersContent: TopicContent = {
     {
       type: 'bullets',
       items: [
-        "Motor protection circuit breaker : assure la protection contre la surcharge.",
+        "Le disjoncteur de protection moteur (motor protection circuit breaker) assure à la fois la protection contre la surcharge et contre le court-circuit.",
         "Un disjoncteur de court-circuit seul ne protège pas contre la surcharge.",
         "MCP (Motor Circuit Protector) + relais de surcharge = protection complète du moteur.",
       ],

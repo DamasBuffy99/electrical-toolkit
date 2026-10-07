@@ -42,7 +42,7 @@ export const notionsDiversesContent: TopicContent = {
     },
     {
       type: 'note',
-      text: "💡 ELCB (Earth Leakage Circuit Breaker / disjoncteur différentiel) et RCCB (Residual Current Circuit Breaker) désignent la même famille d'appareils de protection contre les fuites à la terre, à ranger aux côtés des MCB/MCCB/ACB.",
+      text: "💡 ELCB et RCCB protègent contre les fuites à la terre, mais pas contre les courts-circuits (il faut un MCB pour cela). Détails dans la leçon « Disjoncteurs & protection ».",
     },
   ],
 };

@@ -14,6 +14,8 @@ import { circuitBreakerContent } from './topics/circuitBreaker';
 import { feedersContent } from './topics/feeders';
 import { cableSizingContent } from './topics/cableSizing';
 import { notionsDiversesContent } from './topics/notionsDiverses';
+import { voltageDropContent } from './topics/voltageDrop';
+import { panelBasicsContent } from './topics/panelBasics';
 
 import { projectPartiesContent as projectPartiesContentEn } from './topics/en/projectParties';
 import { drawingsCoordinationContent as drawingsCoordinationContentEn } from './topics/en/drawingsCoordination';
@@ -28,6 +30,8 @@ import { circuitBreakerContent as circuitBreakerContentEn } from './topics/en/ci
 import { feedersContent as feedersContentEn } from './topics/en/feeders';
 import { cableSizingContent as cableSizingContentEn } from './topics/en/cableSizing';
 import { notionsDiversesContent as notionsDiversesContentEn } from './topics/en/notionsDiverses';
+import { voltageDropContent as voltageDropContentEn } from './topics/en/voltageDrop';
+import { panelBasicsContent as panelBasicsContentEn } from './topics/en/panelBasics';
 
 export const TOPIC_CONTENT_FR: Record<string, TopicContent | undefined> = {
   'project-parties': projectPartiesContent,
@@ -42,6 +46,8 @@ export const TOPIC_CONTENT_FR: Record<string, TopicContent | undefined> = {
   'circuit-breaker': circuitBreakerContent,
   feeders: feedersContent,
   'cable-sizing': cableSizingContent,
+  'voltage-drop': voltageDropContent,
+  'panel-basics': panelBasicsContent,
   'notions-diverses': notionsDiversesContent,
 };
 
@@ -58,6 +64,8 @@ export const TOPIC_CONTENT_EN: Record<string, TopicContent | undefined> = {
   'circuit-breaker': circuitBreakerContentEn,
   feeders: feedersContentEn,
   'cable-sizing': cableSizingContentEn,
+  'voltage-drop': voltageDropContentEn,
+  'panel-basics': panelBasicsContentEn,
   'notions-diverses': notionsDiversesContentEn,
 };
 
