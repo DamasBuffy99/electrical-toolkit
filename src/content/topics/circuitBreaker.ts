@@ -37,7 +37,7 @@ export const circuitBreakerContent: TopicContent = {
       type: 'table',
       headers: ['Code', 'Marge', 'Facteur'],
       rows: [
-        ['EC', '+25 %', '1.25'],
+        ['EC (code égyptien)', '+25 %', '1.25'],
         ['IEC', '+20 %', '1.2'],
         ['NEC (surcharge)', '+10 %', '1.1'],
       ],
