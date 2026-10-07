@@ -1,5 +1,24 @@
 import { TopicContent } from '../../../types';
 
+const shot = {
+  system: require('../../../../../assets/reference/solar/example1/02_system_dc_ac.png'),
+  loads: require('../../../../../assets/reference/solar/example1/01_loads_table.png'),
+  inverterPower: require('../../../../../assets/reference/solar/example1/04_inverter_power_surge.webp'),
+  inverterWave: require('../../../../../assets/reference/solar/example1/05_inverter_pure_modified.webp'),
+  inverterVictron: require('../../../../../assets/reference/solar/example1/06_inverter_victron_voltage.webp'),
+  panelsEnergy: require('../../../../../assets/reference/solar/example1/07_panels_energy_losses.webp'),
+  panelsCanada: require('../../../../../assets/reference/solar/example1/08_panels_canada_datasheet.webp'),
+  batteries: require('../../../../../assets/reference/solar/example1/09_batteries_sizing.webp'),
+  batteries300: require('../../../../../assets/reference/solar/example1/10_batteries_300ah_note.webp'),
+  batteriesParallel: require('../../../../../assets/reference/solar/example1/11_batteries_parallel.webp'),
+  controller: require('../../../../../assets/reference/solar/example1/12_controller_datasheet.webp'),
+  controllerCurrent: require('../../../../../assets/reference/solar/example1/13_controller_charge_current.webp'),
+  batteriesCurrent: require('../../../../../assets/reference/solar/example1/14_batteries_charge_current.webp'),
+  connection: require('../../../../../assets/reference/solar/example1/17_panel_connection.webp'),
+  connectionNec: require('../../../../../assets/reference/solar/example1/18_panel_connection_nec.webp'),
+  nec690: require('../../../../../assets/reference/solar/example1/19_nec_690_7a.png'),
+};
+
 export const pvOffgridExample1Content: TopicContent = {
   title: 'Example 1: off-grid PV system',
   subtitle: 'A lamp, a fan and a refrigerator in Canada — full sizing, step by step',
@@ -9,6 +28,7 @@ export const pvOffgridExample1Content: TopicContent = {
       text: 'We apply the method to a small isolated house in Canada with three appliances. At each step: calculate, choose real equipment, then check its datasheet.',
     },
     { type: 'illustration', name: 'pv-system', caption: 'The system to size' },
+    { type: 'image', source: shot.system, caption: 'Course — the system: DC on the panel and battery side, AC to the house' },
 
     { type: 'heading', text: '1 · The loads' },
     {
@@ -27,6 +47,7 @@ export const pvOffgridExample1Content: TopicContent = {
       text: 'Two results are kept: 153 W of total power (for the inverter) and 1092 Wh/day of energy (for the panels and batteries).',
     },
     { type: 'illustration', name: 'pv-system', props: { highlight: 'loads' }, caption: '153 W and 1092 Wh/day' },
+    { type: 'image', source: shot.loads, caption: 'Course — step 1: defining the loads' },
 
     { type: 'heading', text: '2 · The inverter' },
     { type: 'text', text: 'Continuous power: 30% more than the total load power.' },
@@ -50,6 +71,9 @@ export const pvOffgridExample1Content: TopicContent = {
     { type: 'note', text: '💡 "12/250" = 12 V on the battery side, 250 W of continuous power.' },
     { type: 'illustration', name: 'pv-system', props: { highlight: 'inverter' }, caption: '250 W, 12 V inverter' },
     { type: 'illustration', name: 'pv-waveforms', caption: "Pure sine wave: suited to the fridge's compressor" },
+    { type: 'image', source: shot.inverterPower, caption: 'Course — continuous power 198.9 W and surge 378 W' },
+    { type: 'image', source: shot.inverterWave, caption: 'Course — Victron Phoenix 12/250: pure vs modified sine' },
+    { type: 'image', source: shot.inverterVictron, caption: 'Course — datasheet and 12/24/48 V voltage choice' },
 
     { type: 'heading', text: '3 · The panels' },
     { type: 'formula', text: 'Panel energy = 1092 × 1.3 = 1419.6 Wh/day' },
@@ -75,6 +99,8 @@ export const pvOffgridExample1Content: TopicContent = {
     },
     { type: 'illustration', name: 'peak-sun-hours', props: { hours: 2 }, caption: 'Canada: 2 peak sun hours' },
     { type: 'illustration', name: 'pv-system', props: { highlight: 'panels' }, caption: '4 × 200 W panels' },
+    { type: 'image', source: shot.panelsEnergy, caption: 'Course — 1.3 factor: losses + STC conditions' },
+    { type: 'image', source: shot.panelsCanada, caption: 'Course — solar map and SunPower SPR-200 datasheet' },
 
     { type: 'heading', text: '4 · The batteries' },
     {
@@ -98,6 +124,9 @@ export const pvOffgridExample1Content: TopicContent = {
       text: '💡 Another way (annotated in the course): calculate without the coefficient, 1419.6 × 2 / (0.8 × 12) ≈ 296 Ah ≈ 300 Ah, then divide by the capacity at −20 °C: 300 / 160 ≈ 1.9 → 2 batteries. Same result.',
     },
     { type: 'illustration', name: 'battery-bank', props: { series: 1, parallel: 2, battV: 12, battAh: 330 }, caption: '2 × 12 V 330 Ah in parallel = 12 V, 660 Ah' },
+    { type: 'image', source: shot.batteries, caption: 'Course — capacity at −20 °C and Ah calculation' },
+    { type: 'image', source: shot.batteries300, caption: 'Course — annotation: 300 Ah without coefficient, divided by 160 Ah' },
+    { type: 'image', source: shot.batteriesParallel, caption: 'Course — 2 × 12 V batteries in parallel = 660 Ah' },
 
     { type: 'heading', text: '5 · The charge controller' },
     { type: 'text', text: 'Panels: 800 W · System: 12 V. We choose a Victron SmartSolar MPPT 150/70:' },
@@ -115,6 +144,8 @@ export const pvOffgridExample1Content: TopicContent = {
     { type: 'text', text: "The controller's charge current must be sufficient to prevent any power loss:" },
     { type: 'formula', text: 'Max charge current = 800 / 12 = 67 A ≤ 70 A ✓' },
     { type: 'illustration', name: 'pv-system', props: { highlight: 'controller' }, caption: 'MPPT 150/70' },
+    { type: 'image', source: shot.controller, caption: 'Course — SmartSolar MPPT 150/70 datasheet' },
+    { type: 'image', source: shot.controllerCurrent, caption: 'Course — 800 / 12 = 67 A ≤ 70 A' },
     { type: 'text', text: 'The batteries must withstand this current. With 2 batteries in parallel, each one takes half:' },
     { type: 'formula', text: '67 / 2 = 33.5 A per battery' },
     {
@@ -128,6 +159,7 @@ export const pvOffgridExample1Content: TopicContent = {
     },
     { type: 'formula', text: '33.5 A < 150 A recommended ✓' },
     { type: 'illustration', name: 'battery-bank', props: { series: 1, parallel: 2, battV: 12, battAh: 330, current: 67 }, caption: '67 A split: 33.5 A per battery' },
+    { type: 'image', source: shot.batteriesCurrent, caption: 'Course — 33.5 A per battery < 150 A recommended' },
 
     { type: 'heading', text: '6 · Connecting the panels' },
     { type: 'text', text: "Victron doesn't give an MPPT range: we aim for half of the maximum PV open-circuit voltage." },
@@ -145,6 +177,9 @@ export const pvOffgridExample1Content: TopicContent = {
     { type: 'text', text: 'Finally, the controller input current:' },
     { type: 'formula', text: 'Input current = 1.25 × 2 × 5.4 = 13.5 A < 50 A ✓' },
     { type: 'illustration', name: 'mppt-window', props: { max: 150, design: 75, cold: 101.45, nec: 112.8 }, caption: 'Every voltage stays below 150 V' },
+    { type: 'image', source: shot.connection, caption: 'Course — step 6: panel connection' },
+    { type: 'image', source: shot.connectionNec, caption: 'Course — check with the NEC factor: 2 × 47.8 × 1.18' },
+    { type: 'image', source: shot.nec690, caption: 'NEC Table 690.7(A) — voltage correction factors' },
 
     { type: 'heading', text: 'System summary' },
     {

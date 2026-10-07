@@ -31,6 +31,7 @@ export const pvDesignStepsContent: TopicContent = {
       ],
     },
     { type: 'illustration', name: 'pv-system', caption: 'The complete system' },
+    { type: 'image', source: require('../../../../../assets/reference/solar/example1/02_system_dc_ac.png'), caption: 'Course — DC on the panel and battery side, AC to the house' },
 
     { type: 'heading', text: '1 · Define the loads' },
     { type: 'text', text: 'List each appliance with its quantity, its power and its number of hours of use per day.' },
@@ -76,6 +77,7 @@ export const pvDesignStepsContent: TopicContent = {
       text: '💡 Prefer a pure sine wave inverter: its output matches the grid. A modified sine wave (stepped) is cheaper but makes motors and refrigerators run hot and hum.',
     },
     { type: 'illustration', name: 'pv-waveforms', caption: 'Pure vs modified sine wave' },
+    { type: 'image', source: require('../../../../../assets/reference/solar/example1/03_inverter_rules.webp'), caption: 'Course — inverter sizing rules' },
 
     { type: 'heading', text: '3 · Size the panels' },
     {
@@ -145,6 +147,8 @@ export const pvDesignStepsContent: TopicContent = {
     },
     { type: 'formula', text: 'Example: range "V_bat + 2 V to 72 V" with a 24 V battery → 26 to 72 V → middle ≈ 49 V' },
     { type: 'illustration', name: 'mppt-window', props: { max: 100, design: 49, rangeMin: 26, rangeMax: 72 }, caption: 'Aim for the middle of the MPPT range' },
+    { type: 'image', source: require('../../../../../assets/reference/solar/example1/15_mppt_range_note.webp'), caption: 'Course — important note on the MPPT range' },
+    { type: 'image', source: require('../../../../../assets/reference/solar/example1/16_mppt_range_tracer.webp'), caption: 'Course — Tracer controller: V_bat + 2 V to 72 V range, 100 V max' },
 
     { type: 'heading', text: '6 · Connect the panels' },
     { type: 'formula', text: 'Panels in series = design voltage / Voc of one panel (rounded)' },
@@ -181,6 +185,7 @@ export const pvDesignStepsContent: TopicContent = {
     { type: 'formula', text: 'Input current = 3 × 1.25 × 10.07 = 37.76 A' },
     { type: 'illustration', name: 'pv-system', props: { highlight: 'wiring' }, caption: 'The panels connected to the controller' },
     { type: 'illustration', name: 'pv-array', props: { series: 2, parallel: 3, voc: 38.9 }, caption: '2 panels in series × 3 parallel strings' },
+    { type: 'image', source: require('../../../../../assets/reference/solar/example1/19_nec_690_7a.png'), caption: 'NEC Table 690.7(A) — voltage correction factors' },
     { type: 'note', text: "⚠️ Always compare the cold voltage and the input current with the limits on the controller's datasheet." },
   ],
 };
