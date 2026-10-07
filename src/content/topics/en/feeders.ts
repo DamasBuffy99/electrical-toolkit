@@ -1,4 +1,5 @@
 import { TopicContent } from '../../types';
+import { SLIDES } from '../../slides';
 
 export const feedersContent: TopicContent = {
   title: 'Feeders — Motor & Panel Protection',
@@ -29,6 +30,44 @@ export const feedersContent: TopicContent = {
         'Separate devices → short-circuit: 2.5 × FLC (breaker) or 1.75 × FLC (fuse) per 430.52; overload: NEC 430.32.',
       ],
     },
+    { type: 'subheading', text: 'Table 430.52 exceptions' },
+    {
+      type: 'bullets',
+      items: [
+        'No. 1: if the calculated value is not standard, the next higher standard rating may be used.',
+        'No. 2: if that is not sufficient for starting, it may be increased up to: non-time-delay fuse (≤ 600 A) 400% of FLC · time-delay fuse 225% · inverse time breaker 400% (FLC ≤ 100 A) or 300% (FLC > 100 A) · 601 – 6,000 A fuse 300%.',
+        'Instantaneous trip breaker (MCP): up to 1,300% of FLC, or 1,700% for a Design B energy-efficient motor.',
+      ],
+    },
+    {
+      type: 'table',
+      headers: ['NEMA design', 'Starting', 'Uses'],
+      rows: [
+        ['A', 'Medium to high current, normal torque', 'Fans, pumps'],
+        ['B', 'Low current, normal torque', 'Most common: HVAC, fans, blowers, pumps'],
+        ['C', 'Low current, high starting torque', 'High-inertia loads: positive displacement pumps'],
+        ['D', 'Very high starting torque, 5 – 13% slip', 'Cranes, hoists'],
+      ],
+    },
+    { type: 'subheading', text: 'Separate overload relay (NEC 430.32)' },
+    {
+      type: 'table',
+      headers: ['Motor', 'Max setting', 'If insufficient to start'],
+      rows: [
+        ['Service factor ≥ 1.15', '125% of nameplate current', '140%'],
+        ['Temperature rise ≤ 40 °C', '125%', '140%'],
+        ['All other motors', '115%', '130%'],
+      ],
+    },
+    {
+      type: 'text',
+      text: 'The service factor is a multiplier of the rated horsepower giving the permissible continuous overload. A continuous-duty motor runs 24/7 without overheating; a non-continuous-duty motor needs cooling breaks.',
+    },
+    { type: 'image', source: SLIDES['nec-8'], caption: 'Table 430.52 exceptions' },
+    { type: 'image', source: SLIDES['nec-9'], caption: 'MCP: up to 1,300% / 1,700%' },
+    { type: 'image', source: SLIDES['nec-10'], caption: 'NEMA designs A, B, C, D' },
+    { type: 'image', source: SLIDES['nec-16'], caption: 'NEC 430.32: 125% / 115%' },
+    { type: 'image', source: SLIDES['nec-18'], caption: 'Winding insulation classes' },
     {
       type: 'image',
       source: require('../../../../assets/reference/nec_table_430_248.png'),
@@ -133,8 +172,10 @@ export const feedersContent: TopicContent = {
     },
     {
       type: 'note',
-      text: "💡 For motors included in the non-continuous load sum, also add 25% of the current of the largest motor in the group.",
+      text: '💡 For motors included in the non-continuous load sum, also add 25% of the current of the largest motor in the group (NEC 220.18: 125% of the largest motor + the other loads).',
     },
+    { type: 'image', source: SLIDES['nec-28'], caption: 'NEC 215.3: panel feeders' },
+    { type: 'image', source: SLIDES['nec-29'], caption: 'NEC 220.18: 125% of the largest motor' },
     {
       type: 'text',
       text: 'Example (NEC 215.3): general lighting 11,600 VA + 3 industrial process dryers (15kW each) = 45,000 VA → continuous loads = 56,600 VA. Receptacles + welders + motors = non-continuous loads = 38,900 VA.',

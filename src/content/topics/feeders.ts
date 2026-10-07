@@ -1,4 +1,5 @@
 import { TopicContent } from '../types';
+import { SLIDES } from '../slides';
 
 export const feedersContent: TopicContent = {
   title: 'Feeders — Protection moteurs & panneaux',
@@ -29,6 +30,44 @@ export const feedersContent: TopicContent = {
         "Appareils séparés → court-circuit : 2.5 × FLC (disjoncteur) ou 1.75 × FLC (fusible) selon 430.52 ; surcharge : NEC 430.32.",
       ],
     },
+    { type: 'subheading', text: 'Exceptions de la table 430.52' },
+    {
+      type: 'bullets',
+      items: [
+        "N° 1 : si la valeur calculée n'est pas normalisée, on peut prendre le calibre normalisé immédiatement supérieur.",
+        'N° 2 : si ce n’est pas suffisant pour le démarrage, on peut augmenter jusqu’à : fusible non temporisé (≤ 600 A) 400 % du FLC · fusible temporisé 225 % · disjoncteur à temps inverse 400 % (FLC ≤ 100 A) ou 300 % (FLC > 100 A) · fusible 601 – 6 000 A 300 %.',
+        'Disjoncteur instantané (MCP) : jusqu’à 1 300 % du FLC, ou 1 700 % pour un moteur de design B à haut rendement.',
+      ],
+    },
+    {
+      type: 'table',
+      headers: ['Design NEMA', 'Démarrage', 'Usages'],
+      rows: [
+        ['A', 'Courant moyen à élevé, couple normal', 'Ventilateurs, pompes'],
+        ['B', 'Courant faible, couple normal', 'Le plus courant : CVC, ventilateurs, soufflantes, pompes'],
+        ['C', 'Courant faible, couple de démarrage élevé', 'Charges à forte inertie : pompes volumétriques'],
+        ['D', 'Couple de démarrage très élevé, glissement 5 – 13 %', 'Grues, palans'],
+      ],
+    },
+    { type: 'subheading', text: 'Relais de surcharge séparé (NEC 430.32)' },
+    {
+      type: 'table',
+      headers: ['Moteur', 'Réglage max', 'Si insuffisant pour démarrer'],
+      rows: [
+        ['Facteur de service ≥ 1,15', '125 % du courant de plaque', '140 %'],
+        ['Échauffement ≤ 40 °C', '125 %', '140 %'],
+        ['Autres moteurs', '115 %', '130 %'],
+      ],
+    },
+    {
+      type: 'text',
+      text: "Le facteur de service est un multiplicateur de la puissance nominale qui indique la surcharge permanente admise. Un moteur en service continu tourne en permanence sans surchauffer ; en service non continu, il a besoin de pauses.",
+    },
+    { type: 'image', source: SLIDES['nec-8'], caption: 'Exceptions de la table 430.52' },
+    { type: 'image', source: SLIDES['nec-9'], caption: 'MCP : jusqu’à 1 300 % / 1 700 %' },
+    { type: 'image', source: SLIDES['nec-10'], caption: 'Designs NEMA A, B, C, D' },
+    { type: 'image', source: SLIDES['nec-16'], caption: 'NEC 430.32 : 125 % / 115 %' },
+    { type: 'image', source: SLIDES['nec-18'], caption: "Classes d'isolation des enroulements" },
     {
       type: 'image',
       source: require('../../../assets/reference/nec_table_430_248.png'),
@@ -133,8 +172,10 @@ export const feedersContent: TopicContent = {
     },
     {
       type: 'note',
-      text: "💡 Pour les moteurs inclus dans la somme des charges non-continues, ajouter en plus 25% du courant du plus gros moteur du groupe.",
+      text: "💡 Pour les moteurs inclus dans la somme des charges non-continues, ajouter en plus 25% du courant du plus gros moteur du groupe (NEC 220.18 : 125 % du plus gros moteur + les autres charges).",
     },
+    { type: 'image', source: SLIDES['nec-28'], caption: 'NEC 215.3 : feeders de tableau' },
+    { type: 'image', source: SLIDES['nec-29'], caption: 'NEC 220.18 : 125 % du plus gros moteur' },
     {
       type: 'text',
       text: 'Exemple (NEC 215.3) : éclairage général 11 600 VA + 3 sécheuses industrielles (15kW chacune) = 45 000 VA → charges continues = 56 600 VA. Réceptacles + soudeuses + moteurs = charges non-continues = 38 900 VA.',

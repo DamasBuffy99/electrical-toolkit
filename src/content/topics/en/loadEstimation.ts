@@ -1,4 +1,5 @@
 import { TopicContent } from '../../types';
+import { SLIDES } from '../../slides';
 
 export const loadEstimationContent: TopicContent = {
   title: 'Load Estimation',
@@ -82,6 +83,71 @@ export const loadEstimationContent: TopicContent = {
       type: 'note',
       text: '⚠️ Standard transformer sizes (kVA): 500, 800, 1000, 1250, 1500, 2000, 2500… Choose the standard size directly above: here, 500 kVA.',
     },
+    { type: 'divider' },
+
+    { type: 'heading', text: '🔷 Per-floor method: kVA per 100 m²' },
+    {
+      type: 'text',
+      text: "Take the power per 100 m² of a floor from the code, then: total load = number of floors × area of one floor × kVA/m² (3 m high floors).",
+    },
+    {
+      type: 'table',
+      headers: ['kVA / 100 m²', 'Residential', 'Administration'],
+      rows: [
+        ['Fewer than 15 floors', 'Low 1.5 – 2 · Medium 2.5 – 4 · High 6 – 10', '6 – 12'],
+        ['More than 15 floors', '8 – 10', '12'],
+      ],
+    },
+    { type: 'subheading', text: 'Example: building with 600 m² per floor' },
+    {
+      type: 'bullets',
+      items: [
+        '1 basement, 2 administration floors, 16 residential floors (5 apartments each) → more than 15 floors.',
+        '3 elevators of 15 kW · 3 water pumps of 17.5 HP (η = 88%, 1 for emergency) · 2 pumps of 6.5 HP (η = 87%, 1 for emergency).',
+      ],
+    },
+    {
+      type: 'table',
+      headers: ['Load', 'Calculation', 'kVA'],
+      rows: [
+        ['Basement', '2 × 600 / 100', '12'],
+        ['Administration', '12 × 600 / 100 × 2', '144'],
+        ['Residential', '10 × 600 / 100 × 16', '960'],
+        ['Common areas (stairs, roof, entrance)', 'Same as basement', '12'],
+        ['Elevators', '(15 × 3) / 0.85', '53'],
+        ['2 water pumps (excl. emergency)', '(2 × 17.5 × 0.746) / (0.88 × 0.85)', '35'],
+        ['1 pump of 6.5 HP', '(6.5 × 0.746) / (0.87 × 0.85)', '6.6'],
+        ['Total', '', '1,223'],
+      ],
+    },
+    { type: 'formula', text: 'Oil transformer loaded at 80%: 1,223 / 0.8 = 1,528.75 kVA → 2 MVA transformer' },
+    {
+      type: 'note',
+      text: "💡 Not all loads run at the same time: a diversity factor of 0.6 to 0.7 (or the code's) can be applied to lighting. Emergency pumps are not counted.",
+    },
+    { type: 'image', source: SLIDES['gen-36'], caption: 'kVA per 100 m² by number of floors' },
+    { type: 'image', source: SLIDES['gen-39'], caption: 'Example: floor loads' },
+    { type: 'image', source: SLIDES['gen-40'], caption: 'Example: motors and 2 MVA transformer' },
+
+    { type: 'heading', text: '🔷 VA/m² by room type (NEC)' },
+    {
+      type: 'table',
+      headers: ['Place', 'Lighting (VA/m²)', 'Small power (VA/m²)', 'A/C (VA/m²)'],
+      rows: [
+        ['Banks', '20 – 40', '30', '50 – 70'],
+        ['Cafeteria', '25 – 45', '5', '60 – 100'],
+        ['Computer center', '15 – 25', '15', '120 – 200'],
+        ['Basement stores', '30 – 50', '15', '—'],
+        ['Offices', '15 – 35', '15', '40 – 70 (up to 110 – 120)'],
+        ['Hotels', '10 – 30', '5', '50 – 80'],
+        ['Hospitals', '20 – 30', '10', '50 – 70'],
+        ['Restaurants', '15 – 25', '2.5', '60 – 100'],
+        ['Shops', '30 – 50', '10', '50 – 90'],
+        ['Schools', '15 – 35', '15', '35 – 50'],
+        ['Industrial building', '10 – 20', '10', '—'],
+      ],
+    },
+    { type: 'image', source: SLIDES['gen-37'], caption: 'NEC VA/m² table' },
     { type: 'divider' },
 
     { type: 'heading', text: '🔷 Other methods (overview)' },

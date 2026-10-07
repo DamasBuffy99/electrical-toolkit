@@ -28,6 +28,18 @@ export const lightingContent: TopicContent = {
         'CRI scale: < 60 low · 60–80 acceptable · > 80 excellent.',
       ],
     },
+    {
+      type: 'table',
+      headers: ['Temperature', 'Feel', 'Where'],
+      rows: [
+        ['2700 K — warm white', 'Friendly, intimate', 'Homes, libraries, restaurants'],
+        ['3000 K — soft white', 'Warm, pleasing', 'Homes, hotel rooms, lobbies'],
+        ['3500 K — neutral', 'Sociable, inviting', 'Executive offices, reception areas, supermarkets'],
+        ['4000 K — daylight', 'Neat, clean, efficient', 'Offices, classrooms, mass merchandisers'],
+        ['5000 K — crystal white', 'Bright, cool, alert', 'Graphics industry, hospitals, galleries'],
+      ],
+    },
+    { type: 'image', source: require('../../../../assets/reference/lighting_color_temperatures.webp'), caption: 'Color temperatures: from 2700 K (warm) to 5000 K (cool)' },
     { type: 'subheading', text: 'Ingress Protection (IP) = solids digit (0–6) + liquids digit (0–8)' },
     {
       type: 'table',

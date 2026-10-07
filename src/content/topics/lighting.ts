@@ -28,6 +28,18 @@ export const lightingContent: TopicContent = {
         'Échelle CRI : < 60 faible · 60–80 acceptable · > 80 excellent.',
       ],
     },
+    {
+      type: 'table',
+      headers: ['Température', 'Ambiance', 'Où'],
+      rows: [
+        ['2700 K — blanc chaud', 'Accueillante, intime', 'Habitations, bibliothèques, restaurants'],
+        ['3000 K — blanc doux', 'Chaleureuse, agréable', 'Habitations, chambres d’hôtel, halls'],
+        ['3500 K — neutre', 'Conviviale, rassurante', 'Bureaux de direction, accueils, supermarchés'],
+        ['4000 K — lumière du jour', 'Nette, efficace', 'Bureaux, salles de classe, grandes surfaces'],
+        ['5000 K — blanc cristal', 'Vive, froide, stimulante', 'Industrie graphique, hôpitaux, galeries'],
+      ],
+    },
+    { type: 'image', source: require('../../../assets/reference/lighting_color_temperatures.webp'), caption: 'Températures de couleur : de 2700 K (chaud) à 5000 K (froid)' },
     { type: 'subheading', text: 'Indice de protection IP = chiffre solides (0–6) + chiffre liquides (0–8)' },
     {
       type: 'table',

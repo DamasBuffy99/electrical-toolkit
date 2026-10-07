@@ -1,4 +1,5 @@
 import { TopicContent } from '../../types';
+import { SLIDES } from '../../slides';
 
 export const panelScheduleContent: TopicContent = {
   title: 'Panel Schedule',
@@ -16,6 +17,28 @@ export const panelScheduleContent: TopicContent = {
     },
     { type: 'divider' },
 
+    { type: 'heading', text: '🔷 Preparing the panel' },
+    {
+      type: 'bullets',
+      items: [
+        'The panel schedule lists every circuit and the load each one serves (Excel or AutoCAD file). Each circuit has its own breaker and its own cable.',
+        'Typical configurations: boards with 6, 12, 18, 24, 30, 36, 42 or 48 circuits.',
+        'Incoming breaker: disconnects and protects the whole panel. Outgoing breakers: each protects one circuit.',
+      ],
+    },
+    {
+      type: 'table',
+      headers: ['Reserve', 'Share of circuits', 'Meaning'],
+      rows: [
+        ['Spare', '20%', 'Breakers installed but not connected to any load'],
+        ['Space', '10%', 'Empty slots, no breaker, for the future'],
+      ],
+    },
+    { type: 'image', source: SLIDES['cond-188'], caption: 'The panel schedule' },
+    { type: 'image', source: SLIDES['cond-189'], caption: 'Spare and space' },
+    { type: 'image', source: SLIDES['cond-190'], caption: 'Panel configurations' },
+    { type: 'image', source: SLIDES['cond-192'], caption: 'Incoming and outgoing breakers' },
+
     { type: 'heading', text: '🔷 Step 1 — Balance the phases R/Y/B' },
     {
       type: 'text',
@@ -26,8 +49,9 @@ export const panelScheduleContent: TopicContent = {
     { type: 'formula', text: 'Unbalance % = max(|Bus_R−Avg|, |Bus_Y−Avg|, |Bus_B−Avg|) / Avg × 100' },
     {
       type: 'note',
-      text: '🎯 Goal: keep the unbalance well under 5% by distributing circuits evenly across the 3 phases.',
+      text: '🎯 Per ANSI C84.1, current unbalance must not exceed 5% of the average phase current. The same rule applies to voltage unbalance.',
     },
+    { type: 'image', source: SLIDES['cond-191'], caption: 'Phase balance (ANSI C84.1)' },
     { type: 'divider' },
 
     { type: 'heading', text: '🔷 Step 2 — Demand factors & re-rating' },
@@ -36,8 +60,21 @@ export const panelScheduleContent: TopicContent = {
       text: 'Group the connected loads by category (lighting, receptacles, air conditioning…) and apply each category\'s demand factor.',
     },
     { type: 'formula', text: 'Total demand [kVA] = Σ (connected load × DF per category)' },
+    {
+      type: 'table',
+      headers: ['Category (DB-F example)', 'Connected', 'Rule', 'Demand'],
+      rows: [
+        ['Lighting', '0.87 kVA', 'DF = 1', '0.87 kVA'],
+        ['Receptacles', '18.75 kVA', 'First 10 kVA at 100%, remainder at 50% (NEC 220.44)', '10 + 0.5 × 8.75 = 14.38 kVA'],
+        ['Air conditioning', '35.85 kVA', 'DF = 1', '35.85 kVA'],
+        ['Water heater', '2 kVA', 'DF = 1', '2 kVA'],
+        ['Fridge', '2 kVA', 'DF = 1', '2 kVA'],
+        ['Total', '59.47 kVA', '', '55.1 kVA'],
+      ],
+    },
     { type: 'formula', text: 'Demand + 15% = Demand × 1.15' },
     { type: 'formula', text: 'Line amps = (Demand [kVA] × 1000) / (√3 × Voltage)' },
+    { type: 'formula', text: 'Example: 55.1 × 1000 / (√3 × 380) = 83.7 A · Demand + 15% = 63.4 kVA' },
     {
       type: 'note',
       text: "⚠️ Important: recalculate each branch breaker based on its actual load once demand factors are applied — don't keep a uniform default rating everywhere (e.g. 16A for all). The main breaker must also be re-sized: MCB for a low demand, MCCB above roughly 80A.",

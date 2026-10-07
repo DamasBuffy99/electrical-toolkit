@@ -1,4 +1,5 @@
 import { TopicContent } from '../types';
+import { SLIDES } from '../slides';
 
 export const loadEstimationContent: TopicContent = {
   title: 'Estimation de charge',
@@ -82,6 +83,71 @@ export const loadEstimationContent: TopicContent = {
       type: 'note',
       text: '⚠️ Tailles standard de transformateurs (kVA) : 500, 800, 1000, 1250, 1500, 2000, 2500… On choisit la taille standard directement supérieure : ici 500 kVA.',
     },
+    { type: 'divider' },
+
+    { type: 'heading', text: '🔷 Méthode par étage : kVA pour 100 m²' },
+    {
+      type: 'text',
+      text: "On prend dans le code la puissance par 100 m² d'un étage, puis : charge totale = nombre d'étages × surface d'un étage × kVA/m² (étage de 3 m de haut).",
+    },
+    {
+      type: 'table',
+      headers: ['kVA / 100 m²', 'Résidentiel', 'Administratif'],
+      rows: [
+        ['Moins de 15 étages', 'Faible 1,5 – 2 · Moyen 2,5 – 4 · Élevé 6 – 10', '6 – 12'],
+        ['Plus de 15 étages', '8 – 10', '12'],
+      ],
+    },
+    { type: 'subheading', text: 'Exemple : immeuble de 600 m² par étage' },
+    {
+      type: 'bullets',
+      items: [
+        '1 sous-sol, 2 étages administratifs, 16 étages résidentiels (5 appartements par étage) → plus de 15 étages.',
+        '3 ascenseurs de 15 kW · 3 pompes d’eau de 17,5 HP (η = 88 %, dont 1 en secours) · 2 pompes de 6,5 HP (η = 87 %, dont 1 en secours).',
+      ],
+    },
+    {
+      type: 'table',
+      headers: ['Charge', 'Calcul', 'kVA'],
+      rows: [
+        ['Sous-sol', '2 × 600 / 100', '12'],
+        ['Administratif', '12 × 600 / 100 × 2', '144'],
+        ['Résidentiel', '10 × 600 / 100 × 16', '960'],
+        ['Parties communes (escaliers, toit, entrée)', 'Comme le sous-sol', '12'],
+        ['Ascenseurs', '(15 × 3) / 0,85', '53'],
+        ['2 pompes d’eau (hors secours)', '(2 × 17,5 × 0,746) / (0,88 × 0,85)', '35'],
+        ['1 pompe de 6,5 HP', '(6,5 × 0,746) / (0,87 × 0,85)', '6,6'],
+        ['Total', '', '1 223'],
+      ],
+    },
+    { type: 'formula', text: 'Transformateur à huile chargé à 80 % : 1 223 / 0,8 = 1 528,75 kVA → transformateur 2 MVA' },
+    {
+      type: 'note',
+      text: '💡 Toutes les charges ne fonctionnent pas en même temps : on peut appliquer un facteur de diversité de 0,6 à 0,7 à l’éclairage (ou celui du code). Les pompes de secours ne sont pas comptées.',
+    },
+    { type: 'image', source: SLIDES['gen-36'], caption: 'kVA pour 100 m² selon le nombre d’étages' },
+    { type: 'image', source: SLIDES['gen-39'], caption: 'Exemple : charges des étages' },
+    { type: 'image', source: SLIDES['gen-40'], caption: 'Exemple : moteurs et transformateur 2 MVA' },
+
+    { type: 'heading', text: '🔷 Repères VA/m² par type de local (NEC)' },
+    {
+      type: 'table',
+      headers: ['Local', 'Éclairage (VA/m²)', 'Petite puissance (VA/m²)', 'Climatisation (VA/m²)'],
+      rows: [
+        ['Banques', '20 – 40', '30', '50 – 70'],
+        ['Cafétéria', '25 – 45', '5', '60 – 100'],
+        ['Centre informatique', '15 – 25', '15', '120 – 200'],
+        ['Magasins en sous-sol', '30 – 50', '15', '—'],
+        ['Bureaux', '15 – 35', '15', '40 – 70 (jusqu’à 110 – 120)'],
+        ['Hôtels', '10 – 30', '5', '50 – 80'],
+        ['Hôpitaux', '20 – 30', '10', '50 – 70'],
+        ['Restaurants', '15 – 25', '2,5', '60 – 100'],
+        ['Commerces', '30 – 50', '10', '50 – 90'],
+        ['Écoles', '15 – 35', '15', '35 – 50'],
+        ['Bâtiment industriel', '10 – 20', '10', '—'],
+      ],
+    },
+    { type: 'image', source: SLIDES['gen-37'], caption: 'Table VA/m² selon le NEC' },
     { type: 'divider' },
 
     { type: 'heading', text: '🔷 Autres méthodes (aperçu)' },
