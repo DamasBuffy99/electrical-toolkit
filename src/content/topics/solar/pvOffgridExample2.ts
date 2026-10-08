@@ -165,15 +165,19 @@ export const pvOffgridExample2Content: TopicContent = {
     { type: 'illustration', name: 'pv-array', props: { series: 2, parallel: 3, voc: 38.9 }, caption: '2 panneaux en série × 3 chaînes' },
     {
       type: 'text',
-      text: "Température minimale du site : 20 °C → facteur NEC 690.7(A) = 1,02 (plage 24 à 20 °C).",
+      text: "Température minimale du site : −20 °C. Le cours applique un facteur de compensation de température de 1,02 :",
     },
     { type: 'formula', text: 'Voc à froid = 2 × 38,9 × 1,02 = 79,3 V < 150 V ✓' },
+    {
+      type: 'note',
+      text: "⚠️ À −20 °C, la table NEC 690.7(A) donne un facteur de 1,18 (plage −16 à −20 °C), pas 1,02 (qui correspond à 20 – 24 °C). Vérification avec 1,18 : 2 × 38,9 × 1,18 = 91,8 V < 150 V ✓ — le choix de 2 panneaux en série reste valable.",
+    },
     { type: 'formula', text: 'I_entrée = 1,25 × 3 × 10,07 = 37,76 A < 50 A ✓' },
     {
       type: 'text',
       text: "Les 3 chaînes sont regroupées dans un coffret de raccordement PV (combiner box) avant le régulateur.",
     },
-    { type: 'illustration', name: 'mppt-window', props: { max: 150, design: 75, cold: 79.3 }, caption: '79,3 V : large marge sous 150 V' },
+    { type: 'illustration', name: 'mppt-window', props: { max: 150, design: 75, cold: 79.3, nec: 91.8 }, caption: '79,3 V (cours) et 91,8 V (NEC à −20 °C) : tous deux sous 150 V' },
     { type: 'image', source: shot.connection, caption: 'Cours — 2 × 3 panneaux, 79,3 V et 37,76 A' },
     { type: 'image', source: shot.wiring, caption: 'Cours — panneaux, coffret PV, MPPT, batteries, onduleur' },
 

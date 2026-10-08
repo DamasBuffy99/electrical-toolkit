@@ -160,11 +160,15 @@ export const pvOffgridExample2Content: TopicContent = {
     { type: 'formula', text: 'In series = 75 / 38.9 = 1.92 → 2 panels' },
     { type: 'formula', text: 'In parallel = 6 / 2 = 3 strings' },
     { type: 'illustration', name: 'pv-array', props: { series: 2, parallel: 3, voc: 38.9 }, caption: '2 panels in series × 3 strings' },
-    { type: 'text', text: 'Minimum site temperature: 20 °C → NEC 690.7(A) factor = 1.02 (24 to 20 °C band).' },
+    { type: 'text', text: 'Minimum site temperature: −20 °C. The course applies a temperature compensation factor of 1.02:' },
     { type: 'formula', text: 'Cold Voc = 2 × 38.9 × 1.02 = 79.3 V < 150 V ✓' },
+    {
+      type: 'note',
+      text: '⚠️ At −20 °C, NEC table 690.7(A) gives a factor of 1.18 (−16 to −20 °C band), not 1.02 (which matches 20 – 24 °C). Check with 1.18: 2 × 38.9 × 1.18 = 91.8 V < 150 V ✓ — 2 panels in series remains valid.',
+    },
     { type: 'formula', text: 'Input current = 1.25 × 3 × 10.07 = 37.76 A < 50 A ✓' },
     { type: 'text', text: 'The 3 strings are combined in a PV combiner box before the controller.' },
-    { type: 'illustration', name: 'mppt-window', props: { max: 150, design: 75, cold: 79.3 }, caption: '79.3 V: wide margin below 150 V' },
+    { type: 'illustration', name: 'mppt-window', props: { max: 150, design: 75, cold: 79.3, nec: 91.8 }, caption: '79.3 V (course) and 91.8 V (NEC at −20 °C): both below 150 V' },
     { type: 'image', source: shot.connection, caption: 'Course — 2 × 3 panels, 79.3 V and 37.76 A' },
     { type: 'image', source: shot.wiring, caption: 'Course — panels, PV combiner box, MPPT, batteries, inverter' },
 

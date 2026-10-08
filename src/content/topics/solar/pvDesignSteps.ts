@@ -191,6 +191,7 @@ export const pvDesignStepsContent: TopicContent = {
     { type: 'formula', text: 'I_entrée régulateur = Isc × chaînes en parallèle × 1,25 (ou 1,3) < Isc max du régulateur' },
     { type: 'subheading', text: 'Exemple 2 : 2 panneaux en série, 3 chaînes en parallèle' },
     { type: 'formula', text: 'Voc à froid = 2 × 38,9 × 1,02 = 79,3 V < 150 V ✓' },
+    { type: 'note', text: '⚠️ Le site est à −20 °C : la table NEC donnerait 1,18 → 2 × 38,9 × 1,18 = 91,8 V, toujours < 150 V ✓.' },
     { type: 'formula', text: 'I_entrée = 3 × 1,25 × 10,07 = 37,76 A' },
     { type: 'illustration', name: 'pv-system', props: { highlight: 'wiring' }, caption: 'Les panneaux raccordés au régulateur' },
     { type: 'illustration', name: 'pv-array', props: { series: 2, parallel: 3, voc: 38.9 }, caption: '2 panneaux en série × 3 chaînes en parallèle' },

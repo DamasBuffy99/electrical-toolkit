@@ -182,6 +182,7 @@ export const pvDesignStepsContent: TopicContent = {
     { type: 'formula', text: "Controller input current = Isc × parallel strings × 1.25 (or 1.3) < controller's max Isc" },
     { type: 'subheading', text: 'Example 2: 2 panels in series, 3 parallel strings' },
     { type: 'formula', text: 'Cold Voc = 2 × 38.9 × 1.02 = 79.3 V < 150 V ✓' },
+    { type: 'note', text: '⚠️ The site is at −20 °C: the NEC table would give 1.18 → 2 × 38.9 × 1.18 = 91.8 V, still < 150 V ✓.' },
     { type: 'formula', text: 'Input current = 3 × 1.25 × 10.07 = 37.76 A' },
     { type: 'illustration', name: 'pv-system', props: { highlight: 'wiring' }, caption: 'The panels connected to the controller' },
     { type: 'illustration', name: 'pv-array', props: { series: 2, parallel: 3, voc: 38.9 }, caption: '2 panels in series × 3 parallel strings' },
