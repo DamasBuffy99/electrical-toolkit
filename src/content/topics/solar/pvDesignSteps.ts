@@ -135,7 +135,7 @@ export const pvDesignStepsContent: TopicContent = {
       text: "Les batteries doivent aussi supporter ce courant. Avec plusieurs chaînes en parallèle, il se répartit entre elles :",
     },
     { type: 'formula', text: 'I par chaîne = I_charge / nombre de chaînes en parallèle ≤ courant de charge recommandé' },
-    { type: 'formula', text: 'Exemple (notes) : 1800 W / 24 V = 75 A → 4 groupes en parallèle : 75 / 4 = 18,75 A chacun' },
+    { type: 'formula', text: 'Exemple 2 : 1800 W / 24 V = 75 A → 4 groupes en parallèle : 75 / 4 = 18,75 A chacun' },
     { type: 'illustration', name: 'pv-system', props: { highlight: 'controller' }, caption: 'Le régulateur charge les batteries' },
 
     { type: 'heading', text: 'Note importante : la plage MPPT' },
@@ -189,7 +189,7 @@ export const pvDesignStepsContent: TopicContent = {
       ],
     },
     { type: 'formula', text: 'I_entrée régulateur = Isc × chaînes en parallèle × 1,25 (ou 1,3) < Isc max du régulateur' },
-    { type: 'subheading', text: 'Exemple (notes) : 2 panneaux en série, 3 chaînes en parallèle' },
+    { type: 'subheading', text: 'Exemple 2 : 2 panneaux en série, 3 chaînes en parallèle' },
     { type: 'formula', text: 'Voc à froid = 2 × 38,9 × 1,02 = 79,3 V < 150 V ✓' },
     { type: 'formula', text: 'I_entrée = 3 × 1,25 × 10,07 = 37,76 A' },
     { type: 'illustration', name: 'pv-system', props: { highlight: 'wiring' }, caption: 'Les panneaux raccordés au régulateur' },

@@ -129,7 +129,7 @@ export const pvDesignStepsContent: TopicContent = {
     { type: 'formula', text: "Max charge current = panel power / system voltage ≤ controller's charge current" },
     { type: 'text', text: 'The batteries must withstand this current too. With several parallel strings, it splits between them:' },
     { type: 'formula', text: 'Current per string = charge current / number of parallel strings ≤ recommended charge current' },
-    { type: 'formula', text: 'Example (notes): 1800 W / 24 V = 75 A → 4 parallel groups: 75 / 4 = 18.75 A each' },
+    { type: 'formula', text: 'Example 2: 1800 W / 24 V = 75 A → 4 parallel groups: 75 / 4 = 18.75 A each' },
     { type: 'illustration', name: 'pv-system', props: { highlight: 'controller' }, caption: 'The controller charges the batteries' },
 
     { type: 'heading', text: 'Important note: the MPPT range' },
@@ -180,7 +180,7 @@ export const pvDesignStepsContent: TopicContent = {
       ],
     },
     { type: 'formula', text: "Controller input current = Isc × parallel strings × 1.25 (or 1.3) < controller's max Isc" },
-    { type: 'subheading', text: 'Example (notes): 2 panels in series, 3 parallel strings' },
+    { type: 'subheading', text: 'Example 2: 2 panels in series, 3 parallel strings' },
     { type: 'formula', text: 'Cold Voc = 2 × 38.9 × 1.02 = 79.3 V < 150 V ✓' },
     { type: 'formula', text: 'Input current = 3 × 1.25 × 10.07 = 37.76 A' },
     { type: 'illustration', name: 'pv-system', props: { highlight: 'wiring' }, caption: 'The panels connected to the controller' },

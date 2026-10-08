@@ -261,15 +261,16 @@ export function BatteryBank({
 }: SceneProps & { series?: number; parallel?: number; battV?: number; battAh?: number; current?: number }) {
   const L = pick(lang);
   const cols = Math.max(1, Math.min(3, series));
-  const rows = Math.max(1, Math.min(3, parallel));
+  const rows = Math.max(1, Math.min(4, parallel));
+  const compact = rows >= 4;
   const bw = 70;
-  const bh = 48;
+  const bh = compact ? 36 : 48;
   const gapX = 28;
-  const gapY = 34;
+  const gapY = compact ? 18 : 34;
   const totalW = cols * bw + (cols - 1) * gapX;
   const totalH = rows * bh + (rows - 1) * gapY;
   const x0 = 208 - totalW / 2;
-  const y0 = 152 - totalH / 2;
+  const y0 = (compact ? 162 : 152) - totalH / 2;
   const xL = x0 - 34;
   const xR = x0 + totalW + 34;
   const per = current !== undefined ? Math.round((current / rows) * 10) / 10 : undefined;
@@ -302,8 +303,8 @@ export function BatteryBank({
           <Rect x={bx} y={by} width={bw} height={10} rx={5} fill="#2c6fa8" />
           <Label x={bx + 14} y={by + 8.5} text="+" size={9} color={P.white} />
           <Label x={bx + bw - 14} y={by + 8.5} text="−" size={9} color={P.white} />
-          <Label x={bx + bw / 2} y={by + 27} text={`${fmt(battV, lang)} V`} size={11} color={P.white} />
-          <Label x={bx + bw / 2} y={by + 41} text={`${battAh} Ah`} size={10} color={P.white} weight="600" />
+          <Label x={bx + bw / 2} y={by + bh * 0.56} text={`${fmt(battV, lang)} V`} size={compact ? 10 : 11} color={P.white} />
+          <Label x={bx + bw / 2} y={by + bh * 0.86} text={`${battAh} Ah`} size={compact ? 9 : 10} color={P.white} weight="600" />
         </G>
       );
     }
@@ -327,7 +328,7 @@ export function BatteryBank({
       ) : null}
       <Tag
         x={200}
-        y={276}
+        y={compact ? 282 : 276}
         w={190}
         text={`${L('Banc', 'Bank')} : ${fmt(series * battV, lang)} V · ${parallel * battAh} Ah`}
         fill={P.navy}
