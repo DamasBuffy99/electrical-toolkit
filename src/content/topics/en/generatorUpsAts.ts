@@ -26,7 +26,7 @@ export const generatorUpsAtsContent: TopicContent = {
       type: 'text',
       text: 'For sizing, the course uses the online Cummins PowerSuite tool: you enter the loads (motors, lighting…) and it proposes a suitable generator set.',
     },
-    { type: 'image', source: SLIDES['gen-5'], caption: 'ISO 8528-1 ratings' },
+    { type: 'image', source: SLIDES['gen-5'], caption: 'ISO 8528-1 ratings', focus: { x: 0.0, y: 0.22, w: 0.48, h: 0.76 } },
 
     { type: 'heading', text: '2 · Site considerations' },
     {

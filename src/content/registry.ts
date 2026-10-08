@@ -24,6 +24,8 @@ import { panelBasicsContent } from './topics/panelBasics';
 import { panelDesignExamplesContent } from './topics/panelDesignExamples';
 import { generatorUpsAtsContent } from './topics/generatorUpsAts';
 import { earthingContent } from './topics/earthing';
+import { electricalBasicsContent } from './topics/electricalBasics';
+import { electricalSafetyContent } from './topics/electricalSafety';
 import { notionsDiversesContent } from './topics/notionsDiverses';
 
 import { projectPartiesContent as projectPartiesContentEn } from './topics/en/projectParties';
@@ -49,6 +51,8 @@ import { panelBasicsContent as panelBasicsContentEn } from './topics/en/panelBas
 import { panelDesignExamplesContent as panelDesignExamplesContentEn } from './topics/en/panelDesignExamples';
 import { generatorUpsAtsContent as generatorUpsAtsContentEn } from './topics/en/generatorUpsAts';
 import { earthingContent as earthingContentEn } from './topics/en/earthing';
+import { electricalBasicsContent as electricalBasicsContentEn } from './topics/en/electricalBasics';
+import { electricalSafetyContent as electricalSafetyContentEn } from './topics/en/electricalSafety';
 import { notionsDiversesContent as notionsDiversesContentEn } from './topics/en/notionsDiverses';
 
 export const TOPIC_CONTENT_FR: Record<string, TopicContent | undefined> = {
@@ -75,6 +79,8 @@ export const TOPIC_CONTENT_FR: Record<string, TopicContent | undefined> = {
   'panel-design-examples': panelDesignExamplesContent,
   'generator-ups-ats': generatorUpsAtsContent,
   earthing: earthingContent,
+  'electrical-basics': electricalBasicsContent,
+  'electrical-safety': electricalSafetyContent,
   'notions-diverses': notionsDiversesContent,
 };
 
@@ -102,6 +108,8 @@ export const TOPIC_CONTENT_EN: Record<string, TopicContent | undefined> = {
   'panel-design-examples': panelDesignExamplesContentEn,
   'generator-ups-ats': generatorUpsAtsContentEn,
   earthing: earthingContentEn,
+  'electrical-basics': electricalBasicsContentEn,
+  'electrical-safety': electricalSafetyContentEn,
   'notions-diverses': notionsDiversesContentEn,
 };
 

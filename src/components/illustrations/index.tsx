@@ -16,6 +16,7 @@ import {
 import { Coordination, DrawingSheet, DrawingsEvolution } from './sceneDrawings';
 import { DesignRoadmap } from './sceneRoadmap';
 import { PlanSymbols } from './scenePlans';
+import { PhasesDiagram, PowerTriangle, WaterAnalogy } from './sceneBasics';
 import { BatteryBank, MpptWindow, PeakSunHours, PvArray, PvStc, PvSystem, PvWaveforms } from './sceneSolar';
 
 export type IllustrationProps = Record<string, string | number | boolean | undefined>;
@@ -55,6 +56,12 @@ export function Illustration({ name, props, lang }: { name: string; props?: Illu
       return <Coordination lang={lang} variant={p.variant as 'architect' | 'civil' | 'mechanical'} />;
     case 'design-roadmap':
       return <DesignRoadmap lang={lang} step={typeof p.step === 'number' ? p.step : 0} />;
+    case 'water-analogy':
+      return <WaterAnalogy lang={lang} />;
+    case 'power-triangle':
+      return <PowerTriangle lang={lang} />;
+    case 'phases':
+      return <PhasesDiagram lang={lang} />;
     case 'pv-system':
       return <PvSystem lang={lang} highlight={typeof p.highlight === 'string' ? p.highlight : undefined} />;
     case 'pv-waveforms':

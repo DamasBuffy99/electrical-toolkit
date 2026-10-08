@@ -30,11 +30,11 @@ export function buildReportHtml(title: string, subtitle: string | undefined, sec
         <meta charset="utf-8" />
         <style>
           body { font-family: -apple-system, Helvetica, Arial, sans-serif; color: #161c19; padding: 32px; }
-          .brand { font-size: 13px; color: #1d6f42; font-weight: 700; margin-bottom: 4px; }
+          .brand { font-size: 13px; color: #1e3a8a; font-weight: 700; margin-bottom: 4px; }
           h1 { font-size: 22px; margin: 0 0 4px 0; }
           .subtitle { font-size: 13px; color: #5b655f; margin-bottom: 4px; }
           .date { font-size: 11px; color: #8a938d; margin-bottom: 20px; }
-          h2 { font-size: 14px; margin: 20px 0 8px 0; color: #1d6f42; border-bottom: 1px solid #e1e6e3; padding-bottom: 4px; }
+          h2 { font-size: 14px; margin: 20px 0 8px 0; color: #1e3a8a; border-bottom: 1px solid #e2e6ef; padding-bottom: 4px; }
           table { width: 100%; border-collapse: collapse; }
           td { padding: 6px 4px; border-bottom: 1px solid #eceeed; font-size: 13px; }
           td.label { color: #5b655f; }

@@ -20,7 +20,7 @@ export const voltageDropContent: TopicContent = {
         'Electronic appliances: very sensitive to voltage variations, hence their internal stabilizers.',
       ],
     },
-    { type: 'image', source: SLIDES['gen-14'], caption: 'Effects of voltage drop and IEC limits' },
+    { type: 'image', source: SLIDES['gen-14'], caption: 'Effects of voltage drop and IEC limits', focus: { x: 0.17, y: 0.66, w: 0.62, h: 0.28 } },
 
     { type: 'heading', text: 'Permissible limits (IEC 60364-5-52)' },
     {

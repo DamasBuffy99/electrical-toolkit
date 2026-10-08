@@ -21,8 +21,8 @@ export default function CourseHomeScreen({ isAvailable, onOpenLesson }: Props) {
       <Text style={styles.title}>{t("Parcours de l'ingénieur électricien", "The electrical engineer's journey")}</Text>
       <Text style={styles.subtitle}>
         {t(
-          'Le cours suit l’ordre réel d’un projet : chaque section prépare la suivante.',
-          'The course follows the real order of a project: each section prepares the next.'
+          'Pensé pour débuter de zéro : on comprend le projet, on apprend les bases, puis on conçoit dans l’ordre réel du métier. Chaque section prépare la suivante.',
+          'Built for complete beginners: understand the project, learn the basics, then design in the real order of the job. Each section prepares the next.'
         )}
       </Text>
       <View style={styles.hero}>
@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
   badgeMuted: { backgroundColor: colors.border },
   badgeText: { color: '#fff', fontWeight: '800', fontSize: 14 },
   badgeTextMuted: { color: colors.textMuted },
-  railLine: { flex: 1, width: 3, backgroundColor: '#cfe5d7', marginVertical: 4, borderRadius: 2 },
+  railLine: { flex: 1, width: 3, backgroundColor: '#d5ddf0', marginVertical: 4, borderRadius: 2 },
 
   card: {
     flex: 1,

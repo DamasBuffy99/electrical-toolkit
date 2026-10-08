@@ -145,6 +145,7 @@ export const cableSizingContent: TopicContent = {
     {
       type: 'image',
       source: require('../../../../assets/reference/nec_table_310_16_ampacity.png'),
+      focus: { x: 0.22, y: 0.14, w: 0.4, h: 0.5 },
       caption: 'NEC Table 310.16 — Ampacities of insulated conductors (copper / aluminum)',
       height: 480,
     },
@@ -298,7 +299,7 @@ export const cableSizingContent: TopicContent = {
       ],
     },
     { type: 'formula', text: 'Example: Ik = 10 kA, t = 0.1 s, copper PVC (k = 115) → S ≥ 10,000 × √0.1 / 115 = 27.5 mm² → 35 mm²' },
-    { type: 'image', source: SLIDES['iec-8'], caption: 'k values and clearance times' },
+    { type: 'image', source: SLIDES['iec-8'], caption: 'k values and clearance times', focus: { x: 0.48, y: 0.0, w: 0.5, h: 0.42 } },
     {
       type: 'note',
       text: '⚠️ This adiabatic criterion checks that the cable can thermally withstand the short-circuit current for the fault clearance time — it complements, without replacing, normal-condition sizing (I_z corrected ≥ I_n).',

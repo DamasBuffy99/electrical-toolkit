@@ -16,15 +16,16 @@ import Svg, {
 } from 'react-native-svg';
 
 export const P = {
-  bg: '#eef5f0',
-  bg2: '#dcebe1',
-  green: '#1d6f42',
-  greenMid: '#3f9a66',
-  greenLight: '#9fd0b1',
-  mint: '#e6f2ea',
-  ink: '#1f2a24',
-  inkSoft: '#5b655f',
-  line: '#c7d3cb',
+  // Navy + amber palette (keys kept from the first palette to avoid churn: "green" = primary).
+  bg: '#eef2fb',
+  bg2: '#dde4f2',
+  green: '#1e3a8a',
+  greenMid: '#3b5bdb',
+  greenLight: '#a9b8ec',
+  mint: '#e8eefb',
+  ink: '#0f172a',
+  inkSoft: '#475569',
+  line: '#cbd5e1',
   white: '#ffffff',
   paper: '#fbfbf7',
   skin1: '#f2c29b',
@@ -37,11 +38,11 @@ export const P = {
   navyDark: '#1a3450',
   blue: '#3f7cc0',
   sky: '#cfe3f3',
-  orange: '#f39c34',
-  yellow: '#f2c94c',
-  red: '#d9534f',
-  grey: '#9aa5a0',
-  greyLight: '#dfe5e1',
+  orange: '#f59e0b',
+  yellow: '#fbbf24',
+  red: '#dc4c4c',
+  grey: '#94a3b8',
+  greyLight: '#e2e8f0',
   brown: '#a0703f',
   concrete: '#c9cfcc',
   steel: '#7f8c8d',
@@ -470,11 +471,11 @@ export function Desk({ x, y, w = 150 }: { x: number; y: number; w?: number }) {
 
 /** Monitor showing a small floor plan with lighting/socket symbols. */
 export function Monitor({ x, y, w = 92, h = 62, dark = true }: { x: number; y: number; w?: number; h?: number; dark?: boolean }) {
-  const ink = dark ? '#9fd0b1' : P.blue;
+  const ink = dark ? '#a9b8ec' : P.blue;
   return (
     <G>
       <Rect x={x} y={y} width={w} height={h} rx={4} fill={P.screen} />
-      <Rect x={x + 4} y={y + 4} width={w - 8} height={h - 8} fill={dark ? '#13201a' : P.white} />
+      <Rect x={x + 4} y={y + 4} width={w - 8} height={h - 8} fill={dark ? '#0b1222' : P.white} />
       <Rect x={x + 10} y={y + 10} width={w - 20} height={h - 20} fill="none" stroke={ink} strokeWidth={1.2} />
       <Line x1={x + w / 2} y1={y + 10} x2={x + w / 2} y2={y + h - 10} stroke={ink} strokeWidth={1} />
       <Line x1={x + 10} y1={y + h / 2} x2={x + w / 2} y2={y + h / 2} stroke={ink} strokeWidth={1} />

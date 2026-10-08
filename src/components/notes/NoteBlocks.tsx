@@ -101,7 +101,9 @@ const styles = StyleSheet.create({
   bulletDot: { fontSize: 14, color: colors.accent, marginRight: 8, lineHeight: 21 },
   bulletText: { fontSize: 14.5, lineHeight: 21, color: colors.text, flex: 1 },
   formulaBox: {
-    backgroundColor: colors.accentSoft,
+    backgroundColor: colors.highlightSoft,
+    borderLeftWidth: 3,
+    borderLeftColor: colors.highlight,
     borderRadius: radius.sm,
     paddingVertical: 10,
     paddingHorizontal: spacing.md,
@@ -109,7 +111,7 @@ const styles = StyleSheet.create({
   },
   formulaText: {
     fontSize: 14,
-    color: colors.accent,
+    color: colors.highlightText,
     fontWeight: '600',
   },
   table: {
@@ -121,7 +123,7 @@ const styles = StyleSheet.create({
   },
   tableRow: { flexDirection: 'row' },
   tableHeaderRow: { backgroundColor: colors.accentSoft },
-  tableRowAlt: { backgroundColor: '#fafbfa' },
+  tableRowAlt: { backgroundColor: '#f8fafd' },
   tableCell: {
     flex: 1,
     fontSize: 12.5,
@@ -135,13 +137,15 @@ const styles = StyleSheet.create({
   },
   tableHeaderCell: { fontWeight: '700', color: colors.accent },
   noteBox: {
-    backgroundColor: colors.warnSoft,
+    backgroundColor: colors.accentSoft,
+    borderLeftWidth: 3,
+    borderLeftColor: colors.accentMid,
     borderRadius: radius.sm,
     paddingVertical: 10,
     paddingHorizontal: spacing.md,
     marginBottom: spacing.sm,
   },
-  noteText: { fontSize: 12.5, color: '#8a3a30', lineHeight: 18 },
+  noteText: { fontSize: 13, color: '#1e293b', lineHeight: 19 },
   divider: { height: 1, backgroundColor: colors.border, marginVertical: spacing.md },
   imageWrapper: { marginBottom: spacing.md },
   image: { width: '100%', borderRadius: radius.sm, backgroundColor: '#fff', borderWidth: 1, borderColor: colors.border },

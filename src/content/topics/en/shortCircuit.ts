@@ -37,7 +37,7 @@ export const shortCircuitContent: TopicContent = {
     { type: 'formula', text: 'X_tr = √(Z_tr² − R_tr²)' },
     { type: 'image', source: SLIDES['gen-22'], caption: 'Transformer impedance' },
     { type: 'image', source: SLIDES['gen-23'], caption: 'Resistance derived from copper losses' },
-    { type: 'image', source: SLIDES['gen-24'], caption: 'Typical values by transformer rating' },
+    { type: 'image', source: SLIDES['gen-24'], caption: 'Typical values by transformer rating', focus: { x: 0.52, y: 0.3, w: 0.46, h: 0.17 } },
 
     { type: 'heading', text: '4 · Circuit breakers, busbars and cables' },
     {

@@ -147,7 +147,7 @@ export const loadEstimationContent: TopicContent = {
         ['Bâtiment industriel', '10 – 20', '10', '—'],
       ],
     },
-    { type: 'image', source: SLIDES['gen-37'], caption: 'Table VA/m² selon le NEC' },
+    { type: 'image', source: SLIDES['gen-37'], caption: 'Table VA/m² selon le NEC', focus: { x: 0.03, y: 0.38, w: 0.52, h: 0.42 } },
     { type: 'divider' },
 
     { type: 'heading', text: '🔷 Autres méthodes (aperçu)' },

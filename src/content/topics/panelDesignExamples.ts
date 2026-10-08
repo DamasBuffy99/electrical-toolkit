@@ -47,7 +47,7 @@ export const panelDesignExamplesContent: TopicContent = {
     },
     { type: 'image', source: SLIDES['paneldes-4'], caption: 'Disjoncteur du moteur 30 HP : 63 A' },
     { type: 'image', source: SLIDES['paneldes-5'], caption: 'Câble du moteur 30 HP : 77 A' },
-    { type: 'image', source: SLIDES['paneldes-6'], caption: 'Choix 4×16 + 16 mm² dans le catalogue' },
+    { type: 'image', source: SLIDES['paneldes-6'], caption: 'Choix 4×16 + 16 mm² dans le catalogue', focus: { x: 0.17, y: 0.18, w: 0.55, h: 0.44 } },
 
     { type: 'heading', text: 'Disjoncteur général et câble d’arrivée' },
     { type: 'formula', text: 'I_général = 1,25 × I_plus gros + FD × Σ I_autres' },

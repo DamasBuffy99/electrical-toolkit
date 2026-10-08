@@ -15,14 +15,15 @@ import {
   useWindowDimensions,
   View,
 } from 'react-native';
-import { NoteBlock, TopicContent } from '../../content/types';
+import { Focus, NoteBlock, TopicContent } from '../../content/types';
 import { NoteBlockRenderer } from './NoteBlocks';
+import { FocusImage } from './FocusImage';
 import { Illustration } from '../illustrations';
 import { useLanguage } from '../../lib/language';
 import { colors, radius, shadow, spacing } from '../../theme/theme';
 
 type Visual =
-  | { kind: 'image'; source: any; caption?: string; height?: number }
+  | { kind: 'image'; source: any; caption?: string; height?: number; focus?: Focus }
   | { kind: 'illustration'; name: string; props?: Record<string, string | number | boolean>; caption?: string };
 
 type Scene = { heading?: string; blocks: NoteBlock[]; visuals: Visual[] };
@@ -35,7 +36,7 @@ function buildScenes(blocks: NoteBlock[]): Scene[] {
     if (b.type === 'heading') {
       scenes.push({ heading: b.text.replace(/^🔷\s*/, ''), blocks: [], visuals: [] });
     } else if (b.type === 'image') {
-      current.visuals.push({ kind: 'image', source: b.source, caption: b.caption, height: b.height });
+      current.visuals.push({ kind: 'image', source: b.source, caption: b.caption, height: b.height, focus: b.focus });
     } else if (b.type === 'illustration') {
       current.visuals.push({ kind: 'illustration', name: b.name, props: b.props, caption: b.caption });
     } else if (b.type !== 'divider') {
@@ -55,6 +56,8 @@ type Props = {
 };
 
 const WIDE_BREAKPOINT = 960;
+/** Time each visual stays on screen before the panel rotates to the next one. */
+const ROTATE_MS = 7000;
 const useNativeDriver = Platform.OS !== 'web';
 
 export default function LessonView({ content, eyebrow, backLabel, onBack, prev, next }: Props) {
@@ -193,7 +196,9 @@ function InlineVisual({ visual, lang }: { visual: Visual; lang: 'fr' | 'en' }) {
           <Illustration name={visual.name} props={visual.props} lang={lang} />
         </View>
       ) : (
-        <Image source={visual.source} style={[styles.inlineImage, { height: visual.height ?? 220 }]} resizeMode="contain" />
+        <View style={[styles.inlineImage, { height: visual.height ?? 240 }]}>
+          <FocusImage source={visual.source} focus={visual.focus} lang={lang} />
+        </View>
       )}
       {visual.caption ? <Text style={styles.caption}>{visual.caption}</Text> : null}
     </View>
@@ -248,6 +253,48 @@ function VisualStage({
   const count = visuals.length;
   const go = (delta: number) => setPick({ scene: target, idx: (wantIdx + delta + count) % count });
 
+  // Auto-rotation: each visual stays ROTATE_MS, paused while the pointer is over the panel or the enlarged view is open.
+  const [hovered, setHovered] = useState(false);
+  const stageRef = useRef<View>(null);
+  useEffect(() => {
+    // On the web, the panel's DOM node is available through the ref: pause while the mouse is over it.
+    const node = stageRef.current as unknown as HTMLElement | null;
+    if (Platform.OS !== 'web' || !node || typeof node.addEventListener !== 'function') return;
+    const enter = () => setHovered(true);
+    const leave = () => setHovered(false);
+    node.addEventListener('mouseenter', enter);
+    node.addEventListener('mouseleave', leave);
+    return () => {
+      node.removeEventListener('mouseenter', enter);
+      node.removeEventListener('mouseleave', leave);
+    };
+  }, []);
+  const paused = hovered || zoomed;
+  const progress = useRef(new Animated.Value(0)).current;
+  const advance = useRef(() => {});
+  advance.current = () => go(1);
+  useEffect(() => {
+    progress.setValue(0);
+  }, [wantKey, progress]);
+  useEffect(() => {
+    if (count <= 1) return;
+    if (paused) {
+      progress.stopAnimation();
+      return;
+    }
+    let cancelled = false;
+    progress.stopAnimation((v) => {
+      if (cancelled) return;
+      Animated.timing(progress, { toValue: 1, duration: ROTATE_MS * (1 - v), easing: Easing.linear, useNativeDriver: false }).start(({ finished }) => {
+        if (finished && !cancelled) advance.current();
+      });
+    });
+    return () => {
+      cancelled = true;
+      progress.stopAnimation();
+    };
+  }, [wantKey, paused, count, progress]);
+
   const animatedStyle = {
     opacity: anim,
     transform: [
@@ -260,7 +307,7 @@ function VisualStage({
   const zoomW = Math.min(width * 0.92, (height * 0.82 * 4) / 3);
 
   return (
-    <View style={styles.stage}>
+    <View ref={stageRef} style={styles.stage}>
       <View style={styles.stageTop}>
         <Text style={styles.stageLabel} numberOfLines={1}>
           {shownScene >= 0 && scenes[shownScene].heading ? scenes[shownScene].heading : title}
@@ -282,7 +329,7 @@ function VisualStage({
             </View>
           ) : (
             <TouchableOpacity style={styles.flexFill} activeOpacity={0.92} onPress={() => setZoomed(true)}>
-              <VisualContent visual={visual} lang={lang} />
+              <VisualContent key={shownKey} visual={visual} lang={lang} />
             </TouchableOpacity>
           )}
         </View>
@@ -316,6 +363,22 @@ function VisualStage({
           </TouchableOpacity>
         </View>
       ) : null}
+      {count > 1 ? (
+        <View style={styles.progressRow}>
+          <View style={styles.progressTrack}>
+            <Animated.View
+              style={[
+                styles.progressBar,
+                paused && styles.progressPaused,
+                { width: progress.interpolate({ inputRange: [0, 1], outputRange: ['0%', '100%'] }) },
+              ]}
+            />
+          </View>
+          <Text style={styles.progressLabel}>
+            {paused ? (lang === 'fr' ? '⏸ En pause' : '⏸ Paused') : lang === 'fr' ? 'Défilement auto' : 'Auto-play'}
+          </Text>
+        </View>
+      ) : null}
 
       <Modal visible={zoomed && !!visual} transparent animationType="fade" onRequestClose={() => setZoomed(false)}>
         <Pressable style={styles.zoomBackdrop} onPress={() => setZoomed(false)}>
@@ -336,7 +399,7 @@ function VisualContent({ visual, lang }: { visual: Visual; lang: 'fr' | 'en' }) 
       {visual.kind === 'illustration' ? (
         <Illustration name={visual.name} props={visual.props} lang={lang} />
       ) : (
-        <Image source={visual.source} style={styles.stageImage} resizeMode="contain" />
+        <FocusImage source={visual.source} focus={visual.focus} lang={lang} />
       )}
     </View>
   );
@@ -384,7 +447,7 @@ const styles = StyleSheet.create({
   stageLabel: { flex: 1, fontSize: 12, fontWeight: '700', color: colors.textMuted, textTransform: 'uppercase', letterSpacing: 0.5 },
   dots: { flexDirection: 'row', flexWrap: 'wrap', gap: 5, maxWidth: '55%', justifyContent: 'flex-end' },
   dot: { width: 7, height: 7, borderRadius: 4, backgroundColor: colors.border },
-  dotDone: { backgroundColor: '#9fd0b1' },
+  dotDone: { backgroundColor: '#a9b8ec' },
   dotActive: { backgroundColor: colors.accent, width: 18 },
   frame: { width: '100%', aspectRatio: 4 / 3, borderRadius: radius.md, overflow: 'hidden', backgroundColor: '#fff' },
   stageImage: { width: '100%', height: '100%' },
@@ -407,6 +470,11 @@ const styles = StyleSheet.create({
   pagerDot: { width: 8, height: 8, borderRadius: 4, backgroundColor: colors.border },
   pagerDotActive: { backgroundColor: colors.accent },
   pagerCount: { fontSize: 12, fontWeight: '700', color: colors.textMuted },
+  progressRow: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm, marginTop: spacing.sm },
+  progressTrack: { flex: 1, height: 3, borderRadius: 2, backgroundColor: colors.border, overflow: 'hidden' },
+  progressBar: { height: 3, backgroundColor: colors.highlight },
+  progressPaused: { backgroundColor: colors.textFaint },
+  progressLabel: { fontSize: 10.5, fontWeight: '700', color: colors.textFaint },
   zoomBackdrop: { flex: 1, backgroundColor: 'rgba(10, 15, 25, 0.86)', alignItems: 'center', justifyContent: 'center', padding: spacing.lg },
   zoomBox: { aspectRatio: 4 / 3, backgroundColor: '#fff', borderRadius: radius.md, overflow: 'hidden' },
   zoomCaption: { color: '#e5e7eb', fontSize: 13, marginTop: spacing.md, textAlign: 'center' },
@@ -416,8 +484,8 @@ const styles = StyleSheet.create({
 
   footer: { marginTop: spacing.xxl, gap: spacing.md },
   nextCard: { backgroundColor: colors.accent, borderRadius: radius.lg, padding: spacing.xl, ...shadow.card },
-  nextTransition: { color: '#d8efe1', fontSize: 14, lineHeight: 20, marginBottom: spacing.md },
-  nextLabel: { color: '#bfe3cd', fontSize: 11, fontWeight: '700', textTransform: 'uppercase', letterSpacing: 0.6, marginBottom: 4 },
+  nextTransition: { color: '#dce4f7', fontSize: 14, lineHeight: 20, marginBottom: spacing.md },
+  nextLabel: { color: '#fcd34d', fontSize: 11, fontWeight: '700', textTransform: 'uppercase', letterSpacing: 0.6, marginBottom: 4 },
   nextRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' },
   nextTitle: { color: '#fff', fontSize: 18, fontWeight: '800', flex: 1 },
   nextArrow: { color: '#fff', fontSize: 22, fontWeight: '800', marginLeft: spacing.md },

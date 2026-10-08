@@ -20,7 +20,7 @@ export const voltageDropContent: TopicContent = {
         'Appareils électroniques : très sensibles aux variations, d’où leurs stabilisateurs internes.',
       ],
     },
-    { type: 'image', source: SLIDES['gen-14'], caption: 'Effets de la chute de tension et limites IEC' },
+    { type: 'image', source: SLIDES['gen-14'], caption: 'Effets de la chute de tension et limites IEC', focus: { x: 0.17, y: 0.66, w: 0.62, h: 0.28 } },
 
     { type: 'heading', text: 'Limites admissibles (IEC 60364-5-52)' },
     {

@@ -173,7 +173,7 @@ export function EngDesign({ lang }: SceneProps) {
   const L = pick(lang);
   return (
     <SceneFrame>
-      <Rect x={0} y={0} width={400} height={300} rx={18} fill="#e9f0ec" opacity={0.5} />
+      <Rect x={0} y={0} width={400} height={300} rx={18} fill="#e9eef8" opacity={0.5} />
       <Monitor x={78} y={96} w={116} h={78} dark />
       <Monitor x={206} y={96} w={116} h={78} dark={false} />
       <Desk x={30} y={196} w={340} />
@@ -199,7 +199,7 @@ export function EngSupervision({ lang }: SceneProps) {
   const L = pick(lang);
   return (
     <SceneFrame>
-      <Rect x={0} y={0} width={210} height={262} fill="#e7ece9" />
+      <Rect x={0} y={0} width={210} height={262} fill="#e7ebf3" />
       <Ground y={262} />
       <Panelboard x={66} y={86} w={86} h={124} />
       <Sheet x={20} y={30} w={60} h={44} title="IFC" />

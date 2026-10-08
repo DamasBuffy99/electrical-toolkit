@@ -314,6 +314,7 @@ export const circuitBreakerContent: TopicContent = {
     {
       type: 'image',
       source: require('../../../assets/reference/nec_table_430_52.png'),
+      focus: { x: 0.02, y: 0.16, w: 0.96, h: 0.45 },
       caption: 'NEC Table 430.52 — Maximum Rating or Setting of Motor Branch-Circuit Protective Devices',
       height: 320,
     },

@@ -26,7 +26,7 @@ export const generatorUpsAtsContent: TopicContent = {
       type: 'text',
       text: "Pour le dimensionnement, le cours utilise l'outil en ligne Cummins PowerSuite : on y saisit les charges (moteurs, éclairage…) et il propose le groupe adapté.",
     },
-    { type: 'image', source: SLIDES['gen-5'], caption: 'Régimes ISO 8528-1' },
+    { type: 'image', source: SLIDES['gen-5'], caption: 'Régimes ISO 8528-1', focus: { x: 0.0, y: 0.22, w: 0.48, h: 0.76 } },
 
     { type: 'heading', text: '2 · Conditions du site' },
     {

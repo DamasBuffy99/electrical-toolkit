@@ -85,7 +85,7 @@ export const pvOffgridExample2Content: TopicContent = {
     },
     { type: 'formula', text: 'Nombre = 1 669,2 / 300 = 5,56 → 6 panneaux → 6 × 300 = 1 800 W' },
     { type: 'illustration', name: 'peak-sun-hours', props: { hours: 5 }, caption: '5 heures de soleil crête' },
-    { type: 'image', source: shot.panels, caption: 'Cours — 1 669,2 W → 6 panneaux LG de 300 W' },
+    { type: 'image', source: shot.panels, caption: 'Cours — 1 669,2 W → 6 panneaux LG de 300 W', focus: { x: 0.01, y: 0.53, w: 0.42, h: 0.44 } },
 
     { type: 'heading', text: '4 · Les batteries' },
     {
@@ -110,7 +110,7 @@ export const pvOffgridExample2Content: TopicContent = {
     { type: 'formula', text: 'En série = 24 / 12 = 2 · En parallèle = 772 / 205 = 3,76 → 4' },
     { type: 'formula', text: 'Total = 2 × 4 = 8 batteries → banc 24 V, 4 × 205 = 820 Ah' },
     { type: 'illustration', name: 'battery-bank', props: { series: 2, parallel: 4, battV: 12, battAh: 205 }, caption: '2 en série × 4 en parallèle = 24 V, 820 Ah' },
-    { type: 'image', source: shot.batteries, caption: 'Cours — calcul des Ah et courbe capacité / température' },
+    { type: 'image', source: shot.batteries, caption: 'Cours — calcul des Ah et courbe capacité / température', focus: { x: 0.55, y: 0.46, w: 0.45, h: 0.5 } },
     { type: 'image', source: shot.batteriesBank, caption: 'Cours — 8 batteries : 24 V, 820 Ah' },
 
     { type: 'heading', text: '5 · Le régulateur de charge' },
@@ -137,8 +137,8 @@ export const pvOffgridExample2Content: TopicContent = {
       ],
     },
     { type: 'illustration', name: 'pv-system', props: { highlight: 'controller' }, caption: 'MPPT 150/70 : 75 A demandés, 70 A fournis' },
-    { type: 'image', source: shot.controller, caption: 'Cours — 1 800 W ≤ 2 000 W à 24 V' },
-    { type: 'image', source: shot.clipping, caption: 'Cours — 75 A > 70 A : écrêtage d’environ 6,7 %' },
+    { type: 'image', source: shot.controller, caption: 'Cours — 1 800 W ≤ 2 000 W à 24 V', focus: { x: 0.0, y: 0.27, w: 0.65, h: 0.28 } },
+    { type: 'image', source: shot.clipping, caption: 'Cours — 75 A > 70 A : écrêtage d’environ 6,7 %', focus: { x: 0.22, y: 0.34, w: 0.58, h: 0.24 } },
 
     { type: 'heading', text: 'Les batteries supportent-elles ce courant ?' },
     { type: 'formula', text: '4 branches en parallèle : 70 / 4 = 17,5 A par branche' },
@@ -156,7 +156,7 @@ export const pvOffgridExample2Content: TopicContent = {
       text: "💡 Dans tes notes : 75 / 4 = 18,75 A, c'est le courant avant écrêtage. Le cours prend 70 / 4 = 17,5 A, le courant réellement fourni par le régulateur. Dans les deux cas, on reste bien sous les 41 A. Ne pas installer ces batteries dans un local fermé et non ventilé.",
     },
     { type: 'illustration', name: 'battery-bank', props: { series: 2, parallel: 4, battV: 12, battAh: 205, current: 70 }, caption: '70 A répartis : 17,5 A par branche' },
-    { type: 'image', source: shot.charge, caption: 'Cours — 17,5 A < 41 A (20 % de C20)' },
+    { type: 'image', source: shot.charge, caption: 'Cours — 17,5 A < 41 A (20 % de C20)', focus: { x: 0.4, y: 0.36, w: 0.53, h: 0.33 } },
 
     { type: 'heading', text: '6 · Le raccordement des panneaux' },
     { type: 'formula', text: 'V_conception = 150 / 2 = 75 V' },

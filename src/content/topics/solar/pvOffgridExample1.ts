@@ -73,7 +73,7 @@ export const pvOffgridExample1Content: TopicContent = {
     { type: 'illustration', name: 'pv-waveforms', caption: 'Onde sinusoïdale pure : adaptée au compresseur du frigo' },
     { type: 'image', source: shot.inverterPower, caption: 'Cours — puissance continue 198,9 W et pointe 378 W' },
     { type: 'image', source: shot.inverterWave, caption: 'Cours — Victron Phoenix 12/250 : onde pure vs modifiée' },
-    { type: 'image', source: shot.inverterVictron, caption: 'Cours — fiche technique et choix de la tension 12/24/48 V' },
+    { type: 'image', source: shot.inverterVictron, caption: 'Cours — fiche technique et choix de la tension 12/24/48 V', focus: { x: 0.42, y: 0.74, w: 0.56, h: 0.2 } },
 
     { type: 'heading', text: '3 · Les panneaux' },
     { type: 'formula', text: 'E_panneaux = 1092 × 1,3 = 1419,6 Wh/jour' },
@@ -103,7 +103,7 @@ export const pvOffgridExample1Content: TopicContent = {
     { type: 'illustration', name: 'peak-sun-hours', props: { hours: 2 }, caption: 'Canada : 2 heures de soleil crête' },
     { type: 'illustration', name: 'pv-system', props: { highlight: 'panels' }, caption: '4 panneaux de 200 W' },
     { type: 'image', source: shot.panelsEnergy, caption: 'Cours — facteur 1,3 : pertes + conditions STC' },
-    { type: 'image', source: shot.panelsCanada, caption: "Cours — carte d'ensoleillement et fiche SunPower SPR-200" },
+    { type: 'image', source: shot.panelsCanada, caption: "Cours — carte d'ensoleillement et fiche SunPower SPR-200", focus: { x: 0.61, y: 0.53, w: 0.32, h: 0.46 } },
 
     { type: 'heading', text: '4 · Les batteries' },
     {
@@ -130,7 +130,7 @@ export const pvOffgridExample1Content: TopicContent = {
       text: "💡 Autre façon de faire (annotée dans le cours) : calculer sans le coefficient, 1419,6 × 2 / (0,8 × 12) ≈ 296 Ah ≈ 300 Ah, puis diviser par la capacité à −20 °C : 300 / 160 ≈ 1,9 → 2 batteries. Même résultat.",
     },
     { type: 'illustration', name: 'battery-bank', props: { series: 1, parallel: 2, battV: 12, battAh: 330 }, caption: '2 batteries 12 V 330 Ah en parallèle = 12 V, 660 Ah' },
-    { type: 'image', source: shot.batteries, caption: 'Cours — capacité à −20 °C et calcul des Ah' },
+    { type: 'image', source: shot.batteries, caption: 'Cours — capacité à −20 °C et calcul des Ah', focus: { x: 0.52, y: 0.52, w: 0.46, h: 0.37 } },
     { type: 'image', source: shot.batteries300, caption: 'Cours — annotation : 300 Ah sans coefficient, à diviser par 160 Ah' },
     { type: 'image', source: shot.batteriesParallel, caption: 'Cours — 2 batteries 12 V en parallèle = 660 Ah' },
 
@@ -153,7 +153,7 @@ export const pvOffgridExample1Content: TopicContent = {
     },
     { type: 'formula', text: 'I_charge max = 800 / 12 = 67 A ≤ 70 A ✓' },
     { type: 'illustration', name: 'pv-system', props: { highlight: 'controller' }, caption: 'MPPT 150/70' },
-    { type: 'image', source: shot.controller, caption: 'Cours — fiche technique SmartSolar MPPT 150/70' },
+    { type: 'image', source: shot.controller, caption: 'Cours — fiche technique SmartSolar MPPT 150/70', focus: { x: 0.01, y: 0.25, w: 0.63, h: 0.28 } },
     { type: 'image', source: shot.controllerCurrent, caption: 'Cours — 800 / 12 = 67 A ≤ 70 A' },
     {
       type: 'text',
@@ -171,7 +171,7 @@ export const pvOffgridExample1Content: TopicContent = {
     },
     { type: 'formula', text: '33,5 A < 150 A recommandé ✓' },
     { type: 'illustration', name: 'battery-bank', props: { series: 1, parallel: 2, battV: 12, battAh: 330, current: 67 }, caption: '67 A répartis : 33,5 A par batterie' },
-    { type: 'image', source: shot.batteriesCurrent, caption: 'Cours — 33,5 A par batterie < 150 A recommandé' },
+    { type: 'image', source: shot.batteriesCurrent, caption: 'Cours — 33,5 A par batterie < 150 A recommandé', focus: { x: 0.37, y: 0.78, w: 0.6, h: 0.21 } },
 
     { type: 'heading', text: '6 · Le raccordement des panneaux' },
     {
@@ -194,7 +194,7 @@ export const pvOffgridExample1Content: TopicContent = {
     { type: 'illustration', name: 'mppt-window', props: { max: 150, design: 75, cold: 101.45, nec: 112.8 }, caption: 'Toutes les tensions restent sous 150 V' },
     { type: 'image', source: shot.connection, caption: 'Cours — étape 6 : raccordement des panneaux' },
     { type: 'image', source: shot.connectionNec, caption: 'Cours — vérification avec le facteur NEC : 2 × 47,8 × 1,18' },
-    { type: 'image', source: shot.nec690, caption: 'NEC Table 690.7(A) — facteurs de correction de tension' },
+    { type: 'image', source: shot.nec690, caption: 'NEC Table 690.7(A) — facteurs de correction de tension', focus: { x: 0.3, y: 0.42, w: 0.48, h: 0.47 } },
 
     { type: 'heading', text: 'Bilan du système' },
     {

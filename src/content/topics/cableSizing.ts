@@ -145,6 +145,7 @@ export const cableSizingContent: TopicContent = {
     {
       type: 'image',
       source: require('../../../assets/reference/nec_table_310_16_ampacity.png'),
+      focus: { x: 0.22, y: 0.14, w: 0.4, h: 0.5 },
       caption: 'NEC Table 310.16 — Ampacités des conducteurs isolés (cuivre / aluminium)',
       height: 480,
     },
@@ -298,7 +299,7 @@ export const cableSizingContent: TopicContent = {
       ],
     },
     { type: 'formula', text: 'Exemple : Ik = 10 kA, t = 0,1 s, cuivre PVC (k = 115) → S ≥ 10 000 × √0,1 / 115 = 27,5 mm² → 35 mm²' },
-    { type: 'image', source: SLIDES['iec-8'], caption: 'Valeurs de k et temps d’élimination' },
+    { type: 'image', source: SLIDES['iec-8'], caption: 'Valeurs de k et temps d’élimination', focus: { x: 0.48, y: 0.0, w: 0.5, h: 0.42 } },
     {
       type: 'note',
       text: '⚠️ Ce critère adiabatique vérifie que le câble supporte thermiquement le courant de court-circuit pendant le temps d\'élimination du défaut — il complète, sans le remplacer, le dimensionnement en régime normal (I_z corrigé ≥ I_n).',

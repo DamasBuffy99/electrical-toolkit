@@ -82,7 +82,7 @@ export const pvOffgridExample2Content: TopicContent = {
     },
     { type: 'formula', text: 'Number = 1,669.2 / 300 = 5.56 → 6 panels → 6 × 300 = 1,800 W' },
     { type: 'illustration', name: 'peak-sun-hours', props: { hours: 5 }, caption: '5 peak sun hours' },
-    { type: 'image', source: shot.panels, caption: 'Course — 1,669.2 W → 6 LG 300 W panels' },
+    { type: 'image', source: shot.panels, caption: 'Course — 1,669.2 W → 6 LG 300 W panels', focus: { x: 0.01, y: 0.53, w: 0.42, h: 0.44 } },
 
     { type: 'heading', text: '4 · The batteries' },
     {
@@ -107,7 +107,7 @@ export const pvOffgridExample2Content: TopicContent = {
     { type: 'formula', text: 'In series = 24 / 12 = 2 · In parallel = 772 / 205 = 3.76 → 4' },
     { type: 'formula', text: 'Total = 2 × 4 = 8 batteries → 24 V, 4 × 205 = 820 Ah bank' },
     { type: 'illustration', name: 'battery-bank', props: { series: 2, parallel: 4, battV: 12, battAh: 205 }, caption: '2 in series × 4 in parallel = 24 V, 820 Ah' },
-    { type: 'image', source: shot.batteries, caption: 'Course — Ah calculation and capacity vs temperature curve' },
+    { type: 'image', source: shot.batteries, caption: 'Course — Ah calculation and capacity vs temperature curve', focus: { x: 0.55, y: 0.46, w: 0.45, h: 0.5 } },
     { type: 'image', source: shot.batteriesBank, caption: 'Course — 8 batteries: 24 V, 820 Ah' },
 
     { type: 'heading', text: '5 · The charge controller' },
@@ -134,8 +134,8 @@ export const pvOffgridExample2Content: TopicContent = {
       ],
     },
     { type: 'illustration', name: 'pv-system', props: { highlight: 'controller' }, caption: 'MPPT 150/70: 75 A needed, 70 A delivered' },
-    { type: 'image', source: shot.controller, caption: 'Course — 1,800 W ≤ 2,000 W at 24 V' },
-    { type: 'image', source: shot.clipping, caption: 'Course — 75 A > 70 A: about 6.7% clipped' },
+    { type: 'image', source: shot.controller, caption: 'Course — 1,800 W ≤ 2,000 W at 24 V', focus: { x: 0.0, y: 0.27, w: 0.65, h: 0.28 } },
+    { type: 'image', source: shot.clipping, caption: 'Course — 75 A > 70 A: about 6.7% clipped', focus: { x: 0.22, y: 0.34, w: 0.58, h: 0.24 } },
 
     { type: 'heading', text: 'Can the batteries take this current?' },
     { type: 'formula', text: '4 parallel branches: 70 / 4 = 17.5 A per branch' },
@@ -153,7 +153,7 @@ export const pvOffgridExample2Content: TopicContent = {
       text: '💡 In your notes: 75 / 4 = 18.75 A, the current before clipping. The course uses 70 / 4 = 17.5 A, the current the controller actually delivers. Either way it stays well under 41 A. Do not install these batteries in a sealed, non-ventilated compartment.',
     },
     { type: 'illustration', name: 'battery-bank', props: { series: 2, parallel: 4, battV: 12, battAh: 205, current: 70 }, caption: '70 A split: 17.5 A per branch' },
-    { type: 'image', source: shot.charge, caption: 'Course — 17.5 A < 41 A (20% of C20)' },
+    { type: 'image', source: shot.charge, caption: 'Course — 17.5 A < 41 A (20% of C20)', focus: { x: 0.4, y: 0.36, w: 0.53, h: 0.33 } },
 
     { type: 'heading', text: '6 · Connecting the panels' },
     { type: 'formula', text: 'Design voltage = 150 / 2 = 75 V' },

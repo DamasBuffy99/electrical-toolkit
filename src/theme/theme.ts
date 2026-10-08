@@ -1,15 +1,19 @@
 import { Platform } from 'react-native';
 
 export const colors = {
-  bg: '#f2f5f3',
+  bg: '#f6f7fb',
   surface: '#ffffff',
-  border: '#e1e6e3',
-  borderStrong: '#c7cfca',
-  text: '#161c19',
-  textMuted: '#5b655f',
-  textFaint: '#8a938d',
-  accent: '#1d6f42',
-  accentSoft: '#e6f2ea',
+  border: '#e2e6ef',
+  borderStrong: '#c8cfdd',
+  text: '#0f172a',
+  textMuted: '#475569',
+  textFaint: '#8a94a6',
+  accent: '#1e3a8a',
+  accentSoft: '#e8eefb',
+  accentMid: '#3b5bdb',
+  highlight: '#f59e0b',
+  highlightSoft: '#fff7e6',
+  highlightText: '#7c2d12',
   warn: '#c0392b',
   warnSoft: '#fbeae8',
 };
@@ -44,9 +48,9 @@ export const typography = {
 
 export const shadow = {
   card: Platform.select({
-    web: { boxShadow: '0px 2px 8px rgba(11, 31, 20, 0.06)' } as any,
+    web: { boxShadow: '0px 2px 10px rgba(15, 23, 42, 0.07)' } as any,
     default: {
-      shadowColor: '#0b1f14',
+      shadowColor: '#0f172a',
       shadowOffset: { width: 0, height: 2 },
       shadowOpacity: 0.06,
       shadowRadius: 8,

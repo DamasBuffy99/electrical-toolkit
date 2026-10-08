@@ -7,8 +7,11 @@ export type NoteBlock =
   | { type: 'table'; headers: string[]; rows: string[][] }
   | { type: 'note'; text: string }
   | { type: 'divider' }
-  | { type: 'image'; source: any; caption?: string; height?: number }
+  /** `focus` = area to zoom into, as fractions of the image (0–1): the panel shows the whole image, then zooms on it. */
+  | { type: 'image'; source: any; caption?: string; height?: number; focus?: Focus }
   | { type: 'illustration'; name: string; props?: Record<string, string | number | boolean>; caption?: string };
+
+export type Focus = { x: number; y: number; w: number; h: number };
 
 export type TopicContent = {
   title: string;

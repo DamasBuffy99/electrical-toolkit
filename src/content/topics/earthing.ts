@@ -2,85 +2,14 @@ import { TopicContent } from '../types';
 import { SLIDES } from '../slides';
 
 export const earthingContent: TopicContent = {
-  title: 'Mise à la terre',
-  subtitle: 'Dangers du courant, schémas TT / TN / IT, conducteur de terre et résistance des électrodes',
+  title: 'Concevoir la mise à la terre',
+  subtitle: 'Sol, électrodes, section du conducteur de terre et mesure de la résistance',
   blocks: [
     {
       type: 'text',
-      text: "La mise à la terre protège les personnes contre les chocs électriques indirects et permet aux protections de déclencher en cas de défaut. Avant de la dimensionner, il faut comprendre ce que le courant fait au corps humain.",
+      text: "On sait pourquoi il faut une terre (leçon « Le danger électrique ») et on connaît le courant de court-circuit. On peut maintenant dimensionner la mise à la terre elle-même : le sol, les électrodes et le conducteur.",
     },
-    { type: 'image', source: SLIDES['earth-12'], caption: 'Sans terre, le courant de défaut traverse la personne ; avec la terre, il passe par le conducteur' },
-
-    { type: 'heading', text: '1 · Effet du courant sur le corps humain' },
-    {
-      type: 'text',
-      text: 'Quatre facteurs déterminent la gravité d’un choc : l’intensité du courant, sa durée, sa fréquence et son trajet dans le corps.',
-    },
-    {
-      type: 'table',
-      headers: ['Courant AC', 'Effet'],
-      rows: [
-        ['1 mA', 'Seuil de perception'],
-        ['5 mA', 'Maximum encore sans danger'],
-        ['10 – 20 mA', 'Perte du contrôle musculaire, impossible de lâcher'],
-        ['50 mA', 'Difficulté à respirer'],
-        ['100 – 300 mA', 'Arrêt respiratoire, souvent mortel'],
-        ['1 000 – 6 000 mA', 'Brûlure des organes et des tissus'],
-      ],
-    },
-    {
-      type: 'text',
-      text: 'La durée compte autant que l’intensité : au-delà de 100 mA pendant plus de 20 ms, le choc peut être mortel. Le courant supportable pendant un temps t est :',
-    },
-    { type: 'formula', text: 'I = 116 mA / √t   (ex. t = 10 s → I = 36,68 mA)' },
-    {
-      type: 'bullets',
-      items: [
-        "Fréquence : il faut 300 à 500 mA en DC pour l'effet de 30 mA en AC ; le courant alternatif basse fréquence est le plus dangereux.",
-        'Trajet : main à main et main gauche aux pieds sont les pires cas, car le courant traverse le cœur.',
-      ],
-    },
-    { type: 'image', source: SLIDES['earth-4'], caption: 'Effets du courant alternatif sur le corps' },
-    { type: 'image', source: SLIDES['earth-5'], caption: 'Effet selon la durée' },
-    { type: 'image', source: SLIDES['earth-6'], caption: 'Courant supportable en fonction du temps' },
-
-    { type: 'heading', text: '2 · Contacts directs et indirects' },
-    {
-      type: 'table',
-      headers: ['Danger', 'Origine', 'Protection'],
-      rows: [
-        ['Contact direct', 'On touche une partie sous tension', "Isolation des parties actives · barrières ou enveloppes · dispositif différentiel (DDR)"],
-        ['Contact indirect', "Défaut d'isolement : une masse métallique devient sous tension", 'Mise à la terre'],
-      ],
-    },
-    {
-      type: 'text',
-      text: "Mettre à la terre, c'est relier les parties métalliques qui ne transportent normalement pas de courant (carcasses, châssis) ou le neutre de la source au sol par un conducteur de faible résistance, pour évacuer immédiatement le courant de défaut.",
-    },
-    { type: 'image', source: SLIDES['earth-9'], caption: 'Contact direct (gauche) et contact indirect par défaut d’isolement (droite)' },
-
-    { type: 'heading', text: '3 · Les schémas de liaison à la terre : TT, TN, IT' },
-    {
-      type: 'bullets',
-      items: [
-        '1re lettre = la source : T = neutre relié à la terre · I = isolé de la terre.',
-        '2e lettre = les masses de l’installation : T = reliées à une terre locale · N = reliées au neutre.',
-      ],
-    },
-    {
-      type: 'table',
-      headers: ['Schéma', 'Principe', 'À retenir'],
-      rows: [
-        ['TT', 'Neutre à la terre, masses à une terre locale', 'Le plus simple à concevoir et installer · DDR obligatoire'],
-        ['TN (TN-C, TN-S)', 'Masses reliées au neutre (PEN commun en TN-C, PE séparé en TN-S)', "Le disjoncteur élimine le défaut · DDR non nécessaire sauf câbles très longs"],
-        ['IT', 'Neutre isolé ou impédant', "Meilleure continuité de service (hôpitaux) · contrôleur permanent d'isolement (CPI/IMD) · coûteux"],
-      ],
-    },
-    { type: 'image', source: SLIDES['earth-14'], caption: 'Schéma TT' },
-    { type: 'image', source: SLIDES['earth-15'], caption: 'Schémas TN-C et TN-S' },
-    { type: 'image', source: SLIDES['earth-16'], caption: 'Schéma IT avec contrôleur d’isolement' },
-
-    { type: 'heading', text: '4 · Composants et résistivité du sol' },
+    { type: 'heading', text: '1 · Composants et résistivité du sol' },
     {
       type: 'bullets',
       items: [
@@ -111,9 +40,9 @@ export const earthingContent: TopicContent = {
     },
     { type: 'image', source: SLIDES['earth-17'], caption: 'Composants d’un système de mise à la terre' },
     { type: 'image', source: SLIDES['earth-18'], caption: 'Facteurs qui influencent la résistance de terre' },
-    { type: 'image', source: SLIDES['earth-19'], caption: 'Résistivité selon le type de sol' },
+    { type: 'image', source: SLIDES['earth-19'], caption: 'Résistivité selon le type de sol', focus: { x: 0.02, y: 0.34, w: 0.75, h: 0.37 } },
 
-    { type: 'heading', text: '5 · Section du conducteur de terre' },
+    { type: 'heading', text: '2 · Section du conducteur de terre' },
     { type: 'formula', text: 'S ≥ I × √t / k' },
     {
       type: 'bullets',
@@ -131,10 +60,10 @@ export const earthingContent: TopicContent = {
       type: 'note',
       text: "💡 Le cours utilise le raccourci S ≈ 6 × √t × Isc(kA) pour le cuivre (k ≈ 167), avec t = 1 s.",
     },
-    { type: 'image', source: SLIDES['earth-23'], caption: 'Formule et constantes K, β' },
+    { type: 'image', source: SLIDES['earth-23'], caption: 'Formule et constantes K, β', focus: { x: 0.48, y: 0.55, w: 0.47, h: 0.43 } },
     { type: 'image', source: SLIDES['earth-24'], caption: 'Exemple : transformateur 1,5 MVA' },
 
-    { type: 'heading', text: '6 · Résistance des électrodes' },
+    { type: 'heading', text: '3 · Résistance des électrodes' },
     { type: 'formula', text: 'Piquet seul : R = ρ / (2πL) × [ln(8L / d) − 1]' },
     { type: 'text', text: 'ρ = résistivité du sol (Ω·m) · L = longueur du piquet (m) · d = diamètre (m).' },
     { type: 'formula', text: 'Conducteur enterré : R = ρ / (2πL) × ln(L² / (1,85 × h × d))   (h = profondeur)' },
@@ -153,11 +82,11 @@ export const earthingContent: TopicContent = {
     { type: 'formula', text: 'ρ = 100 Ω·m, L = 3 m, d = 16 mm : R = 100 / (2π × 3) × [ln(8 × 3 / 0,016) − 1] ≈ 33,5 Ω' },
     { type: 'formula', text: '4 piquets en ligne espacés de 3 m : a = 100 / (2π × 33,5 × 3) ≈ 0,158 → R₄ = 33,5 × (1 + 2,15 × 0,158) / 4 ≈ 11,2 Ω' },
     { type: 'image', source: SLIDES['earth-26'], caption: 'Résistance d’un piquet' },
-    { type: 'image', source: SLIDES['earth-28'], caption: 'Piquets en ligne : facteur λ' },
+    { type: 'image', source: SLIDES['earth-28'], caption: 'Piquets en ligne : facteur λ', focus: { x: 0.39, y: 0.27, w: 0.58, h: 0.3 } },
     { type: 'image', source: SLIDES['earth-27'], caption: 'Piquets en carré creux' },
     { type: 'image', source: SLIDES['earth-30'], caption: 'Résistance globale du système' },
 
-    { type: 'heading', text: '7 · Si la résistance est trop élevée, et comment la mesurer' },
+    { type: 'heading', text: '4 · Si la résistance est trop élevée, et comment la mesurer' },
     {
       type: 'bullets',
       items: [

@@ -154,7 +154,7 @@ export const pvDesignStepsContent: TopicContent = {
     { type: 'formula', text: 'Exemple : plage « V_bat + 2 V à 72 V » avec une batterie 24 V → 26 à 72 V → milieu ≈ 49 V' },
     { type: 'illustration', name: 'mppt-window', props: { max: 100, design: 49, rangeMin: 26, rangeMax: 72 }, caption: 'Viser le milieu de la plage MPPT' },
     { type: 'image', source: require('../../../../assets/reference/solar/example1/15_mppt_range_note.webp'), caption: 'Cours — note importante sur la plage MPPT' },
-    { type: 'image', source: require('../../../../assets/reference/solar/example1/16_mppt_range_tracer.webp'), caption: 'Cours — régulateur Tracer : plage V_bat + 2 V à 72 V, 100 V max' },
+    { type: 'image', source: require('../../../../assets/reference/solar/example1/16_mppt_range_tracer.webp'), caption: 'Cours — régulateur Tracer : plage V_bat + 2 V à 72 V, 100 V max', focus: { x: 0.22, y: 0.4, w: 0.5, h: 0.26 } },
 
     { type: 'heading', text: '6 · Raccorder les panneaux' },
     { type: 'formula', text: 'Panneaux en série = V_conception / Voc d’un panneau (arrondi)' },
@@ -195,7 +195,7 @@ export const pvDesignStepsContent: TopicContent = {
     { type: 'formula', text: 'I_entrée = 3 × 1,25 × 10,07 = 37,76 A' },
     { type: 'illustration', name: 'pv-system', props: { highlight: 'wiring' }, caption: 'Les panneaux raccordés au régulateur' },
     { type: 'illustration', name: 'pv-array', props: { series: 2, parallel: 3, voc: 38.9 }, caption: '2 panneaux en série × 3 chaînes en parallèle' },
-    { type: 'image', source: require('../../../../assets/reference/solar/example1/19_nec_690_7a.png'), caption: 'NEC Table 690.7(A) — facteurs de correction de tension' },
+    { type: 'image', source: require('../../../../assets/reference/solar/example1/19_nec_690_7a.png'), caption: 'NEC Table 690.7(A) — facteurs de correction de tension', focus: { x: 0.3, y: 0.42, w: 0.48, h: 0.47 } },
     {
       type: 'note',
       text: "⚠️ Toujours comparer la tension à froid et le courant d'entrée aux limites de la fiche technique du régulateur.",

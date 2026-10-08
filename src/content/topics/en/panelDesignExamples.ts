@@ -44,7 +44,7 @@ export const panelDesignExamplesContent: TopicContent = {
     { type: 'note', text: '💡 The grouping factor is taken as 1 in the course; only the 0.82 temperature factor (PVC at 50 °C) applies.' },
     { type: 'image', source: SLIDES['paneldes-4'], caption: '30 HP motor breaker: 63 A' },
     { type: 'image', source: SLIDES['paneldes-5'], caption: '30 HP motor cable: 77 A' },
-    { type: 'image', source: SLIDES['paneldes-6'], caption: 'Choosing 4×16 + 16 mm² in the catalogue' },
+    { type: 'image', source: SLIDES['paneldes-6'], caption: 'Choosing 4×16 + 16 mm² in the catalogue', focus: { x: 0.17, y: 0.18, w: 0.55, h: 0.44 } },
 
     { type: 'heading', text: 'Main breaker and incoming cable' },
     { type: 'formula', text: 'I_main = 1.25 × I_largest + DF × Σ I_others' },
