@@ -30,7 +30,7 @@ export const climSystemChoiceContent: TopicContent = {
       items: [
         'Rooftop (single-zone roof unit): 7 to 120 kW, 1,500 to 20,000 m³/h, installed on the roof.',
         'Multizone plant: 35 to 460 kW, up to 100,000 m³/h, serving 6 to 20 zones.',
-        'Chilled-water plant: a chiller produces cold water distributed to terminals (fan coils, AHUs) — see section 5.',
+        'Chilled-water plant: a chiller produces cold water distributed to terminals (fan coils, AHUs) — see the “Central air conditioning” section.',
       ],
     },
     { type: 'illustration', name: 'clim-systems', props: { highlight: 'large' }, caption: 'Beyond 75 kW: central plants' },

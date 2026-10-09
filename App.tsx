@@ -193,8 +193,8 @@ function AppShell() {
               flat={CLIM_FLAT_LESSONS}
               title={['Climatisation en région tropicale', 'Air conditioning in tropical regions']}
               subtitle={[
-                'Du confort au bilan thermique, du split à la centrale à eau glacée, jusqu’au bâtiment sobre : un parcours pensé pour débuter, d’après le guide IEPF « Efficacité énergétique de la climatisation en région tropicale ».',
-                'From comfort to the heat balance, from the split to the chilled-water plant, to the efficient building: a beginner-friendly journey based on the IEPF guide “Energy efficiency of air conditioning in tropical regions”.',
+                'Du confort au bilan thermique, du circuit frigorifique au dépannage, du split à la centrale à eau glacée : un parcours pensé pour débuter, d’après le guide IEPF « Efficacité énergétique de la climatisation en région tropicale » et le livre « ABC de la climatisation ».',
+                'From comfort to the heat balance, from the refrigerant circuit to troubleshooting, from the split to the chilled-water plant: a beginner-friendly journey based on the IEPF guide “Energy efficiency of air conditioning in tropical regions” and the book “ABC de la climatisation”.',
               ]}
               hero={{ name: 'clim-heat-gains' }}
             />

@@ -28,6 +28,22 @@ import {
   RoomAirflow,
   SystemLadder,
 } from './sceneClim';
+import {
+  CompressorTypes,
+  ControlResponse,
+  DataCenterAisles,
+  DiagnosisMatrix,
+  FourWayValve,
+  HeatingCurve,
+  InstallSteps,
+  ManifoldSetup,
+  PhDiagram,
+  PressureScale,
+  PsychroProcess,
+  StarDelta,
+  SuperheatSubcooling,
+  ThreeWayValve,
+} from './sceneTech';
 import { BatteryBank, MpptWindow, PeakSunHours, PvArray, PvStc, PvSystem, PvWaveforms } from './sceneSolar';
 
 export type IllustrationProps = Record<string, string | number | boolean | undefined>;
@@ -126,6 +142,34 @@ export function Illustration({ name, props, lang }: { name: string; props?: Illu
       return <BuildingDesign lang={lang} />;
     case 'clim-energy':
       return <EnergyBreakdown lang={lang} />;
+    case 'tech-ph':
+      return <PhDiagram lang={lang} highlight={typeof p.highlight === 'string' ? p.highlight : undefined} />;
+    case 'tech-sh-sc':
+      return <SuperheatSubcooling lang={lang} />;
+    case 'tech-psychro':
+      return <PsychroProcess lang={lang} variant={typeof p.variant === 'string' ? p.variant : undefined} />;
+    case 'tech-compressors':
+      return <CompressorTypes lang={lang} />;
+    case 'tech-manifold':
+      return <ManifoldSetup lang={lang} mode={typeof p.mode === 'string' ? p.mode : undefined} />;
+    case 'tech-4way':
+      return <FourWayValve lang={lang} />;
+    case 'tech-3way':
+      return <ThreeWayValve lang={lang} />;
+    case 'tech-stardelta':
+      return <StarDelta lang={lang} />;
+    case 'tech-pid':
+      return <ControlResponse lang={lang} />;
+    case 'tech-datacenter':
+      return <DataCenterAisles lang={lang} />;
+    case 'tech-diagnosis':
+      return <DiagnosisMatrix lang={lang} />;
+    case 'tech-install':
+      return <InstallSteps lang={lang} />;
+    case 'tech-heating-curve':
+      return <HeatingCurve lang={lang} />;
+    case 'tech-pressure':
+      return <PressureScale lang={lang} />;
     default:
       return null;
   }

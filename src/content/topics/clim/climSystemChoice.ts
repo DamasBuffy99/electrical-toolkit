@@ -30,7 +30,7 @@ export const climSystemChoiceContent: TopicContent = {
       items: [
         'Rooftop (centrale de toiture unizone) : 7 à 120 kW, 1 500 à 20 000 m³/h, posé sur le toit.',
         'Centrale multizone : 35 à 460 kW, jusqu’à 100 000 m³/h, dessert 6 à 20 zones.',
-        'Centrale à eau glacée : un groupe produit de l’eau froide distribuée à des terminaux (ventilo-convecteurs, CTA) — voir la section 5.',
+        'Centrale à eau glacée : un groupe produit de l’eau froide distribuée à des terminaux (ventilo-convecteurs, CTA) — voir la section « La climatisation centralisée ».',
       ],
     },
     { type: 'illustration', name: 'clim-systems', props: { highlight: 'large' }, caption: 'Au-delà de 75 kW : centrales' },
