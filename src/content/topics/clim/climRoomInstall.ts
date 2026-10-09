@@ -90,6 +90,7 @@ export const climRoomInstallContent: TopicContent = {
       type: 'text',
       text: "Le plus courant : des tubes de cuivre (9 à 16 mm) à ailettes d’aluminium (pas de 1 à 4 mm), refroidis par un ou plusieurs ventilateurs. En ambiance marine ou industrielle, on protège les ailettes contre la corrosion (film plastique, traitements de type Blygold…). Les armoires à condenseur à air existent en compact (4 à 120 kW, assez bruyantes), en split avec condenseur séparé sur le toit (12 à 220 kW) et en rooftop (7 à 350 kW).",
     },
+    { type: 'warning', text: "Le guide donne deux plages pour les rooftops : 7 à 120 kW au chapitre 3, 7 à 350 kW au chapitre 4. Les deux existent selon les constructeurs ; pour un avant-projet, retenez 7 à 120 kW comme gamme courante." },
     fig('p103_0', 'Figure 4.23 — armoire de climatisation avec condenseur à l’extérieur'),
     { type: 'subheading', text: 'Le condenseur à eau' },
     {
@@ -122,5 +123,23 @@ export const climRoomInstallContent: TopicContent = {
       ],
     },
     { type: 'note', text: 'Avec les systèmes split, le condenseur à air s’est imposé : économie totale d’eau, pas de canalisations hydrauliques, entretien facile.' },
+    { type: 'heading', text: "Exercices" },
+    {
+      type: 'exercise',
+      question: "Un climatiseur a une puissance acoustique Lw = 55 dB(A). Il est installé dans un bureau de 60 m² × 3 m ; l’occupant est à 3 m. Quel niveau entend-il ? Est-ce acceptable pour un petit bureau ?",
+      solution: [
+        "V = 180 m³ ; Lp = 55 − 5 log 180 − 10 log 3 + 3.",
+        "5 log 180 = 11,3 ; 10 log 3 = 4,8 → Lp = 55 − 11,3 − 4,8 + 3 ≈ 42 dB(A).",
+        "Petit bureau : 30 / 35 / 40 dB(A) → trop bruyant même en niveau « minimal ». Choisir un appareil plus silencieux ou l’éloigner de l’occupant.",
+      ],
+    },
+    {
+      type: 'exercise',
+      question: "Une salle informatique doit être climatisée toute l’année, y compris les nuits d’harmattan à 15 °C. Quel équipement faut-il prévoir sur le condenseur, et pourquoi ?",
+      solution: [
+        "Sous 17 °C extérieurs, le condenseur devient trop efficace : la pression chute, l’évaporateur perd de la puissance et la sécurité basse pression peut arrêter l’appareil.",
+        "Il faut une régulation du ventilateur de condenseur (vitesse variable ou au minimum tout ou rien), pilotée par pressostat ou thermostat.",
+      ],
+    },
   ],
 };

@@ -30,6 +30,7 @@ export const climCentralSystemsContent: TopicContent = {
         'Dual-duct (hot/cold) systems are reserved for very strict requirements: unsuited to ordinary needs in hot countries.',
       ],
     },
+    { type: 'warning', text: "Chapter 3 says a central unit handles flows “up to 20,000 m³/h”, while chapter 5 gives 1,000 to 100,000 m³/h for a constant-volume AHU. The first figure matches common packaged units, the second large custom AHUs." },
     fig('p112_0', 'Figure 5.2 — single-duct constant-volume plant'),
     { type: 'illustration', name: 'clim-central', props: { highlight: 'ahu' }, caption: 'The AHU: it treats the air (and fresh air) before distributing it' },
     { type: 'subheading', text: 'The rooftop' },
@@ -118,6 +119,25 @@ export const climCentralSystemsContent: TopicContent = {
         'Installations where air is supplied from bottom to top (displacement) are the most expensive.',
         'Air/water systems are very attractive in running costs: they are the only ones used in high-rise buildings.',
         'Variable-volume all-air systems pay off if operation means reduced flows for much of the year.',
+      ],
+    },
+    { type: 'heading', text: "Exercises" },
+    {
+      type: 'exercise',
+      question: "To carry 10 kW of cooling, compare the water flow (5 K difference) and the air flow (10 K difference) needed. What do you conclude?",
+      solution: [
+        "Water: m = 10 / (4.18 × 5) = 0.48 kg/s ≈ 1.7 m³/h.",
+        "Air: qv = 10,000 / (0.33 × 10) ≈ 3,030 m³/h.",
+        "About 1,800 times more air volume than water: a pump uses far less energy than a fan. That is why air/water systems are cheaper to run than all-air.",
+      ],
+    },
+    {
+      type: 'exercise',
+      question: "A single-storey supermarket (one large hall) hesitates between fan coils and a rooftop. What do you advise?",
+      solution: [
+        "One large hall with a uniform load under an accessible roof: the textbook application of a rooftop (single-zone direct-expansion unit).",
+        "Fan coils make sense when many rooms must be controlled separately (hotel, offices).",
+        "Watch out: the energy cost of the rooftop fans — provide variable speed and good maintenance.",
       ],
     },
   ],

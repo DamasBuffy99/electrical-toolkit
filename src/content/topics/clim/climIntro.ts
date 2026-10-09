@@ -90,6 +90,7 @@ export const climIntroContent: TopicContent = {
       type: 'text',
       text: 'Ce n’est pas un point unique mais une plage : à Douala, on reste confortable entre 23,9 et 28,3 °C ; à Abidjan entre 24,2 et 28 °C. Plus largement, la zone de confort tropicale va d’environ 20 à 27 °C avec 20 à 80 % d’humidité.',
     },
+    { type: 'warning', text: "Incohérence du guide : le tableau 1.4 recommande 28,5 °C à Garoua, alors que la zone de confort donnée au chapitre 6 (figure 6.1) s’arrête à 27 °C. Les valeurs du tableau 1.4 viennent d’études de terrain (occupants habitués à la chaleur) ; en conception, restez dans 24–27 °C sauf justification." },
     fig('p021_1', 'Tableau 1.5 — zones de confort thermique de Douala et Abidjan'),
     fig('p158_0', 'Figure 6.1 — zone de confort et types de climat (diagramme de l’air humide)'),
 
@@ -117,6 +118,24 @@ export const climIntroContent: TopicContent = {
     {
       type: 'note',
       text: 'À retenir : un bon projet de climatisation commence par les bonnes données — ville, mois de base, conditions extérieures et intérieures. Tout le reste du calcul en découle.',
+    },
+    { type: 'heading', text: "Exercices" },
+    {
+      type: 'exercise',
+      question: "On conçoit deux bureaux : l’un à Cotonou, l’autre à Niamey. Pour chacun, donnez la zone climatique, le mois de base probable et le problème principal que devra traiter le climatiseur.",
+      solution: [
+        "Cotonou : climat tropical humide, mois de base février. Il faut refroidir ET déshumidifier (air proche de la saturation).",
+        "Niamey : climat désertique / sahélien, mois de base avril (comme Ouagadougou). Il faut surtout refroidir un air très chaud mais sec ; un refroidissement par évaporation peut même aider.",
+      ],
+    },
+    {
+      type: 'exercise',
+      question: "À Douala (32 °C dehors), un client règle son split sur 20 °C. Citez deux problèmes et proposez une consigne.",
+      solution: [
+        "1. Écart de 12 °C avec l’extérieur : choc thermique en entrant et sortant (la limite conseillée est 6 °C).",
+        "2. Consommation : environ −3 % de COP par degré, soit ~18 % de performance perdue par rapport à 26 °C, et un compresseur qui tourne en permanence.",
+        "Consigne conseillée : 32 − 6 = 26 °C.",
+      ],
     },
   ],
 };

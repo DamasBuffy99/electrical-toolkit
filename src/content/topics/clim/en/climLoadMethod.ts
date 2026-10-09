@@ -108,6 +108,7 @@ export const climLoadMethodContent: TopicContent = {
       type: 'text',
       text: 'A small margin is usually added for uncertainties. The guide recommends 0 to 5 % maximum: beyond that, you increase the equipment price, operating cost and subscribed power, and the machine dehumidifies less well.',
     },
+    { type: 'warning', text: "The guide contradicts itself on rounding: chapter 1 advises a capacity “equal to or slightly above” the balance (sometimes below), chapter 3 says it is “better to choose a unit just below”, and its example picks 8.5 kW for 7.4 kW calculated (+15 %, beyond the 5 % safety margin). Practical rule: take the closest model; if it is smaller, check it covers at least the latent load." },
     { type: 'formula', text: 'Selected capacity = QT × (1 + 0 to 0.05)' },
 
     { type: 'heading', text: '5 · Electrical power to subscribe' },
@@ -131,5 +132,26 @@ export const climLoadMethodContent: TopicContent = {
     },
     fig('p039_0', 'Table 1.19 — power factor by country'),
     { type: 'note', text: 'The subscription is set by the apparent power (VA), not the cooling capacity: an 8.5 kW split only needs ~4 kVA.' },
+    { type: 'heading', text: "Exercises" },
+    {
+      type: 'exercise',
+      question: "A building has 3 splits rated 1,200 W and 1 split rated 2,000 W. Ks = 0.8, Ku = 1 and cos φ = 0.86 (Côte d’Ivoire). What power must be subscribed?",
+      solution: [
+        "Pn = 3 × 1,200 + 2,000 = 5,600 W.",
+        "Pat = 5,600 × 0.8 × 1 = 4,480 W.",
+        "tan φ = tan(arccos 0.86) ≈ 0.593 → Qat = 4,480 × 0.593 ≈ 2,658 var.",
+        "Sa = √(4,480² + 2,658²) ≈ 5,210 VA → subscribe about 5.2 kVA.",
+      ],
+    },
+    {
+      type: 'exercise',
+      question: "A room’s balance gives 3.2 kW. The catalogue offers 2.6 kW, 3.5 kW and 5.3 kW. Which model should you choose?",
+      solution: [
+        "Maximum 5 % margin: 3.2 × 1.05 = 3.36 kW.",
+        "2.6 kW covers only 81 % of the balance: too tight, the room will not hold the setpoint in the hottest hours.",
+        "3.5 kW is 9 % above: the closest model, acceptable (check its dehumidification capacity).",
+        "5.3 kW (+66 %): oversized, to avoid.",
+      ],
+    },
   ],
 };

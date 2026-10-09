@@ -115,5 +115,24 @@ export const climRoomAirContent: TopicContent = {
       ],
     },
     { type: 'note', text: 'Think about access too: a hard-to-reach evaporator will be expensive to maintain and service.' },
+    { type: 'heading', text: "Exercises" },
+    {
+      type: 'exercise',
+      question: "A 6 × 4 m office with a 3 m ceiling gets a wall split. Where should it go, what air speed should be targeted, and at which fan speed should the unit be selected?",
+      solution: [
+        "High on the short (4 m) wall, blowing horizontally under the ceiling along the 6 m length, outside the occupied zone.",
+        "Speed in the occupied zone: 0.12 m/s maximum (offices, table 4.1).",
+        "Select the capacity at MEDIUM fan speed, so the jet does not drop onto occupants at reduced speed.",
+      ],
+    },
+    {
+      type: 'exercise',
+      question: "A return grille must extract 900 m³/h in the occupied zone, near seats. What area is needed?",
+      solution: [
+        "Recommended speed near seats: 2.5 to 3.5 m/s → take 3 m/s.",
+        "Flow: 900 / 3,600 = 0.25 m³/s.",
+        "Area: S = 0.25 / 3 = 0.083 m², e.g. a 30 × 28 cm grille (free area).",
+      ],
+    },
   ],
 };

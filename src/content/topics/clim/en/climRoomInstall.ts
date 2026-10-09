@@ -90,6 +90,7 @@ export const climRoomInstallContent: TopicContent = {
       type: 'text',
       text: 'The most common: copper tubes (9 to 16 mm) with aluminium fins (1 to 4 mm pitch), cooled by one or more fans. In marine or industrial environments the fins are protected against corrosion (plastic film, Blygold-type coatings…). Air-cooled packaged units come as compact units (4 to 120 kW, rather noisy), split units with a separate condenser on the roof (12 to 220 kW) and rooftops (7 to 350 kW).',
     },
+    { type: 'warning', text: "The guide gives two ranges for rooftops: 7 to 120 kW in chapter 3, 7 to 350 kW in chapter 4. Both exist depending on manufacturers; for preliminary design, use 7 to 120 kW as the common range." },
     fig('p103_0', 'Figure 4.23 — packaged unit with outdoor condenser'),
     { type: 'subheading', text: 'Water-cooled condenser' },
     {
@@ -122,5 +123,23 @@ export const climRoomInstallContent: TopicContent = {
       ],
     },
     { type: 'note', text: 'With split systems, the air-cooled condenser has won: no water at all, no hydraulic piping, easy maintenance.' },
+    { type: 'heading', text: "Exercises" },
+    {
+      type: 'exercise',
+      question: "An air conditioner has a sound power Lw = 55 dB(A). It is installed in a 60 m² × 3 m office; the occupant sits 3 m away. What level does he or she hear? Is it acceptable for a small office?",
+      solution: [
+        "V = 180 m³; Lp = 55 − 5 log 180 − 10 log 3 + 3.",
+        "5 log 180 = 11.3; 10 log 3 = 4.8 → Lp = 55 − 11.3 − 4.8 + 3 ≈ 42 dB(A).",
+        "Small office: 30 / 35 / 40 dB(A) → too noisy even at the “minimum” level. Choose a quieter unit or move it away from the occupant.",
+      ],
+    },
+    {
+      type: 'exercise',
+      question: "A server room must be cooled all year, including 15 °C harmattan nights. What must be fitted on the condenser, and why?",
+      solution: [
+        "Below 17 °C outdoors, the condenser becomes too effective: pressure drops, the evaporator loses capacity and the low-pressure safety can stop the unit.",
+        "Condenser fan control is required (variable speed or at least on/off), driven by a pressure switch or thermostat.",
+      ],
+    },
   ],
 };

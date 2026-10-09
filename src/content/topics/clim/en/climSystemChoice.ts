@@ -132,5 +132,23 @@ export const climSystemChoiceContent: TopicContent = {
       type: 'note',
       text: 'No system fits every case: each project deserves a study weighing construction constraints, service to users, investment AND operating budgets, comfort and energy efficiency.',
     },
+    { type: 'heading', text: "Exercises" },
+    {
+      type: 'exercise',
+      question: "Suggest a family of system for: (a) a stand-alone 2 kW office; (b) a bank with a 40 kW counter hall and 10 offices of 3 kW; (c) a 300-room hotel.",
+      solution: [
+        "(a) ≤ 2.5 kW: window unit or, better, a split (quieter).",
+        "(b) Splits in the offices; a packaged unit or rooftop for the 40 kW hall (the typical layout of medium banks in Africa).",
+        "(c) Chilled-water plant with fan coils in the rooms: empty rooms can be switched off and quickly brought back to temperature.",
+      ],
+    },
+    {
+      type: 'exercise',
+      question: "A “high-end” hotel wants to cool its rooms with window units. Which criterion rules this out?",
+      solution: [
+        "Noise: at night, a high-end hotel room must stay below 25 dB(A) (table 3.1).",
+        "A window unit has the compressor and condenser in the room: it is the noisiest unit. A split, or better fan coils, is needed.",
+      ],
+    },
   ],
 };

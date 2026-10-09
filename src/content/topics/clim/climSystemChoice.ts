@@ -132,5 +132,23 @@ export const climSystemChoiceContent: TopicContent = {
       type: 'note',
       text: 'Aucun système ne répond à tous les cas : chaque projet mérite une étude qui pèse contraintes de construction, service rendu, budget d’investissement ET d’exploitation, confort et efficacité énergétique.',
     },
+    { type: 'heading', text: "Exercices" },
+    {
+      type: 'exercise',
+      question: "Proposez une famille de système pour : (a) un bureau isolé de 2 kW ; (b) une banque avec un hall de guichets de 40 kW et 10 bureaux de 3 kW ; (c) un hôtel de 300 chambres.",
+      solution: [
+        "(a) ≤ 2,5 kW : window ou, mieux, split (plus silencieux).",
+        "(b) Splits dans les bureaux ; armoire ou rooftop pour le hall de 40 kW (configuration typique des banques moyennes en Afrique).",
+        "(c) Centrale à eau glacée avec ventilo-convecteurs dans les chambres : on peut couper les chambres inoccupées et les remettre vite en température.",
+      ],
+    },
+    {
+      type: 'exercise',
+      question: "Un hôtel « grand standing » veut climatiser ses chambres avec des climatiseurs de fenêtre. Quel critère s’y oppose ?",
+      solution: [
+        "Le bruit : la nuit, une chambre grand standing doit rester sous 25 dB(A) (tableau 3.1).",
+        "Le window a compresseur et condenseur dans la pièce : c’est l’appareil le plus bruyant. Il faut un split, ou mieux des ventilo-convecteurs.",
+      ],
+    },
   ],
 };

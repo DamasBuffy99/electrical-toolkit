@@ -81,6 +81,7 @@ export const climCentralNetworksContent: TopicContent = {
     { type: 'subheading', text: 'Les pertes de charge' },
     { type: 'formula', text: 'Linéaires : ΔPl = j × L   (j en Pa/m lu sur l’abaque, L en m)' },
     { type: 'formula', text: 'Singulières (coudes, tés…) : ΔPs = ζ × ρ × V² / 2' },
+    { type: 'warning', text: "Coquille dans le guide : la perte de charge singulière y est imprimée ΔPs = (ζ·ρ·V²) / (2·j). La formule correcte est ΔPs = ζ·ρ·V²/2 (le guide l’écrit d’ailleurs correctement, 0,5·ζ·ρ·V², pour les circuits d’eau)." },
     { type: 'formula', text: 'Diamètre équivalent d’une gaine rectangulaire a × b : φe = 1,265 × [ (a·b)³ / (a + b) ]^0,2' },
     fig('p141_0', 'Figure 5.32 — abaque des pertes de charge de l’air dans les conduits circulaires'),
     { type: 'subheading', text: 'Trois méthodes de dimensionnement' },
@@ -135,6 +136,7 @@ export const climCentralNetworksContent: TopicContent = {
         'Pompes : choisies sur hauteur manométrique et débit ; réglage par variation de vitesse (le mieux), changement de roue, bridage ou by-pass.',
       ],
     },
+    { type: 'warning', text: "Coquille dans le tableau 5.12 : pour le DN 100, le diamètre extérieur est imprimé 14,3 mm ; il faut lire 114,3 mm." },
     fig('p149_0', 'Tableau 5.12 — vitesses maximales dans les tuyauteries d’eau glacée (acier et cuivre)'),
 
     { type: 'heading', text: 'Le bruit des centrales' },
@@ -143,5 +145,23 @@ export const climCentralNetworksContent: TopicContent = {
       text: 'Presque chaque composant est à la fois source et atténuateur de bruit. Un ventilateur est le plus silencieux à son point de rendement maximal ; les gaines isolées, les bouches et les silencieux atténuent. Dans le local technique : supports antivibratiles, manchettes souples, silencieux sur les gaines.',
     },
     fig('p154_1', 'Figure 5.37 — protection contre les bruits émis par un local technique'),
+    { type: 'heading', text: "Exercices" },
+    {
+      type: 'exercise',
+      question: "Les ventilo-convecteurs d’un hôtel demandent 400 kW. Quelle puissance de groupe retenir en avant-projet, et comment la répartir ?",
+      solution: [
+        "P brute ≈ P utile × 1,05 = 420 kW (pompage et apports des tuyauteries).",
+        "Fractionner en 2 groupes de 210 kW (ou 3 de 140 kW) en parallèle : on suit la charge à mi-saison et on garde du froid pendant l’entretien d’un groupe.",
+      ],
+    },
+    {
+      type: 'exercise',
+      question: "Une gaine de bureaux transporte 3 600 m³/h. Dimensionnez-la par la méthode de la vitesse (4 m/s). Quel est le diamètre équivalent d’une gaine rectangulaire de 600 × 400 mm ?",
+      solution: [
+        "Débit : 3 600 / 3 600 = 1 m³/s ; S = 1 / 4 = 0,25 m² → par exemple 500 × 500 mm ou un conduit circulaire de Ø 564 mm.",
+        "φe = 1,265 × [ (0,6 × 0,4)³ / (0,6 + 0,4) ]^0,2 = 1,265 × (0,013 82)^0,2 ≈ 1,265 × 0,425 ≈ 0,54 m.",
+        "La gaine 600 × 400 équivaut donc à un conduit circulaire d’environ 540 mm pour les pertes de charge.",
+      ],
+    },
   ],
 };

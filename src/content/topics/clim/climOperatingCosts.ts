@@ -79,6 +79,7 @@ export const climOperatingCostsContent: TopicContent = {
         ['Total C', '', '37 775'],
       ],
     },
+    { type: 'warning', text: "Coquilles dans les tableaux de l’exemple : certaines durées et énergies ont perdu un zéro à l’impression (150 h au lieu de 1 500 h, 1 350 kWh au lieu de 13 500, 1 600 au lieu de 16 000, 1 050 au lieu de 10 500). Le total de 61 120 kWh n’est juste qu’avec les valeurs complètes. Le dégivrage fait exactement 6 × 0,25 × 4 × 365 = 2 190 kWh (le guide arrondit à 2 188)." },
     { type: 'formula', text: 'EF = 61 120 kWh/an  →  COE = 61 120 / 37 775 = 1,62' },
     {
       type: 'note',
@@ -121,5 +122,32 @@ export const climOperatingCostsContent: TopicContent = {
       text: 'À la réception d’une installation, exigez : les plans et schémas d’exécution, la notice de fonctionnement et de réglage, la notice d’entretien et de diagnostic, et la liste des pièces de rechange préconisées.',
     },
     { type: 'illustration', name: 'clim-cycle', caption: 'Pour finir : un cycle bien réglé, un condenseur propre, une consigne raisonnable' },
+    { type: 'heading', text: "Exercices" },
+    {
+      type: 'exercise',
+      question: "Un compresseur (rendement de Carnot 0,5) évapore à 5 °C. Comparez son COP si le condenseur est à 50 °C (en plein soleil) ou à 40 °C (à l’ombre, bien ventilé).",
+      solution: [
+        "To = 278 K. À 50 °C : Eth = 278 / 45 = 6,18 → COP ≈ 0,5 × 6,18 = 3,1.",
+        "À 40 °C : Eth = 278 / 35 = 7,94 → COP ≈ 4,0.",
+        "Un condenseur bien placé améliore le COP d’environ 28 % : autant d’électricité en moins.",
+      ],
+    },
+    {
+      type: 'exercise',
+      question: "Un ventilateur d’évaporateur de 0,3 kW tourne en permanence. Le compresseur ne fonctionne que 4 000 h/an. Combien économise-t-on en asservissant le ventilateur au compresseur ?",
+      solution: [
+        "En permanence : 0,3 × 8 760 = 2 628 kWh/an.",
+        "Asservi : 0,3 × 4 000 = 1 200 kWh/an.",
+        "Économie : 1 428 kWh/an (mais le brassage d’air s’arrête : à décider selon le confort recherché).",
+      ],
+    },
+    {
+      type: 'exercise',
+      question: "Une installation de climatisation produit 120 000 kWh de froid par an et consomme 45 000 kWh d’électricité. Calculez son COE et concluez.",
+      solution: [
+        "COE = 120 000 / 45 000 = 2,67.",
+        "C’est inférieur à 3 (et même à 2,9, seuil d’interdiction aux États-Unis) : vérifier l’entretien (condenseur, filtres, charge en fluide), les réglages et les auxiliaires.",
+      ],
+    },
   ],
 };

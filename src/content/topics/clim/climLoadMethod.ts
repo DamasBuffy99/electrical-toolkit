@@ -108,6 +108,7 @@ export const climLoadMethodContent: TopicContent = {
       type: 'text',
       text: "Il est d’usage d’ajouter une petite marge pour les incertitudes. Le guide conseille 0 à 5 % au maximum : au-delà, on augmente le prix de l’équipement, le coût d’exploitation et la puissance électrique à souscrire, et la machine déshumidifie moins bien.",
     },
+    { type: 'warning', text: "Le guide se contredit sur l’arrondi : au chapitre 1 il conseille une puissance « égale ou légèrement supérieure » au bilan (parfois inférieure), au chapitre 3 il écrit qu’il est « préférable de choisir un appareil juste inférieur », et dans son exemple il retient 8,5 kW pour 7,4 kW calculés (+15 %, au-delà des 5 % de sécurité). Règle pratique : prenez le modèle le plus proche ; s’il est plus petit, vérifiez qu’il couvre au moins la charge latente." },
     { type: 'formula', text: 'Puissance retenue = QT × (1 + 0 à 0,05)' },
 
     { type: 'heading', text: '5 · La puissance électrique à souscrire' },
@@ -131,5 +132,26 @@ export const climLoadMethodContent: TopicContent = {
     },
     fig('p039_0', 'Tableau 1.19 — facteur de puissance selon le pays'),
     { type: 'note', text: 'C’est la puissance apparente (VA) et non la puissance frigorifique qui détermine l’abonnement : un split de 8,5 kW de froid ne demande que ~4 kVA.' },
+    { type: 'heading', text: "Exercices" },
+    {
+      type: 'exercise',
+      question: "Un bâtiment comporte 3 splits de 1 200 W nominal et 1 split de 2 000 W. Ks = 0,8, Ku = 1 et cos φ = 0,86 (Côte d’Ivoire). Quelle puissance faut-il souscrire ?",
+      solution: [
+        "Pn = 3 × 1 200 + 2 000 = 5 600 W.",
+        "Pat = 5 600 × 0,8 × 1 = 4 480 W.",
+        "tan φ = tan(arccos 0,86) ≈ 0,593 → Qat = 4 480 × 0,593 ≈ 2 658 var.",
+        "Sa = √(4 480² + 2 658²) ≈ 5 210 VA → on souscrit environ 5,2 kVA.",
+      ],
+    },
+    {
+      type: 'exercise',
+      question: "Le bilan d’un local donne 3,2 kW. Le catalogue propose 2,6 kW, 3,5 kW et 5,3 kW. Quel modèle retenir ?",
+      solution: [
+        "Marge maximale de 5 % : 3,2 × 1,05 = 3,36 kW.",
+        "2,6 kW couvre seulement 81 % du bilan : trop juste, le local ne tiendra pas la consigne aux heures chaudes.",
+        "3,5 kW dépasse de 9 % : c’est le modèle le plus proche, acceptable (vérifier sa capacité de déshumidification).",
+        "5,3 kW (+66 %) : surdimensionné, à proscrire.",
+      ],
+    },
   ],
 };

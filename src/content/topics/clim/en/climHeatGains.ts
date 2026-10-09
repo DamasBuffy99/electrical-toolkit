@@ -138,6 +138,7 @@ export const climHeatGainsContent: TopicContent = {
         'θe, θi: outdoor and indoor design temperatures; ωe, ωi: the corresponding moisture contents.',
       ],
     },
+    { type: 'warning', text: "Units: formula (5) is written with ω in g/kg, while the conditions table gives ω in kg/kg. The example therefore multiplies by 1,000: QLr = qv × (ωe − ωi) [kg/kg] × 0.84 × 1,000. Do not mix the two units, or the result is off by a factor of 1,000." },
     fig('p033_0', 'Table 1.15 — fresh air per person and occupancy density by type of room'),
 
     { type: 'heading', text: '5 · Occupants' },
@@ -147,6 +148,7 @@ export const climHeatGainsContent: TopicContent = {
       type: 'text',
       text: 'A person gives off sensible heat (skin) and latent heat (sweat, breathing), depending on activity and room temperature. For an office worker at 26 °C: about 63 W sensible and 59 W latent. Table values are for an adult man; reduce by 20 % for women, 20 to 40 % for children and 10 % for a mixed public.',
     },
+    { type: 'warning', text: "Inconsistency in table 1.16: for “light work” at 26 °C it gives 63 W sensible + 59 W latent = 122 W, while the “total emission” column says 116 W (and 25 °C: 67 + 49 = 116, 27 °C: 56 + 60 = 116). The consistent latent value at 26 °C would be 53 W. The Douala example uses 59 W: it overestimates the occupants’ latent load by ~32 W." },
     fig('p034_0', 'Table 1.16 — heat given off by people by activity'),
     { type: 'note', text: 'The number of occupants n comes from the area and the density of table 1.15: 0.10 person/m² for offices, 0.67 for a classroom.' },
 
@@ -156,6 +158,7 @@ export const climHeatGainsContent: TopicContent = {
       type: 'text',
       text: 'All the electricity of a lamp ends up as heat in the room. For fluorescent tubes, add 25 % for the ballast. If the installed power is unknown, use a density in W/m² (table 1.17): 16 W/m² with fluorescent in an office, 65 W/m² with incandescent.',
     },
+    { type: 'warning', text: "Guide inconsistency: formula (8) requires 1.25 × P for fluorescent tubes (ballast), but the worked example computes 16 W/m² × 60 m² = 960 W without that factor (it would give 1,200 W). If you start from a W/m² density of table 1.17, check whether it already includes the ballast; when in doubt, apply 1.25." },
     fig('p035_0', 'Table 1.17 — heat given off by lighting (W/m²)'),
 
     { type: 'heading', text: '7 · Machines and appliances' },
@@ -179,5 +182,36 @@ export const climHeatGainsContent: TopicContent = {
       ],
     },
     { type: 'note', text: 'Choose a unit with a capacity equal to or slightly above the balance (e.g. 2.5 kW for 2.3 kW calculated). If the gap is small, the model just below can also be taken (2.5 kW for 2.7 kW calculated): the balance corresponds to the hottest hour, which does not last.' },
+    { type: 'heading', text: "Exercises" },
+    {
+      type: 'exercise',
+      question: "A 20 m² South wall of rendered 20 cm hollow block (k = 2.09) is painted white. Δθ = 6 °C and Rm = 352 W/m². Calculate the transmission and solar gain. What happens if it is painted a dark colour?",
+      solution: [
+        "Transmission: QStr = 2.09 × 20 × 6 = 251 W.",
+        "F for k = 2.09 ≈ 0.105 (interpolating table 1.12).",
+        "Sun, white wall (α = 0.4): 0.4 × 0.105 × 20 × 352 = 296 W.",
+        "Dark wall (α = 0.7): 0.7 × 0.105 × 20 × 352 = 517 W, i.e. +221 W just because of the colour.",
+      ],
+    },
+    {
+      type: 'exercise',
+      question: "A meeting room in Douala holds 12 people (mixed public, 63 W sensible and 59 W latent each). Fresh air is mechanical: 18 m³/h per person. Calculate the occupant and fresh-air gains (Δθ = 6 °C, Δω = 0.0147 kg/kg).",
+      solution: [
+        "Occupants: QS = 12 × 63 × 0.9 = 680 W; QL = 12 × 59 × 0.9 = 637 W.",
+        "Fresh-air flow: qv = 12 × 18 = 216 m³/h.",
+        "Fresh air sensible: 216 × 6 × 0.33 = 428 W.",
+        "Fresh air latent: 216 × 0.0147 × 0.84 × 1,000 = 2,667 W.",
+        "Partial balance: 1,108 W sensible and 3,304 W latent — in a humid climate, fresh air dominates.",
+      ],
+    },
+    {
+      type: 'exercise',
+      question: "A 2 m² single-glazed window (α = 1) receives Rv = 288 W/m². Compare a half-lowered internal blind (g = 0.63) with an external ecru fabric blind (g = 0.28).",
+      solution: [
+        "Internal blind: 1 × 0.63 × 2 × 288 = 363 W.",
+        "External blind: 1 × 0.28 × 2 × 288 = 161 W.",
+        "The external blind more than halves the gain (−202 W).",
+      ],
+    },
   ],
 };

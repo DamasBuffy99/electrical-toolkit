@@ -79,6 +79,7 @@ export const climOperatingCostsContent: TopicContent = {
         ['Total C', '', '37,775'],
       ],
     },
+    { type: 'warning', text: "Typos in the example tables: some durations and energies lost a zero in print (150 h instead of 1,500 h, 1,350 kWh instead of 13,500, 1,600 instead of 16,000, 1,050 instead of 10,500). The 61,120 kWh total is only right with the full values. Defrost is exactly 6 × 0.25 × 4 × 365 = 2,190 kWh (the guide rounds to 2,188)." },
     { type: 'formula', text: 'EF = 61,120 kWh/yr  →  COE = 61,120 / 37,775 = 1.62' },
     {
       type: 'note',
@@ -121,5 +122,32 @@ export const climOperatingCostsContent: TopicContent = {
       text: 'At handover of an installation, demand: as-built drawings and diagrams, operating and setting manual, maintenance and troubleshooting manual, and the list of recommended spare parts.',
     },
     { type: 'illustration', name: 'clim-cycle', caption: 'To finish: a well-tuned cycle, a clean condenser, a reasonable setpoint' },
+    { type: 'heading', text: "Exercises" },
+    {
+      type: 'exercise',
+      question: "A compressor (Carnot efficiency 0.5) evaporates at 5 °C. Compare its COP with the condenser at 50 °C (full sun) or at 40 °C (shaded, well ventilated).",
+      solution: [
+        "To = 278 K. At 50 °C: Eth = 278 / 45 = 6.18 → COP ≈ 0.5 × 6.18 = 3.1.",
+        "At 40 °C: Eth = 278 / 35 = 7.94 → COP ≈ 4.0.",
+        "A well-placed condenser improves the COP by about 28 %: that much less electricity.",
+      ],
+    },
+    {
+      type: 'exercise',
+      question: "A 0.3 kW evaporator fan runs continuously. The compressor only runs 4,000 h/yr. How much is saved by interlocking the fan with the compressor?",
+      solution: [
+        "Continuous: 0.3 × 8,760 = 2,628 kWh/yr.",
+        "Interlocked: 0.3 × 4,000 = 1,200 kWh/yr.",
+        "Saving: 1,428 kWh/yr (but air mixing stops: decide according to the comfort wanted).",
+      ],
+    },
+    {
+      type: 'exercise',
+      question: "An air-conditioning installation produces 120,000 kWh of cooling per year and uses 45,000 kWh of electricity. Calculate its COE and conclude.",
+      solution: [
+        "COE = 120,000 / 45,000 = 2.67.",
+        "Below 3 (and even below 2.9, the US ban threshold): check maintenance (condenser, filters, refrigerant charge), settings and auxiliaries.",
+      ],
+    },
   ],
 };

@@ -115,5 +115,24 @@ export const climRoomAirContent: TopicContent = {
       ],
     },
     { type: 'note', text: 'Pensez aussi à l’accès : un évaporateur difficile à atteindre coûtera cher en entretien et en service après-vente.' },
+    { type: 'heading', text: "Exercices" },
+    {
+      type: 'exercise',
+      question: "Un bureau de 6 × 4 m, 3 m sous plafond, reçoit un split mural. Où le placer, quelle vitesse d’air viser, et sur quelle vitesse de ventilateur choisir l’appareil ?",
+      solution: [
+        "En haut du petit mur (4 m), soufflant horizontalement sous le plafond sur la longueur de 6 m, hors de la zone d’occupation.",
+        "Vitesse dans la zone occupée : 0,12 m/s maximum (bureaux, tableau 4.1).",
+        "Choisir la puissance sur la vitesse MOYENNE du ventilateur, pour que le jet ne retombe pas sur les occupants en marche réduite.",
+      ],
+    },
+    {
+      type: 'exercise',
+      question: "Une grille de reprise doit aspirer 900 m³/h dans la zone occupée, près des sièges. Quelle section prévoir ?",
+      solution: [
+        "Vitesse conseillée près des sièges : 2,5 à 3,5 m/s → on prend 3 m/s.",
+        "Débit : 900 / 3 600 = 0,25 m³/s.",
+        "Section : S = 0,25 / 3 = 0,083 m², par exemple une grille de 30 × 28 cm (surface libre).",
+      ],
+    },
   ],
 };

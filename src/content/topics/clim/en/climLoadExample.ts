@@ -72,6 +72,7 @@ export const climLoadExampleContent: TopicContent = {
         ['Total', '', '', '', '', '1,168'],
       ],
     },
+    { type: 'warning', text: "Guide inconsistencies in this table: (1) the summary table on page 28 shows 355 W/m² for the West wall, but table 1.14a does give 335 W/m² at 13:00: the summary has a typo, the calculation (232 W) is right; (2) for the single glazing, the guide takes α = 0.86 whereas table 1.11 gives α = 1 — you would get 121 W instead of 104 W, i.e. total radiation of 1,185 W instead of 1,168 W. The totals below remain the guide’s." },
     {
       type: 'text',
       text: 'F = 0.105 is obtained by interpolating table 1.12 for k = 2.09 (k = 2 → 0.10; k = 3 → 0.15). For the door, k = 3.94 gives F ≈ 0.197.',
@@ -83,8 +84,10 @@ export const climLoadExampleContent: TopicContent = {
     { type: 'formula', text: 'QLr = 180 × (0.0255 − 0.0108) × 0.84 × 1000 = 2,222 W' },
     { type: 'subheading', text: 'Occupants (0.1 pers/m² × 60 m² = 6 people, mixed public −10 %)' },
     { type: 'formula', text: 'QSoc = 6 × 63 × 0.9 = 340 W   ;   QLoc = 6 × 59 × 0.9 = 318 W' },
+    { type: 'warning', text: "The guide takes 59 W latent per person at 26 °C, inconsistent with the 116 W total of its table 1.16 (63 + 53 = 116). With 53 W, QLoc = 286 W instead of 318 W." },
     { type: 'subheading', text: 'Fluorescent lighting (16 W/m²)' },
     { type: 'formula', text: 'Qlight = 16 × 60 = 960 W' },
+    { type: 'warning', text: "Here the guide applies 16 W/m² without the 1.25 fluorescent factor of its own formula (8). With that factor, lighting would be 1,200 W (+240 W)." },
     { type: 'subheading', text: 'Equipment (with usage factor)' },
     {
       type: 'table',
@@ -124,6 +127,7 @@ export const climLoadExampleContent: TopicContent = {
         'Fresh air alone accounts for 2,578 W, i.e. 35 % of the balance: controlling infiltration (closed doors, airtight windows) is essential.',
       ],
     },
+    { type: 'warning', text: "The guide’s software (figure 1.3) finds 4,780 W sensible, 2,612 W latent and 7.39 kW, versus 4,792 / 2,615 / 7.41 kW by hand: small rounding and data differences, normal. Correcting the flagged inconsistencies (glazing α +17 W, fluorescent ballast +240 W, occupants’ latent −32 W), the balance would be about 7.63 kW — still covered by the 8.5 kW split." },
     fig('p046_0', 'Figure 1.3 — breakdown of gains computed by the guide’s software: sunlit walls 43 %, lighting 20 %'),
 
     { type: 'heading', text: 'Step 6 · Choosing the air conditioner' },
@@ -140,6 +144,7 @@ export const climLoadExampleContent: TopicContent = {
         ['Max. refrigerant line length', '25 m'],
       ],
     },
+    { type: 'warning', text: "The chosen split (8.5 kW) exceeds the balance by 15 %, whereas the guide limits the safety factor to 5 % and elsewhere advises the unit “just below”. A 7 to 7.5 kW model would have been more consistent with its own rules, provided it covers the 2.6 kW latent load." },
     { type: 'formula', text: 'COP = 8,500 / 3,280 ≈ 2.6  →  meets the recommended minimum for a split (> 2.6)' },
     fig('p045', 'Guide page 30 — split selection and power to subscribe'),
 
@@ -150,6 +155,26 @@ export const climLoadExampleContent: TopicContent = {
     {
       type: 'note',
       text: 'We will subscribe 4.1 kVA for this office. Summary: 7.4 kW of cooling calculated → 8.5 kW split → 3.3 kW of electricity → 4.1 kVA subscription. Keep these three different powers clearly in mind.',
+    },
+    { type: 'heading', text: "Exercises" },
+    {
+      type: 'exercise',
+      question: "Redo the Douala office without the external blind (g = 1). By how much does the balance increase?",
+      solution: [
+        "Glazing with blind: 0.86 × 0.28 × 1.5 × 288 = 104 W.",
+        "Without blind: 0.86 × 1 × 1.5 × 288 = 372 W, i.e. +268 W.",
+        "New balance: 7,407 + 268 ≈ 7,675 W. A simple ecru fabric saves 3.5 % of the balance.",
+      ],
+    },
+    {
+      type: 'exercise',
+      question: "The same office now hosts 10 people instead of 6. What does the balance become? Is the 8.5 kW split still enough?",
+      solution: [
+        "Occupants sensible: 10 × 63 × 0.9 = 567 W (+227 W).",
+        "Occupants latent: 10 × 59 × 0.9 = 531 W (+213 W).",
+        "Balance: 7,407 + 440 = 7,847 W ≈ 7.85 kW → the 8.5 kW split is still enough (8 % margin).",
+        "Note: with mechanical ventilation (18 m³/h × 10 = 180 m³/h), fresh air does not change here, since it was already 180 m³/h.",
+      ],
     },
   ],
 };

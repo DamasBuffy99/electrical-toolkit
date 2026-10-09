@@ -30,6 +30,7 @@ export const climCentralSystemsContent: TopicContent = {
         'Les systèmes à deux conduits (chaud/froid) sont réservés aux exigences très strictes : inadaptés aux besoins courants des pays chauds.',
       ],
     },
+    { type: 'warning', text: "Le chapitre 3 indique qu’une centrale traite des débits « atteignant 20 000 m³/h », alors que le chapitre 5 parle de 1 000 à 100 000 m³/h pour une CTA à débit constant. Le premier chiffre correspond aux centrales compactes courantes, le second aux grosses CTA sur mesure." },
     fig('p112_0', 'Figure 5.2 — centrale à un conduit à débit d’air constant'),
     { type: 'illustration', name: 'clim-central', props: { highlight: 'ahu' }, caption: 'La CTA : elle traite l’air (et l’air neuf) avant de le distribuer' },
     { type: 'subheading', text: 'Le rooftop' },
@@ -121,6 +122,25 @@ export const climCentralSystemsContent: TopicContent = {
         'Les installations où l’air est soufflé de bas en haut (diffuseurs sources) sont les plus onéreuses.',
         'Les systèmes air/eau sont très intéressants en coût d’exploitation : ce sont les seuls utilisés dans les immeubles de grande hauteur.',
         'Le « tout air » à débit variable est intéressant si l’exploitation implique des débits réduits une grande partie de l’année.',
+      ],
+    },
+    { type: 'heading', text: "Exercices" },
+    {
+      type: 'exercise',
+      question: "Pour transporter 10 kW de froid, comparez le débit d’eau (écart 5 K) et le débit d’air (écart 10 K) nécessaires. Qu’en concluez-vous ?",
+      solution: [
+        "Eau : m = 10 / (4,18 × 5) = 0,48 kg/s ≈ 1,7 m³/h.",
+        "Air : qv = 10 000 / (0,33 × 10) ≈ 3 030 m³/h.",
+        "Il faut ~1 800 fois plus de volume d’air que d’eau : une pompe consomme bien moins qu’un ventilateur. C’est pourquoi les systèmes air/eau coûtent moins cher à l’exploitation que le « tout air ».",
+      ],
+    },
+    {
+      type: 'exercise',
+      question: "Un supermarché de plain-pied (grande salle unique) hésite entre ventilo-convecteurs et rooftop. Que conseillez-vous ?",
+      solution: [
+        "Une grande salle unique, à charge homogène, sous un toit accessible : c’est l’application type du rooftop (centrale unizone à détente directe).",
+        "Les ventilo-convecteurs sont intéressants quand il y a beaucoup de locaux à régler séparément (hôtel, bureaux).",
+        "Point de vigilance : le coût énergétique des ventilateurs du rooftop — prévoir une vitesse variable et un bon entretien.",
       ],
     },
   ],

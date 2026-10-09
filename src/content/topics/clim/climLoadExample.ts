@@ -72,6 +72,7 @@ export const climLoadExampleContent: TopicContent = {
         ['Total', '', '', '', '', '1 168'],
       ],
     },
+    { type: 'warning', text: "Incohérences du guide dans ce tableau : (1) le tableau récapitulatif de la page 28 indique 355 W/m² pour le mur Ouest, mais le tableau 1.14a donne bien 335 W/m² à 13 h : c’est le récapitulatif qui contient une coquille, le calcul (232 W) est juste ; (2) pour le vitrage simple, le guide prend α = 0,86 alors que le tableau 1.11 donne α = 1 — on obtiendrait 121 W au lieu de 104 W, soit un rayonnement total de 1 185 W au lieu de 1 168 W. Les totaux ci-dessous restent ceux du guide." },
     {
       type: 'text',
       text: 'F = 0,105 s’obtient en interpolant le tableau 1.12 pour k = 2,09 (k = 2 → 0,10 ; k = 3 → 0,15). Pour la porte, k = 3,94 donne F ≈ 0,197.',
@@ -83,8 +84,10 @@ export const climLoadExampleContent: TopicContent = {
     { type: 'formula', text: 'QLr = 180 × (0,0255 − 0,0108) × 0,84 × 1000 = 2 222 W' },
     { type: 'subheading', text: 'Occupants (0,1 pers/m² × 60 m² = 6 personnes, public mixte −10 %)' },
     { type: 'formula', text: 'QSoc = 6 × 63 × 0,9 = 340 W   ;   QLoc = 6 × 59 × 0,9 = 318 W' },
+    { type: 'warning', text: "Le guide prend 59 W latents par personne à 26 °C, valeur incohérente avec le total de 116 W de son tableau 1.16 (63 + 53 = 116). Avec 53 W, QLoc = 286 W au lieu de 318 W." },
     { type: 'subheading', text: 'Éclairage fluorescent (16 W/m²)' },
     { type: 'formula', text: 'Qécl = 16 × 60 = 960 W' },
+    { type: 'warning', text: "Le guide applique ici 16 W/m² sans le facteur 1,25 des tubes fluorescents prévu par sa formule (8). Avec ce facteur, l’éclairage vaudrait 1 200 W (+240 W)." },
     { type: 'subheading', text: 'Équipements (avec coefficient d’utilisation)' },
     {
       type: 'table',
@@ -124,6 +127,7 @@ export const climLoadExampleContent: TopicContent = {
         'L’air neuf seul pèse 2 578 W, soit 35 % du bilan : maîtriser les infiltrations (portes fermées, fenêtres étanches) est essentiel.',
       ],
     },
+    { type: 'warning', text: "Le logiciel du guide (figure 1.3) trouve 4 780 W sensibles, 2 612 W latents et 7,39 kW, contre 4 792 / 2 615 / 7,41 kW à la main : petits écarts d’arrondi et de données, normaux. En corrigeant les incohérences signalées (α du vitrage +17 W, ballast des tubes fluorescents +240 W, latent des occupants −32 W), le bilan serait d’environ 7,63 kW — toujours couvert par le split de 8,5 kW." },
     fig('p046_0', 'Figure 1.3 — répartition des apports calculée par le logiciel du guide : murs ensoleillés 43 %, éclairage 20 %'),
 
     { type: 'heading', text: 'Étape 6 · Choisir le climatiseur' },
@@ -143,6 +147,7 @@ export const climLoadExampleContent: TopicContent = {
         ['Liaison frigorifique max.', '25 m'],
       ],
     },
+    { type: 'warning', text: "Le split retenu (8,5 kW) dépasse le bilan de 15 %, alors que le guide limite le coefficient de sécurité à 5 % et conseille ailleurs l’appareil « juste inférieur ». Un modèle de 7 à 7,5 kW aurait été plus cohérent avec ses propres règles, à condition de couvrir les 2,6 kW de charge latente." },
     { type: 'formula', text: 'COP = 8 500 / 3 280 ≈ 2,6  →  conforme au minimum conseillé pour un split (> 2,6)' },
     fig('p045', 'Page 30 du guide — sélection du split et puissance à souscrire'),
 
@@ -153,6 +158,26 @@ export const climLoadExampleContent: TopicContent = {
     {
       type: 'note',
       text: 'On souscrira 4,1 kVA pour ce bureau. Bilan : 7,4 kW de froid calculés → split de 8,5 kW → 3,3 kW électriques → 4,1 kVA d’abonnement. Gardez bien en tête ces trois puissances différentes.',
+    },
+    { type: 'heading', text: "Exercices" },
+    {
+      type: 'exercise',
+      question: "Reprenez le bureau de Douala sans le store extérieur (g = 1). De combien augmente le bilan ?",
+      solution: [
+        "Vitrage avec store : 0,86 × 0,28 × 1,5 × 288 = 104 W.",
+        "Sans store : 0,86 × 1 × 1,5 × 288 = 372 W, soit +268 W.",
+        "Nouveau bilan : 7 407 + 268 ≈ 7 675 W. Une simple toile écrue fait gagner 3,5 % du bilan.",
+      ],
+    },
+    {
+      type: 'exercise',
+      question: "Le même bureau accueille désormais 10 personnes au lieu de 6. Que devient le bilan ? Le split de 8,5 kW suffit-il ?",
+      solution: [
+        "Occupants sensibles : 10 × 63 × 0,9 = 567 W (+227 W).",
+        "Occupants latents : 10 × 59 × 0,9 = 531 W (+213 W).",
+        "Bilan : 7 407 + 440 = 7 847 W ≈ 7,85 kW → le split de 8,5 kW suffit encore (marge de 8 %).",
+        "Attention : si la ventilation devient mécanique (18 m³/h × 10 = 180 m³/h), l’air neuf ne change pas ici, car il valait déjà 180 m³/h.",
+      ],
     },
   ],
 };

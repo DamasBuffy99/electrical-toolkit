@@ -95,6 +95,7 @@ export const climCycleContent: TopicContent = {
         ['24,000 BTU/h', '≈ 7 kWr'],
       ],
     },
+    { type: 'warning', text: "Beware of “HP”: the guide sets 1 HP (CV) = 8,000 BTU/h, but its own software (figure 1.3) shows 3.35 HP for 25,134 BTU/h, i.e. 7,500 BTU/h per HP. In shops, a “1 HP” unit is often 9,000 BTU/h. It is not the mechanical horsepower (736 W): always rely on the kW or BTU/h on the datasheet." },
     fig('p069', 'Guide page 54 — power levels: 1 kWr = 3,412.14 BTU/h and 1 HP = 8,000 BTU/h'),
     {
       type: 'note',
@@ -123,5 +124,25 @@ export const climCycleContent: TopicContent = {
       text: 'In dry climates there is a very economical solution: the evaporative cooler (cooling by evaporating water). Outdoor air goes through a wet pad: the water evaporates by absorbing heat, and the air comes out cooler and more humid, without a compressor. It only works well with dry air (target humidity 40–50 %): useless in Douala, very effective in Niamey or Ouagadougou.',
     },
     fig('p085', 'Page 70 — limits of evaporative cooling (enthalpy h ≤ hi − 1.2 kcal/kg)'),
+    { type: 'heading', text: "Exercises" },
+    {
+      type: 'exercise',
+      question: "A “12,000 BTU/h” split has an EER of 9. Calculate its cooling capacity in kW, its power input, its COP and the heat rejected by the outdoor unit.",
+      solution: [
+        "Cooling capacity: 12,000 / 3,412 = 3.52 kW.",
+        "Power input: 12,000 BTU/h / 9 = 1,333 W.",
+        "COP = 3,517 / 1,333 = 2.64 (or EER / 3.412 = 9 / 3.412).",
+        "Heat rejected Q2 = Q1 + W = 3.52 + 1.33 = 4.85 kW.",
+      ],
+    },
+    {
+      type: 'exercise',
+      question: "Two splits produce 3.5 kW of cooling: A draws 1.4 kW, B draws 1.2 kW. They run 2,000 h/yr at full load and a kWh costs 100 FCFA. Which one should you choose and how much is saved per year?",
+      solution: [
+        "COP A = 3.5 / 1.4 = 2.5 (below the recommended 2.6 minimum for a split); COP B = 3.5 / 1.2 = 2.92.",
+        "Energy A = 1.4 × 2,000 = 2,800 kWh; B = 1.2 × 2,000 = 2,400 kWh.",
+        "Saving with B: 400 kWh/yr, i.e. 40,000 FCFA per year per unit. Choose B.",
+      ],
+    },
   ],
 };

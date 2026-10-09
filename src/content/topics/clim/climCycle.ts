@@ -98,6 +98,7 @@ export const climCycleContent: TopicContent = {
         ['24 000 BTU/h', '≈ 7 kWr'],
       ],
     },
+    { type: 'warning', text: "Attention aux « CV » : le guide pose 1 CV = 8 000 BTU/h, mais son propre logiciel (figure 1.3) affiche 3,35 CV pour 25 134 BTU/h, soit 7 500 BTU/h par CV. Dans le commerce, un « 1 CV » vaut souvent 9 000 BTU/h. Ce n’est pas le cheval-vapeur mécanique (736 W) : fiez-vous toujours aux kW ou BTU/h de la fiche technique." },
     fig('p069', 'Page 54 du guide — niveau de puissance : 1 kWr = 3 412,14 BTU/h et 1 CV = 8 000 BTU/h'),
     {
       type: 'note',
@@ -126,5 +127,25 @@ export const climCycleContent: TopicContent = {
       text: "En climat sec, une solution très économique existe : le ventifraîcheur (refroidissement par évaporation d’eau). L’air extérieur traverse un média humide : l’eau s’évapore en absorbant la chaleur, l’air sort plus frais et plus humide, sans compresseur. Il ne fonctionne bien que si l’air est sec (humidité visée 40–50 %) : inutile à Douala, très efficace à Niamey ou Ouagadougou.",
     },
     fig('p085', 'Page 70 — limites du refroidissement par évaporation (enthalpie h ≤ hi − 1,2 kcal/kg)'),
+    { type: 'heading', text: "Exercices" },
+    {
+      type: 'exercise',
+      question: "Un split « 12 000 BTU/h » a un EER de 9. Calculez sa puissance frigorifique en kW, sa puissance absorbée, son COP et la chaleur rejetée par l’unité extérieure.",
+      solution: [
+        "Puissance frigorifique : 12 000 / 3 412 = 3,52 kW.",
+        "Puissance absorbée : 12 000 BTU/h / 9 = 1 333 W.",
+        "COP = 3 517 / 1 333 = 2,64 (ou EER / 3,412 = 9 / 3,412).",
+        "Chaleur rejetée Q2 = Q1 + W = 3,52 + 1,33 = 4,85 kW.",
+      ],
+    },
+    {
+      type: 'exercise',
+      question: "Deux splits produisent 3,5 kW de froid : A absorbe 1,4 kW, B absorbe 1,2 kW. Ils fonctionnent 2 000 h/an à pleine charge et le kWh coûte 100 FCFA. Lequel choisir et combien économise-t-on par an ?",
+      solution: [
+        "COP A = 3,5 / 1,4 = 2,5 (en dessous du minimum conseillé de 2,6 pour un split) ; COP B = 3,5 / 1,2 = 2,92.",
+        "Énergie A = 1,4 × 2 000 = 2 800 kWh ; B = 1,2 × 2 000 = 2 400 kWh.",
+        "Économie avec B : 400 kWh/an, soit 40 000 FCFA par an et par appareil. On choisit B.",
+      ],
+    },
   ],
 };

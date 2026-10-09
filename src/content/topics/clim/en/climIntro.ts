@@ -84,6 +84,7 @@ export const climIntroContent: TopicContent = {
       type: 'text',
       text: 'It is not a single point but a range: in Douala people stay comfortable between 23.9 and 28.3 °C; in Abidjan between 24.2 and 28 °C. More broadly, the tropical comfort zone runs from about 20 to 27 °C with 20 to 80 % humidity.',
     },
+    { type: 'warning', text: "Guide inconsistency: table 1.4 recommends 28.5 °C in Garoua, whereas the comfort zone given in chapter 6 (figure 6.1) stops at 27 °C. Table 1.4 comes from field studies (occupants used to heat); for design, stay within 24–27 °C unless justified." },
     fig('p021_1', 'Table 1.5 — thermal comfort zones of Douala and Abidjan'),
     fig('p158_0', 'Figure 6.1 — comfort zone and climate types (psychrometric chart)'),
 
@@ -109,5 +110,23 @@ export const climIntroContent: TopicContent = {
       ],
     },
     { type: 'note', text: 'Key point: a good air-conditioning project starts with the right data — city, design month, outdoor and indoor conditions. Everything else follows.' },
+    { type: 'heading', text: "Exercises" },
+    {
+      type: 'exercise',
+      question: "We are designing two offices: one in Cotonou, one in Niamey. For each, give the climate zone, the likely design month and the main problem the air conditioner must handle.",
+      solution: [
+        "Cotonou: humid tropical, design month February. It must cool AND dehumidify (air close to saturation).",
+        "Niamey: desert / Sahelian, design month April (like Ouagadougou). Mainly cool very hot but dry air; evaporative cooling can even help.",
+      ],
+    },
+    {
+      type: 'exercise',
+      question: "In Douala (32 °C outside), a client sets the split to 20 °C. Give two problems and suggest a setpoint.",
+      solution: [
+        "1. 12 °C difference with outside: thermal shock when going in and out (the recommended limit is 6 °C).",
+        "2. Consumption: about −3 % of COP per degree, i.e. ~18 % performance lost compared with 26 °C, and a compressor running non-stop.",
+        "Recommended setpoint: 32 − 6 = 26 °C.",
+      ],
+    },
   ],
 };

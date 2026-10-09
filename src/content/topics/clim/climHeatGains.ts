@@ -138,6 +138,7 @@ export const climHeatGainsContent: TopicContent = {
         'θe, θi : températures extérieure et intérieure de base ; ωe, ωi : teneurs en eau correspondantes.',
       ],
     },
+    { type: 'warning', text: "Unités : la formule (5) est écrite avec ω en g/kg, alors que le tableau des conditions donne ω en kg/kg. L’exemple multiplie donc par 1 000 : QLr = qv × (ωe − ωi) [kg/kg] × 0,84 × 1 000. Ne mélangez pas les deux unités, sinon le résultat est faux d’un facteur 1 000." },
     fig('p033_0', 'Tableau 1.15 — débit d’air neuf par personne et densité d’occupation par type de local'),
 
     { type: 'heading', text: '5 · Les occupants' },
@@ -147,6 +148,7 @@ export const climHeatGainsContent: TopicContent = {
       type: 'text',
       text: 'Une personne dégage de la chaleur sensible (sa peau) et latente (transpiration, respiration), selon son activité et la température du local. Pour un employé de bureau à 26 °C : environ 63 W sensibles et 59 W latents. Les valeurs du tableau sont pour un homme adulte ; on les réduit de 20 % pour des femmes, de 20 à 40 % pour des enfants et de 10 % pour un public mixte.',
     },
+    { type: 'warning', text: "Incohérence du tableau 1.16 : pour le « travail léger » à 26 °C, il donne 63 W sensibles + 59 W latents = 122 W, alors que la colonne « émission totale » indique 116 W (et 25 °C : 67 + 49 = 116, 27 °C : 56 + 60 = 116). La valeur latente cohérente à 26 °C serait 53 W. L’exemple de Douala utilise 59 W : il surestime de ~32 W la charge latente des occupants." },
     fig('p034_0', 'Tableau 1.16 — chaleur dégagée par les personnes selon l’activité'),
     { type: 'note', text: 'Le nombre d’occupants n se déduit de la surface et de la densité du tableau 1.15 : 0,10 personne/m² pour des bureaux, 0,67 pour une salle de classe.' },
 
@@ -156,6 +158,7 @@ export const climHeatGainsContent: TopicContent = {
       type: 'text',
       text: 'Toute l’électricité d’une lampe finit en chaleur dans le local. Pour les tubes fluorescents, on ajoute 25 % pour le ballast. Si la puissance installée n’est pas connue, on prend une densité en W/m² (tableau 1.17) : 16 W/m² en fluorescent pour un bureau, 65 W/m² en incandescent.',
     },
+    { type: 'warning', text: "Incohérence du guide : la formule (8) impose 1,25 × P pour les tubes fluorescents (ballast), mais l’exemple d’application calcule 16 W/m² × 60 m² = 960 W sans ce facteur (il donnerait 1 200 W). Si vous partez d’une densité en W/m² du tableau 1.17, vérifiez si elle inclut déjà le ballast ; dans le doute, appliquez 1,25." },
     fig('p035_0', 'Tableau 1.17 — chaleur dégagée par l’éclairage (W/m²)'),
 
     { type: 'heading', text: '7 · Les machines et appareils' },
@@ -179,5 +182,36 @@ export const climHeatGainsContent: TopicContent = {
       ],
     },
     { type: 'note', text: 'On choisit un appareil de puissance égale ou légèrement supérieure au bilan (ex. 2,5 kW pour 2,3 kW calculés). Si l’écart est faible, on peut aussi prendre le modèle juste en dessous (2,5 kW pour 2,7 kW calculés) : le bilan correspond à l’heure la plus chaude, qui ne dure pas.' },
+    { type: 'heading', text: "Exercices" },
+    {
+      type: 'exercise',
+      question: "Un mur Sud de 20 m² en parpaing creux de 20 cm enduit (k = 2,09) est peint en blanc. Δθ = 6 °C et Rm = 352 W/m². Calculez la transmission et l’apport solaire. Que se passe-t-il s’il est peint en couleur foncée ?",
+      solution: [
+        "Transmission : QStr = 2,09 × 20 × 6 = 251 W.",
+        "F pour k = 2,09 ≈ 0,105 (interpolation du tableau 1.12).",
+        "Soleil, mur blanc (α = 0,4) : 0,4 × 0,105 × 20 × 352 = 296 W.",
+        "Mur foncé (α = 0,7) : 0,7 × 0,105 × 20 × 352 = 517 W, soit +221 W juste à cause de la couleur.",
+      ],
+    },
+    {
+      type: 'exercise',
+      question: "Une salle de réunion à Douala reçoit 12 personnes (public mixte, 63 W sensibles et 59 W latents chacun). L’air neuf est mécanique : 18 m³/h par personne. Calculez les apports des occupants et de l’air neuf (Δθ = 6 °C, Δω = 0,0147 kg/kg).",
+      solution: [
+        "Occupants : QS = 12 × 63 × 0,9 = 680 W ; QL = 12 × 59 × 0,9 = 637 W.",
+        "Débit d’air neuf : qv = 12 × 18 = 216 m³/h.",
+        "Air neuf sensible : 216 × 6 × 0,33 = 428 W.",
+        "Air neuf latent : 216 × 0,0147 × 0,84 × 1 000 = 2 667 W.",
+        "Bilan partiel : 1 108 W sensibles et 3 304 W latents — en climat humide, l’air neuf domine.",
+      ],
+    },
+    {
+      type: 'exercise',
+      question: "Une fenêtre de 2 m² en simple vitrage (α = 1) reçoit Rv = 288 W/m². Comparez un store intérieur à moitié baissé (g = 0,63) et un store extérieur en toile écrue (g = 0,28).",
+      solution: [
+        "Store intérieur : 1 × 0,63 × 2 × 288 = 363 W.",
+        "Store extérieur : 1 × 0,28 × 2 × 288 = 161 W.",
+        "Le store extérieur divise l’apport par plus de 2 (−202 W).",
+      ],
+    },
   ],
 };

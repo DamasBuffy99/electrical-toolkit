@@ -21,6 +21,7 @@ export const climBuildingContent: TopicContent = {
         'Mouvement d’air : il n’est ressenti qu’à partir de 0,2 m/s ; en ventilation, 1,5 m/s est une vitesse moyenne conseillée et 5 m/s devient inconfortable.',
       ],
     },
+    { type: 'warning', text: "Apparente contradiction : le chapitre 6 cite 1,5 m/s comme « vitesse moyenne conseillée dans les locaux », alors que le tableau 4.1 limite l’air à 0,12–0,25 m/s dans la zone d’occupation. Les 1,5 m/s concernent un local ventilé naturellement (brasseur d’air, sensation de fraîcheur) ; dans un local climatisé, respectez le tableau 4.1." },
     fig('p158_0', 'Figure 6.1 — zone de confort et types de climat'),
 
     { type: 'heading', text: 'L’air neuf : juste ce qu’il faut' },
@@ -170,6 +171,32 @@ export const climBuildingContent: TopicContent = {
     {
       type: 'note',
       text: 'Pour convaincre un maître d’ouvrage, complétez Ro par des ratios financiers : coût d’exploitation par m² et par an, coût de réalisation par m². Un investissement en isolation, protections solaires ou vitrages sélectifs se justifie par les économies d’exploitation.',
+    },
+    { type: 'heading', text: "Exercices" },
+    {
+      type: 'exercise',
+      question: "Une façade Ouest et une façade Nord mesurent chacune 30 m² (murs). Quelle surface vitrée maximale conseillez-vous sur chacune ?",
+      solution: [
+        "Façade Nord (ROM 1/3) : 30 / 3 = 10 m² de fenêtres maximum.",
+        "Façade Ouest (ROM 1/4) : 30 / 4 = 7,5 m² maximum — et bien protégées (lames verticales, stores extérieurs).",
+      ],
+    },
+    {
+      type: 'exercise',
+      question: "10 m² de vitrage reçoivent 400 W/m² de soleil. Comparez un vitrage clair (CGS 0,83) et un vitrage sélectif (CGS 0,45). Quelle économie électrique avec un COP de 2,5 ?",
+      solution: [
+        "Clair : 0,83 × 10 × 400 = 3 320 W ; sélectif : 0,45 × 10 × 400 = 1 800 W.",
+        "Charge de climatisation évitée : 1 520 W de froid.",
+        "Électricité économisée : 1 520 / 2,5 ≈ 610 W pendant les heures d’ensoleillement — tout en gardant 70 % de la lumière.",
+      ],
+    },
+    {
+      type: 'exercise',
+      question: "Un immeuble de bureaux de 2 000 m² climatisés consomme 400 000 kWh/an. Est-il performant ?",
+      solution: [
+        "Ro = 400 000 / 2 000 = 200 kWh/m².an.",
+        "Référence du code ivoirien pour un grand immeuble de bureaux : 160 kWh/m².an → +25 %. Il faut chercher les gains : consigne, protections solaires, éclairage, entretien.",
+      ],
     },
   ],
 };

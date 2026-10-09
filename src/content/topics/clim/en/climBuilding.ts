@@ -21,6 +21,7 @@ export const climBuildingContent: TopicContent = {
         'Air movement: it is only felt from 0.2 m/s; in ventilation, 1.5 m/s is a recommended average and 5 m/s becomes uncomfortable.',
       ],
     },
+    { type: 'warning', text: "Apparent contradiction: chapter 6 quotes 1.5 m/s as the “recommended average speed in rooms”, while table 4.1 limits air to 0.12–0.25 m/s in the occupied zone. The 1.5 m/s applies to a naturally ventilated room (ceiling fan, cooling sensation); in an air-conditioned room, follow table 4.1." },
     fig('p158_0', 'Figure 6.1 — comfort zone and climate types'),
 
     { type: 'heading', text: 'Fresh air: just what is needed' },
@@ -170,6 +171,32 @@ export const climBuildingContent: TopicContent = {
     {
       type: 'note',
       text: 'To convince a client, add financial ratios to Ro: operating cost per m² per year, construction cost per m². Investing in insulation, solar protection or selective glazing is justified by operating savings.',
+    },
+    { type: 'heading', text: "Exercises" },
+    {
+      type: 'exercise',
+      question: "A West facade and a North facade each measure 30 m² (walls). What maximum glazed area do you recommend on each?",
+      solution: [
+        "North facade (WWR 1/3): 30 / 3 = 10 m² of windows maximum.",
+        "West facade (WWR 1/4): 30 / 4 = 7.5 m² maximum — and well protected (vertical fins, external blinds).",
+      ],
+    },
+    {
+      type: 'exercise',
+      question: "10 m² of glazing receive 400 W/m² of sun. Compare clear glazing (SHGC 0.83) and selective glazing (SHGC 0.45). What electrical saving with a COP of 2.5?",
+      solution: [
+        "Clear: 0.83 × 10 × 400 = 3,320 W; selective: 0.45 × 10 × 400 = 1,800 W.",
+        "Cooling load avoided: 1,520 W.",
+        "Electricity saved: 1,520 / 2.5 ≈ 610 W during sunny hours — while keeping 70 % of the light.",
+      ],
+    },
+    {
+      type: 'exercise',
+      question: "A 2,000 m² air-conditioned office building uses 400,000 kWh/yr. Is it efficient?",
+      solution: [
+        "Ro = 400,000 / 2,000 = 200 kWh/m².yr.",
+        "Ivorian code reference for a large office building: 160 kWh/m².yr → +25 %. Look for savings: setpoint, solar protection, lighting, maintenance.",
+      ],
     },
   ],
 };

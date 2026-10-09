@@ -7,6 +7,7 @@ import TransformerGeneratorScreen from './src/screens/TransformerGeneratorScreen
 import LightingScreen from './src/screens/LightingScreen';
 import PanelScheduleScreen from './src/screens/PanelScheduleScreen';
 import CircuitBreakerScreen from './src/screens/CircuitBreakerScreen';
+import HeatLoadScreen from './src/screens/HeatLoadScreen';
 import NotesHomeScreen from './src/screens/notes/NotesHomeScreen';
 import CourseHomeScreen from './src/screens/notes/CourseHomeScreen';
 import LessonView from './src/components/notes/LessonView';
@@ -26,6 +27,7 @@ const CALC_TABS = [
   { key: 'lighting', icon: '💡', label: 'Éclairage', labelEn: 'Lighting', Component: LightingScreen },
   { key: 'panel', icon: '🗂️', label: 'Panel Schedule', labelEn: 'Panel Schedule', Component: PanelScheduleScreen },
   { key: 'breaker', icon: '🛡️', label: 'Disjoncteurs', labelEn: 'Breakers', Component: CircuitBreakerScreen },
+  { key: 'heatload', icon: '❄️', label: 'Bilan thermique clim', labelEn: 'AC heat load', Component: HeatLoadScreen },
 ] as const;
 
 type AppMode = 'calculators' | 'notes' | 'solar' | 'clim';
