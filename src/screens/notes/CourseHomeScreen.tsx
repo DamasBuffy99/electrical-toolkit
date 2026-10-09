@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { COURSE_SECTIONS, FLAT_LESSONS } from '../../content/course';
+import { COURSE_SECTIONS, CourseSection, FLAT_LESSONS, FlatLesson } from '../../content/course';
 import { ScreenContainer } from '../../components/ui';
 import { Illustration } from '../../components/illustrations';
 import { colors, radius, shadow, spacing } from '../../theme/theme';
@@ -9,27 +9,39 @@ import { useLanguage } from '../../lib/language';
 type Props = {
   isAvailable: (lessonId: string) => boolean;
   onOpenLesson: (lessonId: string) => void;
+  /** Defaults to the electrical design course. */
+  sections?: CourseSection[];
+  flat?: FlatLesson[];
+  title?: [string, string];
+  subtitle?: [string, string];
+  hero?: { name: string; props?: Record<string, string | number | boolean> };
 };
 
-export default function CourseHomeScreen({ isAvailable, onOpenLesson }: Props) {
+export default function CourseHomeScreen({
+  isAvailable,
+  onOpenLesson,
+  sections = COURSE_SECTIONS,
+  flat = FLAT_LESSONS,
+  title = ["Parcours de l'ingénieur électricien", "The electrical engineer's journey"],
+  subtitle = [
+    'Pensé pour débuter de zéro : on comprend le projet, on apprend les bases, puis on conçoit dans l’ordre réel du métier. Chaque section prépare la suivante.',
+    'Built for complete beginners: understand the project, learn the basics, then design in the real order of the job. Each section prepares the next.',
+  ],
+  hero = { name: 'design-roadmap', props: { step: 0 } },
+}: Props) {
   const { lang, t } = useLanguage();
-  const numberOf = (id: string) => FLAT_LESSONS.find((l) => l.lesson.id === id)?.number ?? 0;
-  const lastIndex = COURSE_SECTIONS.length - 1;
+  const numberOf = (id: string) => flat.find((l) => l.lesson.id === id)?.number ?? 0;
+  const lastIndex = sections.length - 1;
 
   return (
     <ScreenContainer>
-      <Text style={styles.title}>{t("Parcours de l'ingénieur électricien", "The electrical engineer's journey")}</Text>
-      <Text style={styles.subtitle}>
-        {t(
-          'Pensé pour débuter de zéro : on comprend le projet, on apprend les bases, puis on conçoit dans l’ordre réel du métier. Chaque section prépare la suivante.',
-          'Built for complete beginners: understand the project, learn the basics, then design in the real order of the job. Each section prepares the next.'
-        )}
-      </Text>
+      <Text style={styles.title}>{t(title[0], title[1])}</Text>
+      <Text style={styles.subtitle}>{t(subtitle[0], subtitle[1])}</Text>
       <View style={styles.hero}>
-        <Illustration name="design-roadmap" props={{ step: 0 }} lang={lang} />
+        <Illustration name={hero.name} props={hero.props} lang={lang} />
       </View>
 
-      {COURSE_SECTIONS.map((section, si) => {
+      {sections.map((section, si) => {
         const isAppendix = section.id === 'appendix';
         const badge = isAppendix ? 'A' : String(si + 1);
         const hasContent = section.lessons.some((l) => isAvailable(l.id));

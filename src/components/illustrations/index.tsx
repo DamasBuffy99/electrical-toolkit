@@ -17,6 +17,17 @@ import { Coordination, DrawingSheet, DrawingsEvolution } from './sceneDrawings';
 import { DesignRoadmap } from './sceneRoadmap';
 import { PlanSymbols } from './scenePlans';
 import { PhasesDiagram, PowerTriangle, WaterAnalogy } from './sceneBasics';
+import {
+  BuildingDesign,
+  CentralPlant,
+  ComfortZone,
+  EnergyBreakdown,
+  HeatGains,
+  OutdoorUnitPlacement,
+  RefrigerationCycle,
+  RoomAirflow,
+  SystemLadder,
+} from './sceneClim';
 import { BatteryBank, MpptWindow, PeakSunHours, PvArray, PvStc, PvSystem, PvWaveforms } from './sceneSolar';
 
 export type IllustrationProps = Record<string, string | number | boolean | undefined>;
@@ -97,6 +108,24 @@ export function Illustration({ name, props, lang }: { name: string; props?: Illu
       return <PeakSunHours lang={lang} hours={num(p.hours)} />;
     case 'plan-symbols':
       return <PlanSymbols lang={lang} variant={p.variant as 'stairs' | 'shaft' | 'doors'} />;
+    case 'clim-cycle':
+      return <RefrigerationCycle lang={lang} highlight={typeof p.highlight === 'string' ? p.highlight : undefined} />;
+    case 'clim-heat-gains':
+      return <HeatGains lang={lang} focus={typeof p.focus === 'string' ? p.focus : undefined} />;
+    case 'clim-comfort':
+      return <ComfortZone lang={lang} />;
+    case 'clim-systems':
+      return <SystemLadder lang={lang} highlight={typeof p.highlight === 'string' ? p.highlight : undefined} />;
+    case 'clim-airflow':
+      return <RoomAirflow lang={lang} variant={typeof p.variant === 'string' ? p.variant : undefined} />;
+    case 'clim-outdoor':
+      return <OutdoorUnitPlacement lang={lang} />;
+    case 'clim-central':
+      return <CentralPlant lang={lang} highlight={typeof p.highlight === 'string' ? p.highlight : undefined} />;
+    case 'clim-building':
+      return <BuildingDesign lang={lang} />;
+    case 'clim-energy':
+      return <EnergyBreakdown lang={lang} />;
     default:
       return null;
   }

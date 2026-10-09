@@ -12,6 +12,8 @@ import CourseHomeScreen from './src/screens/notes/CourseHomeScreen';
 import LessonView from './src/components/notes/LessonView';
 import { getTopicContent } from './src/content/registry';
 import { getSolarTopicContent } from './src/content/solarRegistry';
+import { getClimTopicContent } from './src/content/climRegistry';
+import { CLIM_FLAT_LESSONS, CLIM_SECTIONS } from './src/content/climCourse';
 import { FLAT_LESSONS } from './src/content/course';
 import { SOLAR_NOTES_TOPICS } from './src/data/solarNotesTopics';
 import { colors, radius, spacing } from './src/theme/theme';
@@ -26,13 +28,14 @@ const CALC_TABS = [
   { key: 'breaker', icon: '🛡️', label: 'Disjoncteurs', labelEn: 'Breakers', Component: CircuitBreakerScreen },
 ] as const;
 
-type AppMode = 'calculators' | 'notes' | 'solar';
+type AppMode = 'calculators' | 'notes' | 'solar' | 'clim';
 
 function AppShell() {
   const [mode, setMode] = useState<AppMode>('calculators');
   const [activeCalc, setActiveCalc] = useState<(typeof CALC_TABS)[number]['key']>('load');
   const [activeTopicId, setActiveTopicId] = useState<string | null>(null);
   const [activeSolarTopicId, setActiveSolarTopicId] = useState<string | null>(null);
+  const [activeClimId, setActiveClimId] = useState<string | null>(null);
   const { lang, toggle, t } = useLanguage();
 
   const ActiveCalcComponent = CALC_TABS.find((tab) => tab.key === activeCalc)!.Component;
@@ -52,6 +55,15 @@ function AppShell() {
   const solarPos = SOLAR_NOTES_TOPICS.findIndex((s) => s.id === activeSolarTopicId);
   const prevSolar = solarPos > 0 ? SOLAR_NOTES_TOPICS[solarPos - 1] : undefined;
   const nextSolar = solarPos >= 0 ? SOLAR_NOTES_TOPICS[solarPos + 1] : undefined;
+
+  const climContent = activeClimId ? getClimTopicContent(lang, activeClimId) : undefined;
+  const climPos = CLIM_FLAT_LESSONS.findIndex((l) => l.lesson.id === activeClimId);
+  const climCurrent = climPos >= 0 ? CLIM_FLAT_LESSONS[climPos] : undefined;
+  const climPrev = climPos > 0 ? CLIM_FLAT_LESSONS[climPos - 1] : undefined;
+  const climNext = climPos >= 0 ? CLIM_FLAT_LESSONS[climPos + 1] : undefined;
+  const climEyebrow = climCurrent
+    ? `${t('Climatisation', 'Air conditioning')} · ${t('Section', 'Section')} ${climCurrent.sectionIndex + 1} · ${t('Leçon', 'Lesson')} ${climCurrent.number}`
+    : undefined;
 
   function selectMode(next: AppMode) {
     setMode(next);
@@ -85,6 +97,14 @@ function AppShell() {
             >
               <Text style={[styles.modeText, mode === 'solar' && styles.modeTextActive]}>
                 {t('☀️ Solaire PV', '☀️ Solar PV')}
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={[styles.modeButton, mode === 'clim' && styles.modeButtonActive]}
+              onPress={() => selectMode('clim')}
+            >
+              <Text style={[styles.modeText, mode === 'clim' && styles.modeTextActive]}>
+                {t('❄️ Climatisation', '❄️ Air conditioning')}
               </Text>
             </TouchableOpacity>
           </View>
@@ -143,6 +163,39 @@ function AppShell() {
             />
           ) : (
             <CourseHomeScreen isAvailable={(id) => !!getTopicContent(lang, id)} onOpenLesson={setActiveTopicId} />
+          )
+        ) : mode === 'clim' ? (
+          climContent && activeClimId ? (
+            <LessonView
+              key={`${activeClimId}-${lang}`}
+              content={climContent}
+              eyebrow={climEyebrow}
+              backLabel={t('Parcours', 'Journey')}
+              onBack={() => setActiveClimId(null)}
+              prev={climPrev ? { title: lessonTitle(climPrev), onPress: () => setActiveClimId(climPrev.lesson.id) } : undefined}
+              next={
+                climNext
+                  ? {
+                      title: lessonTitle(climNext),
+                      transition: lang === 'fr' ? climCurrent?.lesson.transition : climCurrent?.lesson.transitionEn,
+                      onPress: () => setActiveClimId(climNext.lesson.id),
+                    }
+                  : undefined
+              }
+            />
+          ) : (
+            <CourseHomeScreen
+              isAvailable={(id) => !!getClimTopicContent(lang, id)}
+              onOpenLesson={setActiveClimId}
+              sections={CLIM_SECTIONS}
+              flat={CLIM_FLAT_LESSONS}
+              title={['Climatisation en région tropicale', 'Air conditioning in tropical regions']}
+              subtitle={[
+                'Du confort au bilan thermique, du split à la centrale à eau glacée, jusqu’au bâtiment sobre : un parcours pensé pour débuter, d’après le guide IEPF « Efficacité énergétique de la climatisation en région tropicale ».',
+                'From comfort to the heat balance, from the split to the chilled-water plant, to the efficient building: a beginner-friendly journey based on the IEPF guide “Energy efficiency of air conditioning in tropical regions”.',
+              ]}
+              hero={{ name: 'clim-heat-gains' }}
+            />
           )
         ) : activeSolarTopicContent && activeSolarTopicId ? (
           <LessonView
