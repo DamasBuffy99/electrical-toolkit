@@ -476,7 +476,7 @@ export function FactorySld({ lang, highlight = 'all' }: SceneProps & { highlight
     { x: 180, label: L('Convoyeur', 'Conveyor'), sub: '7,5 kW', mode: L('variateur', 'VFD'), k: 'motors' },
     { x: 244, label: L('Ch. froide', 'Cold room'), sub: '30 kW', mode: L('groupe froid', 'refrig. unit'), k: 'motors' },
     { x: 300, label: L('Éclairage', 'Lighting'), sub: L('bureaux', 'offices'), mode: '', k: 'other' },
-    { x: 352, label: L('Condens.', 'Capacitors'), sub: '120 kvar', mode: '', k: 'capacitor' },
+    { x: 352, label: L('Condens.', 'Capacitors'), sub: '100 kvar', mode: '', k: 'capacitor' },
   ];
   return (
     <SceneFrame>
@@ -487,10 +487,10 @@ export function FactorySld({ lang, highlight = 'all' }: SceneProps & { highlight
       <Line x1={200} y1={66} x2={200} y2={76} stroke={P.ink} strokeWidth={2} />
       <Circle cx={200} cy={88} r={12} fill="none" stroke={P.navy} strokeWidth={2.2} />
       <Circle cx={200} cy={104} r={12} fill="none" stroke={P.navy} strokeWidth={2.2} />
-      <Label x={218} y={100} text={L('630 kVA · 20/0,4 kV · u_k 4 %', '630 kVA · 20/0.4 kV · u_k 4%')} size={8.5} anchor="start" />
+      <Label x={218} y={100} text={L('400 kVA · 20/0,4 kV · u_k 4 %', '400 kVA · 20/0.4 kV · u_k 4%')} size={8.5} anchor="start" />
       <Line x1={200} y1={116} x2={200} y2={128} stroke={P.ink} strokeWidth={2} />
       <Rect x={188} y={128} width={24} height={16} rx={3} fill={hl('selectivity') ? P.orange : P.navy} />
-      <Label x={218} y={140} text={L('disj. général 1 000 A', 'main ACB 1,000 A')} size={8.5} anchor="start" color={P.inkSoft} weight="600" />
+      <Label x={218} y={140} text={L('disj. général 630 A', 'main breaker 630 A')} size={8.5} anchor="start" color={P.inkSoft} weight="600" />
       <Line x1={200} y1={144} x2={200} y2={156} stroke={P.ink} strokeWidth={2} />
       <Line x1={30} y1={156} x2={374} y2={156} stroke={P.navy} strokeWidth={5} />
       <Label x={30} y={150} text={L('TGBT 400 V', 'Main LV board 400 V')} size={8.5} anchor="start" color={P.navy} />
@@ -547,7 +547,7 @@ export function MotorStart({ lang }: SceneProps) {
     <SceneFrame>
       <Line x1={60} y1={250} x2={370} y2={250} stroke={P.ink} strokeWidth={1.5} />
       <Line x1={60} y1={250} x2={60} y2={50} stroke={P.ink} strokeWidth={1.5} />
-      <Label x={368} y={266} text={L('temps', 'time')} size={9.5} color={P.inkSoft} anchor="end" />
+      <Label x={372} y={264} text={L('temps', 'time')} size={9} color={P.inkSoft} anchor="end" />
       <Label x={64} y={48} text={L('courant (× In)', 'current (× In)')} size={9.5} color={P.inkSoft} anchor="start" />
       {[1, 3, 5, 7].map((i) => (
         <G key={i}>
@@ -565,13 +565,16 @@ export function MotorStart({ lang }: SceneProps) {
           strokeLinejoin="round"
         />
       ))}
-      <Rect x={196} y={58} width={178} height={76} rx={8} fill={P.white} stroke={P.line} />
-      {curves.map((c, k) => (
-        <G key={`lg-${k}`}>
-          <Line x1={204} y1={72 + k * 17} x2={222} y2={72 + k * 17} stroke={c.color} strokeWidth={3} />
-          <Label x={228} y={76 + k * 17} text={c.name} size={8.5} anchor="start" />
-        </G>
-      ))}
+      {curves.map((c, k) => {
+        const lx = k % 2 === 0 ? 40 : 214;
+        const ly = k < 2 ? 279 : 294;
+        return (
+          <G key={`lg-${k}`}>
+            <Line x1={lx} y1={ly - 3} x2={lx + 14} y2={ly - 3} stroke={c.color} strokeWidth={3} />
+            <Label x={lx + 18} y={ly} text={c.name} size={8.5} anchor="start" />
+          </G>
+        );
+      })}
     </SceneFrame>
   );
 }
@@ -591,13 +594,13 @@ export function Selectivity({ lang }: SceneProps) {
       <Label x={56} y={42} text={L('temps de coupure', 'tripping time')} size={9.5} color={P.inkSoft} anchor="start" />
       <Path d={curve(80, 170)} stroke={P.greenMid} strokeWidth={3} fill="none" />
       <Path d={curve(160, 300)} stroke={P.navy} strokeWidth={3} fill="none" />
-      <Label x={110} y={80} text={L('départ pompe 32 A', 'pump feeder 32 A')} size={9} color={P.greenMid} anchor="start" />
-      <Label x={190} y={70} text={L('général 1 000 A', 'main 1,000 A')} size={9} color={P.navy} anchor="start" />
-      <Line x1={140} y1={44} x2={140} y2={250} stroke={HOT} strokeWidth={1.5} strokeDasharray="5 4" />
-      <Label x={144} y={150} text={L('défaut sur la pompe', 'fault at the pump')} size={8.5} color={HOT} anchor="start" />
-      <Rect x={196} y={196} width={176} height={40} rx={8} fill={P.white} stroke={OK} strokeWidth={1.5} />
-      <Label x={284} y={212} text={L('les courbes ne se croisent pas :', 'the curves never cross:')} size={9} color={OK} />
-      <Label x={284} y={226} text={L('seul le départ en défaut s’ouvre', 'only the faulty feeder opens')} size={9} color={OK} />
+      <Label x={54} y={228} text={L('départ pompe 32 A', 'pump feeder 32 A')} size={8.5} color={P.greenMid} anchor="start" />
+      <Label x={190} y={70} text={L('général 630 A', 'main 630 A')} size={9} color={P.navy} anchor="start" />
+      <Line x1={140} y1={62} x2={140} y2={250} stroke={HOT} strokeWidth={1.5} strokeDasharray="5 4" />
+      <Label x={144} y={58} text={L('défaut sur la pompe', 'fault at the pump')} size={8.5} color={HOT} anchor="start" />
+      <Rect x={208} y={92} width={166} height={40} rx={8} fill={P.white} stroke={OK} strokeWidth={1.5} />
+      <Label x={291} y={108} text={L('les courbes ne se croisent pas :', 'the curves never cross:')} size={9} color={OK} />
+      <Label x={291} y={122} text={L('seul le départ en défaut s’ouvre', 'only the faulty feeder opens')} size={9} color={OK} />
     </SceneFrame>
   );
 }
@@ -615,7 +618,7 @@ export function ClinicTiers({ lang, highlight = 'all' }: SceneProps & { highligh
       <Label x={54} y={58} text={L('Réseau', 'Utility')} size={10} color={P.white} />
       <Label x={54} y={72} text="400 V" size={9} color={P.yellow} />
       <Rect x={14} y={100} width={80} height={40} rx={6} fill={hl('generator') ? OK : P.grey} />
-      <Label x={54} y={118} text={L('Groupe', 'Genset')} size={10} color={P.white} />
+      <Label x={54} y={118} text={L('2 groupes', '2 gensets')} size={10} color={P.white} />
       <Label x={54} y={132} text={L('≤ 15 s', '≤ 15 s')} size={9} color={P.white} />
       <Line x1={94} y1={60} x2={124} y2={60} stroke={P.ink} strokeWidth={2.5} />
       <Line x1={94} y1={120} x2={124} y2={120} stroke={P.ink} strokeWidth={2.5} />
@@ -626,7 +629,7 @@ export function ClinicTiers({ lang, highlight = 'all' }: SceneProps & { highligh
       <Line x1={164} y1={90} x2={186} y2={90} stroke={P.ink} strokeWidth={2.5} />
       <Rect x={186} y={46} width={60} height={88} rx={6} fill={P.white} stroke={P.navy} strokeWidth={2} />
       <Label x={216} y={84} text="TGBT" size={10} />
-      <Label x={216} y={98} text={L('secouru', 'backed-up')} size={8.5} color={P.inkSoft} weight="600" />
+      <Label x={216} y={98} text={L('général', 'main')} size={8.5} color={P.inkSoft} weight="600" />
       {/* tiers */}
       {[
         { y: 40, k: 'loads', color: P.grey, t: L('Normal', 'Normal'), s: L('clim confort, bureaux', 'comfort AC, offices'), time: L('délesté', 'shed') },
