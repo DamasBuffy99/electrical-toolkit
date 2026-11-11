@@ -4,6 +4,7 @@ import { NoteBlock } from '../../content/types';
 import { colors, radius, spacing } from '../../theme/theme';
 import { useLanguage } from '../../lib/language';
 import { MathBlock, RichText } from './MathText';
+import { useFicheNav } from './FicheContext';
 
 function ExerciseCard({ title, question, solution }: { title?: string; question: string; solution: string[] }) {
   const { t } = useLanguage();
@@ -26,8 +27,79 @@ function ExerciseCard({ title, question, solution }: { title?: string; question:
   );
 }
 
+const ROLE_STYLE = {
+  engineer: { bubble: '#eef2ff', border: colors.accent, name: colors.accent, avatar: colors.accent },
+  client: { bubble: '#fff7e6', border: colors.highlight, name: '#9a5b00', avatar: colors.highlight },
+  team: { bubble: '#f1f5f9', border: '#94a3b8', name: '#475569', avatar: '#64748b' },
+} as const;
+
+function initials(name: string) {
+  const words = name.replace(/\(.*\)/, '').trim().split(/\s+/);
+  return (words[0]?.[0] ?? '') + (words.length > 1 ? words[words.length - 1][0] : '');
+}
+
+function DialogueBubble({ speaker, role, text }: { speaker: string; role: 'engineer' | 'client' | 'team'; text: string }) {
+  const s = ROLE_STYLE[role];
+  const right = role === 'client';
+  return (
+    <View style={[styles.dialogueRow, right && styles.dialogueRowRight]}>
+      <View style={[styles.avatar, { backgroundColor: s.avatar }]}>
+        <Text style={styles.avatarText}>{initials(speaker).toUpperCase()}</Text>
+      </View>
+      <View style={[styles.bubble, { backgroundColor: s.bubble, borderColor: s.border }, right ? styles.bubbleRight : styles.bubbleLeft]}>
+        <Text style={[styles.bubbleName, { color: s.name }]}>{speaker}</Text>
+        <RichText style={styles.bubbleText} text={text} />
+      </View>
+    </View>
+  );
+}
+
+function FicheLink({ id, why }: { id: string; why?: string }) {
+  const nav = useFicheNav();
+  const { t } = useLanguage();
+  const title = nav?.title(id) ?? id;
+  return (
+    <Pressable
+      onPress={() => nav?.open(id)}
+      disabled={!nav}
+      style={({ pressed }) => [styles.ficheBox, pressed && styles.fichePressed]}
+      accessibilityRole="link"
+    >
+      <Text style={styles.ficheIcon}>📘</Text>
+      <View style={styles.ficheBody}>
+        <Text style={styles.ficheLabel}>{t('Fiche technique', 'Reference sheet')}</Text>
+        <Text style={styles.ficheTitle}>{title}</Text>
+        {why ? <RichText style={styles.ficheWhy} text={why} /> : null}
+      </View>
+      {nav ? <Text style={styles.ficheArrow}>→</Text> : null}
+    </Pressable>
+  );
+}
+
+function RegionalBox({ title, text }: { title?: string; text: string }) {
+  const { t } = useLanguage();
+  return (
+    <View style={styles.regionalBox}>
+      <Text style={styles.regionalTitle}>🌍 {title ?? t('En Afrique de l’Ouest', 'In West Africa')}</Text>
+      <RichText style={styles.regionalText} text={text} />
+    </View>
+  );
+}
+
 export function NoteBlockRenderer({ block }: { block: NoteBlock }) {
   switch (block.type) {
+    case 'scene':
+      return (
+        <View style={styles.sceneTag}>
+          <Text style={styles.sceneText}>📍 {block.text}</Text>
+        </View>
+      );
+    case 'dialogue':
+      return <DialogueBubble speaker={block.speaker} role={block.role} text={block.text} />;
+    case 'regional':
+      return <RegionalBox title={block.title} text={block.text} />;
+    case 'fiche':
+      return <FicheLink id={block.id} why={block.why} />;
     case 'heading':
       return <Text style={styles.heading}>{block.text}</Text>;
     case 'subheading':
@@ -212,6 +284,55 @@ const styles = StyleSheet.create({
   },
   exerciseSolutionText: { fontSize: 13.5, lineHeight: 20, color: colors.highlightText },
   divider: { height: 1, backgroundColor: colors.border, marginVertical: spacing.md },
+  sceneTag: {
+    alignSelf: 'flex-start',
+    backgroundColor: colors.accentSoft,
+    borderRadius: 999,
+    paddingVertical: 4,
+    paddingHorizontal: 12,
+    marginTop: spacing.xs,
+    marginBottom: spacing.sm,
+  },
+  sceneText: { fontSize: 12, fontWeight: '700', color: colors.accent, letterSpacing: 0.2 },
+  dialogueRow: { flexDirection: 'row', alignItems: 'flex-start', gap: 8, marginBottom: spacing.sm, paddingRight: 28 },
+  dialogueRowRight: { flexDirection: 'row-reverse', paddingRight: 0, paddingLeft: 28 },
+  avatar: { width: 32, height: 32, borderRadius: 16, alignItems: 'center', justifyContent: 'center', marginTop: 2 },
+  avatarText: { color: '#fff', fontWeight: '800', fontSize: 12 },
+  bubble: { flexShrink: 1, borderWidth: 1, borderRadius: 14, paddingVertical: 8, paddingHorizontal: 12 },
+  bubbleLeft: { borderTopLeftRadius: 4 },
+  bubbleRight: { borderTopRightRadius: 4 },
+  bubbleName: { fontSize: 11.5, fontWeight: '800', marginBottom: 2 },
+  bubbleText: { fontSize: 14, lineHeight: 20.5, color: colors.text },
+  regionalBox: {
+    backgroundColor: '#ecfdf5',
+    borderLeftWidth: 3,
+    borderLeftColor: '#059669',
+    borderRadius: radius.sm,
+    paddingVertical: 10,
+    paddingHorizontal: spacing.md,
+    marginBottom: spacing.sm,
+  },
+  regionalTitle: { fontSize: 12, fontWeight: '800', color: '#047857', marginBottom: 3, textTransform: 'uppercase', letterSpacing: 0.4 },
+  regionalText: { fontSize: 13, color: '#064e3b', lineHeight: 19 },
+  ficheBox: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: spacing.sm,
+    borderWidth: 1,
+    borderColor: colors.border,
+    borderRadius: radius.sm,
+    backgroundColor: colors.surface,
+    paddingVertical: 10,
+    paddingHorizontal: spacing.md,
+    marginBottom: spacing.sm,
+  },
+  fichePressed: { backgroundColor: colors.accentSoft },
+  ficheIcon: { fontSize: 20 },
+  ficheBody: { flex: 1 },
+  ficheLabel: { fontSize: 10.5, fontWeight: '800', color: colors.textMuted, textTransform: 'uppercase', letterSpacing: 0.5 },
+  ficheTitle: { fontSize: 14, fontWeight: '700', color: colors.accent },
+  ficheWhy: { fontSize: 12.5, color: colors.textMuted, lineHeight: 17, marginTop: 2 },
+  ficheArrow: { fontSize: 16, fontWeight: '800', color: colors.accent },
   imageWrapper: { marginBottom: spacing.md },
   image: { width: '100%', borderRadius: radius.sm, backgroundColor: '#fff', borderWidth: 1, borderColor: colors.border },
   caption: { fontSize: 11, color: colors.textFaint, marginTop: spacing.xs, textAlign: 'center' },

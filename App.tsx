@@ -16,6 +16,9 @@ import { getSolarTopicContent } from './src/content/solarRegistry';
 import { getClimTopicContent } from './src/content/climRegistry';
 import { CLIM_FLAT_LESSONS, CLIM_SECTIONS } from './src/content/climCourse';
 import { FLAT_LESSONS } from './src/content/course';
+import { STORY_FLAT_LESSONS, STORY_SECTIONS } from './src/content/storyCourse';
+import { getStoryContent } from './src/content/storyRegistry';
+import { FicheProvider } from './src/components/notes/FicheContext';
 import { SOLAR_NOTES_TOPICS } from './src/data/solarNotesTopics';
 import { colors, radius, spacing } from './src/theme/theme';
 import { LanguageProvider, useLanguage } from './src/lib/language';
@@ -38,7 +41,50 @@ function AppShell() {
   const [activeTopicId, setActiveTopicId] = useState<string | null>(null);
   const [activeSolarTopicId, setActiveSolarTopicId] = useState<string | null>(null);
   const [activeClimId, setActiveClimId] = useState<string | null>(null);
+  const [notesView, setNotesView] = useState<'story' | 'fiches'>('story');
+  const [activeStoryId, setActiveStoryId] = useState<string | null>(null);
+  const [ficheFromStory, setFicheFromStory] = useState(false);
   const { lang, toggle, t } = useLanguage();
+
+  const storyContent = activeStoryId ? getStoryContent(lang, activeStoryId) : undefined;
+  const storyLessons = STORY_FLAT_LESSONS.filter((l) => !!getStoryContent(lang, l.lesson.id));
+  const storyPos = storyLessons.findIndex((l) => l.lesson.id === activeStoryId);
+  const storyCurrent = storyPos >= 0 ? storyLessons[storyPos] : undefined;
+  const storyPrev = storyPos > 0 ? storyLessons[storyPos - 1] : undefined;
+  const storyNext = storyPos >= 0 ? storyLessons[storyPos + 1] : undefined;
+  const storyEyebrow = storyCurrent
+    ? `${t('Projet', 'Project')} ${storyCurrent.sectionIndex + 1} · ${t('Étape', 'Step')} ${storyCurrent.number}`
+    : undefined;
+
+  const ficheNav = {
+    open: (id: string) => {
+      setActiveTopicId(id);
+      setFicheFromStory(true);
+    },
+    title: (id: string) => {
+      const l = FLAT_LESSONS.find((f) => f.lesson.id === id);
+      return l ? (lang === 'fr' ? l.lesson.title : l.lesson.titleEn) : undefined;
+    },
+  };
+
+  const notesSwitch = (
+    <View style={styles.notesSwitch}>
+      {(
+        [
+          ['story', t('📖 Le parcours en projets', '📖 The project journey')],
+          ['fiches', t('📘 Fiches techniques', '📘 Reference sheets')],
+        ] as const
+      ).map(([key, label]) => (
+        <TouchableOpacity
+          key={key}
+          style={[styles.notesSwitchButton, notesView === key && styles.notesSwitchActive]}
+          onPress={() => setNotesView(key)}
+        >
+          <Text style={[styles.notesSwitchText, notesView === key && styles.notesSwitchTextActive]}>{label}</Text>
+        </TouchableOpacity>
+      ))}
+    </View>
+  );
 
   const ActiveCalcComponent = CALC_TABS.find((tab) => tab.key === activeCalc)!.Component;
   const activeTopicContent = activeTopicId ? getTopicContent(lang, activeTopicId) : undefined;
@@ -145,27 +191,81 @@ function AppShell() {
         {mode === 'calculators' ? (
           <ActiveCalcComponent />
         ) : mode === 'notes' ? (
-          activeTopicContent && activeTopicId ? (
-            <LessonView
-              key={`${activeTopicId}-${lang}`}
-              content={activeTopicContent}
-              eyebrow={lessonEyebrow}
-              backLabel={t('Parcours', 'Journey')}
-              onBack={() => setActiveTopicId(null)}
-              prev={prevLesson ? { title: lessonTitle(prevLesson), onPress: () => setActiveTopicId(prevLesson.lesson.id) } : undefined}
-              next={
-                nextLesson
-                  ? {
-                      title: lessonTitle(nextLesson),
-                      transition: lang === 'fr' ? currentLesson?.lesson.transition : currentLesson?.lesson.transitionEn,
-                      onPress: () => setActiveTopicId(nextLesson.lesson.id),
-                    }
-                  : undefined
-              }
-            />
-          ) : (
-            <CourseHomeScreen isAvailable={(id) => !!getTopicContent(lang, id)} onOpenLesson={setActiveTopicId} />
-          )
+          <FicheProvider value={ficheNav}>
+            {/* the story stays mounted (hidden) while a fiche is open, so the reader comes back to the same place */}
+            {storyContent && activeStoryId ? (
+              <View style={[styles.fill, activeTopicId ? styles.hidden : null]}>
+                <LessonView
+                  key={`${activeStoryId}-${lang}`}
+                  content={storyContent}
+                  eyebrow={storyEyebrow}
+                  backLabel={t('Projets', 'Projects')}
+                  onBack={() => setActiveStoryId(null)}
+                  prev={storyPrev ? { title: lessonTitle(storyPrev), onPress: () => setActiveStoryId(storyPrev.lesson.id) } : undefined}
+                  next={
+                    storyNext
+                      ? {
+                          title: lessonTitle(storyNext),
+                          transition: lang === 'fr' ? storyCurrent?.lesson.transition : storyCurrent?.lesson.transitionEn,
+                          onPress: () => setActiveStoryId(storyNext.lesson.id),
+                        }
+                      : undefined
+                  }
+                />
+              </View>
+            ) : null}
+            {activeTopicContent && activeTopicId ? (
+              <LessonView
+                key={`${activeTopicId}-${lang}`}
+                content={activeTopicContent}
+                eyebrow={`${t('Fiche technique', 'Reference sheet')} · ${lessonEyebrow ?? ''}`}
+                backLabel={ficheFromStory ? t('Retour au projet', 'Back to the project') : t('Fiches techniques', 'Reference sheets')}
+                onBack={() => {
+                  setActiveTopicId(null);
+                  setFicheFromStory(false);
+                }}
+                prev={prevLesson ? { title: lessonTitle(prevLesson), onPress: () => setActiveTopicId(prevLesson.lesson.id) } : undefined}
+                next={
+                  nextLesson
+                    ? {
+                        title: lessonTitle(nextLesson),
+                        transition: lang === 'fr' ? currentLesson?.lesson.transition : currentLesson?.lesson.transitionEn,
+                        onPress: () => setActiveTopicId(nextLesson.lesson.id),
+                      }
+                    : undefined
+                }
+              />
+            ) : activeStoryId && storyContent ? null : notesView === 'story' ? (
+              <CourseHomeScreen
+                topSlot={notesSwitch}
+                isAvailable={(id) => !!getStoryContent(lang, id)}
+                onOpenLesson={setActiveStoryId}
+                sections={STORY_SECTIONS}
+                flat={STORY_FLAT_LESSONS}
+                sectionLabel={['Projet', 'Project']}
+                title={['Le métier d’ingénieur électricien, raconté', 'The electrical engineer’s job, told as a story']}
+                subtitle={[
+                  'Suivez Awa Diallo, ingénieure en bureau d’études, sur quatre projets réels : une villa, un immeuble, une usine et une clinique. À chaque décision, elle explique à son client le pourquoi du comment ; les détails techniques sont dans les fiches.',
+                  'Follow Awa Diallo, a design-office engineer, through four real projects: a villa, a block of flats, a plant and a clinic. At every decision she explains the why to her client; the technical details are in the reference sheets.',
+                ]}
+                hero={{ name: 'story-cast' }}
+              />
+            ) : (
+              <CourseHomeScreen
+                topSlot={notesSwitch}
+                isAvailable={(id) => !!getTopicContent(lang, id)}
+                onOpenLesson={(id) => {
+                  setFicheFromStory(false);
+                  setActiveTopicId(id);
+                }}
+                title={['Fiches techniques', 'Reference sheets']}
+                subtitle={[
+                  'Toutes les notions du cours, classées par thème : à consulter quand un projet les utilise, ou à réviser dans l’ordre.',
+                  'Every notion of the course, organised by topic: look them up when a project uses them, or revise them in order.',
+                ]}
+              />
+            )}
+          </FicheProvider>
         ) : mode === 'clim' ? (
           climContent && activeClimId ? (
             <LessonView
@@ -296,4 +396,22 @@ const styles = StyleSheet.create({
   tabText: { fontSize: 13, color: colors.textMuted, fontWeight: '600' },
   tabTextActive: { color: colors.accent },
   content: { flex: 1, backgroundColor: colors.bg },
+  fill: { flex: 1 },
+  hidden: { display: 'none' },
+  notesSwitch: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    alignSelf: 'flex-start',
+    backgroundColor: colors.surface,
+    borderWidth: 1,
+    borderColor: colors.border,
+    borderRadius: radius.pill,
+    padding: 3,
+    gap: 2,
+    marginBottom: spacing.lg,
+  },
+  notesSwitchButton: { paddingVertical: 7, paddingHorizontal: spacing.md, borderRadius: radius.pill },
+  notesSwitchActive: { backgroundColor: colors.accentSoft },
+  notesSwitchText: { fontSize: 13, fontWeight: '700', color: colors.textMuted },
+  notesSwitchTextActive: { color: colors.accent },
 });

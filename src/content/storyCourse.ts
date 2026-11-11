@@ -1,0 +1,227 @@
+import type { CourseSection, FlatLesson } from './course';
+
+/**
+ * The electrical course told as four client projects, from the simplest to the most demanding.
+ * Awa Diallo, an electrical engineer in a design office, explains each decision to her clients;
+ * the technical details live in the reference lessons ("fiches techniques", see course.ts).
+ */
+export const STORY_SECTIONS: CourseSection[] = [
+  {
+    id: 'villa',
+    icon: '🏡',
+    title: 'La villa des Mensah',
+    titleEn: 'The Mensah family villa',
+    intro: 'Koffi et Esther Mensah font construire leur maison. Du premier rendez-vous à la remise des clés : les bases du métier sur un projet à taille humaine.',
+    introEn: 'Koffi and Esther Mensah are building their home. From the first meeting to the handover: the basics of the job on a human-sized project.',
+    lessons: [
+      {
+        id: 'villa-meeting',
+        title: 'Le premier rendez-vous',
+        titleEn: 'The first meeting',
+        transition: 'Awa a compris le besoin. Avant de dessiner quoi que ce soit, elle doit lire les plans de l’architecte.',
+        transitionEn: 'Awa understands the brief. Before drawing anything, she has to read the architect’s plans.',
+      },
+      {
+        id: 'villa-plans',
+        title: 'Lire les plans de l’architecte',
+        titleEn: 'Reading the architect’s plans',
+        transition: 'Les Mensah veulent comprendre ce que signifient kVA, ampères et kWh sur leur futur contrat. Awa prend le temps de leur expliquer.',
+        transitionEn: 'The Mensahs want to understand what kVA, amps and kWh mean on their future contract. Awa takes the time to explain.',
+      },
+      {
+        id: 'villa-basics',
+        title: 'Volts, ampères, watts : expliquer au client',
+        titleEn: 'Volts, amps, watts: explaining it to the client',
+        transition: 'Avec ce vocabulaire commun, on peut répondre à la vraie question des Mensah : quelle puissance demander au distributeur ?',
+        transitionEn: 'With this shared vocabulary, we can answer the Mensahs’ real question: how much power to request from the utility?',
+      },
+      {
+        id: 'villa-load',
+        title: 'Le bilan de puissance de la villa',
+        titleEn: 'The villa’s power balance',
+        transition: 'La puissance globale est fixée. On descend maintenant pièce par pièce : où mettre les lampes et les prises ?',
+        transitionEn: 'The overall power is set. Now we go room by room: where do the lights and sockets go?',
+      },
+      {
+        id: 'villa-lighting',
+        title: 'Éclairage et prises, pièce par pièce',
+        titleEn: 'Lighting and sockets, room by room',
+        transition: 'Les points sont placés. Il faut les regrouper en circuits et les ranger dans un tableau bien équilibré.',
+        transitionEn: 'The points are placed. They must be grouped into circuits and arranged in a well-balanced board.',
+      },
+      {
+        id: 'villa-board',
+        title: 'Le tableau électrique de la maison',
+        titleEn: 'The house distribution board',
+        transition: 'Chaque circuit a sa place. Reste la question qui inquiète Esther : comment protéger ses enfants contre l’électrocution ?',
+        transitionEn: 'Every circuit has its place. One question still worries Esther: how do we protect her children from electric shock?',
+      },
+      {
+        id: 'villa-safety',
+        title: 'Protéger la famille : différentiels et terre',
+        titleEn: 'Protecting the family: RCDs and earthing',
+        transition: 'Les protections sont choisies. Il faut maintenant des câbles qui les respectent, y compris jusqu’à la pompe au fond du jardin.',
+        transitionEn: 'The protection is chosen. Now the cables must match it, including the run to the pump at the bottom of the garden.',
+      },
+      {
+        id: 'villa-cables',
+        title: 'Les câbles et la pompe du jardin',
+        titleEn: 'The cables and the garden pump',
+        transition: 'Le dossier est complet. Place au chantier : Awa suit les travaux puis réceptionne l’installation.',
+        transitionEn: 'The design file is complete. On to the site: Awa follows the works, then accepts the installation.',
+      },
+      {
+        id: 'villa-handover',
+        title: 'Chantier, essais et remise des clés',
+        titleEn: 'Works, tests and handover',
+        transition: 'La villa est livrée. Fatou Sow, une amie des Mensah, appelle Awa : elle construit un immeuble de 16 logements.',
+        transitionEn: 'The villa is handed over. Fatou Sow, a friend of the Mensahs, calls Awa: she is building a 16-flat block.',
+      },
+    ],
+  },
+  {
+    id: 'building',
+    icon: '🏢',
+    title: 'La Résidence Les Palmiers',
+    titleEn: 'Les Palmiers residence',
+    intro: 'Fatou Sow, promotrice, construit un R+4 de 16 appartements avec ascenseur et parking. On change d’échelle : transformateur, colonnes montantes, court-circuit, secours.',
+    introEn: 'Fatou Sow, a developer, is building a 5-storey block of 16 flats with a lift and car park. A change of scale: transformer, risers, short circuit, backup.',
+    lessons: [
+      {
+        id: 'building-feasibility',
+        title: 'Un immeuble, c’est une autre échelle',
+        titleEn: 'A building is another scale',
+        transition: 'La puissance dépasse ce que le réseau basse tension peut donner : il faut un poste de transformation. Où, et de quelle taille ?',
+        transitionEn: 'The power exceeds what the low-voltage network can supply: a substation is needed. Where, and how big?',
+      },
+      {
+        id: 'building-substation',
+        title: 'Le poste de transformation et le local groupe',
+        titleEn: 'The substation and the generator room',
+        transition: 'L’énergie arrive au pied de l’immeuble. Il faut la faire monter jusqu’aux 16 appartements.',
+        transitionEn: 'Power reaches the foot of the building. It must now be carried up to the 16 flats.',
+      },
+      {
+        id: 'building-risers',
+        title: 'Colonnes montantes et compteurs',
+        titleEn: 'Risers and meters',
+        transition: 'Les logements sont servis. Restent les équipements communs, et d’abord ceux qui ont des moteurs : ascenseur et pompes.',
+        transitionEn: 'The flats are served. The shared equipment remains, starting with the motor loads: lift and pumps.',
+      },
+      {
+        id: 'building-services',
+        title: 'Ascenseur, pompes et parties communes',
+        titleEn: 'Lift, pumps and common areas',
+        transition: 'Avec un transformateur juste à côté, un court-circuit peut libérer une énergie énorme. Les disjoncteurs doivent tenir.',
+        transitionEn: 'With a transformer right next door, a short circuit can release huge energy. The breakers must withstand it.',
+      },
+      {
+        id: 'building-shortcircuit',
+        title: 'Le court-circuit au tableau général',
+        titleEn: 'The short circuit at the main board',
+        transition: 'Dernière demande de Fatou : que l’ascenseur et les pompes continuent de marcher pendant les coupures.',
+        transitionEn: 'Fatou’s last request: keep the lift and pumps running during power cuts.',
+      },
+      {
+        id: 'building-backup',
+        title: 'Le secours : groupe électrogène et inverseur',
+        titleEn: 'Backup: generator and transfer switch',
+        transition: 'La résidence est livrée. Un nouveau client contacte Awa : une usine de jus de fruits, pleine de moteurs.',
+        transitionEn: 'The residence is handed over. A new client calls Awa: a fruit-juice plant, full of motors.',
+      },
+    ],
+  },
+  {
+    id: 'factory',
+    icon: '🏭',
+    title: 'L’usine de jus Tropica',
+    titleEn: 'The Tropica juice plant',
+    intro: 'Ibrahim Traoré agrandit son usine : pompes, compresseurs, chambre froide, convoyeurs. Le monde des moteurs : démarrage, protection, sélectivité et facture d’énergie réactive.',
+    introEn: 'Ibrahim Traoré is expanding his plant: pumps, compressors, a cold room, conveyors. The world of motors: starting, protection, selectivity and reactive energy bills.',
+    lessons: [
+      {
+        id: 'factory-survey',
+        title: 'Visite d’usine : la liste des machines',
+        titleEn: 'Plant visit: the machine list',
+        transition: 'Le plus gros moteur fait 55 kW. S’il démarre en direct, la tension de toute l’usine va s’effondrer.',
+        transitionEn: 'The largest motor is 55 kW. If it starts direct-on-line, the voltage of the whole plant will collapse.',
+      },
+      {
+        id: 'factory-starting',
+        title: 'Démarrer un moteur sans tout faire tomber',
+        titleEn: 'Starting a motor without bringing everything down',
+        transition: 'Chaque moteur a son mode de démarrage. Il faut maintenant le protéger, lui et le câble qui l’alimente.',
+        transitionEn: 'Each motor has its starting method. Now it must be protected, along with the cable feeding it.',
+      },
+      {
+        id: 'factory-feeders',
+        title: 'Protéger les moteurs et les départs',
+        titleEn: 'Protecting motors and feeders',
+        transition: 'Les calibres sont connus. Dans une usine chaude, les câbles posés côte à côte chauffent : il faut les surdimensionner.',
+        transitionEn: 'The ratings are known. In a hot plant, cables laid side by side heat up: they must be upsized.',
+      },
+      {
+        id: 'factory-cables',
+        title: 'Câbles en chemin de câbles et chaleur',
+        titleEn: 'Cables on trays and heat',
+        transition: 'Si un défaut survient sur une pompe, Ibrahim veut que seule cette pompe s’arrête, pas toute la ligne de production.',
+        transitionEn: 'If a pump develops a fault, Ibrahim wants only that pump to stop, not the whole production line.',
+      },
+      {
+        id: 'factory-selectivity',
+        title: 'Court-circuit et sélectivité',
+        titleEn: 'Short circuit and selectivity',
+        transition: 'L’usine tourne. Mais la facture du distributeur contient une ligne qui intrigue Ibrahim : « énergie réactive ».',
+        transitionEn: 'The plant is running. But the utility bill has a line that puzzles Ibrahim: “reactive energy”.',
+      },
+      {
+        id: 'factory-powerfactor',
+        title: 'Le cos φ et la facture',
+        titleEn: 'Power factor and the bill',
+        transition: 'Tropica est rentable. Dernier projet, le plus exigeant : une clinique où l’électricité ne doit jamais s’arrêter.',
+        transitionEn: 'Tropica is profitable. The last and most demanding project: a clinic where power must never stop.',
+      },
+    ],
+  },
+  {
+    id: 'clinic',
+    icon: '🏥',
+    title: 'La Clinique Espoir',
+    titleEn: 'Espoir Clinic',
+    intro: 'Dr Aïcha Bello ouvre une clinique de 30 lits avec bloc opératoire. Ici, une coupure peut coûter une vie : sources multiples, onduleurs, éclairage de sécurité.',
+    introEn: 'Dr Aïcha Bello is opening a 30-bed clinic with an operating theatre. Here a power cut can cost a life: multiple sources, UPS, safety lighting.',
+    lessons: [
+      {
+        id: 'clinic-loads',
+        title: 'Classer les charges : vital, essentiel, normal',
+        titleEn: 'Ranking the loads: vital, essential, normal',
+        transition: 'Le classement est fait. Le premier rempart contre la coupure, c’est le groupe électrogène et son inverseur.',
+        transitionEn: 'The ranking is done. The first line of defence against outages is the generator and its transfer switch.',
+      },
+      {
+        id: 'clinic-generator',
+        title: 'Groupe électrogène et inverseur de sources',
+        titleEn: 'Generator and automatic transfer switch',
+        transition: 'Le groupe met une dizaine de secondes à reprendre. Au bloc opératoire, c’est beaucoup trop long.',
+        transitionEn: 'The generator takes around ten seconds to take over. In the operating theatre, that is far too long.',
+      },
+      {
+        id: 'clinic-ups',
+        title: 'Onduleurs et bloc opératoire',
+        titleEn: 'UPS and the operating theatre',
+        transition: 'Reste à guider les personnes si tout s’éteint, et à prouver chaque mois que le secours fonctionne.',
+        transitionEn: 'What remains is guiding people out if everything goes dark, and proving every month that the backup works.',
+      },
+      {
+        id: 'clinic-safety',
+        title: 'Éclairage de sécurité et essais périodiques',
+        titleEn: 'Safety lighting and periodic tests',
+      },
+    ],
+  },
+];
+
+/** Steps are numbered within each project ("Project 2 · Step 3"). */
+export const STORY_FLAT_LESSONS: FlatLesson[] = STORY_SECTIONS.flatMap((section, sectionIndex) =>
+  section.lessons.map((lesson, indexInSection) => ({ lesson, section, sectionIndex, indexInSection, number: indexInSection + 1 })),
+);

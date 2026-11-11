@@ -15,6 +15,10 @@ type Props = {
   title?: [string, string];
   subtitle?: [string, string];
   hero?: { name: string; props?: Record<string, string | number | boolean> };
+  /** Word used before each section number ("Section", "Projet"). */
+  sectionLabel?: [string, string];
+  /** Rendered above the title (e.g. a switch between two views). */
+  topSlot?: React.ReactNode;
 };
 
 export default function CourseHomeScreen({
@@ -28,6 +32,8 @@ export default function CourseHomeScreen({
     'Built for complete beginners: understand the project, learn the basics, then design in the real order of the job. Each section prepares the next.',
   ],
   hero = { name: 'design-roadmap', props: { step: 0 } },
+  sectionLabel = ['Section', 'Section'],
+  topSlot,
 }: Props) {
   const { lang, t } = useLanguage();
   const numberOf = (id: string) => flat.find((l) => l.lesson.id === id)?.number ?? 0;
@@ -35,6 +41,7 @@ export default function CourseHomeScreen({
 
   return (
     <ScreenContainer>
+      {topSlot}
       <Text style={styles.title}>{t(title[0], title[1])}</Text>
       <Text style={styles.subtitle}>{t(subtitle[0], subtitle[1])}</Text>
       <View style={styles.hero}>
@@ -56,7 +63,7 @@ export default function CourseHomeScreen({
 
             <View style={[styles.card, !hasContent && styles.cardMuted]}>
               <Text style={styles.sectionEyebrow}>
-                {isAppendix ? t('Annexe', 'Appendix') : `${t('Section', 'Section')} ${si + 1}`} · {section.icon}
+                {isAppendix ? t('Annexe', 'Appendix') : `${t(sectionLabel[0], sectionLabel[1])} ${si + 1}`} · {section.icon}
               </Text>
               <Text style={styles.sectionTitle}>{lang === 'fr' ? section.title : section.titleEn}</Text>
               <Text style={styles.sectionIntro}>{lang === 'fr' ? section.intro : section.introEn}</Text>

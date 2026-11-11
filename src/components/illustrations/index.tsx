@@ -45,6 +45,18 @@ import {
   ThreeWayValve,
 } from './sceneTech';
 import { BatteryBank, MpptWindow, PeakSunHours, PvArray, PvStc, PvSystem, PvWaveforms } from './sceneSolar';
+import {
+  BuildingRiser,
+  CableRun,
+  ClinicTiers,
+  EarthingTT,
+  FactorySld,
+  MotorStart,
+  Selectivity,
+  StoryCast,
+  VillaBoard,
+  VillaPlan,
+} from './sceneStory';
 
 export type IllustrationProps = Record<string, string | number | boolean | undefined>;
 
@@ -170,6 +182,26 @@ export function Illustration({ name, props, lang }: { name: string; props?: Illu
       return <HeatingCurve lang={lang} />;
     case 'tech-pressure':
       return <PressureScale lang={lang} />;
+    case 'story-cast':
+      return <StoryCast lang={lang} />;
+    case 'villa-plan':
+      return <VillaPlan lang={lang} focus={typeof p.focus === 'string' ? p.focus : undefined} />;
+    case 'villa-board':
+      return <VillaBoard lang={lang} />;
+    case 'earthing-tt':
+      return <EarthingTT lang={lang} />;
+    case 'cable-run':
+      return <CableRun lang={lang} />;
+    case 'building-riser':
+      return <BuildingRiser lang={lang} highlight={typeof p.highlight === 'string' ? p.highlight : undefined} />;
+    case 'factory-sld':
+      return <FactorySld lang={lang} highlight={typeof p.highlight === 'string' ? p.highlight : undefined} />;
+    case 'motor-start':
+      return <MotorStart lang={lang} />;
+    case 'selectivity':
+      return <Selectivity lang={lang} />;
+    case 'clinic-tiers':
+      return <ClinicTiers lang={lang} highlight={typeof p.highlight === 'string' ? p.highlight : undefined} />;
     default:
       return null;
   }
