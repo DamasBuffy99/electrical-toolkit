@@ -41,6 +41,10 @@ export const villaMeetingContent: TopicContent = {
     },
     { type: 'illustration', name: 'org-chart', caption: 'The parties of a construction project' },
     {
+      type: 'note',
+      text: 'On a project this size, some roles are held by the same person: Awa designs and supervises the works (design and supervision engineer); Moussa’s firm buys the equipment, details the construction drawings and builds. On the block of flats in project 2, each of these roles will be held by a different engineer.',
+    },
+    {
       type: 'dialogue',
       speaker: 'Esther Mensah',
       role: 'client',

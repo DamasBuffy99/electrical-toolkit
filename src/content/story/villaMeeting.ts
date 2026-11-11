@@ -41,6 +41,10 @@ export const villaMeetingContent: TopicContent = {
     },
     { type: 'illustration', name: 'org-chart', caption: 'Les acteurs d’un projet de construction' },
     {
+      type: 'note',
+      text: 'Sur un projet de cette taille, certains rôles sont tenus par la même personne : Awa conçoit et surveille le chantier (ingénieure de conception et de supervision) ; l’entreprise de Moussa achète le matériel, dessine les détails d’exécution et réalise. Sur l’immeuble du projet 2, chacun de ces rôles sera tenu par un ingénieur différent.',
+    },
+    {
       type: 'dialogue',
       speaker: 'Esther Mensah',
       role: 'client',

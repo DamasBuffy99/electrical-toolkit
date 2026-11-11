@@ -64,6 +64,32 @@ export const clinicSafetyContent: TopicContent = {
       text: 'The real risk is discovering a failure during a real outage at 3 a.m. We schedule the test at a quiet time, warn the teams, keep the vital level on UPS, and stop the test at the slightest problem. It’s the only way to be sure everything will work on the day.',
     },
     { type: 'fiche', id: 'generator-ups-ats', why: 'Maintenance and testing of generators, transfer switches and UPS.' },
+
+    { type: 'heading', text: '3 · The inspection body’s visit before opening' },
+    { type: 'scene', text: 'Month 6 · Safety visit' },
+    {
+      type: 'text',
+      text: 'Before receiving its first patients, the clinic needs a favourable opinion from the inspection body. Ndeye Faye, the same inspector as for Les Palmiers, spends a whole day on site, with Marc Adjovi for supervision and Rachid Bamba for the contractor Électra BTP.',
+    },
+    {
+      type: 'bullets',
+      items: [
+        'Real network failure: load shedding, one generator starts, transfer in 11 seconds; the second generator does start when the first one’s failure is simulated.',
+        'Operating theatre: the insulation monitor alarm is triggered by a simulated fault, without any interruption of supply.',
+        'Safety lighting: every unit lights up; autonomy is measured on a sample.',
+        'Document check: up-to-date diagrams, safety logbook opened, generator maintenance contract signed.',
+      ],
+    },
+    {
+      type: 'dialogue',
+      speaker: 'Ndeye Faye (inspection body)',
+      role: 'team',
+      text: 'Just one reservation: two safety lighting units in the ICU corridor are hidden by a notice board. Move the board, and I can give a favourable opinion.',
+    },
+    {
+      type: 'text',
+      text: 'The next day the board is moved. Ndeye Faye’s report arrives the following week: Espoir Clinic can open.',
+    },
     {
       type: 'regional',
       text: 'A maintenance contract with the generator supplier (oil changes, filters, starter batteries, diesel analysis) and a stock of critical spare parts on site make all the difference, especially when the supplier is several hours’ drive away. Record every test and every intervention in the logbook: it is also what health inspectors will ask for.',
@@ -79,7 +105,7 @@ export const clinicSafetyContent: TopicContent = {
       headers: ['Project', 'What it added'],
       rows: [
         ['1 · Mensah villa', 'the basics: power balance, circuits, board, RCDs, TT earthing, cables, voltage drop, acceptance'],
-        ['2 · Les Palmiers', 'multi-dwelling: diversity, MV/LV substation, risers, short circuit, generator and transfer switch'],
+        ['2 · Les Palmiers', 'multi-dwelling: full team (supervision, procurement, shop drawings, inspection body), diversity, MV/LV substation, risers, short circuit, generator and transfer switch'],
         ['3 · Tropica plant', 'motors: starting, protection, cable derating, selectivity, power factor'],
         ['4 · Espoir Clinic', 'continuity: load levels, N+1 redundancy, UPS, medical IT, safety, testing'],
       ],

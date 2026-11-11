@@ -88,6 +88,23 @@ export const factoryCablesContent: TopicContent = {
         'Both ends of every cable labelled, with the same name as on the diagram.',
       ],
     },
+    { type: 'scene', text: 'Month 4 · Électra BTP construction drawings' },
+    {
+      type: 'text',
+      text: 'Ibrahim has awarded the works to Électra BTP, the contractor of Les Palmiers. Didier Kouassi, its shop drawings engineer, draws the exact cable-tray route from Awa’s design principle.',
+    },
+    {
+      type: 'dialogue',
+      speaker: 'Didier Kouassi (shop drawings)',
+      role: 'team',
+      text: 'The tray planned under the sheeting crosses the pasteuriser hood duct, which exhausts air at 60 °C. I propose lowering it to 3 m, along the columns, and running the control cables on a second tray 30 cm below.',
+    },
+    {
+      type: 'dialogue',
+      speaker: 'Awa Diallo',
+      role: 'engineer',
+      text: 'Excellent: lower down it will be cooler, which is consistent with my 40 °C calculation. Separate control cables will also avoid interference from the drives. I approve, and Paul will check the forklifts can pass underneath.',
+    },
     {
       type: 'regional',
       text: 'Under metal-sheet roofs, the temperature near the structure often exceeds 45 °C in the hot season: measure it rather than assuming 30 °C. When possible, run cable trays at mid-height or in the shade of a structure rather than against the sheeting.',

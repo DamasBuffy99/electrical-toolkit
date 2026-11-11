@@ -81,6 +81,29 @@ export const buildingBackupContent: TopicContent = {
       text: 'In apartment blocks, the generator’s diesel is often the first source of disputes over service charges: an hour meter and a refuelling log avoid many arguments. Also plan a monthly 30-minute test under real load: a generator that never runs won’t start on the day of the outage.',
     },
 
+    { type: 'heading', text: '4 · Acceptance, with the inspection body' },
+    { type: 'scene', text: 'Month 14 · Acceptance tests' },
+    {
+      type: 'text',
+      text: 'On test day everyone is there: Rachid Bamba and his electricians to operate, Marc Adjovi for supervision, Ndeye Faye for the inspection body, and Fatou. Rachid cuts the utility supply: within 12 seconds the generator has started and the transfer switch has transferred; the lift, stopped at the 3rd floor, moves again.',
+    },
+    {
+      type: 'dialogue',
+      speaker: 'Ndeye Faye (inspection body)',
+      role: 'team',
+      text: 'The transfer is compliant. I’m nevertheless issuing two reservations: the transfer switch has no label showing the two sources, and the generator-room door doesn’t open outwards as shown on the drawing. I’ll come back to check they are cleared.',
+    },
+    {
+      type: 'dialogue',
+      speaker: 'Rachid Bamba (site, Électra BTP)',
+      role: 'team',
+      text: 'The label will be done tomorrow. For the door, the carpenter got the direction wrong: we’ll refit it within the week.',
+    },
+    {
+      type: 'text',
+      text: 'Two weeks later, Ndeye Faye confirms the reservations are cleared. Marc signs the acceptance report, Didier hands over the as-built drawings, and Fatou can let her flats.',
+    },
+
     { type: 'heading', text: 'Project 2 review' },
     {
       type: 'text',
@@ -93,6 +116,7 @@ export const buildingBackupContent: TopicContent = {
         'Size a generator with a margin for motor starting and a derating for heat, without dropping below 30% load.',
         'The transfer switch never parallels the generator and the network: a double interlock is mandatory.',
         'A pre-wired priority circuit in each flat prepares for individual inverters.',
+        'Acceptance brings together contractor, supervision and inspection body; the building is handed over once reservations are cleared.',
       ],
     },
     { type: 'heading', text: 'Exercises' },

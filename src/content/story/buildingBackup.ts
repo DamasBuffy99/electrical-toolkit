@@ -81,6 +81,29 @@ export const buildingBackupContent: TopicContent = {
       text: 'Dans les immeubles, le gazole du groupe est souvent la première source de conflits de charges : un compteur horaire et un registre de ravitaillement évitent bien des discussions. Prévoyez aussi un essai mensuel de 30 minutes en charge réelle : un groupe qui ne tourne jamais ne démarre pas le jour de la coupure.',
     },
 
+    { type: 'heading', text: '4 · La réception, avec le bureau de contrôle' },
+    { type: 'scene', text: 'Mois 14 · Essais de réception' },
+    {
+      type: 'text',
+      text: 'Le jour des essais, tout le monde est là : Rachid Bamba et ses électriciens pour manœuvrer, Marc Adjovi pour la supervision, Ndeye Faye pour le bureau de contrôle, et Fatou. Rachid coupe l’arrivée du distributeur : en 12 secondes, le groupe a démarré et l’inverseur a basculé ; l’ascenseur, arrêté au 3e, repart.',
+    },
+    {
+      type: 'dialogue',
+      speaker: 'Ndeye Faye (bureau de contrôle)',
+      role: 'team',
+      text: 'La bascule est conforme. J’émets cependant deux réserves : l’inverseur n’a pas d’étiquette indiquant les deux sources, et la porte du local groupe ne s’ouvre pas vers l’extérieur comme prévu au plan. Je reviendrai vérifier leur levée.',
+    },
+    {
+      type: 'dialogue',
+      speaker: 'Rachid Bamba (travaux, Électra BTP)',
+      role: 'team',
+      text: 'L’étiquette, c’est fait demain. Pour la porte, le menuisier s’est trompé de sens : on la remonte dans la semaine.',
+    },
+    {
+      type: 'text',
+      text: 'Deux semaines plus tard, Ndeye Faye constate la levée des réserves. Marc signe le procès-verbal de réception, Didier remet les plans de récolement, et Fatou peut louer ses appartements.',
+    },
+
     { type: 'heading', text: 'Bilan du projet 2' },
     {
       type: 'text',
@@ -93,6 +116,7 @@ export const buildingBackupContent: TopicContent = {
         'Un groupe se dimensionne avec une marge pour les démarrages de moteurs et un déclassement pour la chaleur, sans tomber sous 30 % de charge.',
         'L’inverseur ne met jamais le groupe et le réseau en parallèle : double verrouillage obligatoire.',
         'Un circuit prioritaire pré-câblé dans chaque logement prépare les onduleurs individuels.',
+        'La réception réunit entreprise, supervision et bureau de contrôle ; le bâtiment est livré une fois les réserves levées.',
       ],
     },
     { type: 'heading', text: 'Exercices' },

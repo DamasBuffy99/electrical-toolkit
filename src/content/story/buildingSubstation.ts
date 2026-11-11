@@ -109,6 +109,29 @@ export const buildingSubstationContent: TopicContent = {
       text: 'La chaleur ambiante et l’altitude réduisent la puissance disponible d’un groupe (déclassement indiqué par le fabricant, souvent au-delà de 40 °C ou de 1 000 m). Les groupes « capotés » (insonorisés) sont très répandus en ville : ils évitent un local maçonné, mais demandent une dalle, une protection contre le vol de gazole et un accès pour l’entretien.',
     },
 
+    { type: 'heading', text: '5 · Huit mois plus tard : l’approbation du transformateur' },
+    { type: 'scene', text: 'Mois 10 · Réunion de chantier' },
+    {
+      type: 'dialogue',
+      speaker: 'Clarisse Houndé (achats, Électra BTP)',
+      role: 'team',
+      text: 'Pour le transformateur, j’ai une offre à huile 30 % moins chère que le sec demandé au cahier des charges. Même puissance, même tension. Je vous la soumets pour approbation.',
+    },
+    {
+      type: 'dialogue',
+      speaker: 'Marc Adjovi (supervision)',
+      role: 'team',
+      text: 'Même puissance, mais pas même risque : le local est sous des logements. Le cahier des charges impose un transformateur sec justement pour ça. Je refuse cette variante. En revanche, votre deuxième offre, un sec d’une autre marque, est recevable si sa fiche technique confirme 160 kVA, 20/0,4 kV, u_k = 4 % et des pertes équivalentes.',
+    },
+    {
+      type: 'text',
+      text: 'Clarisse renvoie la fiche technique du second modèle. Awa vérifie la tension de court-circuit : un u_k différent changerait le courant de court-circuit calculé pour le TGBT. Les valeurs concordent : Marc approuve, et l’entreprise peut commander. Fatou économise 8 % sans rien céder sur la sécurité.',
+    },
+    {
+      type: 'note',
+      text: 'C’est le rôle de la demande d’approbation : l’entreprise peut proposer un matériel équivalent, souvent moins cher ou plus disponible, mais c’est la supervision qui juge l’équivalence, en s’appuyant sur la conception.',
+    },
+
     { type: 'heading', text: 'À retenir' },
     {
       type: 'bullets',

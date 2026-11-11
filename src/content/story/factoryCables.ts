@@ -88,6 +88,23 @@ export const factoryCablesContent: TopicContent = {
         'Repérage des deux extrémités de chaque câble, avec le même nom que sur le schéma.',
       ],
     },
+    { type: 'scene', text: 'Mois 4 · Plans d’exécution d’Électra BTP' },
+    {
+      type: 'text',
+      text: 'Ibrahim a confié les travaux à Électra BTP, l’entreprise de la Résidence Les Palmiers. Didier Kouassi, son ingénieur shop drawings, dessine le tracé exact des chemins de câbles à partir du principe d’Awa.',
+    },
+    {
+      type: 'dialogue',
+      speaker: 'Didier Kouassi (shop drawings)',
+      role: 'team',
+      text: 'Le chemin de câbles prévu sous la tôle croise la gaine de la hotte du pasteurisateur, qui rejette de l’air à 60 °C. Je propose de le descendre à 3 m, le long des poteaux, et de faire passer les câbles de commande sur un second chemin, 30 cm en dessous.',
+    },
+    {
+      type: 'dialogue',
+      speaker: 'Awa Diallo',
+      role: 'engineer',
+      text: 'Excellent : plus bas, il fera moins chaud, et c’est cohérent avec mon calcul à 40 °C. Les câbles de commande séparés éviteront aussi les perturbations des variateurs. Je valide, et Paul vérifiera que les chariots élévateurs passent dessous.',
+    },
     {
       type: 'regional',
       text: 'Sous les toitures en tôle, la température près de la charpente dépasse souvent 45 °C en saison chaude : mesurez-la plutôt que de supposer 30 °C. Quand c’est possible, faites passer les chemins de câbles à mi-hauteur ou à l’ombre d’une structure, plutôt que contre la tôle.',

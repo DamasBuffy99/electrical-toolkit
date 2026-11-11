@@ -85,6 +85,25 @@ export const buildingRisersContent: TopicContent = {
       text: 'Prepaid meters (cards or codes) are very widespread: they settle the question of unpaid bills between landlord and tenants. Plan a visible spot in each flat for the display unit, and check with the utility which metering enclosure model it requires.',
     },
 
+    { type: 'heading', text: '5 · On site: the unexpected beam' },
+    { type: 'scene', text: 'Month 11 · Électra BTP site office' },
+    {
+      type: 'dialogue',
+      speaker: 'Didier Kouassi (shop drawings)',
+      role: 'team',
+      text: 'While detailing the shaft on the 3rd floor, I see a structural beam crossing the planned route. I propose diverting the riser through the next landing: 5 m more cable. I’ve put it on my construction drawings.',
+    },
+    {
+      type: 'dialogue',
+      speaker: 'Awa Diallo',
+      role: 'engineer',
+      text: 'Well spotted, Didier, that’s exactly what shop drawings are for. With 30 m instead of 25, the riser voltage drop goes from 0.7% to about 0.8%: no consequence. Marc can approve the new route.',
+    },
+    {
+      type: 'text',
+      text: 'Rachid Bamba, the site engineer, waits for Marc’s approval before having the slabs drilled: a hole in the wrong place in a slab is hard to fill properly. A week later the riser is installed according to the approved drawings, and Didier records the real route for the future as-built drawings.',
+    },
+
     { type: 'heading', text: 'Key points' },
     {
       type: 'bullets',

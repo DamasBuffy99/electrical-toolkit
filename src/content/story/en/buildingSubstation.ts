@@ -109,6 +109,29 @@ export const buildingSubstationContent: TopicContent = {
       text: 'Ambient heat and altitude reduce a generator’s available power (derating given by the manufacturer, often above 40 °C or 1,000 m). Canopied (soundproof) generators are very common in cities: they avoid a masonry room, but need a slab, protection against diesel theft and access for maintenance.',
     },
 
+    { type: 'heading', text: '5 · Eight months later: approving the transformer' },
+    { type: 'scene', text: 'Month 10 · Site meeting' },
+    {
+      type: 'dialogue',
+      speaker: 'Clarisse Houndé (procurement, Électra BTP)',
+      role: 'team',
+      text: 'For the transformer, I have an oil-filled offer 30% cheaper than the dry type in the specification. Same rating, same voltage. I’m submitting it for approval.',
+    },
+    {
+      type: 'dialogue',
+      speaker: 'Marc Adjovi (supervision)',
+      role: 'team',
+      text: 'Same rating, but not the same risk: the room is under flats. The specification requires a dry-type unit precisely for that reason. I reject this option. Your second offer, however, a dry-type unit from another brand, is acceptable if its data sheet confirms 160 kVA, 20/0.4 kV, u_k = 4% and equivalent losses.',
+    },
+    {
+      type: 'text',
+      text: 'Clarisse sends back the data sheet of the second model. Awa checks the short-circuit voltage: a different u_k would change the short-circuit current calculated for the main board. The values match: Marc approves, and the contractor can order. Fatou saves 8% without giving anything up on safety.',
+    },
+    {
+      type: 'note',
+      text: 'That’s the purpose of the approval request: the contractor may propose equivalent equipment, often cheaper or more available, but supervision judges the equivalence, based on the design.',
+    },
+
     { type: 'heading', text: 'Key points' },
     {
       type: 'bullets',

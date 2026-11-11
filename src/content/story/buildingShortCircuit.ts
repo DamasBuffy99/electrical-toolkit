@@ -71,6 +71,19 @@ export const buildingShortCircuitContent: TopicContent = {
       text: 'La gamme 10 kA suffit au TGBT, avec une bonne marge. Les 25 kA seraient de l’argent jeté. En revanche, si un jour vous remplacez le transformateur par un 400 kVA, il faudra refaire ce calcul : le courant de court-circuit augmentera, et certains disjoncteurs devront changer.',
     },
     { type: 'formula', text: 'Règle : I_{cu} (pouvoir de coupure) ≥ I_{sc} (au point d’installation)' },
+    { type: 'scene', text: 'Mois 12 · Demande d’approbation du TGBT' },
+    {
+      type: 'dialogue',
+      speaker: 'Clarisse Houndé (achats, Électra BTP)',
+      role: 'team',
+      text: 'Le tableautier propose une gamme à 6 kA pour tout le TGBT, nettement moins chère. 6 kA, c’est au-dessus de 5,6 kA, non ?',
+    },
+    {
+      type: 'dialogue',
+      speaker: 'Marc Adjovi (supervision)',
+      role: 'team',
+      text: 'Au-dessus, mais sans aucune marge : la puissance de court-circuit du réseau peut augmenter si le distributeur renforce sa ligne, et nos 5,6 kA sont déjà une estimation. Le cahier des charges d’Awa impose 10 kA au TGBT ; je refuse la variante à 6 kA. Pour les coffrets de palier, en revanche, 6 kA est conforme.',
+    },
     {
       type: 'note',
       text: 'Le calcul du court-circuit maximal sert à choisir le pouvoir de coupure. Le court-circuit minimal, en bout de ligne, sert à autre chose : vérifier que le disjoncteur détecte bien un défaut lointain et coupe assez vite. Les deux se calculent avec la même méthode.',

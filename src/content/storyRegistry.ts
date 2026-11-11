@@ -11,6 +11,7 @@ import { villaSafetyContent } from './story/villaSafety';
 import { villaCablesContent } from './story/villaCables';
 import { villaHandoverContent } from './story/villaHandover';
 import { buildingFeasibilityContent } from './story/buildingFeasibility';
+import { buildingTeamContent } from './story/buildingTeam';
 import { buildingSubstationContent } from './story/buildingSubstation';
 import { buildingRisersContent } from './story/buildingRisers';
 import { buildingServicesContent } from './story/buildingServices';
@@ -37,6 +38,7 @@ import { villaSafetyContent as villaSafetyContentEn } from './story/en/villaSafe
 import { villaCablesContent as villaCablesContentEn } from './story/en/villaCables';
 import { villaHandoverContent as villaHandoverContentEn } from './story/en/villaHandover';
 import { buildingFeasibilityContent as buildingFeasibilityContentEn } from './story/en/buildingFeasibility';
+import { buildingTeamContent as buildingTeamContentEn } from './story/en/buildingTeam';
 import { buildingSubstationContent as buildingSubstationContentEn } from './story/en/buildingSubstation';
 import { buildingRisersContent as buildingRisersContentEn } from './story/en/buildingRisers';
 import { buildingServicesContent as buildingServicesContentEn } from './story/en/buildingServices';
@@ -64,6 +66,7 @@ export const STORY_CONTENT_FR: Record<string, TopicContent | undefined> = {
   'villa-cables': villaCablesContent,
   'villa-handover': villaHandoverContent,
   'building-feasibility': buildingFeasibilityContent,
+  'building-team': buildingTeamContent,
   'building-substation': buildingSubstationContent,
   'building-risers': buildingRisersContent,
   'building-services': buildingServicesContent,
@@ -92,6 +95,7 @@ export const STORY_CONTENT_EN: Record<string, TopicContent | undefined> = {
   'villa-cables': villaCablesContentEn,
   'villa-handover': villaHandoverContentEn,
   'building-feasibility': buildingFeasibilityContentEn,
+  'building-team': buildingTeamContentEn,
   'building-substation': buildingSubstationContentEn,
   'building-risers': buildingRisersContentEn,
   'building-services': buildingServicesContentEn,

@@ -84,15 +84,22 @@ export const STORY_SECTIONS: CourseSection[] = [
     icon: '🏢',
     title: 'La Résidence Les Palmiers',
     titleEn: 'Les Palmiers residence',
-    intro: 'Fatou Sow, promotrice, construit un R+4 de 16 appartements avec ascenseur et parking. On change d’échelle : transformateur, colonnes montantes, court-circuit, secours.',
-    introEn: 'Fatou Sow, a developer, is building a 5-storey block of 16 flats with a lift and car park. A change of scale: transformer, risers, short circuit, backup.',
+    intro: 'Fatou Sow, promotrice, construit un R+4 de 16 appartements avec ascenseur et parking. On change d’échelle : une équipe complète (supervision, achats, shop drawings, bureau de contrôle), transformateur, colonnes montantes, court-circuit, secours.',
+    introEn: 'Fatou Sow, a developer, is building a 5-storey block of 16 flats with a lift and car park. A change of scale: a full team (supervision, procurement, shop drawings, inspection body), transformer, risers, short circuit, backup.',
     lessons: [
       {
         id: 'building-feasibility',
         title: 'Un immeuble, c’est une autre échelle',
         titleEn: 'A building is another scale',
-        transition: 'La puissance dépasse ce que le réseau basse tension peut donner : il faut un poste de transformation. Où, et de quelle taille ?',
-        transitionEn: 'The power exceeds what the low-voltage network can supply: a substation is needed. Where, and how big?',
+        transition: 'Le projet est faisable, mais il est trop gros pour deux personnes. Fatou demande : qui va concevoir, qui va construire, qui va contrôler ?',
+        transitionEn: 'The project is feasible, but too big for two people. Fatou asks: who will design, who will build, who will check?',
+      },
+      {
+        id: 'building-team',
+        title: 'Toute une équipe autour du projet',
+        titleEn: 'A whole team around the project',
+        transition: 'L’équipe est connue. Premier gros sujet de conception : le poste de transformation, que la puissance impose. Où, et de quelle taille ?',
+        transitionEn: 'The team is known. First big design topic: the substation the power requires. Where, and how big?',
       },
       {
         id: 'building-substation',

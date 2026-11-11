@@ -71,6 +71,19 @@ export const buildingShortCircuitContent: TopicContent = {
       text: 'The 10 kA range is enough at the main board, with a good margin. The 25 kA range would be money thrown away. However, if one day you replace the transformer with a 400 kVA unit, this calculation must be redone: the short-circuit current will rise, and some breakers will have to change.',
     },
     { type: 'formula', text: 'Rule: I_{cu} (breaking capacity) ≥ I_{sc} (at the point of installation)' },
+    { type: 'scene', text: 'Month 12 · Approval request for the main board' },
+    {
+      type: 'dialogue',
+      speaker: 'Clarisse Houndé (procurement, Électra BTP)',
+      role: 'team',
+      text: 'The panel builder offers a 6 kA range for the whole main board, much cheaper. 6 kA is above 5.6 kA, isn’t it?',
+    },
+    {
+      type: 'dialogue',
+      speaker: 'Marc Adjovi (supervision)',
+      role: 'team',
+      text: 'Above, but with no margin at all: the network’s short-circuit power may rise if the utility reinforces its line, and our 5.6 kA is already an estimate. Awa’s specification requires 10 kA at the main board; I reject the 6 kA option. For the landing enclosures, however, 6 kA is compliant.',
+    },
     {
       type: 'note',
       text: 'The maximum short-circuit current is used to choose the breaking capacity. The minimum short circuit, at the end of the line, serves another purpose: checking that the breaker detects a distant fault and trips fast enough. Both are calculated with the same method.',

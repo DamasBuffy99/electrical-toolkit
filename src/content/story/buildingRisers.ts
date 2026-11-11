@@ -85,6 +85,25 @@ export const buildingRisersContent: TopicContent = {
       text: 'Les compteurs à prépaiement (cartes ou codes) sont très répandus : ils règlent la question des impayés entre propriétaire et locataires. Prévoyez dans chaque logement un emplacement visible pour le boîtier d’affichage, et vérifiez avec le distributeur le modèle de coffret de comptage exigé.',
     },
 
+    { type: 'heading', text: '5 · Sur le chantier : la poutre imprévue' },
+    { type: 'scene', text: 'Mois 11 · Bureau de chantier d’Électra BTP' },
+    {
+      type: 'dialogue',
+      speaker: 'Didier Kouassi (shop drawings)',
+      role: 'team',
+      text: 'En dessinant le détail de la gaine au 3e étage, je vois qu’une poutre de la structure passe en travers du trajet prévu. Je propose de dévier la colonne par le palier voisin : 5 m de câble en plus. Je l’ai mis sur mes plans d’exécution.',
+    },
+    {
+      type: 'dialogue',
+      speaker: 'Awa Diallo',
+      role: 'engineer',
+      text: 'Bien vu, Didier, c’est exactement pour ça que les shop drawings existent. Avec 30 m au lieu de 25, la chute de tension de la colonne passe de 0,7 % à environ 0,8 % : c’est sans conséquence. Marc peut approuver le nouveau tracé.',
+    },
+    {
+      type: 'text',
+      text: 'Rachid Bamba, l’ingénieur travaux, attend l’approbation de Marc avant de faire percer les dalles : un trou au mauvais endroit dans une dalle, cela se rebouche mal. Une semaine plus tard, la colonne est posée selon les plans approuvés, et Didier reporte le tracé réel sur les futurs plans de récolement.',
+    },
+
     { type: 'heading', text: 'À retenir' },
     {
       type: 'bullets',

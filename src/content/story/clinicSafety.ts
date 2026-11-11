@@ -64,6 +64,32 @@ export const clinicSafetyContent: TopicContent = {
       text: 'Le vrai risque, c’est de découvrir une panne pendant une vraie coupure, à 3 heures du matin. On programme l’essai à une heure calme, on prévient les équipes, le niveau vital reste sur onduleur, et on arrête l’essai au moindre problème. C’est la seule façon d’être sûr que tout marchera le jour J.',
     },
     { type: 'fiche', id: 'generator-ups-ats', why: 'Maintenance et essais des groupes, inverseurs et onduleurs.' },
+
+    { type: 'heading', text: '3 · La visite du bureau de contrôle avant l’ouverture' },
+    { type: 'scene', text: 'Mois 6 · Visite de sécurité' },
+    {
+      type: 'text',
+      text: 'Avant d’accueillir ses premiers patients, la clinique doit obtenir l’avis favorable du bureau de contrôle. Ndeye Faye, la même inspectrice que pour la Résidence Les Palmiers, passe une journée entière sur place, avec Marc Adjovi pour la supervision et Rachid Bamba pour l’entreprise Électra BTP.',
+    },
+    {
+      type: 'bullets',
+      items: [
+        'Coupure réelle du réseau : délestage, démarrage d’un groupe, bascule en 11 secondes ; le second groupe démarre bien quand on simule la panne du premier.',
+        'Bloc opératoire : déclenchement de l’alarme du contrôleur d’isolement avec un défaut simulé, sans coupure de l’alimentation.',
+        'Éclairage de sécurité : tous les blocs s’allument, l’autonomie est mesurée sur un échantillon.',
+        'Contrôle des documents : schémas à jour, registre de sécurité ouvert, contrat de maintenance des groupes signé.',
+      ],
+    },
+    {
+      type: 'dialogue',
+      speaker: 'Ndeye Faye (bureau de contrôle)',
+      role: 'team',
+      text: 'Une seule réserve : deux blocs d’éclairage de sécurité du couloir de la réanimation sont masqués par un panneau d’affichage. Déplacez le panneau, et je pourrai rendre un avis favorable.',
+    },
+    {
+      type: 'text',
+      text: 'Le lendemain, le panneau est déplacé. Le rapport de Ndeye Faye arrive la semaine suivante : la Clinique Espoir peut ouvrir.',
+    },
     {
       type: 'regional',
       text: 'Un contrat de maintenance avec le fournisseur des groupes (vidanges, filtres, batteries de démarrage, analyses de gazole) et un stock de pièces critiques sur place font toute la différence, surtout quand le fournisseur est à plusieurs heures de route. Notez chaque essai et chaque intervention dans le registre : c’est aussi ce que demanderont les inspecteurs sanitaires.',
@@ -79,7 +105,7 @@ export const clinicSafetyContent: TopicContent = {
       headers: ['Projet', 'Ce qu’il a ajouté'],
       rows: [
         ['1 · Villa Mensah', 'les bases : bilan, circuits, tableau, différentiels, terre TT, câbles, chute de tension, réception'],
-        ['2 · Résidence Les Palmiers', 'le collectif : foisonnement, poste MT/BT, colonnes montantes, court-circuit, groupe et inverseur'],
+        ['2 · Résidence Les Palmiers', 'le collectif : équipe complète (supervision, achats, shop drawings, bureau de contrôle), foisonnement, poste MT/BT, colonnes montantes, court-circuit, groupe et inverseur'],
         ['3 · Usine Tropica', 'les moteurs : démarrages, protections, déclassement des câbles, sélectivité, cos φ'],
         ['4 · Clinique Espoir', 'la continuité : niveaux de charges, redondance N+1, onduleurs, IT médical, sécurité, essais'],
       ],
