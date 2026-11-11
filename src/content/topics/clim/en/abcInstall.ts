@@ -66,7 +66,7 @@ export const abcInstallContent: TopicContent = {
         'Trap compulsory on units under negative pressure (AHUs, ducted units): seal height greater than the negative pressure + 20 mm safety (1 mmWC ≈ 10 Pa). Off-the-shelf traps only stop odours.',
       ],
     },
-    { type: 'formula', text: 'Trap seal height (mm) = negative pressure (Pa) / 10 + 20' },
+    { type: 'formula', text: 'Trap seal height (mm) = \\frac{negative pressure (Pa)}{10} + 20' },
 
     { type: 'heading', text: 'Leak testing' },
     {

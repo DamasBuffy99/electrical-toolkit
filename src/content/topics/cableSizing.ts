@@ -95,7 +95,7 @@ export const cableSizingContent: TopicContent = {
       text: "Exemple : un facteur de 0,8 signifie que le câble ne fournit que 80 % de son courant nominal. Pour une charge de 100 A, un câble de 100 A ne donnerait que 80 A : on choisit donc un câble de 100 / 0,8 = 125 A, qui fournira 125 × 0,8 = 100 A.",
     },
     { type: 'image', source: SLIDES['panel-64'], caption: 'Le facteur de correction expliqué' },
-    { type: 'formula', text: "I' = I × √((Tc − Ta') / (Tc − Ta))" },
+    { type: 'formula', text: "I' = I × \\sqrt{\\frac{T_c − T_a'}{T_c − T_a}}" },
     {
       type: 'text',
       text: "I' = ampacité corrigée · I = ampacité de table · Tc = température de tenue du conducteur (°C) · Ta' = nouvelle température ambiante (°C) · Ta = température ambiante de référence de la table (°C).",
@@ -125,10 +125,10 @@ export const cableSizingContent: TopicContent = {
       type: 'text',
       text: "Exemple chiffré — moteur 40 ch, 380V, cos φ = 0.8 :",
     },
-    { type: 'formula', text: 'I_rated = (40 × 746) / (√3 × 380 × 0.8) = 56.6 A' },
+    { type: 'formula', text: 'I_rated = \\frac{40 × 746}{√3 × 380 × 0.8} = 56.6 A' },
     { type: 'formula', text: 'I_CB = I_rated × 1.25 = 56.6 × 1.25 = 70.75 A' },
-    { type: 'formula', text: 'I_câble = I_CB / facteur de dérating' },
-    { type: 'formula', text: 'Avec un facteur de 0.82 : I_câble = 70.75 / 0.82 = 86.28 A' },
+    { type: 'formula', text: 'I_câble = \\frac{I_CB}{facteur de dérating}' },
+    { type: 'formula', text: 'Avec un facteur de 0.82 : I_câble = \\frac{70.75}{0.82} = 86.28 A' },
     { type: 'formula', text: 'Câble PVC à 50 °C (facteur 0,82) → catalogue : (4 × 25) + 16 mm²' },
     { type: 'image', source: SLIDES['panel-70'], caption: 'Courant nominal et calibre du disjoncteur' },
     { type: 'image', source: SLIDES['panel-71'], caption: 'Facteur 0,82 et choix (4×25)+16 mm²' },
@@ -207,7 +207,7 @@ export const cableSizingContent: TopicContent = {
       caption: 'Règles NEC de remplissage des conduits',
       height: 340,
     },
-    { type: 'formula', text: 'Ø conduit = √(Ø câble² / taux de remplissage)' },
+    { type: 'formula', text: 'Ø conduit = \\sqrt{\\frac{Ø câble²}{taux de remplissage}}' },
     {
       type: 'text',
       text: 'Exemple : câble tricore 2.5 mm² → Ø câble ≈ 11.5 mm → Ø conduit = √(11.5² / 0.4) ≈ 18.2 mm → valeur standard directement supérieure : 20 mm.',
@@ -234,8 +234,8 @@ export const cableSizingContent: TopicContent = {
       type: 'text',
       text: 'Normes utilisées : IEC 60364-4-43 (surintensités), 60364-5-52 (canalisations), 60947-2 (disjoncteurs), 60228 (conducteurs), 60034-1 (moteurs), 60269 (fusibles).',
     },
-    { type: 'formula', text: 'Courant d’emploi monophasé : I_B = P / (V_phase × cos φ × η)' },
-    { type: 'formula', text: 'Courant d’emploi triphasé : I_B = P / (√3 × V_ligne × cos φ × η)' },
+    { type: 'formula', text: 'Courant d’emploi monophasé : I_B = \\frac{P}{V_phase × cos φ × η}' },
+    { type: 'formula', text: 'Courant d’emploi triphasé : I_B = \\frac{P}{√3 × V_ligne × cos φ × η}' },
     { type: 'text', text: 'P = puissance totale (W) · cos φ = facteur de puissance · η = rendement des machines.' },
     { type: 'image', source: SLIDES['iec-3'], caption: 'Normes IEC' },
     { type: 'image', source: SLIDES['iec-4'], caption: 'I_B ≤ I_n ≤ I_z' },
@@ -249,12 +249,12 @@ export const cableSizingContent: TopicContent = {
     { type: 'divider' },
 
     { type: 'heading', text: '🔷 Sélection du câble avec facteur de correction (IEC)' },
-    { type: 'formula', text: 'I_z ≥ I_CB / facteur de correction' },
+    { type: 'formula', text: 'I_z ≥ \\frac{I_CB}{facteur de correction}' },
     {
       type: 'text',
       text: "Cette règle doit être vérifiée après application des facteurs de correction de la norme IEC 60364-5-52 :",
     },
-    { type: 'formula', text: 'I_z_corrigé = I_z × K1 × K2 × K3… ≥ I_n' },
+    { type: 'formula', text: 'I_{z corrigé} = I_z × K1 × K2 × K3… ≥ I_n' },
     {
       type: 'bullets',
       items: [
@@ -273,7 +273,7 @@ export const cableSizingContent: TopicContent = {
       type: 'heading',
       text: '🔷 Vérification thermique — critère adiabatique',
     },
-    { type: 'formula', text: 'S ≥ (I × √t) / k' },
+    { type: 'formula', text: 'S ≥ \\frac{I × √t}{k}' },
     {
       type: 'text',
       text: 'I = courant de court-circuit (A) ; t = durée maximale du défaut (s) ; k = constante du matériau, qui dépend du conducteur, de son isolant, etc.',
@@ -298,7 +298,7 @@ export const cableSizingContent: TopicContent = {
         ['Arrivée depuis le transformateur', '1 s'],
       ],
     },
-    { type: 'formula', text: 'Exemple : Ik = 10 kA, t = 0,1 s, cuivre PVC (k = 115) → S ≥ 10 000 × √0,1 / 115 = 27,5 mm² → 35 mm²' },
+    { type: 'formula', text: 'Exemple : I_k = 10 kA, t = 0,1 s, cuivre PVC (k = 115) → S ≥ \\frac{10 000 × √0,1}{115} = 27,5 mm² → 35 mm²' },
     { type: 'image', source: SLIDES['iec-8'], caption: 'Valeurs de k et temps d’élimination', focus: { x: 0.48, y: 0.0, w: 0.5, h: 0.42 } },
     {
       type: 'note',

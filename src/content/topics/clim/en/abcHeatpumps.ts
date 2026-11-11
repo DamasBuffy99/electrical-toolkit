@@ -22,7 +22,7 @@ export const abcHeatpumpsContent: TopicContent = {
     },
 
     { type: 'heading', text: 'Performance coefficients' },
-    { type: 'formula', text: 'COP = energy delivered / electrical energy consumed   (e.g. 9,000 W / 3,000 W = 3)' },
+    { type: 'formula', text: 'COP = \\frac{energy delivered}{electrical energy consumed}   (e.g. 9,000 W / 3,000 W = 3)' },
     {
       type: 'bullets',
       items: [
@@ -33,7 +33,7 @@ export const abcHeatpumpsContent: TopicContent = {
         'SEER (cooling) and SCOP (heating): European seasonal coefficients for units ≤ 12 kW, calculated over a reference year. Example minimum requirements (2014): SEER 4.6 and SCOP 3.8 for a unit < 6 kW with a refrigerant of GWP > 150.',
       ],
     },
-    { type: 'formula', text: 'SEER = cooling supplied over the year (kWh) / electricity consumed (kWh)' },
+    { type: 'formula', text: 'SEER = \\frac{cooling supplied over the year (kWh)}{electricity consumed (kWh)}' },
     {
       type: 'warning',
       text: 'The book defines EER as “energy absorbed / energy consumed”, which means nothing. Read: EER = cooling capacity PRODUCED / electrical power consumed (the COP in cooling mode; in US units, BTU/h per watt).',
@@ -103,7 +103,7 @@ export const abcHeatpumpsContent: TopicContent = {
         'A hydraulic separator (low-loss header) decouples the heat-pump flow from the emitters’ flow.',
       ],
     },
-    { type: 'formula', text: 'Heating curve slope = (water T − room T) / (room T − outdoor T)   e.g. (50 − 20) / (20 − (−5)) = 1.2' },
+    { type: 'formula', text: 'Heating curve slope = \\frac{water T − room T}{room T − outdoor T}   e.g. \\frac{50 − 20}{20 − (−5)} = 1.2' },
     {
       type: 'bullets',
       items: [

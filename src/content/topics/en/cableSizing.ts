@@ -95,7 +95,7 @@ export const cableSizingContent: TopicContent = {
       text: 'Example: a factor of 0.8 means the cable only provides 80% of its rated current. For a 100 A load, a 100 A cable would only give 80 A: so we choose a 100 / 0.8 = 125 A cable, which provides 125 × 0.8 = 100 A.',
     },
     { type: 'image', source: SLIDES['panel-64'], caption: 'The derating factor explained' },
-    { type: 'formula', text: "I' = I × √((Tc − Ta') / (Tc − Ta))" },
+    { type: 'formula', text: "I' = I × \\sqrt{\\frac{T_c − T_a'}{T_c − T_a}}" },
     {
       type: 'text',
       text: "I' = corrected ampacity · I = table ampacity · Tc = conductor temperature rating (°C) · Ta' = new ambient temperature (°C) · Ta = table's reference ambient temperature (°C).",
@@ -125,10 +125,10 @@ export const cableSizingContent: TopicContent = {
       type: 'text',
       text: "Worked example — 40 HP motor, 380V, cos φ = 0.8:",
     },
-    { type: 'formula', text: 'I_rated = (40 × 746) / (√3 × 380 × 0.8) = 56.6 A' },
+    { type: 'formula', text: 'I_rated = \\frac{40 × 746}{√3 × 380 × 0.8} = 56.6 A' },
     { type: 'formula', text: 'I_CB = I_rated × 1.25 = 56.6 × 1.25 = 70.75 A' },
-    { type: 'formula', text: 'I_cable = I_CB / derating factor' },
-    { type: 'formula', text: 'With a factor of 0.82: I_cable = 70.75 / 0.82 = 86.28 A' },
+    { type: 'formula', text: 'I_cable = \\frac{I_CB}{derating factor}' },
+    { type: 'formula', text: 'With a factor of 0.82: I_cable = \\frac{70.75}{0.82} = 86.28 A' },
     { type: 'formula', text: 'PVC cable at 50 °C (factor 0.82) → catalogue: (4 × 25) + 16 mm²' },
     { type: 'image', source: SLIDES['panel-70'], caption: 'Rated current and breaker rating' },
     { type: 'image', source: SLIDES['panel-71'], caption: '0.82 factor and choosing (4×25)+16 mm²' },
@@ -207,7 +207,7 @@ export const cableSizingContent: TopicContent = {
       caption: 'NEC conduit fill rules',
       height: 340,
     },
-    { type: 'formula', text: 'Conduit Ø = √(Cable Ø² / fill ratio)' },
+    { type: 'formula', text: 'Conduit Ø = \\sqrt{\\frac{Cable Ø²}{fill ratio}}' },
     {
       type: 'text',
       text: 'Example: 2.5 mm² three-core cable → cable Ø ≈ 11.5 mm → conduit Ø = √(11.5² / 0.4) ≈ 18.2 mm → next standard size up: 20 mm.',
@@ -234,8 +234,8 @@ export const cableSizingContent: TopicContent = {
       type: 'text',
       text: 'Standards used: IEC 60364-4-43 (overcurrent), 60364-5-52 (wiring systems), 60947-2 (circuit breakers), 60228 (conductors), 60034-1 (motors), 60269 (fuses).',
     },
-    { type: 'formula', text: 'Single-phase design current: I_B = P / (V_phase × cos φ × η)' },
-    { type: 'formula', text: 'Three-phase design current: I_B = P / (√3 × V_line × cos φ × η)' },
+    { type: 'formula', text: 'Single-phase design current: I_B = \\frac{P}{V_phase × cos φ × η}' },
+    { type: 'formula', text: 'Three-phase design current: I_B = \\frac{P}{√3 × V_line × cos φ × η}' },
     { type: 'text', text: 'P = total power (W) · cos φ = power factor · η = machine efficiency.' },
     { type: 'image', source: SLIDES['iec-3'], caption: 'IEC standards' },
     { type: 'image', source: SLIDES['iec-4'], caption: 'I_B ≤ I_n ≤ I_z' },
@@ -249,12 +249,12 @@ export const cableSizingContent: TopicContent = {
     { type: 'divider' },
 
     { type: 'heading', text: '🔷 Cable selection with correction factor (IEC)' },
-    { type: 'formula', text: 'I_z ≥ I_CB / correction factor' },
+    { type: 'formula', text: 'I_z ≥ \\frac{I_CB}{correction factor}' },
     {
       type: 'text',
       text: "This rule must be checked after applying the correction factors from IEC 60364-5-52:",
     },
-    { type: 'formula', text: 'I_z_corrected = I_z × K1 × K2 × K3… ≥ I_n' },
+    { type: 'formula', text: 'I_{z corrected} = I_z × K1 × K2 × K3… ≥ I_n' },
     {
       type: 'bullets',
       items: [
@@ -273,7 +273,7 @@ export const cableSizingContent: TopicContent = {
       type: 'heading',
       text: '🔷 Thermal check — adiabatic criterion',
     },
-    { type: 'formula', text: 'S ≥ (I × √t) / k' },
+    { type: 'formula', text: 'S ≥ \\frac{I × √t}{k}' },
     {
       type: 'text',
       text: 'I = short-circuit current (A); t = maximum fault duration (s); k = material constant, depending on the conductor, its insulation, etc.',
@@ -298,7 +298,7 @@ export const cableSizingContent: TopicContent = {
         ['Incoming line from the transformer', '1 s'],
       ],
     },
-    { type: 'formula', text: 'Example: Ik = 10 kA, t = 0.1 s, copper PVC (k = 115) → S ≥ 10,000 × √0.1 / 115 = 27.5 mm² → 35 mm²' },
+    { type: 'formula', text: 'Example: I_k = 10 kA, t = 0.1 s, copper PVC (k = 115) → S ≥ \\frac{10,000 × √0.1}{115} = 27.5 mm² → 35 mm²' },
     { type: 'image', source: SLIDES['iec-8'], caption: 'k values and clearance times', focus: { x: 0.48, y: 0.0, w: 0.5, h: 0.42 } },
     {
       type: 'note',

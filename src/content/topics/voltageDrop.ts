@@ -43,11 +43,11 @@ export const voltageDropContent: TopicContent = {
     { type: 'heading', text: 'Méthode 1 : avec la valeur catalogue (mV/A/m)' },
     { type: 'text', text: 'Les catalogues de câbles donnent, pour chaque section, la chute de tension en millivolts par ampère et par mètre.' },
     { type: 'formula', text: 'VD = (valeur catalogue mV/A/m) × 10⁻³ × I_rated × Longueur' },
-    { type: 'formula', text: '%VD = VD / V × 100    (V = 380 V en triphasé, 220 V en monophasé)' },
+    { type: 'formula', text: '%VD = \\frac{VD}{V} × 100    (V = 380 V en triphasé, 220 V en monophasé)' },
     { type: 'subheading', text: 'Exemple : moteur 75 HP, câble 3×70 + 35 mm² Cu/PVC/PVC, 120 m, 400 V' },
     { type: 'formula', text: 'I_rated ≈ 1,5 × 75 = 112,5 A' },
     { type: 'formula', text: 'Catalogue 70 mm² : 0,524 mV/A/m → VD = 0,524 × 10⁻³ × 112,5 × 120 = 7,074 V' },
-    { type: 'formula', text: '%VD = 7,074 / 380 × 100 = 1,86 % ≤ 5 % ✓' },
+    { type: 'formula', text: '%VD = \\frac{7,074}{380} × 100 = 1,86 % ≤ 5 % ✓' },
     { type: 'note', text: "💡 « I ≈ 1,5 × HP » : en triphasé 380 V avec cos φ = 0,8, 746 / (√3 × 380 × 0,8) = 1,41 ≈ 1,5 A par HP." },
     { type: 'image', source: SLIDES['gen-16'], caption: 'Calcul avec la valeur catalogue' },
     { type: 'image', source: SLIDES['gen-17'], caption: 'Exemple : moteur 75 HP sur 120 m' },
@@ -55,7 +55,7 @@ export const voltageDropContent: TopicContent = {
     { type: 'heading', text: 'Méthode 2 : avec R et X du câble (IEC)' },
     { type: 'formula', text: 'Monophasé : ΔV = 2 × I × L × (R cos φ + X sin φ)' },
     { type: 'formula', text: 'Triphasé : ΔV = √3 × I × L × (R cos φ + X sin φ)' },
-    { type: 'formula', text: '%ΔV = ΔV / V × 100' },
+    { type: 'formula', text: '%ΔV = \\frac{ΔV}{V} × 100' },
     {
       type: 'text',
       text: "R et X en Ω/m (ou Ω/km × longueur en km). V = tension simple en monophasé, tension composée en triphasé. Limites usuelles du cours : 5 % pour l'installation totale, 3 % pour l'éclairage.",
@@ -63,7 +63,7 @@ export const voltageDropContent: TopicContent = {
     { type: 'image', source: SLIDES['iec-9'], caption: 'Formule IEC avec R et X' },
 
     { type: 'heading', text: 'Solutions si la chute est trop grande' },
-    { type: 'formula', text: 'R = ρ × L / A' },
+    { type: 'formula', text: 'R = \\frac{ρ × L}{A}' },
     {
       type: 'bullets',
       items: [

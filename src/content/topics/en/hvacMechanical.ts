@@ -27,7 +27,7 @@ export const hvacMechanicalContent: TopicContent = {
         'Common single-phase units: 1.5 · 2.25 · 2.5 · 3 · 4 · 5 HP. Above 5 HP they are three-phase.',
       ],
     },
-    { type: 'formula', text: 'Example: 40 m² closed office → 40 / 10 = 4 HP' },
+    { type: 'formula', text: 'Example: 40 m² closed office → \\frac{40}{10} = 4 HP' },
     { type: 'image', source: SLIDES['gen-32'], caption: 'Air conditioning estimation rules' },
 
     { type: 'heading', text: '2 · How an air conditioner works' },

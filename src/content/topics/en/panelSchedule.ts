@@ -45,8 +45,8 @@ export const panelScheduleContent: TopicContent = {
       text: "For each circuit: name, cable size, number of poles, branch breaker rating, and kVA on the relevant phase (R, Y, or B).",
     },
     { type: 'formula', text: 'R/Y/B Bus [kVA] = Σ (kVA of circuits on that phase)' },
-    { type: 'formula', text: 'Average [kVA] = (Bus R + Bus Y + Bus B) / 3' },
-    { type: 'formula', text: 'Unbalance % = max(|Bus_R−Avg|, |Bus_Y−Avg|, |Bus_B−Avg|) / Avg × 100' },
+    { type: 'formula', text: 'Average [kVA] = \\frac{Bus R + Bus Y + Bus B}{3}' },
+    { type: 'formula', text: 'Unbalance % = \\frac{max(|Bus_R−Avg|, |Bus_Y−Avg|, |Bus_B−Avg|)}{Avg} × 100' },
     {
       type: 'note',
       text: '🎯 Per ANSI C84.1, current unbalance must not exceed 5% of the average phase current. The same rule applies to voltage unbalance.',
@@ -73,8 +73,8 @@ export const panelScheduleContent: TopicContent = {
       ],
     },
     { type: 'formula', text: 'Demand + 15% = Demand × 1.15' },
-    { type: 'formula', text: 'Line amps = (Demand [kVA] × 1000) / (√3 × Voltage)' },
-    { type: 'formula', text: 'Example: 55.1 × 1000 / (√3 × 380) = 83.7 A · Demand + 15% = 63.4 kVA' },
+    { type: 'formula', text: 'Line amps = \\frac{Demand [kVA] × 1000}{√3 × Voltage}' },
+    { type: 'formula', text: 'Example: \\frac{55.1 × 1000}{√3 × 380} = 83.7 A · Demand + 15% = 63.4 kVA' },
     {
       type: 'note',
       text: "⚠️ Important: recalculate each branch breaker based on its actual load once demand factors are applied — don't keep a uniform default rating everywhere (e.g. 16A for all). The main breaker must also be re-sized: MCB for a low demand, MCCB above roughly 80A.",

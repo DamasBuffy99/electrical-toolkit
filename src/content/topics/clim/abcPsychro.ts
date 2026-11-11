@@ -81,8 +81,8 @@ export const abcPsychroContent: TopicContent = {
         'Batterie à détente directe : c’est l’évaporateur du circuit frigorifique.',
       ],
     },
-    { type: 'formula', text: 'Débit massique Qm = Qv / v   (kg/s = m³/s ÷ m³/kg)' },
-    { type: 'formula', text: 'Puissance de la batterie froide P = Qm × (h entrée − h sortie)   (kW)' },
+    { type: 'formula', text: 'Débit massique Q_m = \\frac{Q_v}{v}   (kg/s = m³/s ÷ m³/kg)' },
+    { type: 'formula', text: 'Puissance de la batterie froide P = Q_m × (h entrée − h sortie)   (kW)' },
     { type: 'illustration', name: 'tech-psychro', props: { variant: 'cooling' }, caption: 'A→R refroidissement sensible ; R→B condensation (séchage) ; B→C réchauffage' },
 
     { type: 'heading', text: 'Humidifier' },
@@ -126,7 +126,7 @@ export const abcPsychroContent: TopicContent = {
     {
       type: 'exercise',
       question: 'Une batterie froide traite 2 000 m³/h d’air. L’enthalpie passe de 70 à 40 kJ/kg ; le volume spécifique au soufflage est 0,85 m³/kg. Quelle est sa puissance ?',
-      solution: ['Qm = 2 000 / 3 600 / 0,85 ≈ 0,654 kg/s.', 'P = 0,654 × (70 − 40) ≈ 19,6 kW.'],
+      solution: ['Q_m = 2 000 / 3 600 / 0,85 ≈ 0,654 kg/s.', 'P = 0,654 × (70 − 40) ≈ 19,6 kW.'],
     },
     {
       type: 'exercise',

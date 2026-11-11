@@ -59,15 +59,15 @@ export const abcMollierContent: TopicContent = {
     { type: 'illustration', name: 'tech-ph', props: { highlight: 'compressor' }, caption: 'La compression suit (à peu près) une isentrope' },
 
     { type: 'heading', text: 'Le bilan énergétique' },
-    { type: 'formula', text: 'Froid produit par kg de fluide = h1 − h5   (kJ/kg)' },
-    { type: 'formula', text: 'Travail de compression par kg = h2 − h1' },
-    { type: 'formula', text: 'Chaleur rejetée au condenseur par kg = h2 − h5 = froid + travail' },
-    { type: 'formula', text: 'COP théorique = (h1 − h5) / (h2 − h1)   ;   Puissance frigorifique = débit massique × (h1 − h5)' },
+    { type: 'formula', text: 'Froid produit par kg de fluide = h_1 − h_5   (kJ/kg)' },
+    { type: 'formula', text: 'Travail de compression par kg = h_2 − h_1' },
+    { type: 'formula', text: 'Chaleur rejetée au condenseur par kg = h_2 − h_5 = froid + travail' },
+    { type: 'formula', text: 'COP théorique = \\frac{h_1 − h_5}{h_2 − h_1}   ;   Puissance frigorifique = débit massique × (h_1 − h_5)' },
     {
       type: 'bullets',
       items: [
         'Pour comparaison, il faut 2 257 kJ pour vaporiser 1 kg d’eau : un fluide frigorigène est choisi pour s’évaporer à basse température avec une forte chaleur latente.',
-        'Plus le sous-refroidissement est grand, plus h5 est petit, plus chaque kg de fluide produit de froid. Exemple du livre : sur du R407C, abaisser le liquide de 25 à 15 °C avant le détendeur augmente la production frigorifique d’environ 7 % (c’est le rôle de l’échangeur liquide/vapeur).',
+        'Plus le sous-refroidissement est grand, plus h_5 est petit, plus chaque kg de fluide produit de froid. Exemple du livre : sur du R407C, abaisser le liquide de 25 à 15 °C avant le détendeur augmente la production frigorifique d’environ 7 % (c’est le rôle de l’échangeur liquide/vapeur).',
         'Plus l’écart entre évaporation et condensation est grand (taux de compression), plus le travail augmente et le COP baisse.',
       ],
     },
@@ -90,7 +90,7 @@ export const abcMollierContent: TopicContent = {
     { type: 'heading', text: 'Exercices' },
     {
       type: 'exercise',
-      question: 'Sur un diagramme, vous relevez h5 = 250 kJ/kg, h1 = 425 kJ/kg et h2 = 465 kJ/kg. Calculez le froid produit par kg, le travail, la chaleur rejetée et le COP théorique.',
+      question: 'Sur un diagramme, vous relevez h_5 = 250 kJ/kg, h_1 = 425 kJ/kg et h_2 = 465 kJ/kg. Calculez le froid produit par kg, le travail, la chaleur rejetée et le COP théorique.',
       solution: ['Froid : 425 − 250 = 175 kJ/kg.', 'Travail : 465 − 425 = 40 kJ/kg.', 'Rejet au condenseur : 465 − 250 = 215 kJ/kg (= 175 + 40).', 'COP théorique = 175 / 40 ≈ 4,4 (le COP réel sera plus bas à cause des pertes).'],
     },
     {

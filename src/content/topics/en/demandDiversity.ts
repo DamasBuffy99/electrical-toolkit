@@ -9,7 +9,7 @@ export const demandDiversityContent: TopicContent = {
       type: 'text',
       text: "Connected load adds up the rated power of every device — but they never all run at full power at the same time. The demand factor corrects for this, circuit by circuit.",
     },
-    { type: 'formula', text: 'DF = Maximum demand of the circuit / Total connected load of the circuit' },
+    { type: 'formula', text: 'DF = \\frac{Maximum demand of the circuit}{Total connected load of the circuit}' },
     {
       type: 'note',
       text: 'DF is always ≤ 1. In IEC terminology: "maximum utilization factor", noted ku.',
@@ -41,7 +41,7 @@ export const demandDiversityContent: TopicContent = {
       type: 'text',
       text: "Once the demanded load at each panel is known, they are combined moving upstream: not every panel draws its maximum at the same time either.",
     },
-    { type: 'formula', text: 'Diversity factor = Σ Individual maximum demands / Maximum demand of the whole system' },
+    { type: 'formula', text: 'Diversity factor = \\frac{Σ Individual maximum demands}{Maximum demand of the whole system}' },
     {
       type: 'note',
       text: "The diversity factor is always ≥ 1. In IEC: \"coincidence factor\" (ks). Coincidence factor = 1 / Diversity factor (always ≤ 1) — this is the one used directly as a multiplier.",

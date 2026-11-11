@@ -77,7 +77,7 @@ export const loadEstimationContent: TopicContent = {
     },
     {
       type: 'formula',
-      text: 'Total ≈ (348 000 + 320 + 84 434) / 1000 ≈ 432.75 kVA',
+      text: 'Total ≈ \\frac{348 000 + 320 + 84 434}{1000} ≈ 432.75 kVA',
     },
     {
       type: 'note',
@@ -120,7 +120,7 @@ export const loadEstimationContent: TopicContent = {
         ['Total', '', '1 223'],
       ],
     },
-    { type: 'formula', text: 'Transformateur à huile chargé à 80 % : 1 223 / 0,8 = 1 528,75 kVA → transformateur 2 MVA' },
+    { type: 'formula', text: 'Transformateur à huile chargé à 80 % : \\frac{1 223}{0,8} = 1 528,75 kVA → transformateur 2 MVA' },
     {
       type: 'note',
       text: '💡 Toutes les charges ne fonctionnent pas en même temps : on peut appliquer un facteur de diversité de 0,6 à 0,7 à l’éclairage (ou celui du code). Les pompes de secours ne sont pas comptées.',

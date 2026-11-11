@@ -71,7 +71,7 @@ export const lightingContent: TopicContent = {
       type: 'text',
       text: "Le plan de travail (work plane) est le plan horizontal où s'effectuent les tâches visuelles. Une fois l'éclairement moyen calculé, il faut vérifier son uniformité.",
     },
-    { type: 'formula', text: 'Uniformité = E_min / E_avg' },
+    { type: 'formula', text: 'Uniformité = \\frac{E_min}{E_{avg}}' },
     {
       type: 'text',
       text: "L'uniformité doit être comprise entre 0.5 et 1. L'éclairement moyen E_avg doit rester dans une marge de 15% par rapport à la valeur E_requis imposée par le code.",
@@ -85,7 +85,7 @@ export const lightingContent: TopicContent = {
     },
     {
       type: 'formula',
-      text: 'N = (E × A) / (F × UF × MF)',
+      text: 'N = \\frac{E × A}{F × UF × MF}',
     },
     {
       type: 'text',
@@ -125,7 +125,7 @@ export const lightingContent: TopicContent = {
       type: 'text',
       text: 'Éclairement requis : 500 lux. Luminaire choisi : 4 lampes de 1200 lm chacune → F = 4800 lm. UF = 0.5, MF = 0.8.',
     },
-    { type: 'formula', text: 'N = (500 × 100) / (4800 × 0.5 × 0.8) = 23.1 → arrondi à 24 (non premier)' },
+    { type: 'formula', text: 'N = \\frac{500 × 100}{4800 × 0.5 × 0.8} = 23.1 → arrondi à 24 (non premier)' },
     {
       type: 'text',
       text: 'Disposition : grille 5 × 5 (25 luminaires, arrondi à la racine carrée de chaque dimension), espacement de 2 m, premier alignement décalé de 1 m du mur.',

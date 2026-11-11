@@ -60,7 +60,7 @@ export const abcPhysicsContent: TopicContent = {
     },
 
     { type: 'heading', text: 'Pressure: absolute, gauge, vacuum' },
-    { type: 'formula', text: 'P = F / S   (1 Pa = 1 N/m²; 1 bar = 100,000 Pa; 1 psi ≈ 0.069 bar)' },
+    { type: 'formula', text: 'P = \\frac{F}{S}   (1 Pa = 1 N/m²; 1 bar = 100,000 Pa; 1 psi ≈ 0.069 bar)' },
     {
       type: 'bullets',
       items: [
@@ -101,7 +101,7 @@ export const abcPhysicsContent: TopicContent = {
         ['Dalton', 'the pressure of a mixture is the sum of partial pressures', 'air in the circuit adds its pressure: HP too high (non-condensables)'],
       ],
     },
-    { type: 'formula', text: 'Leak test: expected p2 = p1 × T2 / T1   (absolute values, T in K)' },
+    { type: 'formula', text: 'Leak test: expected p_2 = \\frac{p_1 × T_2}{T_1}   (absolute values, T in K)' },
 
     { type: 'heading', text: 'Carnot, heat engine and heat pump' },
     {

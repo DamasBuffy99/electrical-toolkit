@@ -19,15 +19,15 @@ export const climRoomInstallContent: TopicContent = {
     fig('p086_0', 'Figure 4.5 — fixation rigide (vibrations transmises) contre collier flexible et silentbloc'),
     {
       type: 'text',
-      text: 'Le niveau sonore annoncé par le constructeur est indicatif (conditions standard). Pour vérifier le niveau réellement perçu par l’occupant, on part de la puissance acoustique Lw de l’appareil (notice) :',
+      text: 'Le niveau sonore annoncé par le constructeur est indicatif (conditions standard). Pour vérifier le niveau réellement perçu par l’occupant, on part de la puissance acoustique L_w de l’appareil (notice) :',
     },
-    { type: 'formula', text: 'Lp = Lw − 5 log V − 10 log r + 3   (dB(A))' },
+    { type: 'formula', text: 'L_p = L_w − 5 log V − 10 log r + 3   (dB(A))' },
     {
       type: 'bullets',
       items: [
-        'Lp : niveau de pression acoustique au point choisi (oreille de l’occupant).',
-        'Lw : niveau de puissance acoustique de l’appareil ; V : volume de la pièce (m³) ; r : distance à l’appareil (m).',
-        'Plus la pièce est grande et l’occupant loin, plus le niveau baisse. On compare Lp au maximum du tableau 3.1.',
+        'L_p : niveau de pression acoustique au point choisi (oreille de l’occupant).',
+        'L_w : niveau de puissance acoustique de l’appareil ; V : volume de la pièce (m³) ; r : distance à l’appareil (m).',
+        'Plus la pièce est grande et l’occupant loin, plus le niveau baisse. On compare L_p au maximum du tableau 3.1.',
       ],
     },
     fig('p087_0', 'Figure 4.6 — puissance acoustique Lw de la source et pression sonore Lp chez l’occupant'),
@@ -126,10 +126,10 @@ export const climRoomInstallContent: TopicContent = {
     { type: 'heading', text: "Exercices" },
     {
       type: 'exercise',
-      question: "Un climatiseur a une puissance acoustique Lw = 55 dB(A). Il est installé dans un bureau de 60 m² × 3 m ; l’occupant est à 3 m. Quel niveau entend-il ? Est-ce acceptable pour un petit bureau ?",
+      question: "Un climatiseur a une puissance acoustique L_w = 55 dB(A). Il est installé dans un bureau de 60 m² × 3 m ; l’occupant est à 3 m. Quel niveau entend-il ? Est-ce acceptable pour un petit bureau ?",
       solution: [
-        "V = 180 m³ ; Lp = 55 − 5 log 180 − 10 log 3 + 3.",
-        "5 log 180 = 11,3 ; 10 log 3 = 4,8 → Lp = 55 − 11,3 − 4,8 + 3 ≈ 42 dB(A).",
+        "V = 180 m³ ; L_p = 55 − 5 log 180 − 10 log 3 + 3.",
+        "5 log 180 = 11,3 ; 10 log 3 = 4,8 → L_p = 55 − 11,3 − 4,8 + 3 ≈ 42 dB(A).",
         "Petit bureau : 30 / 35 / 40 dB(A) → trop bruyant même en niveau « minimal ». Choisir un appareil plus silencieux ou l’éloigner de l’occupant.",
       ],
     },

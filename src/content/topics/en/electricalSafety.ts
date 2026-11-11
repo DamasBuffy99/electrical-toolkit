@@ -29,7 +29,7 @@ export const electricalSafetyContent: TopicContent = {
       type: 'text',
       text: 'Duration matters as much as amplitude: above 100 mA for more than 20 ms, a shock can be fatal. The current a person can withstand for a time t is:',
     },
-    { type: 'formula', text: 'I = 116 mA / √t   (e.g. t = 10 s → I = 36.68 mA)' },
+    { type: 'formula', text: 'I = \\frac{116 mA}{√t}   (e.g. t = 10 s → I = 36.68 mA)' },
     {
       type: 'bullets',
       items: [

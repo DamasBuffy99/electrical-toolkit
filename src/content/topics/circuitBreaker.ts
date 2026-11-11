@@ -22,10 +22,10 @@ export const circuitBreakerContent: TopicContent = {
 
     { type: 'heading', text: '1 · Calculer le courant de charge (I_load)' },
     { type: 'text', text: "C'est le courant nominal de la charge (rated load current)." },
-    { type: 'formula', text: 'Monophasé : I_load = (S × 1000) / V' },
-    { type: 'formula', text: 'Triphasé : I_load = (S × 1000) / (√3 × V)' },
+    { type: 'formula', text: 'Monophasé : I_load = \\frac{S × 1000}{V}' },
+    { type: 'formula', text: 'Triphasé : I_load = \\frac{S × 1000}{√3 × V}' },
     { type: 'text', text: 'S = puissance apparente en kVA, V = tension (phase-neutre en mono, phase-phase en tri).' },
-    { type: 'formula', text: 'Exemple : 5 kVA en 220 V → I_load = 5 × 1000 / 220 = 22.7 A' },
+    { type: 'formula', text: 'Exemple : 5 kVA en 220 V → I_load = \\frac{5 × 1000}{220} = 22.7 A' },
     {
       type: 'table',
       headers: ['Raccourci (HP ≈ kVA)', 'Courant'],
@@ -74,7 +74,7 @@ export const circuitBreakerContent: TopicContent = {
     },
     {
       type: 'formula',
-      text: 'Calibres standards (A) : 6·10·16·20·25·32·40·50·63·80·100·125·160·200·250·320·400·500·630·800·1000·1250',
+      text: 'Calibres standards (A) : 6 · 10 · 16 · 20 · 25 · 32 · 40 · 50 · 63 · 80 · 100 · 125 · 160 · 200 · 250 · 320 · 400 · 500 · 630 · 800 · 1000 · 1250',
     },
     { type: 'formula', text: 'Exemple : I_CB = 27.3 A → disjoncteur 32 A' },
     {
@@ -130,7 +130,7 @@ export const circuitBreakerContent: TopicContent = {
       items: [
         'Ir : courant de réglage du disjoncteur (dépend des kVA de la charge).',
         'Im : seuil de déclenchement instantané en court-circuit.',
-        "Icu : pouvoir de coupure ultime (kA) ; dépend de l'impédance en amont (câbles, jeux de barres, transformateurs).",
+        "I_{cu} : pouvoir de coupure ultime (kA) ; dépend de l'impédance en amont (câbles, jeux de barres, transformateurs).",
       ],
     },
     {
@@ -246,9 +246,9 @@ export const circuitBreakerContent: TopicContent = {
       ],
     },
     { type: 'subheading', text: 'Exemple : moteur 2 MVA, 11 kV' },
-    { type: 'formula', text: 'I = 2 × 10⁶ / (√3 × 11 × 10³) = 104 A → disjoncteur SF6 630 A' },
-    { type: 'formula', text: 'Isc = 500 × 10⁶ / (√3 × 11 × 10³) = 26 kA' },
-    { type: 'formula', text: 'Apport des moteurs voisins (50 à 80 %) : Icu = 26 + 0,8 × 26 = 46,8 kA → 50 kA' },
+    { type: 'formula', text: 'I = \\frac{2 × 10⁶}{√3 × 11 × 10³} = 104 A → disjoncteur SF6 630 A' },
+    { type: 'formula', text: 'I_{sc} = \\frac{500 × 10⁶}{√3 × 11 × 10³} = 26 kA' },
+    { type: 'formula', text: 'Apport des moteurs voisins (50 à 80 %) : I_{cu} = 26 + 0,8 × 26 = 46,8 kA → 50 kA' },
     { type: 'image', source: SLIDES['panel-33'], caption: 'Disjoncteurs MT : tensions et types' },
     { type: 'image', source: SLIDES['panel-34'], caption: 'Exemple : moteur 2 MVA, 11 kV' },
     { type: 'image', source: SLIDES['panel-35'], caption: 'Pouvoir de coupure avec l’apport des moteurs' },

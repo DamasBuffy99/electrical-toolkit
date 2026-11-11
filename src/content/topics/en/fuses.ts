@@ -11,7 +11,7 @@ export const fusesContent: TopicContent = {
     },
 
     { type: 'heading', text: '1 · Choosing the rating (IEC 60269)' },
-    { type: 'formula', text: 'In ≥ I_B    and    Icu ≥ Ik' },
+    { type: 'formula', text: 'I_n ≥ I_B    and    I_{cu} ≥ I_k' },
     {
       type: 'text',
       text: 'I₂ is the conventional melting current: the fuse must melt at I₂. To protect the cable, I₂ must not exceed 1.45 times its current-carrying capacity:',

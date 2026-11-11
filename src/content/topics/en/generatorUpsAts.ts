@@ -21,7 +21,7 @@ export const generatorUpsAtsContent: TopicContent = {
         ['Continuous', '70 – 100%, non-varying', 'Unlimited', 'Base load, cogeneration'],
       ],
     },
-    { type: 'formula', text: 'Load factor = kWh produced / (kW × days × 24)' },
+    { type: 'formula', text: 'Load factor = \\frac{kWh produced}{kW × days × 24}' },
     {
       type: 'text',
       text: 'For sizing, the course uses the online Cummins PowerSuite tool: you enter the loads (motors, lighting…) and it proposes a suitable generator set.',

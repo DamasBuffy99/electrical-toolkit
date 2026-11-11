@@ -70,7 +70,7 @@ export const abcCompressorsContent: TopicContent = {
         'A board fed with single-phase power recreates three phases itself for a three-phase compressor.',
       ],
     },
-    { type: 'formula', text: 'Synchronous speed Ns = 60 × f / p   (f in Hz, p = number of pole pairs)' },
+    { type: 'formula', text: 'Synchronous speed N_s = \\frac{60 × f}{p}   (f in Hz, p = number of pole pairs)' },
     {
       type: 'warning',
       text: 'The book writes that a “2-pole” motor runs at 1,500 rpm at 50 Hz. That is wrong: a 2-pole motor (1 pair) runs at 3,000 rpm; it is a 4-pole motor (2 pairs) that runs at 1,500 rpm. The proportions given remain correct: at 30 Hz it runs at 900 rpm, at 60 Hz at 1,800 rpm.',

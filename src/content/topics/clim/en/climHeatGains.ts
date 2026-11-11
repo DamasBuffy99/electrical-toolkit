@@ -19,16 +19,16 @@ export const climHeatGainsContent: TopicContent = {
     { type: 'illustration', name: 'clim-heat-gains', caption: 'The 7 heat sources of an air-conditioned room' },
     {
       type: 'text',
-      text: 'Each gain has a sensible part (QS, it heats the air) and sometimes a latent part (QL, it humidifies the air). The two add up:',
+      text: 'Each gain has a sensible part (Q_S, it heats the air) and sometimes a latent part (Q_L, it humidifies the air). The two add up:',
     },
-    { type: 'formula', text: 'QT = QS + QL   (total balance, W)' },
+    { type: 'formula', text: 'Q_T = Q_S + Q_L   (total balance, W)' },
 
     { type: 'heading', text: '1 · Transmission through the walls' },
     {
       type: 'text',
       text: 'Heat goes through walls, roof, floor, doors and windows because it is hotter on one side than the other. The larger the wall, the poorer its insulation and the bigger the temperature difference, the larger the flow:',
     },
-    { type: 'formula', text: 'QStr = k × S × Δθ   (W)' },
+    { type: 'formula', text: 'Q_{Str} = k × S × Δθ   (W)' },
     {
       type: 'bullets',
       items: [
@@ -39,10 +39,10 @@ export const climHeatGainsContent: TopicContent = {
     },
     { type: 'illustration', name: 'clim-heat-gains', props: { focus: 'external' }, caption: 'External gains (1 to 4)' },
     { type: 'subheading', text: 'Calculating k for a wall' },
-    { type: 'formula', text: 'k = 1 / ( 1/he + Σ e/λ + 1/hi )' },
+    { type: 'formula', text: 'k = \\frac{1}{\\frac{1}{h_e} + Σ \\frac{e}{λ} + \\frac{1}{h_i}}' },
     {
       type: 'text',
-      text: 'he and hi are the outer and inner surface coefficients (table 1.7), e the thickness of each layer (m) and λ its conductivity (W/m.°C, table 1.6). In practice, k is read directly in table 1.9 for common walls.',
+      text: 'h_e and h_i are the outer and inner surface coefficients (table 1.7), e the thickness of each layer (m) and λ its conductivity (W/m.°C, table 1.6). In practice, k is read directly in table 1.9 for common walls.',
     },
     fig('p023_0', 'Table 1.7 — surface heat transfer coefficients he and hi'),
     fig('p022_0', 'Table 1.6 — properties of local building materials (λ, density, specific heat)'),
@@ -65,12 +65,12 @@ export const climHeatGainsContent: TopicContent = {
       type: 'table',
       headers: ['Type of wall (table 1.10)', 'Δθ'],
       rows: [
-        ['External wall', 'θe − θi'],
-        ['Wall next to a non-conditioned room', 'θe − θi − 3 °C'],
-        ['Ceiling under a ventilated attic', 'θe − θi + 3 °C'],
-        ['Ceiling under a non-ventilated attic', 'θe − θi + 12 °C'],
-        ['Slab on grade', '20 °C − θi'],
-        ['Wall next to a kitchen', 'θe − θi + 18 °C'],
+        ['External wall', 'θ_e − θ_i'],
+        ['Wall next to a non-conditioned room', 'θ_e − θ_i − 3 °C'],
+        ['Ceiling under a ventilated attic', 'θ_e − θ_i + 3 °C'],
+        ['Ceiling under a non-ventilated attic', 'θ_e − θ_i + 12 °C'],
+        ['Slab on grade', '20 °C − θ_i'],
+        ['Wall next to a kitchen', 'θ_e − θ_i + 18 °C'],
       ],
     },
     fig('p030_0', 'Table 1.10 — temperature difference according to the wall position'),
@@ -80,13 +80,13 @@ export const climHeatGainsContent: TopicContent = {
       type: 'text',
       text: 'A sunlit wall absorbs part of the radiation and passes a fraction of it inside. It depends on the wall colour and insulation:',
     },
-    { type: 'formula', text: 'QSRm = α × F × S × Rm   (W)' },
+    { type: 'formula', text: 'Q_{SRm} = α × F × S × R_m   (W)' },
     {
       type: 'bullets',
       items: [
         'α: absorption coefficient, linked to colour — 0.4 very light (white), 0.7 dark (brick, wood), 0.9 very dark (slate, bitumen).',
         'F: solar radiation factor, linked to k — 0 for k = 0; 0.05 for k = 1; 0.10 for k = 2; 0.15 for k = 3; 0.20 for k = 4.',
-        'Rm: intensity of the radiation on the wall (W/m²) by orientation and hour — table 1.14.',
+        'R_m: intensity of the radiation on the wall (W/m²) by orientation and hour — table 1.14.',
       ],
     },
     fig('p030_1', 'Table 1.11 — absorption coefficient α by colour'),
@@ -98,13 +98,13 @@ export const climHeatGainsContent: TopicContent = {
       type: 'text',
       text: 'Glass lets the radiation straight through: it is often the largest gain in a glazed office. Blinds and shading strongly reduce this flow:',
     },
-    { type: 'formula', text: 'QSRv = α × g × S × Rv   (W)' },
+    { type: 'formula', text: 'Q_{SRv} = α × g × S × R_v   (W)' },
     {
       type: 'bullets',
       items: [
         'α: 1 for single glazing, 0.9 for double, 0.8 for triple.',
         'g: reduction factor of the solar protection (table 1.13).',
-        'S: glazed area (m²); Rv: radiation on the glazing (W/m², table 1.14).',
+        'S: glazed area (m²); R_v: radiation on the glazing (W/m², table 1.14).',
       ],
     },
     {
@@ -128,14 +128,14 @@ export const climHeatGainsContent: TopicContent = {
       type: 'text',
       text: 'The outdoor air coming in (ventilation or leaks) must be cooled AND dried. In a humid climate it is often the main latent load:',
     },
-    { type: 'formula', text: 'Sensible: QSr = qv × (θe − θi) × 0.33   (W)' },
-    { type: 'formula', text: 'Latent: QLr = qv × (ωe − ωi) × 0.84   (W, ω in g of water / kg of dry air)' },
+    { type: 'formula', text: 'Sensible: Q_{Sr} = q_v × (θ_e − θ_i) × 0.33   (W)' },
+    { type: 'formula', text: 'Latent: Q_{Lr} = q_v × (ω_e − ω_i) × 0.84   (W, ω in g of water / kg of dry air)' },
     {
       type: 'bullets',
       items: [
-        'qv: fresh-air flow (m³/h). With natural ventilation, count 1 room volume per hour.',
+        'q_v: fresh-air flow (m³/h). With natural ventilation, count 1 room volume per hour.',
         'With mechanical ventilation, use the required flow per person (table 1.15): 18 m³/h per person in a non-smoking office, 25 for smokers.',
-        'θe, θi: outdoor and indoor design temperatures; ωe, ωi: the corresponding moisture contents.',
+        'θ_e, θ_i: outdoor and indoor design temperatures; ω_e, ω_i: the corresponding moisture contents.',
       ],
     },
     { type: 'warning', text: "Units: formula (5) is written with ω in g/kg, while the conditions table gives ω in kg/kg. The example therefore multiplies by 1,000: QLr = qv × (ωe − ωi) [kg/kg] × 0.84 × 1,000. Do not mix the two units, or the result is off by a factor of 1,000." },
@@ -143,7 +143,7 @@ export const climHeatGainsContent: TopicContent = {
 
     { type: 'heading', text: '5 · Occupants' },
     { type: 'illustration', name: 'clim-heat-gains', props: { focus: 'internal' }, caption: 'Internal gains (5 to 7)' },
-    { type: 'formula', text: 'QSoc = n × CSoc   ;   QLoc = n × CLoc   (W)' },
+    { type: 'formula', text: 'Q_{Soc} = n × C_{Soc}   ;   Q_{Loc} = n × C_{Loc}   (W)' },
     {
       type: 'text',
       text: 'A person gives off sensible heat (skin) and latent heat (sweat, breathing), depending on activity and room temperature. For an office worker at 26 °C: about 63 W sensible and 59 W latent. Table values are for an adult man; reduce by 20 % for women, 20 to 40 % for children and 10 % for a mixed public.',
@@ -153,7 +153,7 @@ export const climHeatGainsContent: TopicContent = {
     { type: 'note', text: 'The number of occupants n comes from the area and the density of table 1.15: 0.10 person/m² for offices, 0.67 for a classroom.' },
 
     { type: 'heading', text: '6 · Lighting' },
-    { type: 'formula', text: 'Fluorescent: Qlight = 1.25 × P   ;   Incandescent: Qlight = P   (W)' },
+    { type: 'formula', text: 'Fluorescent: Q_{light} = 1.25 × P   ;   Incandescent: Q_{light} = P   (W)' },
     {
       type: 'text',
       text: 'All the electricity of a lamp ends up as heat in the room. For fluorescent tubes, add 25 % for the ballast. If the installed power is unknown, use a density in W/m² (table 1.17): 16 W/m² with fluorescent in an office, 65 W/m² with incandescent.',
@@ -166,17 +166,17 @@ export const climHeatGainsContent: TopicContent = {
       type: 'text',
       text: 'Each appliance releases its power as sensible heat, sometimes latent (coffee maker, cooking). Since they do not all run continuously, a usage factor is applied: a computer counts 100 %, a photocopier 20 %, a coffee maker 25 %.',
     },
-    { type: 'formula', text: 'Qequip = Σ (Power × usage factor)' },
+    { type: 'formula', text: 'Q_{equip} = Σ (Power × usage factor)' },
     fig('p035_1', 'Table 1.18 — electrical and gas appliances: sensible and latent heat'),
 
     { type: 'heading', text: 'The total: capacity and dehumidification' },
-    { type: 'formula', text: 'QS = transmission + sun on walls + sun through glazing + fresh air (S) + occupants (S) + lighting + appliances (S)' },
-    { type: 'formula', text: 'QL = fresh air (L) + occupants (L) + appliances (L)' },
-    { type: 'formula', text: 'Air conditioner cooling capacity = QT = QS + QL' },
+    { type: 'formula', text: 'Q_S = transmission + sun on walls + sun through glazing + fresh air (S) + occupants (S) + lighting + appliances (S)' },
+    { type: 'formula', text: 'Q_L = fresh air (L) + occupants (L) + appliances (L)' },
+    { type: 'formula', text: 'Air conditioner cooling capacity = Q_T = Q_S + Q_L' },
     {
       type: 'bullets',
       items: [
-        'The latent load QL is the dehumidification capacity the unit needs in a humid tropical country.',
+        'The latent load Q_L is the dehumidification capacity the unit needs in a humid tropical country.',
         'Power drawn by the compressor: Pa = Pf / COP (COP ≈ 2 to 2.5 for a packaged unit or a split).',
         'Safety factor: 0 to 5 % maximum. Beyond that, you oversize.',
       ],
@@ -185,9 +185,9 @@ export const climHeatGainsContent: TopicContent = {
     { type: 'heading', text: "Exercises" },
     {
       type: 'exercise',
-      question: "A 20 m² South wall of rendered 20 cm hollow block (k = 2.09) is painted white. Δθ = 6 °C and Rm = 352 W/m². Calculate the transmission and solar gain. What happens if it is painted a dark colour?",
+      question: "A 20 m² South wall of rendered 20 cm hollow block (k = 2.09) is painted white. Δθ = 6 °C and R_m = 352 W/m². Calculate the transmission and solar gain. What happens if it is painted a dark colour?",
       solution: [
-        "Transmission: QStr = 2.09 × 20 × 6 = 251 W.",
+        "Transmission: Q_{Str} = 2.09 × 20 × 6 = 251 W.",
         "F for k = 2.09 ≈ 0.105 (interpolating table 1.12).",
         "Sun, white wall (α = 0.4): 0.4 × 0.105 × 20 × 352 = 296 W.",
         "Dark wall (α = 0.7): 0.7 × 0.105 × 20 × 352 = 517 W, i.e. +221 W just because of the colour.",
@@ -197,8 +197,8 @@ export const climHeatGainsContent: TopicContent = {
       type: 'exercise',
       question: "A meeting room in Douala holds 12 people (mixed public, 63 W sensible and 59 W latent each). Fresh air is mechanical: 18 m³/h per person. Calculate the occupant and fresh-air gains (Δθ = 6 °C, Δω = 0.0147 kg/kg).",
       solution: [
-        "Occupants: QS = 12 × 63 × 0.9 = 680 W; QL = 12 × 59 × 0.9 = 637 W.",
-        "Fresh-air flow: qv = 12 × 18 = 216 m³/h.",
+        "Occupants: Q_S = 12 × 63 × 0.9 = 680 W; Q_L = 12 × 59 × 0.9 = 637 W.",
+        "Fresh-air flow: q_v = 12 × 18 = 216 m³/h.",
         "Fresh air sensible: 216 × 6 × 0.33 = 428 W.",
         "Fresh air latent: 216 × 0.0147 × 0.84 × 1,000 = 2,667 W.",
         "Partial balance: 1,108 W sensible and 3,304 W latent — in a humid climate, fresh air dominates.",
@@ -206,7 +206,7 @@ export const climHeatGainsContent: TopicContent = {
     },
     {
       type: 'exercise',
-      question: "A 2 m² single-glazed window (α = 1) receives Rv = 288 W/m². Compare a half-lowered internal blind (g = 0.63) with an external ecru fabric blind (g = 0.28).",
+      question: "A 2 m² single-glazed window (α = 1) receives R_v = 288 W/m². Compare a half-lowered internal blind (g = 0.63) with an external ecru fabric blind (g = 0.28).",
       solution: [
         "Internal blind: 1 × 0.63 × 2 × 288 = 363 W.",
         "External blind: 1 × 0.28 × 2 × 288 = 161 W.",

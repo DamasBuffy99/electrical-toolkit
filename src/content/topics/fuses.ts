@@ -11,7 +11,7 @@ export const fusesContent: TopicContent = {
     },
 
     { type: 'heading', text: '1 · Choisir le calibre (IEC 60269)' },
-    { type: 'formula', text: 'In ≥ I_B    et    Icu ≥ Ik' },
+    { type: 'formula', text: 'I_n ≥ I_B    et    I_{cu} ≥ I_k' },
     {
       type: 'text',
       text: "I₂ est le courant conventionnel de fusion : le fusible doit fondre à I₂. Pour protéger le câble, I₂ ne doit pas dépasser 1,45 fois sa capacité de transport :",

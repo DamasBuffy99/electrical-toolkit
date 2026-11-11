@@ -81,8 +81,8 @@ export const abcPsychroContent: TopicContent = {
         'Direct-expansion coil: it is the evaporator of the refrigerant circuit.',
       ],
     },
-    { type: 'formula', text: 'Mass flow Qm = Qv / v   (kg/s = m³/s ÷ m³/kg)' },
-    { type: 'formula', text: 'Cooling coil capacity P = Qm × (h in − h out)   (kW)' },
+    { type: 'formula', text: 'Mass flow Q_m = \\frac{Q_v}{v}   (kg/s = m³/s ÷ m³/kg)' },
+    { type: 'formula', text: 'Cooling coil capacity P = Q_m × (h in − h out)   (kW)' },
     { type: 'illustration', name: 'tech-psychro', props: { variant: 'cooling' }, caption: 'A→R sensible cooling; R→B condensation (drying); B→C reheating' },
 
     { type: 'heading', text: 'Humidifying' },
@@ -126,7 +126,7 @@ export const abcPsychroContent: TopicContent = {
     {
       type: 'exercise',
       question: 'A cooling coil treats 2,000 m³/h of air. Enthalpy goes from 70 to 40 kJ/kg; specific volume at supply is 0.85 m³/kg. What is its capacity?',
-      solution: ['Qm = 2,000 / 3,600 / 0.85 ≈ 0.654 kg/s.', 'P = 0.654 × (70 − 40) ≈ 19.6 kW.'],
+      solution: ['Q_m = 2,000 / 3,600 / 0.85 ≈ 0.654 kg/s.', 'P = 0.654 × (70 − 40) ≈ 19.6 kW.'],
     },
     {
       type: 'exercise',

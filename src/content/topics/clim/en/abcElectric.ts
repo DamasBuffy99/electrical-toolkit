@@ -32,7 +32,7 @@ export const abcElectricContent: TopicContent = {
         'Typical cos φ ≈ 0.8; efficiency = output power / input power.',
       ],
     },
-    { type: 'formula', text: 'Ns = 60 × f / p   ;   P input = √3 × U × I × cos φ   ;   I ≈ P / (√3 × U × cos φ)' },
+    { type: 'formula', text: 'N_s = \\frac{60 × f}{p}   ;   P input = √3 × U × I × cos φ   ;   I ≈ \\frac{P}{√3 × U × cos φ}' },
     { type: 'note', text: 'Field shortcut on 400 V three-phase: I (A) ≈ P (W) / 600. Handy, but approximate.' },
 
     { type: 'heading', text: 'Limiting starting current' },
@@ -59,7 +59,7 @@ export const abcElectricContent: TopicContent = {
         'A swollen capacitor is dead. Always discharge it (short the terminals through a resistor or an insulated tool) before handling it.',
       ],
     },
-    { type: 'formula', text: 'Capacitance of a capacitor in operation (50 Hz): C (µF) ≈ 3,185 × I / U' },
+    { type: 'formula', text: 'Capacitance of a capacitor in operation (50 Hz): C (µF) ≈ \\frac{3,185 × I}{U}' },
 
     { type: 'heading', text: 'Protection devices' },
     {
@@ -103,7 +103,7 @@ export const abcElectricContent: TopicContent = {
         'Cable cross-section: must limit heating AND voltage drop (3 % for lighting, 5 % for a motor); resistance increases with length and decreases with cross-section.',
       ],
     },
-    { type: 'formula', text: 'Single-phase: S (mm²) = 2 × ρ × L × I / ΔU   ;   Three-phase: S = √3 × ρ × L × I × cos φ / ΔU   (ρ copper ≈ 0.0225 Ω·mm²/m in service)' },
+    { type: 'formula', text: 'Single-phase: S (mm²) = \\frac{2 × ρ × L × I}{ΔU}   ;   Three-phase: S = \\frac{√3 × ρ × L × I × cos φ}{ΔU}   (ρ copper ≈ 0.0225 Ω·mm²/m in service)' },
     {
       type: 'warning',
       text: 'One cable formula in the book MULTIPLIES by the voltage drop (“S = 2 × R × L × (I/1000) × e”). The allowable voltage drop must be in the DENOMINATOR: the more voltage drop you accept, the smaller the cross-section can be. Detailed cable sizing is covered in the electrical course (“Voltage drop” lesson).',

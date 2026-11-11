@@ -77,7 +77,7 @@ export const loadEstimationContent: TopicContent = {
     },
     {
       type: 'formula',
-      text: 'Total ≈ (348,000 + 320 + 84,434) / 1000 ≈ 432.75 kVA',
+      text: 'Total ≈ \\frac{348,000 + 320 + 84,434}{1000} ≈ 432.75 kVA',
     },
     {
       type: 'note',
@@ -120,7 +120,7 @@ export const loadEstimationContent: TopicContent = {
         ['Total', '', '1,223'],
       ],
     },
-    { type: 'formula', text: 'Oil transformer loaded at 80%: 1,223 / 0.8 = 1,528.75 kVA → 2 MVA transformer' },
+    { type: 'formula', text: 'Oil transformer loaded at 80%: \\frac{1,223}{0.8} = 1,528.75 kVA → 2 MVA transformer' },
     {
       type: 'note',
       text: "💡 Not all loads run at the same time: a diversity factor of 0.6 to 0.7 (or the code's) can be applied to lighting. Emergency pumps are not counted.",

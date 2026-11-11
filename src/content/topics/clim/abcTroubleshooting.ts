@@ -141,9 +141,9 @@ export const abcTroubleshootingContent: TopicContent = {
         'Recalculer de préférence la poulie du ventilateur pour garder la poulie réglable côté moteur.',
       ],
     },
-    { type: 'formula', text: 'Diamètre de poulie D = (vitesse moteur / vitesse voulue) × diamètre poulie moteur' },
-    { type: 'formula', text: 'Longueur de courroie ≈ 2 × entraxe + 1,57 × (D1 + D2)' },
-    { type: 'formula', text: 'Batterie : P (W) = 0,34 × débit (m³/h) × ΔT ;   débit (m³/h) = P / (0,34 × ΔT)' },
+    { type: 'formula', text: 'Diamètre de poulie D = \\frac{vitesse moteur}{vitesse voulue} × diamètre poulie moteur' },
+    { type: 'formula', text: 'Longueur de courroie ≈ 2 × entraxe + 1,57 × (D_1 + D_2)' },
+    { type: 'formula', text: 'Batterie : P (W) = 0,34 × débit (m³/h) × ΔT ;   débit (m³/h) = \\frac{P}{0,34 × ΔT}' },
 
     { type: 'heading', text: 'Exercices' },
     {

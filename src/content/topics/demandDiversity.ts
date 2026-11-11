@@ -9,7 +9,7 @@ export const demandDiversityContent: TopicContent = {
       type: 'text',
       text: "La charge connectée additionne toutes les puissances nominales des appareils — mais ils ne fonctionnent jamais tous en même temps à pleine puissance. Le facteur de demande corrige ça, circuit par circuit.",
     },
-    { type: 'formula', text: 'DF = Demande maximale du circuit / Charge connectée totale du circuit' },
+    { type: 'formula', text: 'DF = \\frac{Demande maximale du circuit}{Charge connectée totale du circuit}' },
     {
       type: 'note',
       text: 'DF est toujours ≤ 1. En terminologie IEC : « facteur d\'utilisation maximale », noté ku.',
@@ -41,7 +41,7 @@ export const demandDiversityContent: TopicContent = {
       type: 'text',
       text: "Une fois les charges demandées connues à chaque tableau, on les combine pour remonter vers l'amont : tous les tableaux ne tirent pas leur maximum en même temps non plus.",
     },
-    { type: 'formula', text: 'Facteur de diversité = Σ Demandes maximales individuelles / Demande maximale du système entier' },
+    { type: 'formula', text: 'Facteur de diversité = \\frac{Σ Demandes maximales individuelles}{Demande maximale du système entier}' },
     {
       type: 'note',
       text: "Le facteur de diversité est toujours ≥ 1. En IEC : « facteur de simultanéité » (ks). Le facteur de coïncidence = 1 / Facteur de diversité (toujours ≤ 1) — c'est lui qu'on utilise directement comme multiplicateur.",

@@ -62,7 +62,7 @@ export const pvBatteriesControllersContent: TopicContent = {
       type: 'bullets',
       items: [
         "La tension du champ PV doit être égale à la tension de la batterie : U_PV = U_bat.",
-        "Le courant du régulateur doit être ≥ 1.25 × Isc du champ PV.",
+        "Le courant du régulateur doit être ≥ 1.25 × I_{sc} du champ PV.",
       ],
     },
     { type: 'subheading', text: 'MPPT' },

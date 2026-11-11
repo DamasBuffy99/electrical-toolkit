@@ -66,7 +66,7 @@ export const abcInstallContent: TopicContent = {
         'Siphon obligatoire sur les appareils en dépression (CTA, gainables) : hauteur supérieure à la dépression + 20 mm de sécurité (1 mmCE ≈ 10 Pa). Les siphons du commerce n’arrêtent que les odeurs.',
       ],
     },
-    { type: 'formula', text: 'Hauteur de garde du siphon (mm) = dépression (Pa) / 10 + 20' },
+    { type: 'formula', text: 'Hauteur de garde du siphon (mm) = \\frac{dépression (Pa)}{10} + 20' },
 
     { type: 'heading', text: 'L’essai d’étanchéité' },
     {

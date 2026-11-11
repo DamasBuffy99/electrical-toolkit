@@ -103,7 +103,7 @@ export const disconnectSwitchesContent: TopicContent = {
       type: 'text',
       text: "NEC 460 : conducteurs et sectionneur d'une batterie de condensateurs ≥ 135 % du courant nominal (tolérance de fabrication de 0 à +15 %). Pas de sectionneur séparé si le condensateur est côté charge d'un démarreur moteur.",
     },
-    { type: 'formula', text: 'I = kvar × 1000 / (√3 × V)' },
+    { type: 'formula', text: 'I = \\frac{kvar × 1000}{√3 × V}' },
     {
       type: 'text',
       text: "La lettre de code rotor bloqué (NEMA, NEC table 430.7(B)) inscrite sur la plaque donne les kVA de démarrage par HP : elle permet de calculer le courant de démarrage du moteur.",

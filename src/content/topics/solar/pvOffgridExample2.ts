@@ -70,20 +70,20 @@ export const pvOffgridExample2Content: TopicContent = {
     { type: 'heading', text: '3 · Les panneaux' },
     { type: 'formula', text: 'E_panneaux = 1,3 × 6 420 = 8 346 Wh/jour' },
     { type: 'text', text: 'Le site reçoit 5 heures de soleil crête par jour :' },
-    { type: 'formula', text: 'P_panneaux = 8 346 / 5 = 1 669,2 W' },
+    { type: 'formula', text: 'P_panneaux = \\frac{8 346}{5} = 1 669,2 W' },
     {
       type: 'table',
       headers: ['LG Mono X Plus 300 W (LG300S1C-A5)', 'Valeur'],
       rows: [
         ['Puissance maximale', '300 W'],
         ['Vmpp / Impp', '31,6 V / 9,50 A'],
-        ['Voc (circuit ouvert)', '38,9 V'],
-        ['Isc (court-circuit)', '10,07 A'],
+        ['V_{oc} (circuit ouvert)', '38,9 V'],
+        ['I_{sc} (court-circuit)', '10,07 A'],
         ['Rendement', '17,5 %'],
         ['Tension système max / fusible série max', '1 000 V / 20 A'],
       ],
     },
-    { type: 'formula', text: 'Nombre = 1 669,2 / 300 = 5,56 → 6 panneaux → 6 × 300 = 1 800 W' },
+    { type: 'formula', text: 'Nombre = \\frac{1 669,2}{300} = 5,56 → 6 panneaux → 6 × 300 = 1 800 W' },
     { type: 'illustration', name: 'peak-sun-hours', props: { hours: 5 }, caption: '5 heures de soleil crête' },
     { type: 'image', source: shot.panels, caption: 'Cours — 1 669,2 W → 6 panneaux LG de 300 W', focus: { x: 0.01, y: 0.53, w: 0.42, h: 0.44 } },
 
@@ -106,8 +106,8 @@ export const pvOffgridExample2Content: TopicContent = {
         'Autonomie : 1 jour.',
       ],
     },
-    { type: 'formula', text: 'Ah = (8 346 × 1) / (0,5 × 24 × 0,9) = 772 Ah' },
-    { type: 'formula', text: 'En série = 24 / 12 = 2 · En parallèle = 772 / 205 = 3,76 → 4' },
+    { type: 'formula', text: 'Ah = \\frac{8 346 × 1}{0,5 × 24 × 0,9} = 772 Ah' },
+    { type: 'formula', text: 'En série = \\frac{24}{12} = 2 · En parallèle = \\frac{772}{205} = 3,76 → 4' },
     { type: 'formula', text: 'Total = 2 × 4 = 8 batteries → banc 24 V, 4 × 205 = 820 Ah' },
     { type: 'illustration', name: 'battery-bank', props: { series: 2, parallel: 4, battV: 12, battAh: 205 }, caption: '2 en série × 4 en parallèle = 24 V, 820 Ah' },
     { type: 'image', source: shot.batteries, caption: 'Cours — calcul des Ah et courbe capacité / température', focus: { x: 0.55, y: 0.46, w: 0.45, h: 0.5 } },
@@ -121,8 +121,8 @@ export const pvOffgridExample2Content: TopicContent = {
       rows: [
         ['Puissance PV nominale à 24 V', '2 000 W', '1 800 W', '✓'],
         ['Courant de charge nominal', '70 A', '1 800 / 24 = 75 A', '⚠️'],
-        ['Isc PV max', '50 A (30 A par connecteur MC4)', '37,76 A (étape 6)', '✓'],
-        ['Voc PV max', '150 V', '79,3 V (étape 6)', '✓'],
+        ['I_{sc} PV max', '50 A (30 A par connecteur MC4)', '37,76 A (étape 6)', '✓'],
+        ['V_{oc} PV max', '150 V', '79,3 V (étape 6)', '✓'],
       ],
     },
     {
@@ -141,7 +141,7 @@ export const pvOffgridExample2Content: TopicContent = {
     { type: 'image', source: shot.clipping, caption: 'Cours — 75 A > 70 A : écrêtage d’environ 6,7 %', focus: { x: 0.22, y: 0.34, w: 0.58, h: 0.24 } },
 
     { type: 'heading', text: 'Les batteries supportent-elles ce courant ?' },
-    { type: 'formula', text: '4 branches en parallèle : 70 / 4 = 17,5 A par branche' },
+    { type: 'formula', text: '4 branches en parallèle : \\frac{70}{4} = 17,5 A par branche' },
     { type: 'formula', text: 'Courant de charge max Trojan = 20 % de C20 = 0,2 × 205 = 41 A > 17,5 A ✓' },
     {
       type: 'table',
@@ -159,15 +159,15 @@ export const pvOffgridExample2Content: TopicContent = {
     { type: 'image', source: shot.charge, caption: 'Cours — 17,5 A < 41 A (20 % de C20)', focus: { x: 0.4, y: 0.36, w: 0.53, h: 0.33 } },
 
     { type: 'heading', text: '6 · Le raccordement des panneaux' },
-    { type: 'formula', text: 'V_conception = 150 / 2 = 75 V' },
-    { type: 'formula', text: 'En série = 75 / 38,9 = 1,92 → 2 panneaux' },
-    { type: 'formula', text: 'En parallèle = 6 / 2 = 3 chaînes' },
+    { type: 'formula', text: 'V_conception = \\frac{150}{2} = 75 V' },
+    { type: 'formula', text: 'En série = \\frac{75}{38,9} = 1,92 → 2 panneaux' },
+    { type: 'formula', text: 'En parallèle = \\frac{6}{2} = 3 chaînes' },
     { type: 'illustration', name: 'pv-array', props: { series: 2, parallel: 3, voc: 38.9 }, caption: '2 panneaux en série × 3 chaînes' },
     {
       type: 'text',
       text: "Température minimale du site : −20 °C. Le cours applique un facteur de compensation de température de 1,02 :",
     },
-    { type: 'formula', text: 'Voc à froid = 2 × 38,9 × 1,02 = 79,3 V < 150 V ✓' },
+    { type: 'formula', text: 'V_{oc} à froid = 2 × 38,9 × 1,02 = 79,3 V < 150 V ✓' },
     {
       type: 'note',
       text: "⚠️ À −20 °C, la table NEC 690.7(A) donne un facteur de 1,18 (plage −16 à −20 °C), pas 1,02 (qui correspond à 20 – 24 °C). Vérification avec 1,18 : 2 × 38,9 × 1,18 = 91,8 V < 150 V ✓ — le choix de 2 panneaux en série reste valable.",

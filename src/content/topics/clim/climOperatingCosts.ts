@@ -14,14 +14,14 @@ export const climOperatingCostsContent: TopicContent = {
     { type: 'heading', text: 'Le rendement d’un compresseur' },
     {
       type: 'text',
-      text: 'Le cycle idéal de Carnot donne la meilleure efficacité théoriquement possible entre une source froide (évaporateur, To) et une source chaude (condenseur, Tc), en kelvins :',
+      text: 'Le cycle idéal de Carnot donne la meilleure efficacité théoriquement possible entre une source froide (évaporateur, T_o) et une source chaude (condenseur, T_c), en kelvins :',
     },
-    { type: 'formula', text: 'Efficacité théorique : Eth = To / (Tc − To)' },
-    { type: 'formula', text: 'Efficacité réelle : Er = Po / Pw   (froid produit / puissance réellement absorbée)' },
-    { type: 'formula', text: 'Rendement de Carnot : Nc = Er / Eth' },
+    { type: 'formula', text: 'Efficacité théorique : E_{th} = \\frac{T_o}{T_c − T_o}' },
+    { type: 'formula', text: 'Efficacité réelle : E_r = \\frac{P_o}{P_w}   (froid produit / puissance réellement absorbée)' },
+    { type: 'formula', text: 'Rendement de Carnot : N_c = \\frac{E_r}{E_{th}}' },
     {
       type: 'text',
-      text: 'Exemple : évaporation à 5 °C (278 K), condensation à 45 °C (318 K) → Eth = 278 / 40 ≈ 7. Un compresseur dont le rendement de Carnot est 0,5 donne un COP réel d’environ 3,5. On voit tout l’intérêt de rapprocher To et Tc : évaporateur pas trop froid (consigne raisonnable) et condenseur bien ventilé, à l’ombre.',
+      text: 'Exemple : évaporation à 5 °C (278 K), condensation à 45 °C (318 K) → E_{th} = 278 / 40 ≈ 7. Un compresseur dont le rendement de Carnot est 0,5 donne un COP réel d’environ 3,5. On voit tout l’intérêt de rapprocher T_o et T_c : évaporateur pas trop froid (consigne raisonnable) et condenseur bien ventilé, à l’ombre.',
     },
     fig('p055_0', 'Tableau 2.1 — rendement de Carnot usuel des compresseurs (pistons, scroll, vis, centrifuges)'),
 
@@ -32,16 +32,16 @@ export const climOperatingCostsContent: TopicContent = {
       rows: [
         ['Compresseur', 'Cc', 'Σ Pa × heures de marche, régime par régime'],
         ['Auxiliaires permanents (ventilateurs, pompes)', 'Cp', '(Pv + Pp) × heures d’utilisation'],
-        ['Auxiliaires non permanents (résistance de carter, électrovanne, ventilateur de condenseur)', 'Cnp', 'Prc × heures d’arrêt + Pvm × heures de marche'],
+        ['Auxiliaires non permanents (résistance de carter, électrovanne, ventilateur de condenseur)', 'C_{np}', 'Prc × heures d’arrêt + Pvm × heures de marche'],
         ['Dégivrage', 'Cd', 'Puissance × durée × nombre de dégivrages'],
       ],
     },
-    { type: 'formula', text: 'C (kWh/an) = Cc + Cp + Cnp + Cd' },
+    { type: 'formula', text: 'C (kWh/an) = C_c + C_p + C_{np} + C_d' },
     {
       type: 'text',
       text: "Le compresseur ne tourne pas à pleine puissance toute l’année : il suit les besoins de froid BF. Ses heures de marche dépendent du taux de charge et du rendement de production de froid RPF, qui s’effondre à très faible charge (marche/arrêt fréquents) :",
     },
-    { type: 'formula', text: 'hc = nh × BF / (RPF × Qo)   et   Cc = Σ Pa × hc' },
+    { type: 'formula', text: 'h_c = \\frac{n_h × BF}{RPF × Q_o}   et   C_c = Σ P_a × h_c' },
     fig('p064_0', 'Rendement de production de froid (RPF) selon le taux de fonctionnement BF/Qo'),
     fig('p063_0', 'Puissance frigorifique et puissance absorbée selon les températures d’évaporation et de condensation'),
     { type: 'note', text: 'Un mauvais entretien, de mauvais réglages, une charge de fluide incorrecte ou une machine mal adaptée aux besoins augmentent fortement la consommation globale.' },
@@ -52,7 +52,7 @@ export const climOperatingCostsContent: TopicContent = {
       text: "Le COP décrit la machine à un instant donné ; le COE juge l’installation sur toute l’année, auxiliaires et pertes compris :",
     },
     { type: 'formula', text: 'EF annuelle = Σ BF × heures   (énergie froid utile, kWh)' },
-    { type: 'formula', text: 'COE = EF annuelle / C annuelle' },
+    { type: 'formula', text: 'COE = \\frac{EF annuelle}{C annuelle}' },
     {
       type: 'bullets',
       items: [
@@ -80,7 +80,7 @@ export const climOperatingCostsContent: TopicContent = {
       ],
     },
     { type: 'warning', text: "Coquilles dans les tableaux de l’exemple : certaines durées et énergies ont perdu un zéro à l’impression (150 h au lieu de 1 500 h, 1 350 kWh au lieu de 13 500, 1 600 au lieu de 16 000, 1 050 au lieu de 10 500). Le total de 61 120 kWh n’est juste qu’avec les valeurs complètes. Le dégivrage fait exactement 6 × 0,25 × 4 × 365 = 2 190 kWh (le guide arrondit à 2 188)." },
-    { type: 'formula', text: 'EF = 61 120 kWh/an  →  COE = 61 120 / 37 775 = 1,62' },
+    { type: 'formula', text: 'EF = 61 120 kWh/an  →  COE = \\frac{61 120}{37 775} = 1,62' },
     {
       type: 'note',
       text: 'Ce COE de 1,62 est celui d’une installation de froid négatif (évaporation à −10 °C). En climatisation, l’évaporation est positive (≈ +5 °C) et le COE saisonnier doit dépasser 3. Retenez surtout la méthode… et que les auxiliaires et le dégivrage pèsent ici 22 % de la consommation !',
@@ -127,8 +127,8 @@ export const climOperatingCostsContent: TopicContent = {
       type: 'exercise',
       question: "Un compresseur (rendement de Carnot 0,5) évapore à 5 °C. Comparez son COP si le condenseur est à 50 °C (en plein soleil) ou à 40 °C (à l’ombre, bien ventilé).",
       solution: [
-        "To = 278 K. À 50 °C : Eth = 278 / 45 = 6,18 → COP ≈ 0,5 × 6,18 = 3,1.",
-        "À 40 °C : Eth = 278 / 35 = 7,94 → COP ≈ 4,0.",
+        "T_o = 278 K. À 50 °C : E_{th} = 278 / 45 = 6,18 → COP ≈ 0,5 × 6,18 = 3,1.",
+        "À 40 °C : E_{th} = 278 / 35 = 7,94 → COP ≈ 4,0.",
         "Un condenseur bien placé améliore le COP d’environ 28 % : autant d’électricité en moins.",
       ],
     },

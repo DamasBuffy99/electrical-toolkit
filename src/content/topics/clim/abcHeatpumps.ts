@@ -22,7 +22,7 @@ export const abcHeatpumpsContent: TopicContent = {
     },
 
     { type: 'heading', text: 'Les coefficients de performance' },
-    { type: 'formula', text: 'COP = énergie restituée / énergie électrique consommée   (ex. 9 000 W / 3 000 W = 3)' },
+    { type: 'formula', text: 'COP = \\frac{énergie restituée}{énergie électrique consommée}   (ex. 9 000 W / 3 000 W = 3)' },
     {
       type: 'bullets',
       items: [
@@ -33,7 +33,7 @@ export const abcHeatpumpsContent: TopicContent = {
         'SEER (froid) et SCOP (chaud) : coefficients saisonniers européens pour les appareils ≤ 12 kW, calculés sur une année type. Exemples d’exigences minimales (2014) : SEER 4,6 et SCOP 3,8 pour un appareil < 6 kW avec un fluide de GWP > 150.',
       ],
     },
-    { type: 'formula', text: 'SEER = froid fourni sur l’année (kWh) / électricité consommée (kWh)' },
+    { type: 'formula', text: 'SEER = \\frac{froid fourni sur l’année (kWh)}{électricité consommée (kWh)}' },
     {
       type: 'warning',
       text: "Le livre définit l’EER comme « énergie absorbée / énergie consommée », ce qui ne veut rien dire. Il faut lire : EER = puissance frigorifique PRODUITE / puissance électrique consommée (c’est le COP en mode froid ; en unités américaines, BTU/h par watt).",
@@ -103,7 +103,7 @@ export const abcHeatpumpsContent: TopicContent = {
         'Une bouteille de découplage rend indépendants le débit de la PAC et celui des émetteurs.',
       ],
     },
-    { type: 'formula', text: 'Pente de la loi d’eau = (T eau − T ambiante) / (T ambiante − T extérieure)   ex. (50 − 20) / (20 − (−5)) = 1,2' },
+    { type: 'formula', text: 'Pente de la loi d’eau = \\frac{T eau − T ambiante}{T ambiante − T extérieure}   ex. \\frac{50 − 20}{20 − (−5)} = 1,2' },
     {
       type: 'bullets',
       items: [

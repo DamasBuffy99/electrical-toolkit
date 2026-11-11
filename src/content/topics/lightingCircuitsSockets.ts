@@ -53,7 +53,7 @@ export const lightingCircuitsSocketsContent: TopicContent = {
         'Code saoudien : 1 000 W par disjoncteur 10 A, 1 500 W par disjoncteur 16 A.',
       ],
     },
-    { type: 'formula', text: 'Exemple : 8 luminaires LED de 36 W → 288 W / 0,95 ≈ 303 VA → un seul circuit (≤ 1 200 VA, ≤ 10 luminaires)' },
+    { type: 'formula', text: 'Exemple : 8 luminaires LED de 36 W → \\frac{288 W}{0,95} ≈ 303 VA → un seul circuit (≤ 1 200 VA, ≤ 10 luminaires)' },
     { type: 'image', source: SLIDES['cond-44'], caption: 'Circuits d’éclairage sur le plan' },
 
     { type: 'heading', text: '4 · Les types de prises' },

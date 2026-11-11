@@ -67,20 +67,20 @@ export const pvOffgridExample2Content: TopicContent = {
     { type: 'heading', text: '3 · The panels' },
     { type: 'formula', text: 'Panel energy = 1.3 × 6,420 = 8,346 Wh/day' },
     { type: 'text', text: 'The site gets 5 peak sun hours per day:' },
-    { type: 'formula', text: 'Panel power = 8,346 / 5 = 1,669.2 W' },
+    { type: 'formula', text: 'Panel power = \\frac{8,346}{5} = 1,669.2 W' },
     {
       type: 'table',
       headers: ['LG Mono X Plus 300 W (LG300S1C-A5)', 'Value'],
       rows: [
         ['Maximum power', '300 W'],
         ['Vmpp / Impp', '31.6 V / 9.50 A'],
-        ['Voc (open circuit)', '38.9 V'],
-        ['Isc (short circuit)', '10.07 A'],
+        ['V_{oc} (open circuit)', '38.9 V'],
+        ['I_{sc} (short circuit)', '10.07 A'],
         ['Efficiency', '17.5%'],
         ['Max system voltage / max series fuse', '1,000 V / 20 A'],
       ],
     },
-    { type: 'formula', text: 'Number = 1,669.2 / 300 = 5.56 → 6 panels → 6 × 300 = 1,800 W' },
+    { type: 'formula', text: 'Number = \\frac{1,669.2}{300} = 5.56 → 6 panels → 6 × 300 = 1,800 W' },
     { type: 'illustration', name: 'peak-sun-hours', props: { hours: 5 }, caption: '5 peak sun hours' },
     { type: 'image', source: shot.panels, caption: 'Course — 1,669.2 W → 6 LG 300 W panels', focus: { x: 0.01, y: 0.53, w: 0.42, h: 0.44 } },
 
@@ -103,8 +103,8 @@ export const pvOffgridExample2Content: TopicContent = {
         'Autonomy: 1 day.',
       ],
     },
-    { type: 'formula', text: 'Ah = (8,346 × 1) / (0.5 × 24 × 0.9) = 772 Ah' },
-    { type: 'formula', text: 'In series = 24 / 12 = 2 · In parallel = 772 / 205 = 3.76 → 4' },
+    { type: 'formula', text: 'Ah = \\frac{8,346 × 1}{0.5 × 24 × 0.9} = 772 Ah' },
+    { type: 'formula', text: 'In series = \\frac{24}{12} = 2 · In parallel = \\frac{772}{205} = 3.76 → 4' },
     { type: 'formula', text: 'Total = 2 × 4 = 8 batteries → 24 V, 4 × 205 = 820 Ah bank' },
     { type: 'illustration', name: 'battery-bank', props: { series: 2, parallel: 4, battV: 12, battAh: 205 }, caption: '2 in series × 4 in parallel = 24 V, 820 Ah' },
     { type: 'image', source: shot.batteries, caption: 'Course — Ah calculation and capacity vs temperature curve', focus: { x: 0.55, y: 0.46, w: 0.45, h: 0.5 } },
@@ -118,8 +118,8 @@ export const pvOffgridExample2Content: TopicContent = {
       rows: [
         ['Nominal PV power at 24 V', '2,000 W', '1,800 W', '✓'],
         ['Rated charge current', '70 A', '1,800 / 24 = 75 A', '⚠️'],
-        ['Max PV Isc', '50 A (30 A per MC4 connector)', '37.76 A (step 6)', '✓'],
-        ['Max PV Voc', '150 V', '79.3 V (step 6)', '✓'],
+        ['Max PV I_{sc}', '50 A (30 A per MC4 connector)', '37.76 A (step 6)', '✓'],
+        ['Max PV V_{oc}', '150 V', '79.3 V (step 6)', '✓'],
       ],
     },
     {
@@ -138,7 +138,7 @@ export const pvOffgridExample2Content: TopicContent = {
     { type: 'image', source: shot.clipping, caption: 'Course — 75 A > 70 A: about 6.7% clipped', focus: { x: 0.22, y: 0.34, w: 0.58, h: 0.24 } },
 
     { type: 'heading', text: 'Can the batteries take this current?' },
-    { type: 'formula', text: '4 parallel branches: 70 / 4 = 17.5 A per branch' },
+    { type: 'formula', text: '4 parallel branches: \\frac{70}{4} = 17.5 A per branch' },
     { type: 'formula', text: 'Trojan max charge current = 20% of C20 = 0.2 × 205 = 41 A > 17.5 A ✓' },
     {
       type: 'table',
@@ -156,12 +156,12 @@ export const pvOffgridExample2Content: TopicContent = {
     { type: 'image', source: shot.charge, caption: 'Course — 17.5 A < 41 A (20% of C20)', focus: { x: 0.4, y: 0.36, w: 0.53, h: 0.33 } },
 
     { type: 'heading', text: '6 · Connecting the panels' },
-    { type: 'formula', text: 'Design voltage = 150 / 2 = 75 V' },
-    { type: 'formula', text: 'In series = 75 / 38.9 = 1.92 → 2 panels' },
-    { type: 'formula', text: 'In parallel = 6 / 2 = 3 strings' },
+    { type: 'formula', text: 'Design voltage = \\frac{150}{2} = 75 V' },
+    { type: 'formula', text: 'In series = \\frac{75}{38.9} = 1.92 → 2 panels' },
+    { type: 'formula', text: 'In parallel = \\frac{6}{2} = 3 strings' },
     { type: 'illustration', name: 'pv-array', props: { series: 2, parallel: 3, voc: 38.9 }, caption: '2 panels in series × 3 strings' },
     { type: 'text', text: 'Minimum site temperature: −20 °C. The course applies a temperature compensation factor of 1.02:' },
-    { type: 'formula', text: 'Cold Voc = 2 × 38.9 × 1.02 = 79.3 V < 150 V ✓' },
+    { type: 'formula', text: 'Cold V_{oc} = 2 × 38.9 × 1.02 = 79.3 V < 150 V ✓' },
     {
       type: 'note',
       text: '⚠️ At −20 °C, NEC table 690.7(A) gives a factor of 1.18 (−16 to −20 °C band), not 1.02 (which matches 20 – 24 °C). Check with 1.18: 2 × 38.9 × 1.18 = 91.8 V < 150 V ✓ — 2 panels in series remains valid.',

@@ -25,7 +25,7 @@ export const electricalBasicsContent: TopicContent = {
       type: 'text',
       text: 'The higher the pressure (voltage), the larger the flow (current). The narrower the pipe (resistance), the smaller the flow.',
     },
-    { type: 'formula', text: 'Example: 2,300 W heater on 230 V → I = 10 A, R = 230 / 10 = 23 Ω' },
+    { type: 'formula', text: 'Example: 2,300 W heater on 230 V → I = 10 A, R = \\frac{230}{10} = 23 Ω' },
     {
       type: 'note',
       text: "💡 Current is what heats cables and trips breakers: that's why we calculate currents all through the course.",

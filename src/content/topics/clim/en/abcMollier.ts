@@ -59,15 +59,15 @@ export const abcMollierContent: TopicContent = {
     { type: 'illustration', name: 'tech-ph', props: { highlight: 'compressor' }, caption: 'Compression (roughly) follows an isentrope' },
 
     { type: 'heading', text: 'The energy balance' },
-    { type: 'formula', text: 'Cooling per kg of refrigerant = h1 − h5   (kJ/kg)' },
-    { type: 'formula', text: 'Compression work per kg = h2 − h1' },
-    { type: 'formula', text: 'Heat rejected at the condenser per kg = h2 − h5 = cooling + work' },
-    { type: 'formula', text: 'Theoretical COP = (h1 − h5) / (h2 − h1)   ;   Cooling capacity = mass flow × (h1 − h5)' },
+    { type: 'formula', text: 'Cooling per kg of refrigerant = h_1 − h_5   (kJ/kg)' },
+    { type: 'formula', text: 'Compression work per kg = h_2 − h_1' },
+    { type: 'formula', text: 'Heat rejected at the condenser per kg = h_2 − h_5 = cooling + work' },
+    { type: 'formula', text: 'Theoretical COP = \\frac{h_1 − h_5}{h_2 − h_1}   ;   Cooling capacity = mass flow × (h_1 − h_5)' },
     {
       type: 'bullets',
       items: [
         'For comparison, vaporising 1 kg of water takes 2,257 kJ: a refrigerant is chosen to evaporate at low temperature with a high latent heat.',
-        'The greater the subcooling, the lower h5, and the more cooling each kg of refrigerant produces. The book’s example: with R407C, cooling the liquid from 25 to 15 °C before the expansion valve raises cooling capacity by about 7 % (the role of the liquid/suction heat exchanger).',
+        'The greater the subcooling, the lower h_5, and the more cooling each kg of refrigerant produces. The book’s example: with R407C, cooling the liquid from 25 to 15 °C before the expansion valve raises cooling capacity by about 7 % (the role of the liquid/suction heat exchanger).',
         'The greater the gap between evaporation and condensation (compression ratio), the more work and the lower the COP.',
       ],
     },
@@ -90,7 +90,7 @@ export const abcMollierContent: TopicContent = {
     { type: 'heading', text: 'Exercises' },
     {
       type: 'exercise',
-      question: 'On a chart you read h5 = 250 kJ/kg, h1 = 425 kJ/kg and h2 = 465 kJ/kg. Calculate the cooling per kg, the work, the heat rejected and the theoretical COP.',
+      question: 'On a chart you read h_5 = 250 kJ/kg, h_1 = 425 kJ/kg and h_2 = 465 kJ/kg. Calculate the cooling per kg, the work, the heat rejected and the theoretical COP.',
       solution: ['Cooling: 425 − 250 = 175 kJ/kg.', 'Work: 465 − 425 = 40 kJ/kg.', 'Rejected at the condenser: 465 − 250 = 215 kJ/kg (= 175 + 40).', 'Theoretical COP = 175 / 40 ≈ 4.4 (the real COP will be lower because of losses).'],
     },
     {

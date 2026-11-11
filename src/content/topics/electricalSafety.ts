@@ -32,7 +32,7 @@ export const electricalSafetyContent: TopicContent = {
       type: 'text',
       text: 'La durée compte autant que l’intensité : au-delà de 100 mA pendant plus de 20 ms, le choc peut être mortel. Le courant supportable pendant un temps t est :',
     },
-    { type: 'formula', text: 'I = 116 mA / √t   (ex. t = 10 s → I = 36,68 mA)' },
+    { type: 'formula', text: 'I = \\frac{116 mA}{√t}   (ex. t = 10 s → I = 36,68 mA)' },
     {
       type: 'bullets',
       items: [

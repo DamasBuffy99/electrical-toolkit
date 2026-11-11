@@ -130,7 +130,7 @@ export const climCentralSystemsContent: TopicContent = {
       question: "Pour transporter 10 kW de froid, comparez le débit d’eau (écart 5 K) et le débit d’air (écart 10 K) nécessaires. Qu’en concluez-vous ?",
       solution: [
         "Eau : m = 10 / (4,18 × 5) = 0,48 kg/s ≈ 1,7 m³/h.",
-        "Air : qv = 10 000 / (0,33 × 10) ≈ 3 030 m³/h.",
+        "Air : q_v = 10 000 / (0,33 × 10) ≈ 3 030 m³/h.",
         "Il faut ~1 800 fois plus de volume d’air que d’eau : une pompe consomme bien moins qu’un ventilateur. C’est pourquoi les systèmes air/eau coûtent moins cher à l’exploitation que le « tout air ».",
       ],
     },

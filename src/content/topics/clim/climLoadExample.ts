@@ -40,10 +40,10 @@ export const climLoadExampleContent: TopicContent = {
     fig('p031_1', 'Tableau 1.14a — rayonnement à 4° Nord en février : on lit les valeurs de la ligne 13 h'),
 
     { type: 'heading', text: 'Étape 2 · Transmission à travers les parois' },
-    { type: 'formula', text: 'QStr = k × S × Δθ' },
+    { type: 'formula', text: 'Q_{Str} = k × S × Δθ' },
     {
       type: 'table',
-      headers: ['Paroi', 'k', 'S (m²)', 'Δθ', 'QStr (W)'],
+      headers: ['Paroi', 'k', 'S (m²)', 'Δθ', 'Q_{Str} (W)'],
       rows: [
         ['Mur Nord', '2,09', '30', '6', '376'],
         ['Mur Sud', '2,09', '28', '6', '351'],
@@ -59,7 +59,7 @@ export const climLoadExampleContent: TopicContent = {
     fig('p043', 'Le calcul détaillé dans le guide (page 28) : transmission puis rayonnement'),
 
     { type: 'heading', text: 'Étape 3 · Rayonnement solaire' },
-    { type: 'formula', text: 'Murs : QSRm = α × F × S × Rm   ;   Vitrage : QSRv = α × g × S × Rv' },
+    { type: 'formula', text: 'Murs : Q_{SRm} = α × F × S × R_m   ;   Vitrage : Q_{SRv} = α × g × S × R_v' },
     {
       type: 'table',
       headers: ['Paroi', 'α', 'F ou g', 'S', 'R (W/m²)', 'Q (W)'],
@@ -80,13 +80,13 @@ export const climLoadExampleContent: TopicContent = {
 
     { type: 'heading', text: 'Étape 4 · Air neuf, occupants, éclairage, appareils' },
     { type: 'subheading', text: 'Renouvellement d’air (ventilation naturelle : 1 volume/h = 180 m³/h)' },
-    { type: 'formula', text: 'QSr = 180 × (32 − 26) × 0,33 = 356 W' },
-    { type: 'formula', text: 'QLr = 180 × (0,0255 − 0,0108) × 0,84 × 1000 = 2 222 W' },
+    { type: 'formula', text: 'Q_{Sr} = 180 × (32 − 26) × 0,33 = 356 W' },
+    { type: 'formula', text: 'Q_{Lr} = 180 × (0,0255 − 0,0108) × 0,84 × 1000 = 2 222 W' },
     { type: 'subheading', text: 'Occupants (0,1 pers/m² × 60 m² = 6 personnes, public mixte −10 %)' },
-    { type: 'formula', text: 'QSoc = 6 × 63 × 0,9 = 340 W   ;   QLoc = 6 × 59 × 0,9 = 318 W' },
+    { type: 'formula', text: 'Q_{Soc} = 6 × 63 × 0,9 = 340 W   ;   Q_{Loc} = 6 × 59 × 0,9 = 318 W' },
     { type: 'warning', text: "Le guide prend 59 W latents par personne à 26 °C, valeur incohérente avec le total de 116 W de son tableau 1.16 (63 + 53 = 116). Avec 53 W, QLoc = 286 W au lieu de 318 W." },
     { type: 'subheading', text: 'Éclairage fluorescent (16 W/m²)' },
-    { type: 'formula', text: 'Qécl = 16 × 60 = 960 W' },
+    { type: 'formula', text: 'Q_{écl} = 16 × 60 = 960 W' },
     { type: 'warning', text: "Le guide applique ici 16 W/m² sans le facteur 1,25 des tubes fluorescents prévu par sa formule (8). Avec ce facteur, l’éclairage vaudrait 1 200 W (+240 W)." },
     { type: 'subheading', text: 'Équipements (avec coefficient d’utilisation)' },
     {
@@ -115,14 +115,14 @@ export const climLoadExampleContent: TopicContent = {
         ['Occupants', '340', '318'],
         ['Éclairage', '960', ''],
         ['Équipements', '609', '75'],
-        ['Total', 'QS = 4 792', 'QL = 2 615'],
+        ['Total', 'Q_S = 4 792', 'Q_L = 2 615'],
       ],
     },
-    { type: 'formula', text: 'QT = QS + QL = 4 792 + 2 615 = 7 407 W ≈ 7,4 kW de froid' },
+    { type: 'formula', text: 'Q_T = Q_S + Q_L = 4 792 + 2 615 = 7 407 W ≈ 7,4 kW de froid' },
     {
       type: 'bullets',
       items: [
-        'Puissance de déshumidification = QL = 2,61 kW, soit environ 3,76 litres d’eau à retirer par heure.',
+        'Puissance de déshumidification = Q_L = 2,61 kW, soit environ 3,76 litres d’eau à retirer par heure.',
         'Facteur de chaleur sensible : 4 792 / 7 407 ≈ 0,65. Très bas : à Douala, plus d’un tiers de la charge sert à sécher l’air !',
         'L’air neuf seul pèse 2 578 W, soit 35 % du bilan : maîtriser les infiltrations (portes fermées, fenêtres étanches) est essentiel.',
       ],
@@ -148,13 +148,13 @@ export const climLoadExampleContent: TopicContent = {
       ],
     },
     { type: 'warning', text: "Le split retenu (8,5 kW) dépasse le bilan de 15 %, alors que le guide limite le coefficient de sécurité à 5 % et conseille ailleurs l’appareil « juste inférieur ». Un modèle de 7 à 7,5 kW aurait été plus cohérent avec ses propres règles, à condition de couvrir les 2,6 kW de charge latente." },
-    { type: 'formula', text: 'COP = 8 500 / 3 280 ≈ 2,6  →  conforme au minimum conseillé pour un split (> 2,6)' },
+    { type: 'formula', text: 'COP = \\frac{8 500}{3 280} ≈ 2,6  →  conforme au minimum conseillé pour un split (> 2,6)' },
     fig('p045', 'Page 30 du guide — sélection du split et puissance à souscrire'),
 
     { type: 'heading', text: 'Étape 7 · La puissance à souscrire' },
-    { type: 'formula', text: 'Pat = 3 280 × Ks (1) × Ku (1) = 3 280 W' },
-    { type: 'formula', text: 'cos φ = 0,8 → tan φ = 0,75 → Qat = 3 280 × 0,75 = 2 460 var' },
-    { type: 'formula', text: 'Sa = √(3 280² + 2 460²) = 4 100 VA' },
+    { type: 'formula', text: 'P_{at} = 3 280 × K_s (1) × K_u (1) = 3 280 W' },
+    { type: 'formula', text: 'cos φ = 0,8 → tan φ = 0,75 → Q_{at} = 3 280 × 0,75 = 2 460 var' },
+    { type: 'formula', text: 'S_a = \\sqrt{3 280² + 2 460²} = 4 100 VA' },
     {
       type: 'note',
       text: 'On souscrira 4,1 kVA pour ce bureau. Bilan : 7,4 kW de froid calculés → split de 8,5 kW → 3,3 kW électriques → 4,1 kVA d’abonnement. Gardez bien en tête ces trois puissances différentes.',

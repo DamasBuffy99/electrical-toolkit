@@ -85,7 +85,7 @@ export const abcHydraulicsContent: TopicContent = {
         'Choix : débit + HMT, puis la courbe constructeur la plus proche du point de fonctionnement.',
       ],
     },
-    { type: 'formula', text: 'Débit Q (m³/h) = P (kW) / (1,16 × ΔT)' },
+    { type: 'formula', text: 'Débit Q (m³/h) = \\frac{P (kW)}{1,16 × ΔT}' },
     { type: 'note', text: 'Pour une petite installation, on estime les pertes de charge à environ 20 mmCE par mètre de tuyauterie ; au-delà, on utilise les abaques.' },
 
     { type: 'heading', text: 'Les vannes' },
@@ -113,7 +113,7 @@ export const abcHydraulicsContent: TopicContent = {
         ['Δp max', 'différence de pression maximale vanne fermée (étanchéité)'],
       ],
     },
-    { type: 'formula', text: 'Autorité aV = Δp vanne ouverte / (Δp vanne + Δp batterie)   — viser 0,5 à 0,7' },
+    { type: 'formula', text: 'Autorité a_V = \\frac{Δp vanne ouverte}{Δp vanne + Δp batterie}   — viser 0,5 à 0,7' },
     {
       type: 'warning',
       text: "Le livre écrit que pour une vanne neuve « le Kvs doit être inférieur à 0,05 % du Kv ». Il s’agit du Kvo : le débit de fuite vanne fermée doit être inférieur à environ 0,05 % du Kvs.",

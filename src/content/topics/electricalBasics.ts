@@ -25,7 +25,7 @@ export const electricalBasicsContent: TopicContent = {
       type: 'text',
       text: "Plus la pression (tension) est forte, plus le débit (courant) est grand. Plus le tuyau est étroit (résistance), plus le débit diminue.",
     },
-    { type: 'formula', text: 'Exemple : radiateur de 2 300 W sur 230 V → I = 10 A, R = 230 / 10 = 23 Ω' },
+    { type: 'formula', text: 'Exemple : radiateur de 2 300 W sur 230 V → I = 10 A, R = \\frac{230}{10} = 23 Ω' },
     {
       type: 'note',
       text: "💡 C'est le courant qui chauffe les câbles et fait déclencher les disjoncteurs : voilà pourquoi on calcule des courants tout au long du cours.",

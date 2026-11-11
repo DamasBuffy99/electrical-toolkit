@@ -79,10 +79,10 @@ export const climCentralNetworksContent: TopicContent = {
       ],
     },
     { type: 'subheading', text: 'Les pertes de charge' },
-    { type: 'formula', text: 'Linéaires : ΔPl = j × L   (j en Pa/m lu sur l’abaque, L en m)' },
-    { type: 'formula', text: 'Singulières (coudes, tés…) : ΔPs = ζ × ρ × V² / 2' },
+    { type: 'formula', text: 'Linéaires : ΔP_l = j × L   (j en Pa/m lu sur l’abaque, L en m)' },
+    { type: 'formula', text: 'Singulières (coudes, tés…) : ΔP_s = \\frac{ζ × ρ × V²}{2}' },
     { type: 'warning', text: "Coquille dans le guide : la perte de charge singulière y est imprimée ΔPs = (ζ·ρ·V²) / (2·j). La formule correcte est ΔPs = ζ·ρ·V²/2 (le guide l’écrit d’ailleurs correctement, 0,5·ζ·ρ·V², pour les circuits d’eau)." },
-    { type: 'formula', text: 'Diamètre équivalent d’une gaine rectangulaire a × b : φe = 1,265 × [ (a·b)³ / (a + b) ]^0,2' },
+    { type: 'formula', text: 'Diamètre équivalent d’une gaine rectangulaire a × b : φ_e = 1,265 × [ \\frac{(a·b)³}{a + b} ]^{0,2}' },
     fig('p141_0', 'Figure 5.32 — abaque des pertes de charge de l’air dans les conduits circulaires'),
     { type: 'subheading', text: 'Trois méthodes de dimensionnement' },
     {
@@ -159,7 +159,7 @@ export const climCentralNetworksContent: TopicContent = {
       question: "Une gaine de bureaux transporte 3 600 m³/h. Dimensionnez-la par la méthode de la vitesse (4 m/s). Quel est le diamètre équivalent d’une gaine rectangulaire de 600 × 400 mm ?",
       solution: [
         "Débit : 3 600 / 3 600 = 1 m³/s ; S = 1 / 4 = 0,25 m² → par exemple 500 × 500 mm ou un conduit circulaire de Ø 564 mm.",
-        "φe = 1,265 × [ (0,6 × 0,4)³ / (0,6 + 0,4) ]^0,2 = 1,265 × (0,013 82)^0,2 ≈ 1,265 × 0,425 ≈ 0,54 m.",
+        "φ_e = 1,265 × [ (0,6 × 0,4)³ / (0,6 + 0,4) ]^0,2 = 1,265 × (0,013 82)^0,2 ≈ 1,265 × 0,425 ≈ 0,54 m.",
         "La gaine 600 × 400 équivaut donc à un conduit circulaire d’environ 540 mm pour les pertes de charge.",
       ],
     },

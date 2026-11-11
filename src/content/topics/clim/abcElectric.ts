@@ -32,7 +32,7 @@ export const abcElectricContent: TopicContent = {
         'cos φ typique ≈ 0,8 ; rendement = puissance utile / puissance absorbée.',
       ],
     },
-    { type: 'formula', text: 'Ns = 60 × f / p   ;   P absorbée = √3 × U × I × cos φ   ;   I ≈ P / (√3 × U × cos φ)' },
+    { type: 'formula', text: 'N_s = \\frac{60 × f}{p}   ;   P absorbée = √3 × U × I × cos φ   ;   I ≈ \\frac{P}{√3 × U × cos φ}' },
     { type: 'note', text: 'Raccourci de terrain en 400 V triphasé : I (A) ≈ P (W) / 600. Pratique, mais approximatif.' },
 
     { type: 'heading', text: 'Limiter le courant de démarrage' },
@@ -59,7 +59,7 @@ export const abcElectricContent: TopicContent = {
         'Un condensateur gonflé est hors service. Toujours le décharger (court-circuit des bornes avec une résistance ou un outil isolé) avant de le manipuler.',
       ],
     },
-    { type: 'formula', text: 'Capacité d’un condensateur en service (50 Hz) : C (µF) ≈ 3 185 × I / U' },
+    { type: 'formula', text: 'Capacité d’un condensateur en service (50 Hz) : C (µF) ≈ \\frac{3 185 × I}{U}' },
 
     { type: 'heading', text: 'Les protections' },
     {
@@ -103,7 +103,7 @@ export const abcElectricContent: TopicContent = {
         'Section d’un câble : elle doit limiter l’échauffement ET la chute de tension (3 % en éclairage, 5 % pour un moteur) ; la résistance croît avec la longueur et diminue avec la section.',
       ],
     },
-    { type: 'formula', text: 'Monophasé : S (mm²) = 2 × ρ × L × I / ΔU   ;   Triphasé : S = √3 × ρ × L × I × cos φ / ΔU   (ρ cuivre ≈ 0,0225 Ω·mm²/m en service)' },
+    { type: 'formula', text: 'Monophasé : S (mm²) = \\frac{2 × ρ × L × I}{ΔU}   ;   Triphasé : S = \\frac{√3 × ρ × L × I × cos φ}{ΔU}   (ρ cuivre ≈ 0,0225 Ω·mm²/m en service)' },
     {
       type: 'warning',
       text: "Une formule de câble du livre écrit la chute de tension en MULTIPLICATION (« S = 2 × R × L × (I/1000) × e »). La chute de tension admissible doit être au DÉNOMINATEUR : plus on accepte de chute de tension, plus la section peut être petite. Le calcul détaillé des câbles est traité dans le cours électrique (leçon « Chute de tension »).",

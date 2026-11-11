@@ -71,7 +71,7 @@ export const lightingContent: TopicContent = {
       type: 'text',
       text: "The work plane is the horizontal plane where visual tasks are performed. Once the average illuminance is calculated, its uniformity must be checked.",
     },
-    { type: 'formula', text: 'Uniformity = E_min / E_avg' },
+    { type: 'formula', text: 'Uniformity = \\frac{E_min}{E_{avg}}' },
     {
       type: 'text',
       text: "Uniformity must be between 0.5 and 1. The average illuminance E_avg must stay within 15% of the E_required value set by the code.",
@@ -85,7 +85,7 @@ export const lightingContent: TopicContent = {
     },
     {
       type: 'formula',
-      text: 'N = (E × A) / (F × UF × MF)',
+      text: 'N = \\frac{E × A}{F × UF × MF}',
     },
     {
       type: 'text',
@@ -125,7 +125,7 @@ export const lightingContent: TopicContent = {
       type: 'text',
       text: 'Required illuminance: 500 lux. Chosen luminaire: 4 lamps of 1200 lm each → F = 4800 lm. UF = 0.5, MF = 0.8.',
     },
-    { type: 'formula', text: 'N = (500 × 100) / (4800 × 0.5 × 0.8) = 23.1 → rounded to 24 (not prime)' },
+    { type: 'formula', text: 'N = \\frac{500 × 100}{4800 × 0.5 × 0.8} = 23.1 → rounded to 24 (not prime)' },
     {
       type: 'text',
       text: 'Layout: 5 × 5 grid (25 luminaires, each dimension rounded to its square root), 2 m spacing, first row offset 1 m from the wall.',

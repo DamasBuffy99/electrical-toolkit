@@ -79,10 +79,10 @@ export const climCentralNetworksContent: TopicContent = {
       ],
     },
     { type: 'subheading', text: 'Pressure drops' },
-    { type: 'formula', text: 'Friction: ΔPl = j × L   (j in Pa/m read from the chart, L in m)' },
-    { type: 'formula', text: 'Fittings (bends, tees…): ΔPs = ζ × ρ × V² / 2' },
+    { type: 'formula', text: 'Friction: ΔP_l = j × L   (j in Pa/m read from the chart, L in m)' },
+    { type: 'formula', text: 'Fittings (bends, tees…): ΔP_s = \\frac{ζ × ρ × V²}{2}' },
     { type: 'warning', text: "Typo in the guide: the fitting pressure drop is printed ΔPs = (ζ·ρ·V²) / (2·j). The correct formula is ΔPs = ζ·ρ·V²/2 (the guide itself writes it correctly, 0.5·ζ·ρ·V², for water circuits)." },
-    { type: 'formula', text: 'Equivalent diameter of a rectangular duct a × b: φe = 1.265 × [ (a·b)³ / (a + b) ]^0.2' },
+    { type: 'formula', text: 'Equivalent diameter of a rectangular duct a × b: φ_e = 1.265 × [ \\frac{(a·b)³}{a + b} ]^{0.2}' },
     fig('p141_0', 'Figure 5.32 — friction chart for air in circular ducts'),
     { type: 'subheading', text: 'Three sizing methods' },
     {
@@ -159,7 +159,7 @@ export const climCentralNetworksContent: TopicContent = {
       question: "An office duct carries 3,600 m³/h. Size it by the velocity method (4 m/s). What is the equivalent diameter of a 600 × 400 mm rectangular duct?",
       solution: [
         "Flow: 3,600 / 3,600 = 1 m³/s; S = 1 / 4 = 0.25 m² → e.g. 500 × 500 mm or a Ø 564 mm round duct.",
-        "φe = 1.265 × [ (0.6 × 0.4)³ / (0.6 + 0.4) ]^0.2 = 1.265 × (0.01382)^0.2 ≈ 1.265 × 0.425 ≈ 0.54 m.",
+        "φ_e = 1.265 × [ (0.6 × 0.4)³ / (0.6 + 0.4) ]^0.2 = 1.265 × (0.01382)^0.2 ≈ 1.265 × 0.425 ≈ 0.54 m.",
         "So the 600 × 400 duct is equivalent to a round duct of about 540 mm for pressure drop.",
       ],
     },

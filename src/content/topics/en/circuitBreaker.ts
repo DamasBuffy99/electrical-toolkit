@@ -22,10 +22,10 @@ export const circuitBreakerContent: TopicContent = {
 
     { type: 'heading', text: '1 · Calculate the load current (I_load)' },
     { type: 'text', text: 'This is the rated load current.' },
-    { type: 'formula', text: 'Single-phase: I_load = (S × 1000) / V' },
-    { type: 'formula', text: 'Three-phase: I_load = (S × 1000) / (√3 × V)' },
+    { type: 'formula', text: 'Single-phase: I_load = \\frac{S × 1000}{V}' },
+    { type: 'formula', text: 'Three-phase: I_load = \\frac{S × 1000}{√3 × V}' },
     { type: 'text', text: 'S = apparent power in kVA, V = voltage (phase-neutral for single-phase, phase-phase for three-phase).' },
-    { type: 'formula', text: 'Example: 5 kVA at 220 V → I_load = 5 × 1000 / 220 = 22.7 A' },
+    { type: 'formula', text: 'Example: 5 kVA at 220 V → I_load = \\frac{5 × 1000}{220} = 22.7 A' },
     {
       type: 'table',
       headers: ['Shortcut (HP ≈ kVA)', 'Current'],
@@ -68,7 +68,7 @@ export const circuitBreakerContent: TopicContent = {
     },
     {
       type: 'formula',
-      text: 'Standard ratings (A): 6·10·16·20·25·32·40·50·63·80·100·125·160·200·250·320·400·500·630·800·1000·1250',
+      text: 'Standard ratings (A): 6 · 10 · 16 · 20 · 25 · 32 · 40 · 50 · 63 · 80 · 100 · 125 · 160 · 200 · 250 · 320 · 400 · 500 · 630 · 800 · 1000 · 1250',
     },
     { type: 'formula', text: 'Example: I_CB = 27.3 A → 32 A breaker' },
     {
@@ -124,7 +124,7 @@ export const circuitBreakerContent: TopicContent = {
       items: [
         "Ir: the breaker's set current (depends on the load kVA).",
         'Im: instantaneous short-circuit trip threshold.',
-        'Icu: ultimate breaking capacity (kA); depends on the upstream impedance (cables, busbars, transformers).',
+        'I_{cu}: ultimate breaking capacity (kA); depends on the upstream impedance (cables, busbars, transformers).',
       ],
     },
     {
@@ -231,9 +231,9 @@ export const circuitBreakerContent: TopicContent = {
       ],
     },
     { type: 'subheading', text: 'Example: 2 MVA motor, 11 kV' },
-    { type: 'formula', text: 'I = 2 × 10⁶ / (√3 × 11 × 10³) = 104 A → 630 A SF6 breaker' },
-    { type: 'formula', text: 'Isc = 500 × 10⁶ / (√3 × 11 × 10³) = 26 kA' },
-    { type: 'formula', text: 'Contribution of neighbouring motors (50 to 80%): Icu = 26 + 0.8 × 26 = 46.8 kA → 50 kA' },
+    { type: 'formula', text: 'I = \\frac{2 × 10⁶}{√3 × 11 × 10³} = 104 A → 630 A SF6 breaker' },
+    { type: 'formula', text: 'I_{sc} = \\frac{500 × 10⁶}{√3 × 11 × 10³} = 26 kA' },
+    { type: 'formula', text: 'Contribution of neighbouring motors (50 to 80%): I_{cu} = 26 + 0.8 × 26 = 46.8 kA → 50 kA' },
     { type: 'image', source: SLIDES['panel-33'], caption: 'MV breakers: voltages and types' },
     { type: 'image', source: SLIDES['panel-34'], caption: 'Example: 2 MVA motor, 11 kV' },
     { type: 'image', source: SLIDES['panel-35'], caption: 'Breaking capacity with motor contribution' },

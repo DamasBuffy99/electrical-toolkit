@@ -27,7 +27,7 @@ export const hvacMechanicalContent: TopicContent = {
         'Climatiseurs monophasés courants : 1,5 · 2,25 · 2,5 · 3 · 4 · 5 HP. Au-delà de 5 HP, ils sont triphasés.',
       ],
     },
-    { type: 'formula', text: 'Exemple : bureau fermé de 40 m² → 40 / 10 = 4 HP' },
+    { type: 'formula', text: 'Exemple : bureau fermé de 40 m² → \\frac{40}{10} = 4 HP' },
     { type: 'image', source: SLIDES['gen-32'], caption: 'Règles d’estimation de la climatisation' },
 
     { type: 'heading', text: '2 · Comment fonctionne un climatiseur' },

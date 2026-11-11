@@ -3,6 +3,7 @@ import { Image, Pressable, StyleSheet, Text, View } from 'react-native';
 import { NoteBlock } from '../../content/types';
 import { colors, radius, spacing } from '../../theme/theme';
 import { useLanguage } from '../../lib/language';
+import { MathBlock, RichText } from './MathText';
 
 function ExerciseCard({ title, question, solution }: { title?: string; question: string; solution: string[] }) {
   const { t } = useLanguage();
@@ -10,14 +11,14 @@ function ExerciseCard({ title, question, solution }: { title?: string; question:
   return (
     <View style={styles.exerciseBox}>
       <Text style={styles.exerciseTitle}>✏️ {title ?? t('Exercice', 'Exercise')}</Text>
-      <Text style={styles.exerciseQuestion}>{question}</Text>
+      <RichText style={styles.exerciseQuestion} text={question} />
       <Pressable onPress={() => setOpen((o) => !o)} style={styles.exerciseButton} accessibilityRole="button">
         <Text style={styles.exerciseButtonText}>{open ? t('Masquer la solution', 'Hide the solution') : t('Voir la solution', 'Show the solution')}</Text>
       </Pressable>
       {open ? (
         <View style={styles.exerciseSolution}>
           {solution.map((line, i) => (
-            <Text key={i} style={styles.exerciseSolutionText}>{line}</Text>
+            <RichText key={i} style={styles.exerciseSolutionText} text={line} />
           ))}
         </View>
       ) : null}
@@ -32,14 +33,14 @@ export function NoteBlockRenderer({ block }: { block: NoteBlock }) {
     case 'subheading':
       return <Text style={styles.subheading}>{block.text}</Text>;
     case 'text':
-      return <Text style={styles.text}>{block.text}</Text>;
+      return <RichText style={styles.text} text={block.text} />;
     case 'bullets':
       return (
         <View style={styles.bulletList}>
           {block.items.map((item, i) => (
             <View key={i} style={styles.bulletRow}>
               <Text style={styles.bulletDot}>•</Text>
-              <Text style={styles.bulletText}>{item}</Text>
+              <RichText style={styles.bulletText} text={item} />
             </View>
           ))}
         </View>
@@ -47,7 +48,7 @@ export function NoteBlockRenderer({ block }: { block: NoteBlock }) {
     case 'formula':
       return (
         <View style={styles.formulaBox}>
-          <Text style={styles.formulaText}>{block.text}</Text>
+          <MathBlock text={block.text} color={colors.highlightText} accent={colors.accent} muted={colors.textMuted} />
         </View>
       );
     case 'table':
@@ -55,13 +56,13 @@ export function NoteBlockRenderer({ block }: { block: NoteBlock }) {
         <View style={styles.table}>
           <View style={[styles.tableRow, styles.tableHeaderRow]}>
             {block.headers.map((h, i) => (
-              <Text key={i} style={[styles.tableCell, styles.tableHeaderCell]}>{h}</Text>
+              <RichText key={i} style={[styles.tableCell, styles.tableHeaderCell]} text={h} />
             ))}
           </View>
           {block.rows.map((row, ri) => (
             <View key={ri} style={[styles.tableRow, ri % 2 === 1 && styles.tableRowAlt]}>
               {row.map((cell, ci) => (
-                <Text key={ci} style={styles.tableCell}>{cell}</Text>
+                <RichText key={ci} style={styles.tableCell} text={cell} />
               ))}
             </View>
           ))}
@@ -70,13 +71,13 @@ export function NoteBlockRenderer({ block }: { block: NoteBlock }) {
     case 'note':
       return (
         <View style={styles.noteBox}>
-          <Text style={styles.noteText}>{block.text}</Text>
+          <RichText style={styles.noteText} text={block.text} />
         </View>
       );
     case 'warning':
       return (
         <View style={styles.warningBox}>
-          <Text style={styles.warningText}>⚠️ {block.text}</Text>
+          <RichText style={styles.warningText} text={`⚠️ ${block.text}`} />
         </View>
       );
     case 'exercise':
@@ -87,7 +88,7 @@ export function NoteBlockRenderer({ block }: { block: NoteBlock }) {
       return (
         <View style={styles.imageWrapper}>
           <Image source={block.source} style={[styles.image, { height: block.height ?? 220 }]} resizeMode="contain" />
-          {block.caption ? <Text style={styles.caption}>{block.caption}</Text> : null}
+          {block.caption ? <RichText style={styles.caption} text={block.caption} /> : null}
         </View>
       );
     default:
@@ -135,14 +136,9 @@ const styles = StyleSheet.create({
     borderLeftWidth: 3,
     borderLeftColor: colors.highlight,
     borderRadius: radius.sm,
-    paddingVertical: 10,
+    paddingVertical: 12,
     paddingHorizontal: spacing.md,
     marginBottom: spacing.sm,
-  },
-  formulaText: {
-    fontSize: 14,
-    color: colors.highlightText,
-    fontWeight: '600',
   },
   table: {
     borderWidth: 1,

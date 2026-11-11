@@ -60,7 +60,7 @@ export const abcPhysicsContent: TopicContent = {
     },
 
     { type: 'heading', text: 'La pression : absolue, relative, vide' },
-    { type: 'formula', text: 'P = F / S   (1 Pa = 1 N/m² ; 1 bar = 100 000 Pa ; 1 psi ≈ 0,069 bar)' },
+    { type: 'formula', text: 'P = \\frac{F}{S}   (1 Pa = 1 N/m² ; 1 bar = 100 000 Pa ; 1 psi ≈ 0,069 bar)' },
     {
       type: 'bullets',
       items: [
@@ -101,7 +101,7 @@ export const abcPhysicsContent: TopicContent = {
         ['Dalton', 'la pression d’un mélange est la somme des pressions partielles', 'de l’air dans le circuit ajoute sa pression : HP trop haute (incondensables)'],
       ],
     },
-    { type: 'formula', text: 'Essai d’étanchéité : p2 attendue = p1 × T2 / T1   (T en K)' },
+    { type: 'formula', text: 'Essai d’étanchéité : p_2 attendue = \\frac{p_1 × T_2}{T_1}   (T en K)' },
 
     { type: 'heading', text: 'Carnot, moteur thermique et pompe à chaleur' },
     {

@@ -19,7 +19,7 @@ export const panelDesignExamplesContent: TopicContent = {
         '5 → Incoming cable: main I_CB / correction factor',
       ],
     },
-    { type: 'formula', text: '746 / (√3 × 380 × 0.8) = 1.41 ≈ 1.5 A per HP' },
+    { type: 'formula', text: '\\frac{746}{√3 × 380 × 0.8} = 1.41 ≈ 1.5 A per HP' },
     { type: 'image', source: require('../../../../assets/reference/circuit_breaker_ratings_ranges.png'), caption: 'Standard circuit breaker ratings (A): MCB, MCCB, ACB' },
 
     { type: 'heading', text: 'Example 1: 3 motors of 30 HP and 2 motors of 20 HP' },
@@ -47,13 +47,13 @@ export const panelDesignExamplesContent: TopicContent = {
     { type: 'image', source: SLIDES['paneldes-6'], caption: 'Choosing 4×16 + 16 mm² in the catalogue', focus: { x: 0.17, y: 0.18, w: 0.55, h: 0.44 } },
 
     { type: 'heading', text: 'Main breaker and incoming cable' },
-    { type: 'formula', text: 'I_main = 1.25 × I_largest + DF × Σ I_others' },
+    { type: 'formula', text: 'I_main = 1.25 × I_{largest} + DF × Σ I_others' },
     { type: 'formula', text: 'I_main = 1.25 × 45 + (45 + 45 + 30 + 30) = 206 A → 200 A breaker' },
     {
       type: 'note',
       text: '📌 206 A is not a standard rating: the nearest standard rating, 200 A, is chosen (as for an NEC 430.62 motor feeder, the protection must not exceed the calculated value).',
     },
-    { type: 'formula', text: 'Cable: 200 / 0.82 = 244 ≈ 250 A → Cu/PVC/PVC (3×120 + 70) + 70 mm²' },
+    { type: 'formula', text: 'Cable: \\frac{200}{0.82} = 244 ≈ 250 A → Cu/PVC/PVC (3×120 + 70) + 70 mm²' },
     { type: 'image', source: SLIDES['paneldes-11'], caption: 'Main breaker: 200 A' },
     { type: 'image', source: SLIDES['paneldes-12'], caption: 'Incoming cable: 250 A' },
     { type: 'image', source: SLIDES['paneldes-13'], caption: 'Choosing (3×120 + 70) + 70 mm²' },
@@ -79,7 +79,7 @@ export const panelDesignExamplesContent: TopicContent = {
 
     { type: 'heading', text: 'Example 2: main breaker and incomer' },
     { type: 'formula', text: 'I_main = 1.25 × 450 + (450 + 3 × 150) = 1,460 A → 1,600 A breaker' },
-    { type: 'formula', text: 'Cable: 1,600 / 0.9 = 1,780 A → Cu/XLPE/PVC 4 × (3×240 + 120) + 120 mm²' },
+    { type: 'formula', text: 'Cable: \\frac{1,600}{0.9} = 1,780 A → Cu/XLPE/PVC 4 × (3×240 + 120) + 120 mm²' },
     { type: 'text', text: 'Busbar 380 V, 50 Hz, 36 kA; 1,600 A MCCB main breaker.' },
     { type: 'image', source: SLIDES['paneldes-22'], caption: 'Main breaker: 1,600 A' },
     { type: 'image', source: SLIDES['paneldes-24'], caption: 'Incoming cable: 4 cables in parallel' },

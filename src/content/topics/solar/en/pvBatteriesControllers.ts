@@ -62,7 +62,7 @@ export const pvBatteriesControllersContent: TopicContent = {
       type: 'bullets',
       items: [
         "The PV array voltage must equal the battery voltage: U_PV = U_bat.",
-        "The controller's current rating must be ≥ 1.25 × the PV array's Isc.",
+        "The controller's current rating must be ≥ 1.25 × the PV array's I_{sc}.",
       ],
     },
     { type: 'subheading', text: 'MPPT' },

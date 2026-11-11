@@ -45,7 +45,7 @@ export const climBuildingContent: TopicContent = {
       type: 'text',
       text: 'Even with air at the right temperature, hot walls or ceilings feel uncomfortable: a +3 °C difference between walls and air is enough. The occupant feels a resultant temperature, the average of air and walls:',
     },
-    { type: 'formula', text: 'Felt temperature = (T air + T walls) / 2' },
+    { type: 'formula', text: 'Felt temperature = \\frac{T air + T walls}{2}' },
     fig('p162_0', 'Figure 6.2 — wall radiation and thermal comfort'),
     {
       type: 'text',
@@ -154,7 +154,7 @@ export const climBuildingContent: TopicContent = {
 
     { type: 'heading', text: 'Ratios to judge a building' },
     fig('p177_1', 'Table 6.14 — usual, average and target heat gains by item'),
-    { type: 'formula', text: 'Ro = Annual electricity consumption (kWh) / Conditioned area (m²)' },
+    { type: 'formula', text: 'R_o = \\frac{Annual electricity consumption (kWh)}{Conditioned area (m²)}' },
     {
       type: 'table',
       headers: ['Building (Ivorian code, table 6.18)', 'Reference Ro (kWh/m².yr)'],

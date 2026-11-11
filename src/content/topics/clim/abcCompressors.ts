@@ -70,7 +70,7 @@ export const abcCompressorsContent: TopicContent = {
         'Une carte alimentée en monophasé recrée elle-même trois phases pour un compresseur triphasé.',
       ],
     },
-    { type: 'formula', text: 'Vitesse de synchronisme Ns = 60 × f / p   (f en Hz, p = nombre de paires de pôles)' },
+    { type: 'formula', text: 'Vitesse de synchronisme N_s = \\frac{60 × f}{p}   (f en Hz, p = nombre de paires de pôles)' },
     {
       type: 'warning',
       text: "Le livre écrit qu’un moteur « 2 pôles » tourne à 1 500 tr/min à 50 Hz. C’est faux : un moteur à 2 pôles (1 paire) tourne à 3 000 tr/min ; c’est un moteur à 4 pôles (2 paires) qui tourne à 1 500 tr/min. Les proportions données restent justes : à 30 Hz il tourne à 900 tr/min, à 60 Hz à 1 800 tr/min.",

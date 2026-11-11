@@ -47,9 +47,9 @@ export const climCycleContent: TopicContent = {
       type: 'text',
       text: 'A good air conditioner removes a lot of heat for little electricity. This is measured by the cooling coefficient of performance (COP), also called cooling efficiency (EF):',
     },
-    { type: 'formula', text: 'Cooling COP = Cooling capacity Pf (W) / Power input Pa (W) = Q1 / W' },
+    { type: 'formula', text: 'Cooling COP = \\frac{Cooling capacity P_f (W)}{Power input P_a (W)} = \\frac{Q_1}{W}' },
     { type: 'text', text: 'American manufacturers use the EER (Energy Efficiency Ratio), which mixes two units:' },
-    { type: 'formula', text: 'EER = Cooling capacity (BTU/h) / Power input (W)   ;   1 W = 3.412 BTU/h  →  EER = 3.412 × COP' },
+    { type: 'formula', text: 'EER = \\frac{Cooling capacity (BTU/h)}{Power input (W)}   ;   1 W = 3.412 BTU/h  →  EER = 3.412 × COP' },
     {
       type: 'table',
       headers: ['Unit', 'Typical COP', 'Equivalent EER'],
@@ -61,7 +61,7 @@ export const climCycleContent: TopicContent = {
         ['Water-cooled packaged unit', '> 3.5', '> 11.9'],
       ],
     },
-    { type: 'formula', text: 'Example: a split producing 1 kW of cooling with COP = 2.5 draws 1 / 2.5 = 0.4 kW of electricity' },
+    { type: 'formula', text: 'Example: a split producing 1 kW of cooling with COP = 2.5 draws \\frac{1}{2.5} = 0.4 kW of electricity' },
     {
       type: 'note',
       text: 'The COP is not fixed: it drops when it is hotter outside (the condenser struggles) and when the indoor setpoint is lower (the evaporator is colder). About −3 % of COP per degree of lower setpoint.',

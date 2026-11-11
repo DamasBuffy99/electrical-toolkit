@@ -15,6 +15,7 @@ import {
   useWindowDimensions,
   View,
 } from 'react-native';
+import { RichText } from './MathText';
 import { Focus, NoteBlock, TopicContent } from '../../content/types';
 import { NoteBlockRenderer } from './NoteBlocks';
 import { FocusImage } from './FocusImage';
@@ -200,7 +201,7 @@ function InlineVisual({ visual, lang }: { visual: Visual; lang: 'fr' | 'en' }) {
           <FocusImage source={visual.source} focus={visual.focus} lang={lang} />
         </View>
       )}
-      {visual.caption ? <Text style={styles.caption}>{visual.caption}</Text> : null}
+      {visual.caption ? <RichText style={styles.caption} text={visual.caption} /> : null}
     </View>
   );
 }
@@ -335,7 +336,7 @@ function VisualStage({
         </View>
         {visual ? (
           <View style={styles.captionRow}>
-            <Text style={[styles.caption, styles.captionFlex]}>{visual.caption ?? ''}</Text>
+            <RichText style={[styles.caption, styles.captionFlex]} text={visual.caption ?? ''} />
             <TouchableOpacity onPress={() => setZoomed(true)} style={styles.zoomButton} hitSlop={{ top: 6, bottom: 6, left: 6, right: 6 }}>
               <Text style={styles.zoomButtonText}>⤢ {lang === 'fr' ? 'Agrandir' : 'Enlarge'}</Text>
             </TouchableOpacity>
@@ -385,7 +386,7 @@ function VisualStage({
           <Pressable style={[styles.zoomBox, { width: zoomW }]} onPress={() => {}}>
             {visual ? <VisualContent visual={visual} lang={lang} /> : null}
           </Pressable>
-          {visual?.caption ? <Text style={styles.zoomCaption}>{visual.caption}</Text> : null}
+          {visual?.caption ? <RichText style={styles.zoomCaption} text={visual.caption} /> : null}
           <Text style={styles.zoomClose}>{lang === 'fr' ? 'Cliquer pour fermer ✕' : 'Click to close ✕'}</Text>
         </Pressable>
       </Modal>

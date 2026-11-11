@@ -19,7 +19,7 @@ export const panelDesignExamplesContent: TopicContent = {
         "5 → Câble d'arrivée : I_CB général / facteur de correction",
       ],
     },
-    { type: 'formula', text: '746 / (√3 × 380 × 0,8) = 1,41 ≈ 1,5 A par HP' },
+    { type: 'formula', text: '\\frac{746}{√3 × 380 × 0,8} = 1,41 ≈ 1,5 A par HP' },
     { type: 'image', source: require('../../../assets/reference/circuit_breaker_ratings_ranges.png'), caption: 'Calibres normalisés de disjoncteurs (A) : MCB, MCCB, ACB' },
 
     { type: 'heading', text: 'Exemple 1 : 3 moteurs de 30 HP et 2 moteurs de 20 HP' },
@@ -50,13 +50,13 @@ export const panelDesignExamplesContent: TopicContent = {
     { type: 'image', source: SLIDES['paneldes-6'], caption: 'Choix 4×16 + 16 mm² dans le catalogue', focus: { x: 0.17, y: 0.18, w: 0.55, h: 0.44 } },
 
     { type: 'heading', text: 'Disjoncteur général et câble d’arrivée' },
-    { type: 'formula', text: 'I_général = 1,25 × I_plus gros + FD × Σ I_autres' },
+    { type: 'formula', text: 'I_général = 1,25 × I_{plus gros} + FD × Σ I_autres' },
     { type: 'formula', text: 'I_général = 1,25 × 45 + (45 + 45 + 30 + 30) = 206 A → disjoncteur 200 A' },
     {
       type: 'note',
       text: '📌 206 A n’est pas un calibre normalisé : on retient le calibre normalisé le plus proche, 200 A (comme pour un feeder moteurs NEC 430.62, la protection ne doit pas dépasser la valeur calculée).',
     },
-    { type: 'formula', text: 'Câble : 200 / 0,82 = 244 ≈ 250 A → Cu/PVC/PVC (3×120 + 70) + 70 mm²' },
+    { type: 'formula', text: 'Câble : \\frac{200}{0,82} = 244 ≈ 250 A → Cu/PVC/PVC (3×120 + 70) + 70 mm²' },
     { type: 'image', source: SLIDES['paneldes-11'], caption: 'Disjoncteur général : 200 A' },
     { type: 'image', source: SLIDES['paneldes-12'], caption: "Câble d'arrivée : 250 A" },
     { type: 'image', source: SLIDES['paneldes-13'], caption: 'Choix (3×120 + 70) + 70 mm²' },
@@ -82,7 +82,7 @@ export const panelDesignExamplesContent: TopicContent = {
 
     { type: 'heading', text: 'Exemple 2 : disjoncteur général et arrivée' },
     { type: 'formula', text: 'I_général = 1,25 × 450 + (450 + 3 × 150) = 1 460 A → disjoncteur 1 600 A' },
-    { type: 'formula', text: 'Câble : 1 600 / 0,9 = 1 780 A → Cu/XLPE/PVC 4 × (3×240 + 120) + 120 mm²' },
+    { type: 'formula', text: 'Câble : \\frac{1 600}{0,9} = 1 780 A → Cu/XLPE/PVC 4 × (3×240 + 120) + 120 mm²' },
     { type: 'text', text: 'Jeu de barres 380 V, 50 Hz, 36 kA ; disjoncteur général MCCB 1 600 A.' },
     { type: 'image', source: SLIDES['paneldes-22'], caption: 'Disjoncteur général : 1 600 A' },
     { type: 'image', source: SLIDES['paneldes-24'], caption: "Câble d'arrivée : 4 câbles en parallèle" },

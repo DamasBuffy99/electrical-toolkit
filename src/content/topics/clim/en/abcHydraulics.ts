@@ -85,7 +85,7 @@ export const abcHydraulicsContent: TopicContent = {
         'Selection: flow + head, then the manufacturer’s curve closest to the operating point.',
       ],
     },
-    { type: 'formula', text: 'Flow Q (m³/h) = P (kW) / (1.16 × ΔT)' },
+    { type: 'formula', text: 'Flow Q (m³/h) = \\frac{P (kW)}{1.16 × ΔT}' },
     { type: 'note', text: 'For a small installation, pressure loss is estimated at about 20 mmWC per metre of pipe; beyond that, use charts.' },
 
     { type: 'heading', text: 'Valves' },
@@ -113,7 +113,7 @@ export const abcHydraulicsContent: TopicContent = {
         ['Δp max', 'maximum pressure difference with the valve closed (tightness)'],
       ],
     },
-    { type: 'formula', text: 'Authority aV = Δp valve open / (Δp valve + Δp coil)   — aim for 0.5 to 0.7' },
+    { type: 'formula', text: 'Authority a_V = \\frac{Δp valve open}{Δp valve + Δp coil}   — aim for 0.5 to 0.7' },
     {
       type: 'warning',
       text: 'The book writes that for a new valve “Kvs must be less than 0.05 % of Kv”. It means Kvo: the leakage flow with the valve closed must be less than about 0.05 % of Kvs.',

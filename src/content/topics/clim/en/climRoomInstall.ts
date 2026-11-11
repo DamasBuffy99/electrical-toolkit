@@ -19,15 +19,15 @@ export const climRoomInstallContent: TopicContent = {
     fig('p086_0', 'Figure 4.5 — rigid fixing (vibrations transmitted) vs flexible clamp and rubber mount'),
     {
       type: 'text',
-      text: 'The sound level stated by the manufacturer is indicative (standard conditions). To check the level actually heard by the occupant, start from the unit’s sound power Lw (manual):',
+      text: 'The sound level stated by the manufacturer is indicative (standard conditions). To check the level actually heard by the occupant, start from the unit’s sound power L_w (manual):',
     },
-    { type: 'formula', text: 'Lp = Lw − 5 log V − 10 log r + 3   (dB(A))' },
+    { type: 'formula', text: 'L_p = L_w − 5 log V − 10 log r + 3   (dB(A))' },
     {
       type: 'bullets',
       items: [
-        'Lp: sound pressure level at the chosen point (the occupant’s ear).',
-        'Lw: sound power level of the unit; V: room volume (m³); r: distance to the unit (m).',
-        'The bigger the room and the farther the occupant, the lower the level. Compare Lp with the maximum of table 3.1.',
+        'L_p: sound pressure level at the chosen point (the occupant’s ear).',
+        'L_w: sound power level of the unit; V: room volume (m³); r: distance to the unit (m).',
+        'The bigger the room and the farther the occupant, the lower the level. Compare L_p with the maximum of table 3.1.',
       ],
     },
     fig('p087_0', 'Figure 4.6 — sound power Lw of the source and sound pressure Lp at the occupant'),
@@ -126,10 +126,10 @@ export const climRoomInstallContent: TopicContent = {
     { type: 'heading', text: "Exercises" },
     {
       type: 'exercise',
-      question: "An air conditioner has a sound power Lw = 55 dB(A). It is installed in a 60 m² × 3 m office; the occupant sits 3 m away. What level does he or she hear? Is it acceptable for a small office?",
+      question: "An air conditioner has a sound power L_w = 55 dB(A). It is installed in a 60 m² × 3 m office; the occupant sits 3 m away. What level does he or she hear? Is it acceptable for a small office?",
       solution: [
-        "V = 180 m³; Lp = 55 − 5 log 180 − 10 log 3 + 3.",
-        "5 log 180 = 11.3; 10 log 3 = 4.8 → Lp = 55 − 11.3 − 4.8 + 3 ≈ 42 dB(A).",
+        "V = 180 m³; L_p = 55 − 5 log 180 − 10 log 3 + 3.",
+        "5 log 180 = 11.3; 10 log 3 = 4.8 → L_p = 55 − 11.3 − 4.8 + 3 ≈ 42 dB(A).",
         "Small office: 30 / 35 / 40 dB(A) → too noisy even at the “minimum” level. Choose a quieter unit or move it away from the occupant.",
       ],
     },

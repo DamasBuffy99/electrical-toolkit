@@ -127,7 +127,7 @@ export const climCentralSystemsContent: TopicContent = {
       question: "To carry 10 kW of cooling, compare the water flow (5 K difference) and the air flow (10 K difference) needed. What do you conclude?",
       solution: [
         "Water: m = 10 / (4.18 × 5) = 0.48 kg/s ≈ 1.7 m³/h.",
-        "Air: qv = 10,000 / (0.33 × 10) ≈ 3,030 m³/h.",
+        "Air: q_v = 10,000 / (0.33 × 10) ≈ 3,030 m³/h.",
         "About 1,800 times more air volume than water: a pump uses far less energy than a fan. That is why air/water systems are cheaper to run than all-air.",
       ],
     },

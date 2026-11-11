@@ -141,9 +141,9 @@ export const abcTroubleshootingContent: TopicContent = {
         'Preferably recalculate the fan pulley so as to keep the adjustable pulley on the motor side.',
       ],
     },
-    { type: 'formula', text: 'Pulley diameter D = (motor speed / required speed) × motor pulley diameter' },
-    { type: 'formula', text: 'Belt length ≈ 2 × centre distance + 1.57 × (D1 + D2)' },
-    { type: 'formula', text: 'Coil: P (W) = 0.34 × airflow (m³/h) × ΔT ;   airflow (m³/h) = P / (0.34 × ΔT)' },
+    { type: 'formula', text: 'Pulley diameter D = \\frac{motor speed}{required speed} × motor pulley diameter' },
+    { type: 'formula', text: 'Belt length ≈ 2 × centre distance + 1.57 × (D_1 + D_2)' },
+    { type: 'formula', text: 'Coil: P (W) = 0.34 × airflow (m³/h) × ΔT ;   airflow (m³/h) = \\frac{P}{0.34 × ΔT}' },
 
     { type: 'heading', text: 'Exercises' },
     {

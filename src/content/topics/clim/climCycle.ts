@@ -47,12 +47,12 @@ export const climCycleContent: TopicContent = {
       type: 'text',
       text: "Un bon climatiseur extrait beaucoup de chaleur pour peu d’électricité. On mesure cela par le coefficient de performance frigorifique (COP), aussi appelé efficacité frigorifique (EF) :",
     },
-    { type: 'formula', text: 'COP froid = Puissance frigorifique Pf (W) / Puissance absorbée Pa (W) = Q1 / W' },
+    { type: 'formula', text: 'COP froid = \\frac{Puissance frigorifique P_f (W)}{Puissance absorbée P_a (W)} = \\frac{Q_1}{W}' },
     {
       type: 'text',
       text: 'Les fabricants américains utilisent l’EER (Energy Efficiency Ratio), qui mélange deux unités :',
     },
-    { type: 'formula', text: 'EER = Puissance frigorifique (BTU/h) / Puissance absorbée (W)   ;   1 W = 3,412 BTU/h  →  EER = 3,412 × COP' },
+    { type: 'formula', text: 'EER = \\frac{Puissance frigorifique (BTU/h)}{Puissance absorbée (W)}   ;   1 W = 3,412 BTU/h  →  EER = 3,412 × COP' },
     {
       type: 'table',
       headers: ['Appareil', 'COP typique', 'EER équivalent'],
@@ -64,7 +64,7 @@ export const climCycleContent: TopicContent = {
         ['Armoire à condensation par eau', '> 3,5', '> 11,9'],
       ],
     },
-    { type: 'formula', text: 'Exemple : un split de 1 kW de froid avec COP = 2,5 absorbe 1 / 2,5 = 0,4 kW électrique' },
+    { type: 'formula', text: 'Exemple : un split de 1 kW de froid avec COP = 2,5 absorbe \\frac{1}{2,5} = 0,4 kW électrique' },
     {
       type: 'note',
       text: 'Le COP n’est pas fixe : il baisse quand il fait plus chaud dehors (le condenseur peine) et quand la consigne intérieure est plus basse (l’évaporateur est plus froid). Environ −3 % de COP par degré de consigne en moins.',

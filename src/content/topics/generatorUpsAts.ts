@@ -21,7 +21,7 @@ export const generatorUpsAtsContent: TopicContent = {
         ['Continu', '70 – 100 %, constante', 'Illimité', 'Production de base, cogénération'],
       ],
     },
-    { type: 'formula', text: 'Facteur de charge = kWh produits / (kW × jours × 24)' },
+    { type: 'formula', text: 'Facteur de charge = \\frac{kWh produits}{kW × jours × 24}' },
     {
       type: 'text',
       text: "Pour le dimensionnement, le cours utilise l'outil en ligne Cummins PowerSuite : on y saisit les charges (moteurs, éclairage…) et il propose le groupe adapté.",

@@ -16,12 +16,12 @@ export const climOperatingCostsContent: TopicContent = {
       type: 'text',
       text: 'The ideal Carnot cycle gives the best theoretically possible efficiency between a cold source (evaporator, To) and a hot source (condenser, Tc), in kelvins:',
     },
-    { type: 'formula', text: 'Theoretical efficiency: Eth = To / (Tc − To)' },
-    { type: 'formula', text: 'Real efficiency: Er = Po / Pw   (cooling produced / power actually drawn)' },
-    { type: 'formula', text: 'Carnot efficiency: Nc = Er / Eth' },
+    { type: 'formula', text: 'Theoretical efficiency: E_{th} = \\frac{T_o}{T_c − T_o}' },
+    { type: 'formula', text: 'Real efficiency: E_r = \\frac{P_o}{P_w}   (cooling produced / power actually drawn)' },
+    { type: 'formula', text: 'Carnot efficiency: N_c = \\frac{E_r}{E_{th}}' },
     {
       type: 'text',
-      text: 'Example: evaporating at 5 °C (278 K), condensing at 45 °C (318 K) → Eth = 278 / 40 ≈ 7. A compressor with a Carnot efficiency of 0.5 gives a real COP of about 3.5. This shows why To and Tc should be brought closer: an evaporator that is not too cold (reasonable setpoint) and a well-ventilated, shaded condenser.',
+      text: 'Example: evaporating at 5 °C (278 K), condensing at 45 °C (318 K) → E_{th} = 278 / 40 ≈ 7. A compressor with a Carnot efficiency of 0.5 gives a real COP of about 3.5. This shows why T_o and T_c should be brought closer: an evaporator that is not too cold (reasonable setpoint) and a well-ventilated, shaded condenser.',
     },
     fig('p055_0', 'Table 2.1 — usual Carnot efficiency of compressors (reciprocating, scroll, screw, centrifugal)'),
 
@@ -32,16 +32,16 @@ export const climOperatingCostsContent: TopicContent = {
       rows: [
         ['Compressor', 'Cc', 'Σ Pa × running hours, regime by regime'],
         ['Permanent auxiliaries (fans, pumps)', 'Cp', '(Pv + Pp) × hours of use'],
-        ['Non-permanent auxiliaries (crankcase heater, solenoid valve, condenser fan)', 'Cnp', 'Prc × off hours + Pvm × running hours'],
+        ['Non-permanent auxiliaries (crankcase heater, solenoid valve, condenser fan)', 'C_{np}', 'Prc × off hours + Pvm × running hours'],
         ['Defrost', 'Cd', 'Power × duration × number of defrosts'],
       ],
     },
-    { type: 'formula', text: 'C (kWh/yr) = Cc + Cp + Cnp + Cd' },
+    { type: 'formula', text: 'C (kWh/yr) = C_c + C_p + C_{np} + C_d' },
     {
       type: 'text',
       text: 'The compressor does not run at full power all year: it follows the cooling demand BF. Its running hours depend on the load ratio and on the cooling production efficiency RPF, which collapses at very low load (frequent on/off):',
     },
-    { type: 'formula', text: 'hc = nh × BF / (RPF × Qo)   and   Cc = Σ Pa × hc' },
+    { type: 'formula', text: 'h_c = \\frac{n_h × BF}{RPF × Q_o}   and   C_c = Σ P_a × h_c' },
     fig('p064_0', 'Cooling production efficiency (RPF) vs load ratio BF/Qo'),
     fig('p063_0', 'Cooling capacity and power input vs evaporating and condensing temperatures'),
     { type: 'note', text: 'Poor maintenance, bad settings, wrong refrigerant charge or a machine ill-matched to the needs greatly increase total consumption.' },
@@ -52,7 +52,7 @@ export const climOperatingCostsContent: TopicContent = {
       text: 'The COP describes the machine at one moment; the COE judges the installation over the whole year, auxiliaries and losses included:',
     },
     { type: 'formula', text: 'Annual EF = Σ BF × hours   (useful cooling energy, kWh)' },
-    { type: 'formula', text: 'COE = annual EF / annual C' },
+    { type: 'formula', text: 'COE = \\frac{annual EF}{annual C}' },
     {
       type: 'bullets',
       items: [
@@ -80,7 +80,7 @@ export const climOperatingCostsContent: TopicContent = {
       ],
     },
     { type: 'warning', text: "Typos in the example tables: some durations and energies lost a zero in print (150 h instead of 1,500 h, 1,350 kWh instead of 13,500, 1,600 instead of 16,000, 1,050 instead of 10,500). The 61,120 kWh total is only right with the full values. Defrost is exactly 6 × 0.25 × 4 × 365 = 2,190 kWh (the guide rounds to 2,188)." },
-    { type: 'formula', text: 'EF = 61,120 kWh/yr  →  COE = 61,120 / 37,775 = 1.62' },
+    { type: 'formula', text: 'EF = 61,120 kWh/yr  →  COE = \\frac{61,120}{37,775} = 1.62' },
     {
       type: 'note',
       text: 'This COE of 1.62 is for a low-temperature refrigeration installation (evaporating at −10 °C). In air conditioning, evaporation is positive (≈ +5 °C) and the seasonal COE should exceed 3. Above all, remember the method… and that auxiliaries and defrost account for 22 % of consumption here!',
@@ -127,8 +127,8 @@ export const climOperatingCostsContent: TopicContent = {
       type: 'exercise',
       question: "A compressor (Carnot efficiency 0.5) evaporates at 5 °C. Compare its COP with the condenser at 50 °C (full sun) or at 40 °C (shaded, well ventilated).",
       solution: [
-        "To = 278 K. At 50 °C: Eth = 278 / 45 = 6.18 → COP ≈ 0.5 × 6.18 = 3.1.",
-        "At 40 °C: Eth = 278 / 35 = 7.94 → COP ≈ 4.0.",
+        "T_o = 278 K. At 50 °C: E_{th} = 278 / 45 = 6.18 → COP ≈ 0.5 × 6.18 = 3.1.",
+        "At 40 °C: E_{th} = 278 / 35 = 7.94 → COP ≈ 4.0.",
         "A well-placed condenser improves the COP by about 28 %: that much less electricity.",
       ],
     },

@@ -40,10 +40,10 @@ export const climLoadExampleContent: TopicContent = {
     fig('p031_1', 'Table 1.14a — radiation at 4° North in February: read the 13:00 row'),
 
     { type: 'heading', text: 'Step 2 · Transmission through the walls' },
-    { type: 'formula', text: 'QStr = k × S × Δθ' },
+    { type: 'formula', text: 'Q_{Str} = k × S × Δθ' },
     {
       type: 'table',
-      headers: ['Wall', 'k', 'S (m²)', 'Δθ', 'QStr (W)'],
+      headers: ['Wall', 'k', 'S (m²)', 'Δθ', 'Q_{Str} (W)'],
       rows: [
         ['North wall', '2.09', '30', '6', '376'],
         ['South wall', '2.09', '28', '6', '351'],
@@ -59,7 +59,7 @@ export const climLoadExampleContent: TopicContent = {
     fig('p043', 'The detailed calculation in the guide (page 28): transmission then radiation'),
 
     { type: 'heading', text: 'Step 3 · Solar radiation' },
-    { type: 'formula', text: 'Walls: QSRm = α × F × S × Rm   ;   Glazing: QSRv = α × g × S × Rv' },
+    { type: 'formula', text: 'Walls: Q_{SRm} = α × F × S × R_m   ;   Glazing: Q_{SRv} = α × g × S × R_v' },
     {
       type: 'table',
       headers: ['Wall', 'α', 'F or g', 'S', 'R (W/m²)', 'Q (W)'],
@@ -80,13 +80,13 @@ export const climLoadExampleContent: TopicContent = {
 
     { type: 'heading', text: 'Step 4 · Fresh air, occupants, lighting, appliances' },
     { type: 'subheading', text: 'Air renewal (natural ventilation: 1 volume/h = 180 m³/h)' },
-    { type: 'formula', text: 'QSr = 180 × (32 − 26) × 0.33 = 356 W' },
-    { type: 'formula', text: 'QLr = 180 × (0.0255 − 0.0108) × 0.84 × 1000 = 2,222 W' },
+    { type: 'formula', text: 'Q_{Sr} = 180 × (32 − 26) × 0.33 = 356 W' },
+    { type: 'formula', text: 'Q_{Lr} = 180 × (0.0255 − 0.0108) × 0.84 × 1000 = 2,222 W' },
     { type: 'subheading', text: 'Occupants (0.1 pers/m² × 60 m² = 6 people, mixed public −10 %)' },
-    { type: 'formula', text: 'QSoc = 6 × 63 × 0.9 = 340 W   ;   QLoc = 6 × 59 × 0.9 = 318 W' },
+    { type: 'formula', text: 'Q_{Soc} = 6 × 63 × 0.9 = 340 W   ;   Q_{Loc} = 6 × 59 × 0.9 = 318 W' },
     { type: 'warning', text: "The guide takes 59 W latent per person at 26 °C, inconsistent with the 116 W total of its table 1.16 (63 + 53 = 116). With 53 W, QLoc = 286 W instead of 318 W." },
     { type: 'subheading', text: 'Fluorescent lighting (16 W/m²)' },
-    { type: 'formula', text: 'Qlight = 16 × 60 = 960 W' },
+    { type: 'formula', text: 'Q_{light} = 16 × 60 = 960 W' },
     { type: 'warning', text: "Here the guide applies 16 W/m² without the 1.25 fluorescent factor of its own formula (8). With that factor, lighting would be 1,200 W (+240 W)." },
     { type: 'subheading', text: 'Equipment (with usage factor)' },
     {
@@ -115,14 +115,14 @@ export const climLoadExampleContent: TopicContent = {
         ['Occupants', '340', '318'],
         ['Lighting', '960', ''],
         ['Equipment', '609', '75'],
-        ['Total', 'QS = 4,792', 'QL = 2,615'],
+        ['Total', 'Q_S = 4,792', 'Q_L = 2,615'],
       ],
     },
-    { type: 'formula', text: 'QT = QS + QL = 4,792 + 2,615 = 7,407 W ≈ 7.4 kW of cooling' },
+    { type: 'formula', text: 'Q_T = Q_S + Q_L = 4,792 + 2,615 = 7,407 W ≈ 7.4 kW of cooling' },
     {
       type: 'bullets',
       items: [
-        'Dehumidification capacity = QL = 2.61 kW, i.e. about 3.76 litres of water to remove per hour.',
+        'Dehumidification capacity = Q_L = 2.61 kW, i.e. about 3.76 litres of water to remove per hour.',
         'Sensible heat ratio: 4,792 / 7,407 ≈ 0.65. Very low: in Douala, more than a third of the load is used to dry the air!',
         'Fresh air alone accounts for 2,578 W, i.e. 35 % of the balance: controlling infiltration (closed doors, airtight windows) is essential.',
       ],
@@ -145,13 +145,13 @@ export const climLoadExampleContent: TopicContent = {
       ],
     },
     { type: 'warning', text: "The chosen split (8.5 kW) exceeds the balance by 15 %, whereas the guide limits the safety factor to 5 % and elsewhere advises the unit “just below”. A 7 to 7.5 kW model would have been more consistent with its own rules, provided it covers the 2.6 kW latent load." },
-    { type: 'formula', text: 'COP = 8,500 / 3,280 ≈ 2.6  →  meets the recommended minimum for a split (> 2.6)' },
+    { type: 'formula', text: 'COP = \\frac{8,500}{3,280} ≈ 2.6  →  meets the recommended minimum for a split (> 2.6)' },
     fig('p045', 'Guide page 30 — split selection and power to subscribe'),
 
     { type: 'heading', text: 'Step 7 · Power to subscribe' },
-    { type: 'formula', text: 'Pat = 3,280 × Ks (1) × Ku (1) = 3,280 W' },
-    { type: 'formula', text: 'cos φ = 0.8 → tan φ = 0.75 → Qat = 3,280 × 0.75 = 2,460 var' },
-    { type: 'formula', text: 'Sa = √(3,280² + 2,460²) = 4,100 VA' },
+    { type: 'formula', text: 'P_{at} = 3,280 × K_s (1) × K_u (1) = 3,280 W' },
+    { type: 'formula', text: 'cos φ = 0.8 → tan φ = 0.75 → Q_{at} = 3,280 × 0.75 = 2,460 var' },
+    { type: 'formula', text: 'S_a = \\sqrt{3,280² + 2,460²} = 4,100 VA' },
     {
       type: 'note',
       text: 'We will subscribe 4.1 kVA for this office. Summary: 7.4 kW of cooling calculated → 8.5 kW split → 3.3 kW of electricity → 4.1 kVA subscription. Keep these three different powers clearly in mind.',

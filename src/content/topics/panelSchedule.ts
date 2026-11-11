@@ -45,8 +45,8 @@ export const panelScheduleContent: TopicContent = {
       text: "Pour chaque circuit : nom, section de câble, nombre de pôles, calibre du disjoncteur de départ, et kVA sur la phase concernée (R, Y ou B).",
     },
     { type: 'formula', text: 'Bus R/Y/B [kVA] = Σ (kVA des circuits sur cette phase)' },
-    { type: 'formula', text: 'Moyenne [kVA] = (Bus R + Bus Y + Bus B) / 3' },
-    { type: 'formula', text: 'Déséquilibre % = max(|Bus_R−Moy|, |Bus_Y−Moy|, |Bus_B−Moy|) / Moy × 100' },
+    { type: 'formula', text: 'Moyenne [kVA] = \\frac{Bus R + Bus Y + Bus B}{3}' },
+    { type: 'formula', text: 'Déséquilibre % = \\frac{max(|Bus_R−Moy|, |Bus_Y−Moy|, |Bus_B−Moy|)}{Moy} × 100' },
     {
       type: 'note',
       text: '🎯 Selon ANSI C84.1, le déséquilibre de courant ne doit pas dépasser 5 % de la moyenne des phases. Même règle pour le déséquilibre de tension.',
@@ -73,8 +73,8 @@ export const panelScheduleContent: TopicContent = {
       ],
     },
     { type: 'formula', text: 'Demande + 15% = Demande × 1.15' },
-    { type: 'formula', text: 'Ampères de ligne = (Demande [kVA] × 1000) / (√3 × Tension)' },
-    { type: 'formula', text: 'Exemple : 55,1 × 1000 / (√3 × 380) = 83,7 A · Demande + 15 % = 63,4 kVA' },
+    { type: 'formula', text: 'Ampères de ligne = \\frac{Demande [kVA] × 1000}{√3 × Tension}' },
+    { type: 'formula', text: 'Exemple : \\frac{55,1 × 1000}{√3 × 380} = 83,7 A · Demande + 15 % = 63,4 kVA' },
     {
       type: 'note',
       text: "⚠️ Important : recalculer chaque disjoncteur de départ selon sa charge réelle une fois les facteurs de demande appliqués — ne pas garder un calibre uniforme par défaut (ex : 16A partout). Le disjoncteur principal doit aussi être redimensionné : MCB pour une faible demande, MCCB au-delà d'environ 80A.",

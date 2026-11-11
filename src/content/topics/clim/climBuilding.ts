@@ -45,7 +45,7 @@ export const climBuildingContent: TopicContent = {
       type: 'text',
       text: "Même avec un air à la bonne température, des murs ou un plafond chauds rendent inconfortable : un écart de +3 °C entre parois et air suffit. L’occupant ressent une température résultante, moyenne de l’air et des parois :",
     },
-    { type: 'formula', text: 'T ressentie = (T air + T parois) / 2' },
+    { type: 'formula', text: 'T ressentie = \\frac{T air + T parois}{2}' },
     fig('p162_0', 'Figure 6.2 — rayonnement des parois et confort thermique'),
     {
       type: 'text',
@@ -154,7 +154,7 @@ export const climBuildingContent: TopicContent = {
 
     { type: 'heading', text: 'Les ratios pour juger un bâtiment' },
     fig('p177_1', 'Tableau 6.14 — gains thermiques courants, moyens et maximum à rechercher par poste'),
-    { type: 'formula', text: 'Ro = Consommation électrique annuelle (kWh) / Surface climatisée (m²)' },
+    { type: 'formula', text: 'R_o = \\frac{Consommation électrique annuelle (kWh)}{Surface climatisée (m²)}' },
     {
       type: 'table',
       headers: ['Bâtiment (code ivoirien, tableau 6.18)', 'Ro de référence (kWh/m².an)'],

@@ -100,7 +100,7 @@ export const disconnectSwitchesContent: TopicContent = {
       type: 'text',
       text: 'NEC 460: capacitor bank conductors and disconnect ≥ 135% of the rated current (manufacturing tolerance 0 to +15%). No separate disconnect if the capacitor is on the load side of a motor controller.',
     },
-    { type: 'formula', text: 'I = kvar × 1000 / (√3 × V)' },
+    { type: 'formula', text: 'I = \\frac{kvar × 1000}{√3 × V}' },
     {
       type: 'text',
       text: 'The locked-rotor indicating code letter (NEMA, NEC table 430.7(B)) on the nameplate gives the starting kVA per HP: it is used to calculate the motor starting current.',

@@ -53,7 +53,7 @@ export const lightingCircuitsSocketsContent: TopicContent = {
         'Saudi code: 1,000 W per 10 A breaker, 1,500 W per 16 A breaker.',
       ],
     },
-    { type: 'formula', text: 'Example: 8 LED luminaires of 36 W → 288 W / 0.95 ≈ 303 VA → one circuit (≤ 1,200 VA, ≤ 10 luminaires)' },
+    { type: 'formula', text: 'Example: 8 LED luminaires of 36 W → \\frac{288 W}{0.95} ≈ 303 VA → one circuit (≤ 1,200 VA, ≤ 10 luminaires)' },
     { type: 'image', source: SLIDES['cond-44'], caption: 'Lighting circuits on the drawing' },
 
     { type: 'heading', text: '4 · Types of sockets' },
