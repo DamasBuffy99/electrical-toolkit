@@ -13,6 +13,7 @@ import Svg, {
   Rect,
   Stop,
   Text as SvgText,
+  TSpan,
 } from 'react-native-svg';
 
 export const P = {
@@ -90,9 +91,34 @@ export function Label({
   weight?: '400' | '600' | '700';
   anchor?: 'start' | 'middle' | 'end';
 }) {
+  // "R_A" or "I_{sc}" → subscript, as in the lesson text
+  const parts = text.split(/_\{([^}]*)\}|_([A-Za-z0-9]+)/);
+  if (parts.length === 1) {
+    return (
+      <SvgText x={x} y={y} fontSize={size} fontWeight={weight} fill={color} textAnchor={anchor} fontFamily={FONT}>
+        {text}
+      </SvgText>
+    );
+  }
+  const spans: { s: string; sub: boolean }[] = [];
+  for (let i = 0; i < parts.length; i += 3) {
+    if (parts[i]) spans.push({ s: parts[i], sub: false });
+    const sub = parts[i + 1] ?? parts[i + 2];
+    if (sub) spans.push({ s: sub, sub: true });
+  }
+  const shift = size * 0.28;
+  let down = false;
   return (
     <SvgText x={x} y={y} fontSize={size} fontWeight={weight} fill={color} textAnchor={anchor} fontFamily={FONT}>
-      {text}
+      {spans.map((sp, i) => {
+        const dy = sp.sub === down ? 0 : sp.sub ? shift : -shift;
+        down = sp.sub;
+        return (
+          <TSpan key={i} dy={dy} fontSize={sp.sub ? size * 0.72 : size}>
+            {sp.s}
+          </TSpan>
+        );
+      })}
     </SvgText>
   );
 }

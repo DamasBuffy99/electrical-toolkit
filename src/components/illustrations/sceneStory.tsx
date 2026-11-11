@@ -172,11 +172,20 @@ export function VillaPlan({ lang, focus = 'rooms' }: SceneProps & { focus?: stri
       {focus === 'lighting' &&
         ROOMS.map((r) => {
           const { cx, cy } = center(r);
+          // points per room, as in the lesson: living 6, kitchen 2, corridor 2, bath 1, bedrooms 1
+          const pts: [number, number][] =
+            r.id === 'living'
+              ? [-32, 0, 32].flatMap((dx) => [[cx + dx, cy - 32], [cx + dx, cy - 4]] as [number, number][])
+              : r.id === 'kitchen'
+                ? [[cx - 18, cy - 8], [cx + 18, cy - 8]]
+                : r.id === 'hall'
+                  ? [[cx - 48, cy], [cx + 48, cy]]
+                  : [[cx, cy - 6]];
           return (
             <G key={`lp-${r.id}`}>
-              <LightPoint x={cx} y={r.id === 'hall' ? cy - 2 : cy - 6} />
-              {r.id === 'living' ? <LightPoint x={cx - 32} y={cy - 6} /> : null}
-              {r.id === 'living' ? <LightPoint x={cx + 32} y={cy - 6} /> : null}
+              {pts.map(([x, y]) => (
+                <LightPoint key={`${x}-${y}`} x={x} y={y} />
+              ))}
             </G>
           );
         })}
@@ -202,7 +211,7 @@ export function VillaPlan({ lang, focus = 'rooms' }: SceneProps & { focus?: stri
             [40, 80, 'right'],
             [40, 140, 'right'],
             [100, 50, 'down'],
-            [120, 164, 'up'],
+            [62, 164, 'up'],
             [170, 50, 'down'],
             [200, 50, 'down'],
             [225, 90, 'left'],
@@ -332,16 +341,17 @@ export function EarthingTT({ lang }: SceneProps) {
       <Path d="M 244 124 L 290 124 L 290 160 L 300 160" stroke={COLD} strokeWidth={2} fill="none" />
       {/* fault */}
       <Path d="M 300 140 l 8 4 l -6 4 l 8 4" stroke={P.yellow} strokeWidth={3} fill="none" />
-      <Label x={318} y={210} text={L('défaut : la phase touche la carcasse', 'fault: line touches the casing')} size={8.5} color={HOT} />
+      <Label x={330} y={206} text={L('défaut : la phase', 'fault: the line')} size={8.5} color={HOT} />
+      <Label x={330} y={218} text={L('touche la carcasse', 'touches the casing')} size={8.5} color={HOT} />
       {/* PE and fault path */}
       <Path d="M 360 180 L 372 180 L 372 250" stroke={P.green} strokeWidth={2.2} fill="none" />
       <EarthSymbol x={372} y={252} />
       <Label x={360} y={268} text="R_A" size={9} color={P.green} anchor="end" />
       <Path d="M 372 258 Q 210 286 52 244" stroke={HOT} strokeWidth={2.2} fill="none" strokeDasharray="6 4" />
       <Label x={210} y={262} text={L('courant de défaut I_d', 'fault current I_d')} size={9.5} color={HOT} />
-      <Rect x={146} y={180} width={130} height={36} rx={8} fill={P.white} stroke={OK} strokeWidth={1.5} />
-      <Label x={211} y={195} text={L('I_d > 30 mA → coupure', 'I_d > 30 mA → trip')} size={9.5} color={OK} />
-      <Label x={211} y={209} text={L('en moins de 0,3 s', 'in under 0.3 s')} size={9} color={OK} weight="600" />
+      <Rect x={62} y={150} width={122} height={36} rx={8} fill={P.white} stroke={OK} strokeWidth={1.5} />
+      <Label x={123} y={165} text={L('I_d > 30 mA → coupure', 'I_d > 30 mA → trip')} size={9.5} color={OK} />
+      <Label x={123} y={179} text={L('en moins de 0,3 s', 'in under 0.3 s')} size={9} color={OK} weight="600" />
     </SceneFrame>
   );
 }
@@ -378,7 +388,7 @@ export function CableRun({ lang }: SceneProps) {
         </G>
       ))}
       <Line x1={X0} y1={Y(218.5)} x2={X1} y2={Y(218.5)} stroke={HOT} strokeWidth={1.2} strokeDasharray="6 3" />
-      <Label x={X1 - 2} y={Y(218.5) + 12} text={L('limite 5 % (218,5 V)', '5% limit (218.5 V)')} size={8.5} color={HOT} anchor="end" />
+      <Label x={X0 + 6} y={Y(218.5) + 13} text={L('limite 5 % (218,5 V)', '5% limit (218.5 V)')} size={8.5} color={HOT} anchor="start" />
       {opts.map((o, i) => {
         const color = !o.ok ? HOT : o.warn ? P.orange : OK;
         return (
@@ -419,10 +429,11 @@ export function BuildingRiser({ lang, highlight = 'all' }: SceneProps & { highli
           </G>
         );
       })}
-      <Label x={250} y={232} text={L('RDC : parking + locaux techniques', 'Ground: car park + plant rooms')} size={8.5} color={P.inkSoft} weight="600" />
+      <Label x={290} y={232} text={L('RDC : parking', 'Ground: car park')} size={8.5} color={P.inkSoft} weight="600" />
       {/* riser */}
       <Line x1={170} y1={244} x2={170} y2={52} stroke={hl('risers') ? P.orange : P.grey} strokeWidth={4} />
-      <Label x={162} y={48} text={L('colonne montante', 'riser')} size={8.5} color={hl('risers') ? P.orange : P.inkSoft} anchor="start" />
+      <Label x={144} y={66} text={L('colonne montante', 'riser')} size={8.5} color={hl('risers') ? P.orange : P.inkSoft} anchor="end" />
+      <Line x1={146} y1={63} x2={168} y2={63} stroke={hl('risers') ? P.orange : P.grey} strokeWidth={1.2} />
       {/* lift */}
       <Rect x={214} y={40} width={14} height={210} fill={hl('services') ? '#dbeafe' : P.greyLight} />
       <Rect x={210} y={28} width={22} height={12} rx={2} fill={hl('services') ? COLD : P.grey} />
@@ -431,7 +442,7 @@ export function BuildingRiser({ lang, highlight = 'all' }: SceneProps & { highli
       <Rect x={14} y={176} width={56} height={70} rx={4} fill={hl('substation') ? P.navy : P.grey} />
       <Circle cx={42} cy={200} r={10} fill="none" stroke={P.white} strokeWidth={2} />
       <Circle cx={42} cy={214} r={10} fill="none" stroke={P.white} strokeWidth={2} />
-      <Label x={42} y={240} text="400 kVA" size={8.5} color={P.white} />
+      <Label x={42} y={240} text="160 kVA" size={8.5} color={P.white} />
       <Label x={42} y={170} text={L('poste MT/BT', 'MV/LV sub.')} size={8.5} color={hl('substation') ? P.navy : P.inkSoft} />
       <Rect x={86} y={196} width={40} height={50} rx={4} fill={hl('substation') || hl('shortcircuit') ? P.orange : P.grey} />
       <Label x={106} y={225} text="TGBT" size={9} color={P.white} />
@@ -440,7 +451,7 @@ export function BuildingRiser({ lang, highlight = 'all' }: SceneProps & { highli
       <Line x1={126} y1={232} x2={170} y2={232} stroke={P.orange} strokeWidth={3} />
       <Rect x={14} y={100} width={56} height={40} rx={4} fill={hl('backup') ? OK : P.grey} />
       <Label x={42} y={118} text={L('Groupe', 'Genset')} size={9} color={P.white} />
-      <Label x={42} y={132} text="100 kVA" size={8.5} color={P.white} />
+      <Label x={42} y={132} text="40 kVA" size={8.5} color={P.white} />
       <Rect x={86} y={110} width={40} height={24} rx={4} fill={hl('backup') ? OK : P.grey} />
       <Label x={106} y={126} text={L('Inverseur', 'ATS')} size={8} color={P.white} />
       <Line x1={70} y1={122} x2={86} y2={122} stroke={hl('backup') ? OK : P.grey} strokeWidth={2.5} />
