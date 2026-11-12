@@ -51,6 +51,7 @@ import {
   ClinicTiers,
   TraySection,
   PhCycle,
+  PsychroDoas,
   EarthingTT,
   FactorySld,
   MotorStart,
@@ -192,6 +193,8 @@ export function Illustration({ name, props, lang }: { name: string; props?: Illu
       return <VillaBoard lang={lang} />;
     case 'earthing-tt':
       return <EarthingTT lang={lang} />;
+    case 'psychro-doas':
+      return <PsychroDoas lang={lang} />;
     case 'ph-cycle':
       return <PhCycle lang={lang} variant={typeof p.variant === 'string' ? p.variant : undefined} />;
     case 'tray-section':

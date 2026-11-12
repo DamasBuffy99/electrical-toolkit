@@ -784,3 +784,64 @@ export function PhCycle({ lang, variant = 'base' }: SceneProps & { variant?: str
     </SceneFrame>
   );
 }
+
+// ---------------------------------------------------------------------------
+// Air conditioning: psychrometric chart of the Kora fresh-air unit
+
+export function PsychroDoas({ lang }: SceneProps) {
+  const L = pick(lang);
+  const x = (t: number) => 40 + (t - 10) * 13;
+  const y = (w: number) => 262 - w * 7;
+  const sat: [number, number][] = [
+    [10, 7.66], [12, 8.75], [14, 9.97], [16, 11.4], [18, 12.9], [20, 14.7], [22, 16.7], [24, 18.9], [26, 21.4], [28, 24.1], [30, 27.3], [31.6, 30],
+  ];
+  const curve = (pts: [number, number][]) => pts.map(([t, w], i) => `${i ? 'L' : 'M'}${x(t).toFixed(1)},${y(w).toFixed(1)}`).join(' ');
+  const rh50 = sat.map(([t, w]) => [t, w * 0.495] as [number, number]);
+  const P_ = {
+    O: [32, 25.5], R: [26, 10.8], A: [27.5, 14.5], B: [13.5, 9.5], S: [18, 9.5],
+  } as Record<string, [number, number]>;
+  const pt = (k: string) => ({ cx: x(P_[k][0]), cy: y(P_[k][1]) });
+  return (
+    <SceneFrame>
+      <Tag x={200} y={20} w={300} text={L('Traitement de l’air neuf sur le diagramme', 'Fresh-air treatment on the chart')} />
+      <Line x1={40} y1={262} x2={370} y2={262} stroke={P.ink} strokeWidth={1.2} />
+      <Line x1={370} y1={262} x2={370} y2={44} stroke={P.ink} strokeWidth={1.2} />
+      {[10, 15, 20, 25, 30, 35].map((t) => (
+        <G key={t}>
+          <Line x1={x(t)} y1={262} x2={x(t)} y2={266} stroke={P.ink} />
+          <Label x={x(t)} y={276} text={`${t}`} size={8.5} color={P.inkSoft} />
+        </G>
+      ))}
+      {[5, 10, 15, 20, 25].map((w) => (
+        <G key={w}>
+          <Line x1={366} y1={y(w)} x2={370} y2={y(w)} stroke={P.ink} />
+          <Label x={374} y={y(w) + 3} text={`${w}`} size={8.5} color={P.inkSoft} anchor="start" />
+        </G>
+      ))}
+      <Label x={205} y={290} text={L('température sèche (°C)', 'dry-bulb temperature (°C)')} size={8.5} color={P.inkSoft} />
+      <Label x={392} y={60} text="g/kg" size={8.5} color={P.inkSoft} anchor="end" />
+      <Path d={curve(sat)} stroke={COLD} strokeWidth={2} fill="none" />
+      <Label x={x(19)} y={y(15.6)} text={L('saturation 100 %', 'saturation 100 %')} size={8.5} color={COLD} anchor="end" />
+      <Path d={curve(rh50)} stroke={P.grey} strokeWidth={1.2} strokeDasharray="4 3" fill="none" />
+      <Label x={x(14.5)} y={y(5) + 13} text="HR 50 %" size={8.5} color={P.inkSoft} />
+
+      <Path d={`M${pt('O').cx},${pt('O').cy} L${pt('A').cx},${pt('A').cy}`} stroke={P.orange} strokeWidth={2.6} fill="none" />
+      <Path d={`M${pt('A').cx},${pt('A').cy} L${x(19.5)},${y(14.5)} L${pt('B').cx},${pt('B').cy}`} stroke={COLD} strokeWidth={2.6} fill="none" />
+      <Path d={`M${pt('B').cx},${pt('B').cy} L${pt('S').cx},${pt('S').cy}`} stroke={OK} strokeWidth={2.6} fill="none" />
+      {([
+        ['O', L('O · air extérieur 32 °C', 'O · outdoor 32 °C'), -8, -8, 'end'],
+        ['R', L('R · air repris 26 °C', 'R · return 26 °C'), 8, 14, 'start'],
+        ['A', L('A · après la roue', 'A · after the wheel'), 8, -6, 'start'],
+        ['B', L('B · batterie froide', 'B · cooling coil'), -8, -10, 'start'],
+        ['S', L('S · soufflage 18 °C', 'S · supply 18 °C'), -6, 17, 'start'],
+      ] as [string, string, number, number, 'start' | 'end'][]).map(([k, label, dx, dy, anchor]) => (
+        <G key={k}>
+          <Circle cx={pt(k).cx} cy={pt(k).cy} r={4.5} fill={P.white} stroke={P.ink} strokeWidth={1.6} />
+          <Label x={pt(k).cx + dx} y={pt(k).cy + dy} text={label} size={8.5} color={P.ink} anchor={anchor} />
+        </G>
+      ))}
+      <Label x={(pt('O').cx + pt('A').cx) / 2 - 6} y={(pt('O').cy + pt('A').cy) / 2 + 2} text={L('roue : − 33 kJ/kg', 'wheel: − 33 kJ/kg')} size={8.5} color={P.orange} anchor="end" />
+      <Label x={x(20.5)} y={y(14.5) + 13} text={L('batterie : − 27 kJ/kg', 'coil: − 27 kJ/kg')} size={8.5} color={COLD} anchor="start" />
+    </SceneFrame>
+  );
+}

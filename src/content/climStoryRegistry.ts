@@ -9,6 +9,10 @@ import { ctLoadContent } from './climStory/ctLoad';
 import { ctCycleContent } from './climStory/ctCycle';
 import { ctEquipmentContent } from './climStory/ctEquipment';
 import { ctServiceContent } from './climStory/ctService';
+import { coLoadContent } from './climStory/coLoad';
+import { coSystemContent } from './climStory/coSystem';
+import { coAirContent } from './climStory/coAir';
+import { coDuctsContent } from './climStory/coDucts';
 
 import { cvBriefContent as cvBriefContentEn } from './climStory/en/cvBrief';
 import { cvLoadContent as cvLoadContentEn } from './climStory/en/cvLoad';
@@ -18,6 +22,10 @@ import { ctLoadContent as ctLoadContentEn } from './climStory/en/ctLoad';
 import { ctCycleContent as ctCycleContentEn } from './climStory/en/ctCycle';
 import { ctEquipmentContent as ctEquipmentContentEn } from './climStory/en/ctEquipment';
 import { ctServiceContent as ctServiceContentEn } from './climStory/en/ctService';
+import { coLoadContent as coLoadContentEn } from './climStory/en/coLoad';
+import { coSystemContent as coSystemContentEn } from './climStory/en/coSystem';
+import { coAirContent as coAirContentEn } from './climStory/en/coAir';
+import { coDuctsContent as coDuctsContentEn } from './climStory/en/coDucts';
 
 export const CLIM_STORY_CONTENT_FR: Record<string, TopicContent | undefined> = {
   'cv-brief': cvBriefContent,
@@ -28,6 +36,10 @@ export const CLIM_STORY_CONTENT_FR: Record<string, TopicContent | undefined> = {
   'ct-cycle': ctCycleContent,
   'ct-equipment': ctEquipmentContent,
   'ct-service': ctServiceContent,
+  'co-load': coLoadContent,
+  'co-system': coSystemContent,
+  'co-air': coAirContent,
+  'co-ducts': coDuctsContent,
 };
 
 export const CLIM_STORY_CONTENT_EN: Record<string, TopicContent | undefined> = {
@@ -39,6 +51,10 @@ export const CLIM_STORY_CONTENT_EN: Record<string, TopicContent | undefined> = {
   'ct-cycle': ctCycleContentEn,
   'ct-equipment': ctEquipmentContentEn,
   'ct-service': ctServiceContentEn,
+  'co-load': coLoadContentEn,
+  'co-system': coSystemContentEn,
+  'co-air': coAirContentEn,
+  'co-ducts': coDuctsContentEn,
 };
 
 export function getClimStoryContent(lang: Lang, id: string): TopicContent | undefined {
