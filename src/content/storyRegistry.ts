@@ -17,6 +17,9 @@ import { buildingSubstationContent } from './story/buildingSubstation';
 import { buildingRisersContent } from './story/buildingRisers';
 import { buildingServicesContent } from './story/buildingServices';
 import { buildingShortCircuitContent } from './story/buildingShortCircuit';
+import { buildingProtectionContent } from './story/buildingProtection';
+import { buildingEarthingContent } from './story/buildingEarthing';
+import { buildingSwitchboardContent } from './story/buildingSwitchboard';
 import { buildingBackupContent } from './story/buildingBackup';
 import { factorySurveyContent } from './story/factorySurvey';
 import { factoryStartingContent } from './story/factoryStarting';
@@ -45,6 +48,9 @@ import { buildingSubstationContent as buildingSubstationContentEn } from './stor
 import { buildingRisersContent as buildingRisersContentEn } from './story/en/buildingRisers';
 import { buildingServicesContent as buildingServicesContentEn } from './story/en/buildingServices';
 import { buildingShortCircuitContent as buildingShortCircuitContentEn } from './story/en/buildingShortCircuit';
+import { buildingProtectionContent as buildingProtectionContentEn } from './story/en/buildingProtection';
+import { buildingEarthingContent as buildingEarthingContentEn } from './story/en/buildingEarthing';
+import { buildingSwitchboardContent as buildingSwitchboardContentEn } from './story/en/buildingSwitchboard';
 import { buildingBackupContent as buildingBackupContentEn } from './story/en/buildingBackup';
 import { factorySurveyContent as factorySurveyContentEn } from './story/en/factorySurvey';
 import { factoryStartingContent as factoryStartingContentEn } from './story/en/factoryStarting';
@@ -74,6 +80,9 @@ export const STORY_CONTENT_FR: Record<string, TopicContent | undefined> = {
   'building-risers': buildingRisersContent,
   'building-services': buildingServicesContent,
   'building-shortcircuit': buildingShortCircuitContent,
+  'building-protection': buildingProtectionContent,
+  'building-earthing': buildingEarthingContent,
+  'building-switchboard': buildingSwitchboardContent,
   'building-backup': buildingBackupContent,
   'factory-survey': factorySurveyContent,
   'factory-starting': factoryStartingContent,
@@ -104,6 +113,9 @@ export const STORY_CONTENT_EN: Record<string, TopicContent | undefined> = {
   'building-risers': buildingRisersContentEn,
   'building-services': buildingServicesContentEn,
   'building-shortcircuit': buildingShortCircuitContentEn,
+  'building-protection': buildingProtectionContentEn,
+  'building-earthing': buildingEarthingContentEn,
+  'building-switchboard': buildingSwitchboardContentEn,
   'building-backup': buildingBackupContentEn,
   'factory-survey': factorySurveyContentEn,
   'factory-starting': factoryStartingContentEn,
