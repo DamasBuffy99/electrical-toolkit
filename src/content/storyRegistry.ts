@@ -8,6 +8,7 @@ import { villaLoadContent } from './story/villaLoad';
 import { villaLightingContent } from './story/villaLighting';
 import { villaBoardContent } from './story/villaBoard';
 import { villaSafetyContent } from './story/villaSafety';
+import { villaDevicesContent } from './story/villaDevices';
 import { villaCablesContent } from './story/villaCables';
 import { villaHandoverContent } from './story/villaHandover';
 import { buildingFeasibilityContent } from './story/buildingFeasibility';
@@ -35,6 +36,7 @@ import { villaLoadContent as villaLoadContentEn } from './story/en/villaLoad';
 import { villaLightingContent as villaLightingContentEn } from './story/en/villaLighting';
 import { villaBoardContent as villaBoardContentEn } from './story/en/villaBoard';
 import { villaSafetyContent as villaSafetyContentEn } from './story/en/villaSafety';
+import { villaDevicesContent as villaDevicesContentEn } from './story/en/villaDevices';
 import { villaCablesContent as villaCablesContentEn } from './story/en/villaCables';
 import { villaHandoverContent as villaHandoverContentEn } from './story/en/villaHandover';
 import { buildingFeasibilityContent as buildingFeasibilityContentEn } from './story/en/buildingFeasibility';
@@ -63,6 +65,7 @@ export const STORY_CONTENT_FR: Record<string, TopicContent | undefined> = {
   'villa-lighting': villaLightingContent,
   'villa-board': villaBoardContent,
   'villa-safety': villaSafetyContent,
+  'villa-devices': villaDevicesContent,
   'villa-cables': villaCablesContent,
   'villa-handover': villaHandoverContent,
   'building-feasibility': buildingFeasibilityContent,
@@ -92,6 +95,7 @@ export const STORY_CONTENT_EN: Record<string, TopicContent | undefined> = {
   'villa-lighting': villaLightingContentEn,
   'villa-board': villaBoardContentEn,
   'villa-safety': villaSafetyContentEn,
+  'villa-devices': villaDevicesContentEn,
   'villa-cables': villaCablesContentEn,
   'villa-handover': villaHandoverContentEn,
   'building-feasibility': buildingFeasibilityContentEn,

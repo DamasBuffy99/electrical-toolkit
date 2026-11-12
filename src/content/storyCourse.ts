@@ -60,6 +60,13 @@ export const STORY_SECTIONS: CourseSection[] = [
         id: 'villa-safety',
         title: 'Protéger la famille : différentiels et terre',
         titleEn: 'Protecting the family: RCDs and earthing',
+        transition: 'Le principe est posé. Reste à choisir précisément chaque appareil : Moussa arrive justement avec son devis.',
+        transitionEn: 'The principle is set. Now each device must be chosen precisely, and Moussa has just arrived with his quote.',
+      },
+      {
+        id: 'villa-devices',
+        title: 'Choisir les appareils de protection',
+        titleEn: 'Choosing the protective devices',
         transition: 'Les protections sont choisies. Il faut maintenant des câbles qui les respectent, y compris jusqu’à la pompe au fond du jardin.',
         transitionEn: 'The protection is chosen. Now the cables must match it, including the run to the pump at the bottom of the garden.',
       },

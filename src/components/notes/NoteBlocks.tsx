@@ -5,6 +5,8 @@ import { colors, radius, spacing } from '../../theme/theme';
 import { useLanguage } from '../../lib/language';
 import { MathBlock, RichText } from './MathText';
 import { useFicheNav } from './FicheContext';
+import { Calc, Decision, KeyFigures, Norms, Objectives } from './StoryBlocks';
+import { PanelScheduleView } from './PanelScheduleView';
 
 function ExerciseCard({ title, question, solution }: { title?: string; question: string; solution: string[] }) {
   const { t } = useLanguage();
@@ -100,6 +102,18 @@ export function NoteBlockRenderer({ block }: { block: NoteBlock }) {
       return <RegionalBox title={block.title} text={block.text} />;
     case 'fiche':
       return <FicheLink id={block.id} why={block.why} />;
+    case 'objectives':
+      return <Objectives items={block.items} />;
+    case 'keyfigures':
+      return <KeyFigures items={block.items} />;
+    case 'decision':
+      return <Decision title={block.title} choice={block.choice} reasons={block.reasons} rejected={block.rejected} />;
+    case 'calc':
+      return <Calc title={block.title} steps={block.steps} result={block.result} />;
+    case 'norms':
+      return <Norms title={block.title} rows={block.rows} />;
+    case 'panelSchedule':
+      return <PanelScheduleView panel={block.panel} />;
     case 'heading':
       return <Text style={styles.heading}>{block.text}</Text>;
     case 'subheading':
