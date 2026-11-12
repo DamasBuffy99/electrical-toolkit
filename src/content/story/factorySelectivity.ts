@@ -29,7 +29,7 @@ export const factorySelectivityContent: TopicContent = {
       type: 'table',
       headers: ['Point', 'I_sc estimé', 'Pouvoir de coupure retenu'],
       rows: [
-        ['TGBT (général 630 A et départs)', '≈ 14 kA', '25 kA'],
+        ['TGBT (ACB général et départs)', '≈ 14 kA', '25 kA'],
         ['Armoire de la salle des machines (après 40 m de 150 mm²)', '≈ 11 kA', '25 kA (disjoncteurs-moteurs)'],
         ['Bornes d’une pompe (après 60 m de 6 mm²)', '≈ 0,9 kA', ''],
       ],
@@ -71,7 +71,7 @@ export const factorySelectivityContent: TopicContent = {
       rows: [
         ['Pompe 15 kW (disjoncteur-moteur 32 A)', '28,3 A', 'instantané ≈ 13 × 32 ≈ 420 A'],
         ['Feeder de l’armoire (400 A)', '320 A', '4 kA, retard 100 ms'],
-        ['Général TGBT (630 A)', '630 A', '6,3 kA, retard 200 ms'],
+        ['Général TGBT (ACB 800 A)', '630 A', '6,3 kA, retard 200 ms'],
       ],
     },
     {

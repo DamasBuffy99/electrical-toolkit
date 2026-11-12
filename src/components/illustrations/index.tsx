@@ -49,6 +49,7 @@ import {
   BuildingRiser,
   CableRun,
   ClinicTiers,
+  TraySection,
   EarthingTT,
   FactorySld,
   MotorStart,
@@ -190,6 +191,8 @@ export function Illustration({ name, props, lang }: { name: string; props?: Illu
       return <VillaBoard lang={lang} />;
     case 'earthing-tt':
       return <EarthingTT lang={lang} />;
+    case 'tray-section':
+      return <TraySection lang={lang} />;
     case 'cable-run':
       return <CableRun lang={lang} />;
     case 'building-riser':

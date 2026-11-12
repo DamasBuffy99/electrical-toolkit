@@ -490,7 +490,7 @@ export function FactorySld({ lang, highlight = 'all' }: SceneProps & { highlight
       <Label x={218} y={100} text={L('400 kVA · 20/0,4 kV · u_k 4 %', '400 kVA · 20/0.4 kV · u_k 4%')} size={8.5} anchor="start" />
       <Line x1={200} y1={116} x2={200} y2={128} stroke={P.ink} strokeWidth={2} />
       <Rect x={188} y={128} width={24} height={16} rx={3} fill={hl('selectivity') ? P.orange : P.navy} />
-      <Label x={218} y={140} text={L('disj. général 630 A', 'main breaker 630 A')} size={8.5} anchor="start" color={P.inkSoft} weight="600" />
+      <Label x={218} y={140} text={L('ACB 800 A · I_r 630 A', 'ACB 800 A · I_r 630 A')} size={8.5} anchor="start" color={P.inkSoft} weight="600" />
       <Line x1={200} y1={144} x2={200} y2={156} stroke={P.ink} strokeWidth={2} />
       <Line x1={30} y1={156} x2={374} y2={156} stroke={P.navy} strokeWidth={5} />
       <Label x={30} y={150} text={L('TGBT 400 V', 'Main LV board 400 V')} size={8.5} anchor="start" color={P.navy} />
@@ -595,7 +595,7 @@ export function Selectivity({ lang }: SceneProps) {
       <Path d={curve(80, 170)} stroke={P.greenMid} strokeWidth={3} fill="none" />
       <Path d={curve(160, 300)} stroke={P.navy} strokeWidth={3} fill="none" />
       <Label x={54} y={228} text={L('départ pompe 32 A', 'pump feeder 32 A')} size={8.5} color={P.greenMid} anchor="start" />
-      <Label x={190} y={70} text={L('général 630 A', 'main 630 A')} size={9} color={P.navy} anchor="start" />
+      <Label x={190} y={70} text={L('ACB général (I_r 630 A)', 'main ACB (I_r 630 A)')} size={9} color={P.navy} anchor="start" />
       <Line x1={140} y1={62} x2={140} y2={250} stroke={HOT} strokeWidth={1.5} strokeDasharray="5 4" />
       <Label x={144} y={58} text={L('défaut sur la pompe', 'fault at the pump')} size={8.5} color={HOT} anchor="start" />
       <Rect x={208} y={92} width={166} height={40} rx={8} fill={P.white} stroke={OK} strokeWidth={1.5} />
@@ -662,6 +662,69 @@ export function ClinicTiers({ lang, highlight = 'all' }: SceneProps & { highligh
         <Label x={221} y={229} text="EXIT →" size={9} color={P.white} />
       </G>
       <Label x={130} y={280} text={L('plus le niveau est critique, plus la reprise est rapide', 'the more critical the level, the faster the takeover')} size={9} color={P.inkSoft} weight="600" />
+    </SceneFrame>
+  );
+}
+
+// ---------------------------------------------------------------------------
+// Factory: cross-section of the cable trays along the columns
+
+export function TraySection({ lang }: SceneProps) {
+  const L = pick(lang);
+  const X0 = 74;
+  const X1 = 244;
+  const tray = (y: number, kind: 'ladder' | 'perforated' | 'mesh') => (
+    <G>
+      <Path d={`M${X0},${y - 26} L${X0},${y} L${X1},${y} L${X1},${y - 26}`} stroke={P.steel} strokeWidth={3} fill="none" strokeDasharray={kind === 'mesh' ? '4 3' : undefined} />
+      {kind === 'perforated'
+        ? [0, 1, 2, 3, 4, 5, 6, 7].map((i) => <Rect key={i} x={X0 + 12 + i * 20} y={y - 1} width={8} height={2} fill={P.white} />)
+        : null}
+      {kind === 'ladder' ? <Line x1={X0} y1={y + 4} x2={X1} y2={y + 4} stroke={P.steel} strokeWidth={1.5} /> : null}
+      <Line x1={52} y1={y + 2} x2={X0} y2={y + 2} stroke={P.steel} strokeWidth={4} />
+    </G>
+  );
+  const cable = (cx: number, y: number, r: number, color: string) => <Circle cx={cx} cy={y - r - 1.5} r={r} fill={color} stroke={P.ink} strokeWidth={0.8} />;
+  const power = [
+    { cx: 94, r: 11 },
+    { cx: 126, r: 6.5 },
+    { cx: 150, r: 6.5 },
+    { cx: 174, r: 6.5 },
+    { cx: 198, r: 6.5 },
+    { cx: 224, r: 5.5 },
+  ];
+  return (
+    <SceneFrame>
+      <Tag x={200} y={22} w={290} text={L('Coupe des chemins de câbles, à 3 m', 'Cable tray cross-section, at 3 m')} />
+      <Rect x={36} y={42} width={16} height={232} fill={P.greyLight} stroke={P.steel} strokeWidth={1.5} />
+      <Label x={44} y={288} text={L('poteau', 'column')} size={8.5} color={P.inkSoft} />
+
+      {tray(102, 'ladder')}
+      {cable(120, 102, 17, HOT)}
+      <Label x={252} y={80} text={L('Feeder MCC 4 × 150 mm²', 'MCC feeder 4 × 150 mm²')} size={9} anchor="start" color={P.ink} />
+      <Label x={252} y={93} text={L('seul sur son échelle', 'alone on its ladder')} size={8.5} anchor="start" color={P.inkSoft} weight="600" />
+
+      {tray(182, 'perforated')}
+      {power.map((c, i) => (
+        <G key={i}>{cable(c.cx, 182, c.r, i === 0 ? P.orange : COLD)}</G>
+      ))}
+      <Line x1={X0} y1={194} x2={X1} y2={194} stroke={P.inkSoft} strokeWidth={1} />
+      <Line x1={X0} y1={190} x2={X0} y2={198} stroke={P.inkSoft} strokeWidth={1} />
+      <Line x1={X1} y1={190} x2={X1} y2={198} stroke={P.inkSoft} strokeWidth={1} />
+      <Label x={(X0 + X1) / 2} y={206} text="300 mm" size={8.5} color={P.inkSoft} />
+      <Label x={252} y={160} text={L('Puissance : 6 câbles', 'Power: 6 cables')} size={9} anchor="start" color={P.ink} />
+      <Label x={252} y={173} text={L('espacés d’un diamètre', 'spaced one diameter')} size={8.5} anchor="start" color={P.inkSoft} weight="600" />
+
+      {tray(262, 'mesh')}
+      {[0, 1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
+        <G key={i}>{cable(86 + i * 9, 262, 3.2, OK)}</G>
+      ))}
+      <Label x={252} y={240} text={L('Commande, capteurs', 'Control, sensors')} size={9} anchor="start" color={P.ink} />
+      <Label x={252} y={253} text={L('treillis séparé', 'separate wire mesh')} size={8.5} anchor="start" color={P.inkSoft} weight="600" />
+
+      <Line x1={64} y1={212} x2={64} y2={234} stroke={P.green} strokeWidth={1.4} />
+      <Polygon points="60,216 64,210 68,216" fill={P.green} />
+      <Polygon points="60,230 64,236 68,230" fill={P.green} />
+      <Label x={200} y={226} text={L('≥ 30 cm entre puissance et commande', '≥ 30 cm between power and control')} size={8.5} color={P.green} />
     </SceneFrame>
   );
 }

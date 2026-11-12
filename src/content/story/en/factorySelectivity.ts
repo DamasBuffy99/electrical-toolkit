@@ -29,7 +29,7 @@ export const factorySelectivityContent: TopicContent = {
       type: 'table',
       headers: ['Point', 'Estimated I_sc', 'Breaking capacity chosen'],
       rows: [
-        ['Main board (630 A main and feeders)', '≈ 14 kA', '25 kA'],
+        ['Main board (main ACB and feeders)', '≈ 14 kA', '25 kA'],
         ['Machine-room panel (after 40 m of 150 mm²)', '≈ 11 kA', '25 kA (motor circuit breakers)'],
         ['Pump terminals (after 60 m of 6 mm²)', '≈ 0.9 kA', ''],
       ],
@@ -71,7 +71,7 @@ export const factorySelectivityContent: TopicContent = {
       rows: [
         ['15 kW pump (32 A motor circuit breaker)', '28.3 A', 'instantaneous ≈ 13 × 32 ≈ 420 A'],
         ['Panel feeder (400 A)', '320 A', '4 kA, 100 ms delay'],
-        ['Main board breaker (630 A)', '630 A', '6.3 kA, 200 ms delay'],
+        ['Main board ACB (800 A)', '630 A', '6.3 kA, 200 ms delay'],
       ],
     },
     {

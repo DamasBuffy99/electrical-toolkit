@@ -26,7 +26,10 @@ import { factoryStartingContent } from './story/factoryStarting';
 import { factoryFeedersContent } from './story/factoryFeeders';
 import { factoryCablesContent } from './story/factoryCables';
 import { factorySelectivityContent } from './story/factorySelectivity';
+import { factoryDevicesContent } from './story/factoryDevices';
+import { factoryTraysContent } from './story/factoryTrays';
 import { factoryPowerFactorContent } from './story/factoryPowerFactor';
+import { factoryHarmonicsContent } from './story/factoryHarmonics';
 import { clinicLoadsContent } from './story/clinicLoads';
 import { clinicGeneratorContent } from './story/clinicGenerator';
 import { clinicUpsContent } from './story/clinicUps';
@@ -57,7 +60,10 @@ import { factoryStartingContent as factoryStartingContentEn } from './story/en/f
 import { factoryFeedersContent as factoryFeedersContentEn } from './story/en/factoryFeeders';
 import { factoryCablesContent as factoryCablesContentEn } from './story/en/factoryCables';
 import { factorySelectivityContent as factorySelectivityContentEn } from './story/en/factorySelectivity';
+import { factoryDevicesContent as factoryDevicesContentEn } from './story/en/factoryDevices';
+import { factoryTraysContent as factoryTraysContentEn } from './story/en/factoryTrays';
 import { factoryPowerFactorContent as factoryPowerFactorContentEn } from './story/en/factoryPowerFactor';
+import { factoryHarmonicsContent as factoryHarmonicsContentEn } from './story/en/factoryHarmonics';
 import { clinicLoadsContent as clinicLoadsContentEn } from './story/en/clinicLoads';
 import { clinicGeneratorContent as clinicGeneratorContentEn } from './story/en/clinicGenerator';
 import { clinicUpsContent as clinicUpsContentEn } from './story/en/clinicUps';
@@ -89,7 +95,10 @@ export const STORY_CONTENT_FR: Record<string, TopicContent | undefined> = {
   'factory-feeders': factoryFeedersContent,
   'factory-cables': factoryCablesContent,
   'factory-selectivity': factorySelectivityContent,
+  'factory-devices': factoryDevicesContent,
+  'factory-trays': factoryTraysContent,
   'factory-powerfactor': factoryPowerFactorContent,
+  'factory-harmonics': factoryHarmonicsContent,
   'clinic-loads': clinicLoadsContent,
   'clinic-generator': clinicGeneratorContent,
   'clinic-ups': clinicUpsContent,
@@ -122,7 +131,10 @@ export const STORY_CONTENT_EN: Record<string, TopicContent | undefined> = {
   'factory-feeders': factoryFeedersContentEn,
   'factory-cables': factoryCablesContentEn,
   'factory-selectivity': factorySelectivityContentEn,
+  'factory-devices': factoryDevicesContentEn,
+  'factory-trays': factoryTraysContentEn,
   'factory-powerfactor': factoryPowerFactorContentEn,
+  'factory-harmonics': factoryHarmonicsContentEn,
   'clinic-loads': clinicLoadsContentEn,
   'clinic-generator': clinicGeneratorContentEn,
   'clinic-ups': clinicUpsContentEn,
