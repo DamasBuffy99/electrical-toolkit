@@ -728,3 +728,59 @@ export function TraySection({ lang }: SceneProps) {
     </SceneFrame>
   );
 }
+
+// ---------------------------------------------------------------------------
+// Air conditioning: pressure–enthalpy chart of the Tropica cold-room cycle
+
+export function PhCycle({ lang, variant = 'base' }: SceneProps & { variant?: string }) {
+  const L = pick(lang);
+  const x = (h: number) => 50 + (h - 180) * 1.1;
+  const y = (p: number) => 250 - 71.1 * Math.log(p / 1.5);
+  const pts = (arr: [number, number][]) => arr.map(([h, p], i) => `${i ? 'L' : 'M'}${x(h).toFixed(1)},${y(p).toFixed(1)}`).join(' ');
+  const dome = `M${x(190)},${y(1.6)} C${x(225)},${y(5)} ${x(265)},${y(14)} ${x(300)},${y(23)} Q${x(352)},${y(32)} ${x(398)},${y(22)} C${x(410)},${y(12)} ${x(408)},${y(4)} ${x(396)},${y(1.6)}`;
+  const hot = variant === 'hot';
+  return (
+    <SceneFrame>
+      <Tag x={200} y={20} w={300} text={L('Diagramme enthalpique · R513A', 'Pressure–enthalpy chart · R513A')} />
+      <Line x1={50} y1={252} x2={384} y2={252} stroke={P.ink} strokeWidth={1.2} />
+      <Line x1={50} y1={252} x2={50} y2={40} stroke={P.ink} strokeWidth={1.2} />
+      <Label x={384} y={282} text={L('h (kJ/kg)', 'h (kJ/kg)')} size={9} color={P.inkSoft} anchor="end" />
+      <Label x={54} y={46} text={L('P (bar, log)', 'P (bar, log)')} size={9} color={P.inkSoft} anchor="start" />
+      {[2.7, 13.5].map((p) => (
+        <Label key={p} x={46} y={y(p) + 3} text={String(p).replace('.', lang === 'fr' ? ',' : '.')} size={8.5} color={P.inkSoft} anchor="end" />
+      ))}
+      {[261, 400, 453].map((h) => (
+        <Label key={h} x={x(h)} y={264} text={String(h)} size={8.5} color={P.inkSoft} />
+      ))}
+      <Path d={dome} stroke={P.steel} strokeWidth={1.6} fill={P.mint} opacity={0.8} />
+      <Label x={x(205)} y={y(9)} text={L('liquide', 'liquid')} size={8.5} color={P.inkSoft} weight="600" />
+      <Label x={x(330)} y={y(5)} text={L('liquide + vapeur', 'liquid + vapour')} size={8.5} color={P.inkSoft} weight="600" />
+      <Label x={x(440)} y={y(3.4)} text={L('vapeur', 'vapour')} size={8.5} color={P.inkSoft} weight="600" />
+
+      {hot ? (
+        <Path d={pts([[274, 2.7], [400, 2.7], [460, 16], [274, 16], [274, 2.7]])} stroke={HOT} strokeWidth={2} strokeDasharray="5 4" fill="none" />
+      ) : null}
+      <Path d={pts([[261, 2.7], [400, 2.7]])} stroke={COLD} strokeWidth={3} fill="none" />
+      <Path d={pts([[400, 2.7], [453, 13.5]])} stroke={P.orange} strokeWidth={3} fill="none" />
+      <Path d={pts([[453, 13.5], [261, 13.5]])} stroke={HOT} strokeWidth={3} fill="none" />
+      <Path d={pts([[261, 13.5], [261, 2.7]])} stroke={P.green} strokeWidth={3} fill="none" />
+      {([
+        [400, 2.7, '1', 10, 14],
+        [453, 13.5, '2', 10, -6],
+        [261, 13.5, '3', -10, -6],
+        [261, 2.7, '4', -10, 14],
+      ] as [number, number, string, number, number][]).map(([h, p, n, dx, dy]) => (
+        <G key={n}>
+          <Circle cx={x(h)} cy={y(p)} r={4} fill={P.white} stroke={P.ink} strokeWidth={1.5} />
+          <Label x={x(h) + dx} y={y(p) + dy} text={n} size={11} color={P.ink} />
+        </G>
+      ))}
+      <Label x={(x(261) + x(400)) / 2} y={y(2.7) + 16} text={L('évaporation −6 °C · q_0 = 139 kJ/kg', 'evaporation −6 °C · q_0 = 139 kJ/kg')} size={8.5} color={COLD} />
+      <Label x={(x(261) + x(453)) / 2} y={y(13.5) - 8} text={L('condensation 47 °C · q_k = 192 kJ/kg', 'condensation 47 °C · q_k = 192 kJ/kg')} size={8.5} color={HOT} />
+      <Label x={x(436)} y={y(6.5)} text={L('compression', 'compression')} size={8.5} color={P.orange} anchor="start" />
+      <Label x={x(432)} y={y(5.4)} text="w = 53 kJ/kg" size={8.5} color={P.orange} anchor="start" />
+      <Label x={x(255)} y={y(6)} text={L('détente', 'expansion')} size={8.5} color={P.green} anchor="end" />
+      {hot ? <Label x={x(300)} y={y(16) - 8} text={L('condenseur encrassé : 55 °C', 'fouled condenser: 55 °C')} size={8.5} color={HOT} weight="600" /> : null}
+    </SceneFrame>
+  );
+}

@@ -80,6 +80,8 @@ export type HeatLoadRoom = {
   walls: number;
   /** Glazing: transmission + solar. */
   glazing: number;
+  /** Products brought in and cooled (cold rooms), respiration of fruit, W. */
+  product?: number;
   people: number;
   lighting: number;
   equipment: number;
@@ -106,6 +108,8 @@ export type HeatLoadSheet = {
   rooms: HeatLoadRoom[];
   /** Diversity applied to the sum of rooms for the central plant (default 1). */
   diversity?: number;
+  /** Compressor running hours per day (cold rooms): plant = total x 24 / runHours. */
+  runHours?: number;
 };
 
 export type EquipmentRow = {

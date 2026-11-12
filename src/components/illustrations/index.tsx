@@ -50,6 +50,7 @@ import {
   CableRun,
   ClinicTiers,
   TraySection,
+  PhCycle,
   EarthingTT,
   FactorySld,
   MotorStart,
@@ -191,6 +192,8 @@ export function Illustration({ name, props, lang }: { name: string; props?: Illu
       return <VillaBoard lang={lang} />;
     case 'earthing-tt':
       return <EarthingTT lang={lang} />;
+    case 'ph-cycle':
+      return <PhCycle lang={lang} variant={typeof p.variant === 'string' ? p.variant : undefined} />;
     case 'tray-section':
       return <TraySection lang={lang} />;
     case 'cable-run':

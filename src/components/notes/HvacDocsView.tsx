@@ -43,7 +43,7 @@ export function HeatLoadSheetView({ sheet }: { sheet: HeatLoadSheet }) {
   const diversity = sheet.diversity ?? 1;
 
   const rows = sheet.rooms.map((r) => {
-    const sens = r.walls + r.glazing + r.people + r.lighting + r.equipment + r.air;
+    const sens = r.walls + r.glazing + (r.product ?? 0) + r.people + r.lighting + r.equipment + r.air;
     const lat = r.peopleLat + r.airLat + (r.otherLat ?? 0);
     const total = (sens + lat) * (1 + margin);
     return { r, sens, lat, total, wm2: total / r.area, btu: total * BTU_PER_W, ok: r.selectedW === undefined ? undefined : r.selectedW >= total };
@@ -53,13 +53,14 @@ export function HeatLoadSheetView({ sheet }: { sheet: HeatLoadSheet }) {
   const L = sum((x) => x.lat);
   const T = sum((x) => x.total);
   const area = sum((x) => x.r.area);
-  const plant = T * diversity;
+  const plant = T * diversity * (sheet.runHours ? 24 / sheet.runHours : 1);
 
   const cols: Col[] = [
     { key: 'name', label: t('Local', 'Room'), w: 120 },
     { key: 'area', label: 'm²', w: 46 },
     { key: 'walls', label: t('Murs, toit', 'Walls, roof'), w: 62, group: 'S' },
     { key: 'glazing', label: t('Vitrages', 'Glazing'), w: 62, group: 'S' },
+    { key: 'product', label: t('Produits', 'Products'), w: 66, group: 'S' },
     { key: 'people', label: t('Occupants', 'People'), w: 66, group: 'S' },
     { key: 'lighting', label: t('Éclairage', 'Lighting'), w: 62, group: 'S' },
     { key: 'equipment', label: t('Équip.', 'Equip.'), w: 56, group: 'S' },
@@ -74,6 +75,9 @@ export function HeatLoadSheetView({ sheet }: { sheet: HeatLoadSheet }) {
     { key: 'btu', label: 'BTU/h', w: 70, group: 'T' },
     { key: 'sel', label: t('Appareil retenu', 'Unit selected'), w: 150 },
   ];
+  const optional = ['glazing', 'product', 'otherLat'];
+  const shown = cols.filter((c) => !optional.includes(c.key) || sheet.rooms.some((r) => ((r as any)[c.key] ?? 0) > 0));
+  cols.splice(0, cols.length, ...shown);
   const groupLabel = { S: t('Apports sensibles (W)', 'Sensible gains (W)'), L: t('Latents (W)', 'Latent (W)'), T: t('Totaux', 'Totals') };
   const groups: { g?: 'S' | 'L' | 'T'; w: number }[] = [];
   for (const c of cols) {
@@ -149,6 +153,9 @@ export function HeatLoadSheetView({ sheet }: { sheet: HeatLoadSheet }) {
             [t('Facteur de chaleur sensible (SHR)', 'Sensible heat ratio (SHR)'), fmt(S / (S + L), 2)],
             [t(`Total avec ${Math.round(margin * 100)} % de marge`, `Total with ${Math.round(margin * 100)} % margin`), `${fmt(T / 1000, 1)} kW`, true],
             [t('Ratio moyen', 'Average ratio'), `${fmt(T / area)} W/m²`],
+            ...(sheet.runHours
+              ? ([[t(`Production (marche ${sheet.runHours} h/24)`, `Plant (running ${sheet.runHours} h/24)`), `${fmt(plant / 1000, 1)} kW`, true]] as [string, string, boolean][])
+              : []),
             ...(diversity !== 1
               ? ([[t(`Production (foisonnement ${fmt(diversity, 2)})`, `Plant (diversity ${fmt(diversity, 2)})`), `${fmt(plant / 1000, 1)} kW`, true]] as [string, string, boolean][])
               : []),
