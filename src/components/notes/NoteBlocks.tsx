@@ -8,6 +8,7 @@ import { useFicheNav } from './FicheContext';
 import { Calc, Decision, KeyFigures, Norms, Objectives } from './StoryBlocks';
 import { PanelScheduleView } from './PanelScheduleView';
 import { EquipmentScheduleView, HeatLoadSheetView } from './HvacDocsView';
+import { ConsumptionSheetView, SolarEquipmentView, StringSheetView } from './SolarDocsView';
 
 function ExerciseCard({ title, question, solution }: { title?: string; question: string; solution: string[] }) {
   const { t } = useLanguage();
@@ -119,6 +120,12 @@ export function NoteBlockRenderer({ block }: { block: NoteBlock }) {
       return <HeatLoadSheetView sheet={block.sheet} />;
     case 'equipmentSchedule':
       return <EquipmentScheduleView schedule={block.schedule} />;
+    case 'consumptionSheet':
+      return <ConsumptionSheetView sheet={block.sheet} />;
+    case 'stringSheet':
+      return <StringSheetView sheet={block.sheet} />;
+    case 'solarEquipment':
+      return <SolarEquipmentView list={block.list} />;
     case 'heading':
       return <Text style={styles.heading}>{block.text}</Text>;
     case 'subheading':

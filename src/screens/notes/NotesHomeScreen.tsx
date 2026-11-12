@@ -14,13 +14,15 @@ type Props = {
   subtitle: string;
   subtitleEn: string;
   onSelectTopic: (topicId: string) => void;
+  topSlot?: React.ReactNode;
 };
 
-export default function NotesHomeScreen({ topics, getContent, title, titleEn, subtitle, subtitleEn, onSelectTopic }: Props) {
+export default function NotesHomeScreen({ topics, getContent, title, titleEn, subtitle, subtitleEn, onSelectTopic, topSlot }: Props) {
   const { lang, t } = useLanguage();
 
   return (
     <ScreenContainer>
+      {topSlot}
       <Title>{lang === 'fr' ? title : titleEn}</Title>
       <Subtitle>{lang === 'fr' ? subtitle : subtitleEn}</Subtitle>
 

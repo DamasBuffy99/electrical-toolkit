@@ -35,6 +35,12 @@ export type NoteBlock =
   | { type: 'heatLoadSheet'; sheet: HeatLoadSheet }
   /** HVAC equipment schedule (indoor/outdoor units, capacities, electrical data). */
   | { type: 'equipmentSchedule'; schedule: EquipmentSchedule }
+  /** Solar: energy balance of the loads (W, hours of use, Wh/day, day/night). */
+  | { type: 'consumptionSheet'; sheet: ConsumptionSheet }
+  /** Solar: string sizing note (temperature-corrected voltages and currents vs MPPT limits). */
+  | { type: 'stringSheet'; sheet: StringSheet }
+  /** Solar: equipment list (modules, inverters, batteries, protections). */
+  | { type: 'solarEquipment'; list: SolarEquipmentList }
   /** `focus` = area to zoom into, as fractions of the image (0–1): the panel shows the whole image, then zooms on it. */
   | { type: 'image'; source: any; caption?: string; height?: number; focus?: Focus }
   | { type: 'illustration'; name: string; props?: Record<string, string | number | boolean>; caption?: string };
@@ -135,7 +141,71 @@ export type EquipmentSchedule = {
   rows: EquipmentRow[];
 };
 
-export type Focus ={ x: number; y: number; w: number; h: number };
+export type ConsumptionItem = {
+  name: string;
+  /** Unit power, W. */
+  power: number;
+  qty: number;
+  /** Hours of use per day, daytime (sun) and night-time. */
+  hDay: number;
+  hNight: number;
+  /** Starting surge of one unit, W (motors, compressors). */
+  surge?: number;
+  /** Fed by the backup / priority circuit. */
+  backup?: boolean;
+};
+
+export type ConsumptionSheet = {
+  project: string;
+  note?: string;
+  /** Share of the installed power running at the same time (default 1). */
+  simultaneity?: number;
+  items: ConsumptionItem[];
+};
+
+export type StringModule = {
+  name: string;
+  pmax: number;
+  voc: number;
+  vmp: number;
+  isc: number;
+  imp: number;
+  /** Temperature coefficients, %/K (negative). */
+  betaVoc: number;
+  gammaPmax: number;
+};
+
+export type StringSheet = {
+  project: string;
+  module: StringModule;
+  /** Lowest ambient temperature (cells at dawn ≈ ambient) and highest cell temperature, °C. */
+  tMin: number;
+  tCellMax: number;
+  inverter: { name: string; vmaxDc: number; mpptMin: number; mpptMax: number; imaxMppt: number; iscMaxMppt: number; pac: number; count?: number };
+  strings: { mppt: string; series: number; parallel: number }[];
+};
+
+export type SolarEquipmentRow = {
+  tag: string;
+  item: string;
+  qty: number;
+  rating: string;
+  data?: string;
+  protection?: string;
+  note?: string;
+  /** Totals for the whole row: kWp of modules, kW of inverters, kWh of batteries. */
+  kwp?: number;
+  kw?: number;
+  kwh?: number;
+};
+
+export type SolarEquipmentList = {
+  title: string;
+  project: string;
+  rows: SolarEquipmentRow[];
+};
+
+export type Focus = { x: number; y: number; w: number; h: number };
 
 export type TopicContent = {
   title: string;

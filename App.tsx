@@ -19,6 +19,8 @@ import { FLAT_LESSONS } from './src/content/course';
 import { STORY_FLAT_LESSONS, STORY_SECTIONS } from './src/content/storyCourse';
 import { CLIM_STORY_FLAT_LESSONS, CLIM_STORY_SECTIONS } from './src/content/climStoryCourse';
 import { getClimStoryContent } from './src/content/climStoryRegistry';
+import { SOLAR_STORY_FLAT_LESSONS, SOLAR_STORY_SECTIONS } from './src/content/solarStoryCourse';
+import { getSolarStoryContent } from './src/content/solarStoryRegistry';
 import { getStoryContent } from './src/content/storyRegistry';
 import { FicheProvider } from './src/components/notes/FicheContext';
 import { SOLAR_NOTES_TOPICS } from './src/data/solarNotesTopics';
@@ -49,6 +51,9 @@ function AppShell() {
   const [climView, setClimView] = useState<'story' | 'fiches'>('story');
   const [activeClimStoryId, setActiveClimStoryId] = useState<string | null>(null);
   const [climFicheFromStory, setClimFicheFromStory] = useState(false);
+  const [solarView, setSolarView] = useState<'story' | 'fiches'>('story');
+  const [activeSolarStoryId, setActiveSolarStoryId] = useState<string | null>(null);
+  const [solarFicheFromStory, setSolarFicheFromStory] = useState(false);
   const { lang, toggle, t } = useLanguage();
 
   const storyContent = activeStoryId ? getStoryContent(lang, activeStoryId) : undefined;
@@ -105,6 +110,43 @@ function AppShell() {
     ? `${currentLesson.section.id === 'appendix' ? t('Annexe', 'Appendix') : `${t('Section', 'Section')} ${currentLesson.sectionIndex + 1}`} · ${t('Leçon', 'Lesson')} ${currentLesson.number}`
     : undefined;
 
+  const solarStoryContent = activeSolarStoryId ? getSolarStoryContent(lang, activeSolarStoryId) : undefined;
+  const solarStoryLessons = SOLAR_STORY_FLAT_LESSONS.filter((l) => !!getSolarStoryContent(lang, l.lesson.id));
+  const solarStoryPos = solarStoryLessons.findIndex((l) => l.lesson.id === activeSolarStoryId);
+  const solarStoryCurrent = solarStoryPos >= 0 ? solarStoryLessons[solarStoryPos] : undefined;
+  const solarStoryPrev = solarStoryPos > 0 ? solarStoryLessons[solarStoryPos - 1] : undefined;
+  const solarStoryNext = solarStoryPos >= 0 ? solarStoryLessons[solarStoryPos + 1] : undefined;
+  const solarStoryEyebrow = solarStoryCurrent
+    ? `${t('Solaire', 'Solar')} · ${t('Projet', 'Project')} ${solarStoryCurrent.sectionIndex + 1} · ${t('Étape', 'Step')} ${solarStoryCurrent.number}`
+    : undefined;
+  const solarFicheNav = {
+    open: (id: string) => {
+      setActiveSolarTopicId(id);
+      setSolarFicheFromStory(true);
+    },
+    title: (id: string) => {
+      const l = SOLAR_NOTES_TOPICS.find((x) => x.id === id);
+      return l ? (lang === 'fr' ? l.title : l.titleEn) : undefined;
+    },
+  };
+  const solarSwitch = (
+    <View style={styles.notesSwitch}>
+      {(
+        [
+          ['story', t('📖 Le parcours en projets', '📖 The project journey')],
+          ['fiches', t('📘 Fiches techniques', '📘 Reference sheets')],
+        ] as const
+      ).map(([key, label]) => (
+        <TouchableOpacity
+          key={key}
+          style={[styles.notesSwitchButton, solarView === key && styles.notesSwitchActive]}
+          onPress={() => setSolarView(key)}
+        >
+          <Text style={[styles.notesSwitchText, solarView === key && styles.notesSwitchTextActive]}>{label}</Text>
+        </TouchableOpacity>
+      ))}
+    </View>
+  );
   const solarPos = SOLAR_NOTES_TOPICS.findIndex((s) => s.id === activeSolarTopicId);
   const prevSolar = solarPos > 0 ? SOLAR_NOTES_TOPICS[solarPos - 1] : undefined;
   const nextSolar = solarPos >= 0 ? SOLAR_NOTES_TOPICS[solarPos + 1] : undefined;
@@ -386,34 +428,81 @@ function AppShell() {
               />
             )}
           </FicheProvider>
-        ) : activeSolarTopicContent && activeSolarTopicId ? (
-          <LessonView
-            key={`${activeSolarTopicId}-${lang}`}
-            content={activeSolarTopicContent}
-            eyebrow={t('Solaire PV', 'Solar PV')}
-            backLabel={t('Solaire PV', 'Solar PV')}
-            onBack={() => setActiveSolarTopicId(null)}
-            prev={prevSolar ? { title: lang === 'fr' ? prevSolar.title : prevSolar.titleEn, onPress: () => setActiveSolarTopicId(prevSolar.id) } : undefined}
-            next={
-              nextSolar
-                ? {
-                    title: lang === 'fr' ? nextSolar.title : nextSolar.titleEn,
-                    transition: lang === 'fr' ? SOLAR_NOTES_TOPICS[solarPos].transition : SOLAR_NOTES_TOPICS[solarPos].transitionEn,
-                    onPress: () => setActiveSolarTopicId(nextSolar.id),
-                  }
-                : undefined
-            }
-          />
         ) : (
-          <NotesHomeScreen
-            topics={SOLAR_NOTES_TOPICS}
-            getContent={getSolarTopicContent}
-            title="Solaire PV"
-            titleEn="Solar PV"
-            subtitle="Dimensionnement de systèmes photovoltaïques : charges, panneaux, batteries, régulateurs"
-            subtitleEn="Sizing photovoltaic systems: loads, panels, batteries, controllers"
-            onSelectTopic={setActiveSolarTopicId}
-          />
+          <FicheProvider value={solarFicheNav}>
+            {solarStoryContent && activeSolarStoryId ? (
+              <View style={[styles.fill, activeSolarTopicId ? styles.hidden : null]}>
+                <LessonView
+                  key={`${activeSolarStoryId}-${lang}`}
+                  content={solarStoryContent}
+                  eyebrow={solarStoryEyebrow}
+                  backLabel={t('Projets', 'Projects')}
+                  onBack={() => setActiveSolarStoryId(null)}
+                  prev={solarStoryPrev ? { title: lessonTitle(solarStoryPrev), onPress: () => setActiveSolarStoryId(solarStoryPrev.lesson.id) } : undefined}
+                  next={
+                    solarStoryNext
+                      ? {
+                          title: lessonTitle(solarStoryNext),
+                          transition: lang === 'fr' ? solarStoryCurrent?.lesson.transition : solarStoryCurrent?.lesson.transitionEn,
+                          onPress: () => setActiveSolarStoryId(solarStoryNext.lesson.id),
+                        }
+                      : undefined
+                  }
+                />
+              </View>
+            ) : null}
+            {activeSolarTopicContent && activeSolarTopicId ? (
+              <LessonView
+                key={`${activeSolarTopicId}-${lang}`}
+                content={activeSolarTopicContent}
+                eyebrow={solarFicheFromStory ? `${t('Fiche technique', 'Reference sheet')} · ${t('Solaire PV', 'Solar PV')}` : t('Solaire PV', 'Solar PV')}
+                backLabel={solarFicheFromStory ? t('Retour au projet', 'Back to the project') : t('Fiches techniques', 'Reference sheets')}
+                onBack={() => {
+                  setActiveSolarTopicId(null);
+                  setSolarFicheFromStory(false);
+                }}
+                prev={prevSolar ? { title: lang === 'fr' ? prevSolar.title : prevSolar.titleEn, onPress: () => setActiveSolarTopicId(prevSolar.id) } : undefined}
+                next={
+                  nextSolar
+                    ? {
+                        title: lang === 'fr' ? nextSolar.title : nextSolar.titleEn,
+                        transition: lang === 'fr' ? SOLAR_NOTES_TOPICS[solarPos].transition : SOLAR_NOTES_TOPICS[solarPos].transitionEn,
+                        onPress: () => setActiveSolarTopicId(nextSolar.id),
+                      }
+                    : undefined
+                }
+              />
+            ) : activeSolarStoryId && solarStoryContent ? null : solarView === 'story' ? (
+              <CourseHomeScreen
+                topSlot={solarSwitch}
+                isAvailable={(id) => !!getSolarStoryContent(lang, id)}
+                onOpenLesson={setActiveSolarStoryId}
+                sections={SOLAR_STORY_SECTIONS}
+                flat={SOLAR_STORY_FLAT_LESSONS}
+                sectionLabel={['Projet', 'Project']}
+                hero={{ name: 'pv-system' }}
+                title={['Le solaire, raconté en projets', 'Solar PV, told as projects']}
+                subtitle={[
+                  'Suivez Fanta Coulibaly, ingénieure photovoltaïque chez Lumen Ingénierie : une villa contre les délestages, un centre de santé isolé, la toiture d’une usine et le pompage d’un village. Chaque décision est expliquée au client ; les détails techniques sont dans les fiches.',
+                  'Follow Fanta Coulibaly, PV engineer at Lumen Ingénierie: a villa against load shedding, an off-grid health centre, a factory roof and a village pumping system. Every decision is explained to the client; the technical details are in the reference sheets.',
+                ]}
+              />
+            ) : (
+              <NotesHomeScreen
+                topSlot={solarSwitch}
+                topics={SOLAR_NOTES_TOPICS}
+                getContent={getSolarTopicContent}
+                title="Fiches techniques · Solaire PV"
+                titleEn="Reference sheets · Solar PV"
+                subtitle="Dimensionnement de systèmes photovoltaïques : charges, panneaux, batteries, régulateurs, onduleurs"
+                subtitleEn="Sizing photovoltaic systems: loads, panels, batteries, controllers, inverters"
+                onSelectTopic={(id) => {
+                  setSolarFicheFromStory(false);
+                  setActiveSolarTopicId(id);
+                }}
+              />
+            )}
+          </FicheProvider>
         )}
       </View>
       <StatusBar style="auto" />
