@@ -31,6 +31,10 @@ export type NoteBlock =
   | { type: 'norms'; title?: string; rows: { norm: string; rule: string; result: string }[] }
   /** Panel load schedule laid out like the design-office spreadsheet. */
   | { type: 'panelSchedule'; panel: PanelSchedule }
+  /** Room-by-room heat load sheet (W), laid out like the design-office spreadsheet. */
+  | { type: 'heatLoadSheet'; sheet: HeatLoadSheet }
+  /** HVAC equipment schedule (indoor/outdoor units, capacities, electrical data). */
+  | { type: 'equipmentSchedule'; schedule: EquipmentSchedule }
   /** `focus` = area to zoom into, as fractions of the image (0–1): the panel shows the whole image, then zooms on it. */
   | { type: 'image'; source: any; caption?: string; height?: number; focus?: Focus }
   | { type: 'illustration'; name: string; props?: Record<string, string | number | boolean>; caption?: string };
@@ -68,7 +72,66 @@ export type PanelSchedule = {
   lineVoltage?: number;
 };
 
-export type Focus = { x: number; y: number; w: number; h: number };
+/** One room of a heat load sheet; every gain in W. */
+export type HeatLoadRoom = {
+  name: string;
+  area: number;
+  /** Walls + roof: transmission and sun on opaque surfaces. */
+  walls: number;
+  /** Glazing: transmission + solar. */
+  glazing: number;
+  people: number;
+  lighting: number;
+  equipment: number;
+  /** Fresh air / infiltration, sensible part. */
+  air: number;
+  peopleLat: number;
+  airLat: number;
+  /** Other latent gains (cooking, products…). */
+  otherLat?: number;
+  /** Unit chosen for the room, e.g. "Split 18 000 BTU/h". */
+  selected?: string;
+  /** Nominal capacity of the chosen unit (W), to check coverage. */
+  selectedW?: number;
+};
+
+export type HeatLoadSheet = {
+  project: string;
+  location: string;
+  outdoor: string;
+  indoor: string;
+  peakHour?: string;
+  /** Safety margin added to the total (default 0.05). */
+  margin?: number;
+  rooms: HeatLoadRoom[];
+  /** Diversity applied to the sum of rooms for the central plant (default 1). */
+  diversity?: number;
+};
+
+export type EquipmentRow = {
+  tag: string;
+  location: string;
+  type: string;
+  /** Cooling capacity, kW. */
+  cooling: number;
+  airflow?: number;
+  refrigerant?: string;
+  supply: string;
+  /** Absorbed electrical power, kW. */
+  power: number;
+  current?: number;
+  protection?: string;
+  note?: string;
+};
+
+export type EquipmentSchedule = {
+  title: string;
+  project: string;
+  conditions?: string;
+  rows: EquipmentRow[];
+};
+
+export type Focus ={ x: number; y: number; w: number; h: number };
 
 export type TopicContent = {
   title: string;

@@ -7,6 +7,7 @@ import { MathBlock, RichText } from './MathText';
 import { useFicheNav } from './FicheContext';
 import { Calc, Decision, KeyFigures, Norms, Objectives } from './StoryBlocks';
 import { PanelScheduleView } from './PanelScheduleView';
+import { EquipmentScheduleView, HeatLoadSheetView } from './HvacDocsView';
 
 function ExerciseCard({ title, question, solution }: { title?: string; question: string; solution: string[] }) {
   const { t } = useLanguage();
@@ -114,6 +115,10 @@ export function NoteBlockRenderer({ block }: { block: NoteBlock }) {
       return <Norms title={block.title} rows={block.rows} />;
     case 'panelSchedule':
       return <PanelScheduleView panel={block.panel} />;
+    case 'heatLoadSheet':
+      return <HeatLoadSheetView sheet={block.sheet} />;
+    case 'equipmentSchedule':
+      return <EquipmentScheduleView schedule={block.schedule} />;
     case 'heading':
       return <Text style={styles.heading}>{block.text}</Text>;
     case 'subheading':

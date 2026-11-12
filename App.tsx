@@ -17,6 +17,8 @@ import { getClimTopicContent } from './src/content/climRegistry';
 import { CLIM_FLAT_LESSONS, CLIM_SECTIONS } from './src/content/climCourse';
 import { FLAT_LESSONS } from './src/content/course';
 import { STORY_FLAT_LESSONS, STORY_SECTIONS } from './src/content/storyCourse';
+import { CLIM_STORY_FLAT_LESSONS, CLIM_STORY_SECTIONS } from './src/content/climStoryCourse';
+import { getClimStoryContent } from './src/content/climStoryRegistry';
 import { getStoryContent } from './src/content/storyRegistry';
 import { FicheProvider } from './src/components/notes/FicheContext';
 import { SOLAR_NOTES_TOPICS } from './src/data/solarNotesTopics';
@@ -44,6 +46,9 @@ function AppShell() {
   const [notesView, setNotesView] = useState<'story' | 'fiches'>('story');
   const [activeStoryId, setActiveStoryId] = useState<string | null>(null);
   const [ficheFromStory, setFicheFromStory] = useState(false);
+  const [climView, setClimView] = useState<'story' | 'fiches'>('story');
+  const [activeClimStoryId, setActiveClimStoryId] = useState<string | null>(null);
+  const [climFicheFromStory, setClimFicheFromStory] = useState(false);
   const { lang, toggle, t } = useLanguage();
 
   const storyContent = activeStoryId ? getStoryContent(lang, activeStoryId) : undefined;
@@ -109,6 +114,43 @@ function AppShell() {
   const climCurrent = climPos >= 0 ? CLIM_FLAT_LESSONS[climPos] : undefined;
   const climPrev = climPos > 0 ? CLIM_FLAT_LESSONS[climPos - 1] : undefined;
   const climNext = climPos >= 0 ? CLIM_FLAT_LESSONS[climPos + 1] : undefined;
+  const climStoryContent = activeClimStoryId ? getClimStoryContent(lang, activeClimStoryId) : undefined;
+  const climStoryLessons = CLIM_STORY_FLAT_LESSONS.filter((l) => !!getClimStoryContent(lang, l.lesson.id));
+  const climStoryPos = climStoryLessons.findIndex((l) => l.lesson.id === activeClimStoryId);
+  const climStoryCurrent = climStoryPos >= 0 ? climStoryLessons[climStoryPos] : undefined;
+  const climStoryPrev = climStoryPos > 0 ? climStoryLessons[climStoryPos - 1] : undefined;
+  const climStoryNext = climStoryPos >= 0 ? climStoryLessons[climStoryPos + 1] : undefined;
+  const climStoryEyebrow = climStoryCurrent
+    ? `${t('Climatisation', 'Air conditioning')} · ${t('Projet', 'Project')} ${climStoryCurrent.sectionIndex + 1} · ${t('Étape', 'Step')} ${climStoryCurrent.number}`
+    : undefined;
+  const climFicheNav = {
+    open: (id: string) => {
+      setActiveClimId(id);
+      setClimFicheFromStory(true);
+    },
+    title: (id: string) => {
+      const l = CLIM_FLAT_LESSONS.find((f) => f.lesson.id === id);
+      return l ? (lang === 'fr' ? l.lesson.title : l.lesson.titleEn) : undefined;
+    },
+  };
+  const climSwitch = (
+    <View style={styles.notesSwitch}>
+      {(
+        [
+          ['story', t('📖 Le parcours en projets', '📖 The project journey')],
+          ['fiches', t('📘 Fiches techniques', '📘 Reference sheets')],
+        ] as const
+      ).map(([key, label]) => (
+        <TouchableOpacity
+          key={key}
+          style={[styles.notesSwitchButton, climView === key && styles.notesSwitchActive]}
+          onPress={() => setClimView(key)}
+        >
+          <Text style={[styles.notesSwitchText, climView === key && styles.notesSwitchTextActive]}>{label}</Text>
+        </TouchableOpacity>
+      ))}
+    </View>
+  );
   const climEyebrow = climCurrent
     ? `${t('Climatisation', 'Air conditioning')} · ${t('Section', 'Section')} ${climCurrent.sectionIndex + 1} · ${t('Leçon', 'Lesson')} ${climCurrent.number}`
     : undefined;
@@ -267,38 +309,83 @@ function AppShell() {
             )}
           </FicheProvider>
         ) : mode === 'clim' ? (
-          climContent && activeClimId ? (
-            <LessonView
-              key={`${activeClimId}-${lang}`}
-              content={climContent}
-              eyebrow={climEyebrow}
-              backLabel={t('Parcours', 'Journey')}
-              onBack={() => setActiveClimId(null)}
-              prev={climPrev ? { title: lessonTitle(climPrev), onPress: () => setActiveClimId(climPrev.lesson.id) } : undefined}
-              next={
-                climNext
-                  ? {
-                      title: lessonTitle(climNext),
-                      transition: lang === 'fr' ? climCurrent?.lesson.transition : climCurrent?.lesson.transitionEn,
-                      onPress: () => setActiveClimId(climNext.lesson.id),
-                    }
-                  : undefined
-              }
-            />
-          ) : (
-            <CourseHomeScreen
-              isAvailable={(id) => !!getClimTopicContent(lang, id)}
-              onOpenLesson={setActiveClimId}
-              sections={CLIM_SECTIONS}
-              flat={CLIM_FLAT_LESSONS}
-              title={['Climatisation en région tropicale', 'Air conditioning in tropical regions']}
-              subtitle={[
-                'Du confort au bilan thermique, du circuit frigorifique au dépannage, du split à la centrale à eau glacée : un parcours pensé pour débuter, d’après le guide IEPF « Efficacité énergétique de la climatisation en région tropicale » et le livre « ABC de la climatisation ».',
-                'From comfort to the heat balance, from the refrigerant circuit to troubleshooting, from the split to the chilled-water plant: a beginner-friendly journey based on the IEPF guide “Energy efficiency of air conditioning in tropical regions” and the book “ABC de la climatisation”.',
-              ]}
-              hero={{ name: 'clim-heat-gains' }}
-            />
-          )
+          <FicheProvider value={climFicheNav}>
+            {climStoryContent && activeClimStoryId ? (
+              <View style={[styles.fill, activeClimId ? styles.hidden : null]}>
+                <LessonView
+                  key={`${activeClimStoryId}-${lang}`}
+                  content={climStoryContent}
+                  eyebrow={climStoryEyebrow}
+                  backLabel={t('Projets', 'Projects')}
+                  onBack={() => setActiveClimStoryId(null)}
+                  prev={climStoryPrev ? { title: lessonTitle(climStoryPrev), onPress: () => setActiveClimStoryId(climStoryPrev.lesson.id) } : undefined}
+                  next={
+                    climStoryNext
+                      ? {
+                          title: lessonTitle(climStoryNext),
+                          transition: lang === 'fr' ? climStoryCurrent?.lesson.transition : climStoryCurrent?.lesson.transitionEn,
+                          onPress: () => setActiveClimStoryId(climStoryNext.lesson.id),
+                        }
+                      : undefined
+                  }
+                />
+              </View>
+            ) : null}
+            {climContent && activeClimId ? (
+              <LessonView
+                key={`${activeClimId}-${lang}`}
+                content={climContent}
+                eyebrow={climFicheFromStory ? `${t('Fiche technique', 'Reference sheet')} · ${climEyebrow ?? ''}` : climEyebrow}
+                backLabel={climFicheFromStory ? t('Retour au projet', 'Back to the project') : t('Fiches techniques', 'Reference sheets')}
+                onBack={() => {
+                  setActiveClimId(null);
+                  setClimFicheFromStory(false);
+                }}
+                prev={climPrev ? { title: lessonTitle(climPrev), onPress: () => setActiveClimId(climPrev.lesson.id) } : undefined}
+                next={
+                  climNext
+                    ? {
+                        title: lessonTitle(climNext),
+                        transition: lang === 'fr' ? climCurrent?.lesson.transition : climCurrent?.lesson.transitionEn,
+                        onPress: () => setActiveClimId(climNext.lesson.id),
+                      }
+                    : undefined
+                }
+              />
+            ) : activeClimStoryId && climStoryContent ? null : climView === 'story' ? (
+              <CourseHomeScreen
+                topSlot={climSwitch}
+                isAvailable={(id) => !!getClimStoryContent(lang, id)}
+                onOpenLesson={setActiveClimStoryId}
+                sections={CLIM_STORY_SECTIONS}
+                flat={CLIM_STORY_FLAT_LESSONS}
+                sectionLabel={['Projet', 'Project']}
+                title={['La climatisation, racontée en projets', 'Air conditioning, told as projects']}
+                subtitle={[
+                  'Suivez Ousmane Cissé, ingénieur climaticien chez Lumen Ingénierie, avec Awa Diallo pour l’électricité : une villa, une chambre froide, un immeuble de bureaux et un hôtel. Chaque décision est expliquée au client ; les détails techniques sont dans les fiches.',
+                  'Follow Ousmane Cissé, HVAC engineer at Lumen Ingénierie, with Awa Diallo on the electrical side: a villa, a cold room, an office building and a hotel. Every decision is explained to the client; the technical details are in the reference sheets.',
+                ]}
+                hero={{ name: 'clim-systems' }}
+              />
+            ) : (
+              <CourseHomeScreen
+                topSlot={climSwitch}
+                isAvailable={(id) => !!getClimTopicContent(lang, id)}
+                onOpenLesson={(id) => {
+                  setClimFicheFromStory(false);
+                  setActiveClimId(id);
+                }}
+                sections={CLIM_SECTIONS}
+                flat={CLIM_FLAT_LESSONS}
+                title={['Climatisation en région tropicale', 'Air conditioning in tropical regions']}
+                subtitle={[
+                  'Du confort au bilan thermique, du circuit frigorifique au dépannage, du split à la centrale à eau glacée : un parcours pensé pour débuter, d’après le guide IEPF « Efficacité énergétique de la climatisation en région tropicale » et le livre « ABC de la climatisation ».',
+                  'From comfort to the heat balance, from the refrigerant circuit to troubleshooting, from the split to the chilled-water plant: a beginner-friendly journey based on the IEPF guide “Energy efficiency of air conditioning in tropical regions” and the book “ABC de la climatisation”.',
+                ]}
+                hero={{ name: 'clim-heat-gains' }}
+              />
+            )}
+          </FicheProvider>
         ) : activeSolarTopicContent && activeSolarTopicId ? (
           <LessonView
             key={`${activeSolarTopicId}-${lang}`}
