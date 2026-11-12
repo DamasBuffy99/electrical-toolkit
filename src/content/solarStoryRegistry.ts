@@ -13,6 +13,10 @@ import { stProfileContent } from './solarStory/stProfile';
 import { stStringsContent } from './solarStory/stStrings';
 import { stSafetyContent } from './solarStory/stSafety';
 import { stEconomicsContent } from './solarStory/stEconomics';
+import { spNeedsContent } from './solarStory/spNeeds';
+import { spPumpContent } from './solarStory/spPump';
+import { spFieldContent } from './solarStory/spField';
+import { spOperationContent } from './solarStory/spOperation';
 
 import { svNeedsContent as svNeedsContentEn } from './solarStory/en/svNeeds';
 import { svDesignContent as svDesignContentEn } from './solarStory/en/svDesign';
@@ -26,6 +30,10 @@ import { stProfileContent as stProfileContentEn } from './solarStory/en/stProfil
 import { stStringsContent as stStringsContentEn } from './solarStory/en/stStrings';
 import { stSafetyContent as stSafetyContentEn } from './solarStory/en/stSafety';
 import { stEconomicsContent as stEconomicsContentEn } from './solarStory/en/stEconomics';
+import { spNeedsContent as spNeedsContentEn } from './solarStory/en/spNeeds';
+import { spPumpContent as spPumpContentEn } from './solarStory/en/spPump';
+import { spFieldContent as spFieldContentEn } from './solarStory/en/spField';
+import { spOperationContent as spOperationContentEn } from './solarStory/en/spOperation';
 
 export const SOLAR_STORY_CONTENT_FR: Record<string, TopicContent | undefined> = {
   'sv-needs': svNeedsContent,
@@ -40,6 +48,10 @@ export const SOLAR_STORY_CONTENT_FR: Record<string, TopicContent | undefined> = 
   'st-strings': stStringsContent,
   'st-safety': stSafetyContent,
   'st-economics': stEconomicsContent,
+  'sp-needs': spNeedsContent,
+  'sp-pump': spPumpContent,
+  'sp-field': spFieldContent,
+  'sp-operation': spOperationContent,
 };
 
 export const SOLAR_STORY_CONTENT_EN: Record<string, TopicContent | undefined> = {
@@ -55,6 +67,10 @@ export const SOLAR_STORY_CONTENT_EN: Record<string, TopicContent | undefined> = 
   'st-strings': stStringsContentEn,
   'st-safety': stSafetyContentEn,
   'st-economics': stEconomicsContentEn,
+  'sp-needs': spNeedsContentEn,
+  'sp-pump': spPumpContentEn,
+  'sp-field': spFieldContentEn,
+  'sp-operation': spOperationContentEn,
 };
 
 export function getSolarStoryContent(lang: Lang, id: string): TopicContent | undefined {
