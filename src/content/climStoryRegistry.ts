@@ -13,6 +13,10 @@ import { coLoadContent } from './climStory/coLoad';
 import { coSystemContent } from './climStory/coSystem';
 import { coAirContent } from './climStory/coAir';
 import { coDuctsContent } from './climStory/coDucts';
+import { chConceptContent } from './climStory/chConcept';
+import { chChillersContent } from './climStory/chChillers';
+import { chHydraulicsContent } from './climStory/chHydraulics';
+import { chTerminalsContent } from './climStory/chTerminals';
 
 import { cvBriefContent as cvBriefContentEn } from './climStory/en/cvBrief';
 import { cvLoadContent as cvLoadContentEn } from './climStory/en/cvLoad';
@@ -26,6 +30,10 @@ import { coLoadContent as coLoadContentEn } from './climStory/en/coLoad';
 import { coSystemContent as coSystemContentEn } from './climStory/en/coSystem';
 import { coAirContent as coAirContentEn } from './climStory/en/coAir';
 import { coDuctsContent as coDuctsContentEn } from './climStory/en/coDucts';
+import { chConceptContent as chConceptContentEn } from './climStory/en/chConcept';
+import { chChillersContent as chChillersContentEn } from './climStory/en/chChillers';
+import { chHydraulicsContent as chHydraulicsContentEn } from './climStory/en/chHydraulics';
+import { chTerminalsContent as chTerminalsContentEn } from './climStory/en/chTerminals';
 
 export const CLIM_STORY_CONTENT_FR: Record<string, TopicContent | undefined> = {
   'cv-brief': cvBriefContent,
@@ -40,6 +48,10 @@ export const CLIM_STORY_CONTENT_FR: Record<string, TopicContent | undefined> = {
   'co-system': coSystemContent,
   'co-air': coAirContent,
   'co-ducts': coDuctsContent,
+  'ch-concept': chConceptContent,
+  'ch-chillers': chChillersContent,
+  'ch-hydraulics': chHydraulicsContent,
+  'ch-terminals': chTerminalsContent,
 };
 
 export const CLIM_STORY_CONTENT_EN: Record<string, TopicContent | undefined> = {
@@ -55,6 +67,10 @@ export const CLIM_STORY_CONTENT_EN: Record<string, TopicContent | undefined> = {
   'co-system': coSystemContentEn,
   'co-air': coAirContentEn,
   'co-ducts': coDuctsContentEn,
+  'ch-concept': chConceptContentEn,
+  'ch-chillers': chChillersContentEn,
+  'ch-hydraulics': chHydraulicsContentEn,
+  'ch-terminals': chTerminalsContentEn,
 };
 
 export function getClimStoryContent(lang: Lang, id: string): TopicContent | undefined {
