@@ -6,6 +6,22 @@ export const factoryStartingContent: TopicContent = {
   blocks: [
     { type: 'scene', text: 'Month 1 · Plant meeting room' },
     {
+      type: 'objectives',
+      items: [
+        'Estimate the voltage dip when a motor starts.',
+        'Compare DOL, star-delta, soft starter and drive.',
+        'Choose the starting method of each machine.',
+      ],
+    },
+    {
+      type: 'keyfigures',
+      items: [
+        { value: '≈ 7 I_n', label: 'inrush direct-on-line' },
+        { value: '478 kVA', label: 'compressor inrush DOL' },
+        { value: '≈ 3 I_n', label: 'with a soft starter' },
+      ],
+    },
+    {
       type: 'dialogue',
       speaker: 'Paul Ndiaye (maintenance)',
       role: 'team',

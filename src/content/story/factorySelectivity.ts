@@ -6,6 +6,24 @@ export const factorySelectivityContent: TopicContent = {
   blocks: [
     { type: 'scene', text: 'Mois 3 · Bureau d’Ibrahim Traoré' },
     {
+      type: 'objectives',
+      items: [
+        'Calculer le courant de court-circuit à chaque niveau.',
+        'Connaître les trois façons d’obtenir la sélectivité.',
+        'Régler les protections du TGBT et des départs.',
+        'Coordonner avec le fusible MT.',
+      ],
+    },
+    {
+      type: 'keyfigures',
+      items: [
+        { value: '14,4 kA', label: 'court-circuit au TGBT' },
+        { value: '0,2 s', label: 'retard du général' },
+        { value: '0,1 s', label: 'retard du départ 400 A' },
+        { value: '25 A', label: 'fusible MT' },
+      ],
+    },
+    {
       type: 'dialogue',
       speaker: 'Ibrahim Traoré',
       role: 'client',

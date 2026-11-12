@@ -6,6 +6,23 @@ export const clinicLoadsContent: TopicContent = {
   blocks: [
     { type: 'scene', text: 'Mois 1 · Clinique Espoir, bureau de la directrice' },
     {
+      type: 'objectives',
+      items: [
+        'Classer les charges d’un établissement de santé : vital, essentiel, normal.',
+        'Faire le bilan par niveau.',
+        'Traduire ce classement en tableaux séparés.',
+      ],
+    },
+    {
+      type: 'keyfigures',
+      items: [
+        { value: '18 kW', label: 'niveau vital (0 s)' },
+        { value: '107 kW', label: 'niveau essentiel (≤ 15 s)' },
+        { value: '118 kVA', label: 'à secourir' },
+        { value: '400 kVA', label: 'transformateur' },
+      ],
+    },
+    {
       type: 'text',
       text: 'Le Dr Aïcha Bello ouvre la Clinique Espoir : 30 lits d’hospitalisation, deux salles d’opération, quatre lits de réanimation, un laboratoire, une radiologie et une stérilisation. Elle a travaillé dans un hôpital où une coupure en pleine opération a laissé l’équipe dans le noir pendant de longues secondes. Elle en parle encore.',
     },

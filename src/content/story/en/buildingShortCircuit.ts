@@ -5,6 +5,23 @@ export const buildingShortCircuitContent: TopicContent = {
   subtitle: 'Right next to a transformer, a short circuit can drive thousands of amps. A breaker unable to interrupt them can explode. Awa calculates this current to choose devices robust enough, without paying for unnecessary margin.',
   blocks: [
     { type: 'scene', text: 'Month 4 · Design office, checking the main board' },
+    {
+      type: 'objectives',
+      items: [
+        'Understand where short-circuit current comes from.',
+        'Calculate it quickly, then in detail (R, X).',
+        'Choose the breaking capacity of the devices.',
+      ],
+    },
+    {
+      type: 'keyfigures',
+      items: [
+        { value: '5.8 kA', label: 'quick estimate' },
+        { value: '5.6 kA', label: 'detailed calculation at the main board' },
+        { value: '4.5 kA', label: 'at the 4th-floor landing' },
+        { value: '10 kA', label: 'breaking capacity chosen' },
+      ],
+    },
     { type: 'illustration', name: 'building-riser', props: { highlight: 'shortcircuit' }, caption: 'A short circuit at the main board: the nearby transformer feeds it' },
     {
       type: 'dialogue',

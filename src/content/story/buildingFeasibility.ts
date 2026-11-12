@@ -6,6 +6,23 @@ export const buildingFeasibilityContent: TopicContent = {
   blocks: [
     { type: 'scene', text: 'Mois 1 · Bureau de Fatou Sow, promotrice' },
     {
+      type: 'objectives',
+      items: [
+        'Estimer la puissance d’un immeuble avant les plans détaillés.',
+        'Appliquer le foisonnement entre logements.',
+        'Interroger le distributeur sur le raccordement.',
+      ],
+    },
+    {
+      type: 'keyfigures',
+      items: [
+        { value: '16 × 9 kVA', label: 'logements' },
+        { value: '76 kVA', label: 'logements après foisonnement' },
+        { value: '19 kVA', label: 'services communs' },
+        { value: '95 kVA', label: 'demande totale' },
+      ],
+    },
+    {
       type: 'text',
       text: 'Fatou Sow a acheté un terrain pour construire la Résidence Les Palmiers : un rez-de-chaussée avec parking et locaux techniques, puis quatre étages de quatre appartements (des F3 d’environ 90 m²), un ascenseur et une bâche à eau avec surpresseur. Elle a vu la villa des Mensah et veut le même sérieux, mais elle a surtout une question d’argent.',
     },

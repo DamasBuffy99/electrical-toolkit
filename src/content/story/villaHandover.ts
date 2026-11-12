@@ -6,6 +6,23 @@ export const villaHandoverContent: TopicContent = {
   blocks: [
     { type: 'scene', text: 'Mois 2 à 5 · Sur le chantier' },
     {
+      type: 'objectives',
+      items: [
+        'Suivre les étapes du chantier, des saignées à la finition.',
+        'Réaliser les essais avant mise sous tension.',
+        'Remettre au client un dossier complet.',
+      ],
+    },
+    {
+      type: 'keyfigures',
+      items: [
+        { value: '≥ 0,5 MΩ', label: 'isolement minimal exigé' },
+        { value: '200 MΩ', label: 'isolement mesuré' },
+        { value: '38 Ω', label: 'résistance de terre' },
+        { value: '14', label: 'circuits essayés et étiquetés' },
+      ],
+    },
+    {
       type: 'text',
       text: 'Moussa Keïta, le chef de chantier de l’entreprise d’électricité, a reçu les plans d’exécution. Awa passe une fois par semaine. Chaque visite suit le même fil : comparer ce qui est posé à ce qui est dessiné, avant que ce soit caché.',
     },

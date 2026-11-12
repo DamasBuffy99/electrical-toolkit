@@ -6,6 +6,22 @@ export const villaPlansContent: TopicContent = {
   blocks: [
     { type: 'scene', text: 'Week 1 · Design office' },
     {
+      type: 'objectives',
+      items: [
+        'Read an architect’s plan through an electrician’s eyes.',
+        'Recognise the usual electrical symbols.',
+        'Coordinate the electrical work with plumbing, AC and structure.',
+      ],
+    },
+    {
+      type: 'keyfigures',
+      items: [
+        { value: '160 m²', label: 'plan to equip' },
+        { value: '3', label: 'trades to coordinate' },
+        { value: '1 drawing', label: 'that rules on site' },
+      ],
+    },
+    {
       type: 'text',
       text: 'Jules Agbo has sent the villa plans as PDF and DWG files. Awa prints them large and spreads them on her table. Before drawing a single socket, she “reads” the building the way its future occupants will live in it.',
     },

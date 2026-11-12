@@ -5,6 +5,24 @@ export const buildingSubstationContent: TopicContent = {
   subtitle: 'What transformer rating? What type? How do you size its room, and that of the future generator? Awa answers with safety, maintenance and Fatou’s budget in mind.',
   blocks: [
     { type: 'scene', text: 'Month 2 · Meeting with the architect and the developer' },
+    {
+      type: 'objectives',
+      items: [
+        'Choose the transformer rating with headroom.',
+        'Know what an MV/LV substation contains.',
+        'Size the transformer and generator rooms.',
+        'Check an equipment alternative before approval.',
+      ],
+    },
+    {
+      type: 'keyfigures',
+      items: [
+        { value: '160 kVA', label: 'dry-type transformer' },
+        { value: '20/0.4 kV', label: 'voltage ratio' },
+        { value: '231 A', label: 'LV current' },
+        { value: 'u_k 4 %', label: 'short-circuit voltage' },
+      ],
+    },
     { type: 'illustration', name: 'building-riser', props: { highlight: 'substation' }, caption: 'The MV/LV substation and the main LV board on the ground floor' },
 
     { type: 'heading', text: '1 · Choosing the transformer rating' },

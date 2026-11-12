@@ -6,6 +6,22 @@ export const villaPlansContent: TopicContent = {
   blocks: [
     { type: 'scene', text: 'Semaine 1 · Bureau d’études' },
     {
+      type: 'objectives',
+      items: [
+        'Lire un plan d’architecte avec les yeux d’un électricien.',
+        'Reconnaître les symboles électriques usuels.',
+        'Coordonner l’électricité avec la plomberie, la clim et la structure.',
+      ],
+    },
+    {
+      type: 'keyfigures',
+      items: [
+        { value: '160 m²', label: 'plan à équiper' },
+        { value: '3', label: 'métiers à coordonner' },
+        { value: '1 plan', label: 'qui fait foi pour le chantier' },
+      ],
+    },
+    {
       type: 'text',
       text: 'Jules Agbo a envoyé les plans de la villa au format PDF et DWG. Awa les imprime en grand et les étale sur sa table. Avant de dessiner une seule prise, elle va « lire » le bâtiment comme le futur habitant le vivra.',
     },

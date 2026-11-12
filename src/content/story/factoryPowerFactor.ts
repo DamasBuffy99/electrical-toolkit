@@ -6,6 +6,23 @@ export const factoryPowerFactorContent: TopicContent = {
   blocks: [
     { type: 'scene', text: 'Mois 6 · Usine en service, bureau d’Ibrahim' },
     {
+      type: 'objectives',
+      items: [
+        'Diagnostiquer un mauvais cos φ à partir des mesures.',
+        'Calculer la batterie de condensateurs.',
+        'Chiffrer les gains : facture, transformateur, câbles.',
+      ],
+    },
+    {
+      type: 'keyfigures',
+      items: [
+        { value: 'cos φ 0,80', label: 'avant correction' },
+        { value: '86 kvar', label: 'besoin calculé' },
+        { value: '100 kvar', label: 'batterie avec selfs' },
+        { value: '256 → 216 kVA', label: 'puissance appelée' },
+      ],
+    },
+    {
       type: 'dialogue',
       speaker: 'Ibrahim Traoré',
       role: 'client',

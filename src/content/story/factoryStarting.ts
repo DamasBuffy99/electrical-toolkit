@@ -6,6 +6,22 @@ export const factoryStartingContent: TopicContent = {
   blocks: [
     { type: 'scene', text: 'Mois 1 · Salle de réunion de l’usine' },
     {
+      type: 'objectives',
+      items: [
+        'Estimer la chute de tension au démarrage d’un moteur.',
+        'Comparer direct, étoile-triangle, démarreur progressif et variateur.',
+        'Choisir le démarrage de chaque machine.',
+      ],
+    },
+    {
+      type: 'keyfigures',
+      items: [
+        { value: '≈ 7 I_n', label: 'appel en démarrage direct' },
+        { value: '478 kVA', label: 'appel du compresseur en direct' },
+        { value: '≈ 3 I_n', label: 'avec démarreur progressif' },
+      ],
+    },
+    {
       type: 'dialogue',
       speaker: 'Paul Ndiaye (maintenance)',
       role: 'team',

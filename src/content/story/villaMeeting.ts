@@ -6,6 +6,23 @@ export const villaMeetingContent: TopicContent = {
   blocks: [
     { type: 'scene', text: 'Semaine 1 · Bureau d’études Lumen Ingénierie' },
     {
+      type: 'objectives',
+      items: [
+        'Savoir qui fait quoi dans un projet : client, architecte, ingénieur, entreprise.',
+        'Poser les questions qui changent la conception.',
+        'Comprendre le déroulé d’un projet, de l’avant-projet à la réception.',
+        'Repérer ce qui doit être décidé tout de suite (la terre en fond de fouille).',
+      ],
+    },
+    {
+      type: 'keyfigures',
+      items: [
+        { value: '160 m²', label: 'surface de la villa' },
+        { value: '4', label: 'grandes phases du projet' },
+        { value: '1', label: 'urgence : la terre avant le béton' },
+      ],
+    },
+    {
       type: 'text',
       text: 'Awa Diallo est ingénieure électricienne dans un petit bureau d’études. Ce matin, l’architecte Jules Agbo lui envoie un nouveau client : la famille Mensah, qui fait construire une villa de plain-pied de 160 m² avec trois chambres. Les plans sont presque terminés ; les fondations doivent être coulées dans un mois.',
     },

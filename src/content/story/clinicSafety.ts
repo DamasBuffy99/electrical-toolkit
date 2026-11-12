@@ -5,6 +5,22 @@ export const clinicSafetyContent: TopicContent = {
   subtitle: 'Si tout s’éteint, il faut encore pouvoir évacuer. Et un secours qu’on n’essaie jamais finit par ne pas marcher le jour où on en a besoin. Dernière étape : la sécurité, puis la vie de l’installation.',
   blocks: [
     { type: 'scene', text: 'Mois 5 · Avant l’ouverture de la clinique' },
+    {
+      type: 'objectives',
+      items: [
+        'Concevoir l’éclairage de sécurité, indépendant de tout le reste.',
+        'Établir le calendrier des essais périodiques.',
+        'Préparer la visite du bureau de contrôle avant l’ouverture.',
+      ],
+    },
+    {
+      type: 'keyfigures',
+      items: [
+        { value: 'BAES', label: 'blocs autonomes sur batterie' },
+        { value: '11 s', label: 'reprise mesurée aux essais' },
+        { value: 'mensuel', label: 'essai des groupes en charge' },
+      ],
+    },
     { type: 'illustration', name: 'clinic-tiers', props: { highlight: 'safety' }, caption: 'Les blocs autonomes ont leur propre batterie : ils ne dépendent d’aucune autre source' },
 
     { type: 'heading', text: '1 · L’éclairage de sécurité' },

@@ -5,6 +5,22 @@ export const factoryFeedersContent: TopicContent = {
   subtitle: 'Un moteur se protège contre deux dangers différents : la surcharge lente qui le cuit, et le court-circuit brutal. Awa compose chaque départ moteur, puis le gros câble qui alimente l’armoire de la salle des machines.',
   blocks: [
     { type: 'scene', text: 'Mois 2 · Bureau d’études' },
+    {
+      type: 'objectives',
+      items: [
+        'Protéger un moteur, et pas seulement son câble.',
+        'Dimensionner le départ d’une armoire de moteurs.',
+        'Vérifier tension et fréquence d’une machine importée.',
+      ],
+    },
+    {
+      type: 'keyfigures',
+      items: [
+        { value: '28,3 A', label: 'réglage du disjoncteur-moteur des pompes' },
+        { value: '257 A', label: 'courant du feeder de l’armoire' },
+        { value: '320 A', label: 'réglage du départ 400 A' },
+      ],
+    },
     { type: 'illustration', name: 'factory-sld', props: { highlight: 'motors' }, caption: 'Les départs moteurs du TGBT' },
     {
       type: 'dialogue',

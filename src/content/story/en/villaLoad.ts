@@ -6,6 +6,24 @@ export const villaLoadContent: TopicContent = {
   blocks: [
     { type: 'scene', text: 'Week 2 · Design office' },
     {
+      type: 'objectives',
+      items: [
+        'Draw up the installed load.',
+        'Apply diversity factors.',
+        'Check the result with a second method.',
+        'Choose between single- and three-phase and the subscribed power.',
+      ],
+    },
+    {
+      type: 'keyfigures',
+      items: [
+        { value: '15.46 kW', label: 'installed load' },
+        { value: '10.17 kW', label: 'load retained' },
+        { value: '11.3 kVA', label: 'demand' },
+        { value: '12 kVA 3-ph', label: 'subscription chosen' },
+      ],
+    },
+    {
       type: 'text',
       text: 'Back at the office, Awa goes through the Mensahs’ questionnaire and lists each use with its power. This is the “installed power”: what the house would draw if everything ran flat out at the same instant.',
     },

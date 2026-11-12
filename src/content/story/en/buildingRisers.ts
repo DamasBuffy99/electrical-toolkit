@@ -5,6 +5,24 @@ export const buildingRisersContent: TopicContent = {
   subtitle: 'How do you carry 76 kVA up to the 4th floor, give each family its own meter, and keep the voltage good all the way to the last flat?',
   blocks: [
     { type: 'scene', text: 'Month 3 · Design office' },
+    {
+      type: 'objectives',
+      items: [
+        'Size a rising main.',
+        'Spread the flats over the three phases.',
+        'Choose where the meters go.',
+        'Check the voltage drop on the top floor.',
+      ],
+    },
+    {
+      type: 'keyfigures',
+      items: [
+        { value: '110 A', label: 'rising-main current' },
+        { value: '4 × 35 mm²', label: 'XLPE cable' },
+        { value: '45 A', label: 'supply per flat' },
+        { value: '< 2 %', label: 'drop on the 4th floor' },
+      ],
+    },
     { type: 'illustration', name: 'building-riser', props: { highlight: 'risers' }, caption: 'The riser feeds the meters on each landing' },
     {
       type: 'text',

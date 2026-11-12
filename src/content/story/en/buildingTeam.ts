@@ -6,6 +6,22 @@ export const buildingTeamContent: TopicContent = {
   blocks: [
     { type: 'scene', text: 'Month 2 · Fatou Sow’s office' },
     {
+      type: 'objectives',
+      items: [
+        'Know the players in a multi-storey project and when they join.',
+        'Tell design, supervision, works, procurement and shop drawings apart.',
+        'Understand the inspection body’s role and the document flow.',
+      ],
+    },
+    {
+      type: 'keyfigures',
+      items: [
+        { value: '2', label: 'engineers on the design side' },
+        { value: '3', label: 'engineers on the contractor side' },
+        { value: '1', label: 'independent inspection body' },
+      ],
+    },
+    {
       type: 'dialogue',
       speaker: 'Fatou Sow',
       role: 'client',

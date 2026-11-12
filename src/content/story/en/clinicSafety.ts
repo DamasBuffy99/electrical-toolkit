@@ -5,6 +5,22 @@ export const clinicSafetyContent: TopicContent = {
   subtitle: 'If everything goes dark, people must still be able to evacuate. And a backup that is never tested ends up failing on the day it is needed. Last step: safety, then the life of the installation.',
   blocks: [
     { type: 'scene', text: 'Month 5 · Before the clinic opens' },
+    {
+      type: 'objectives',
+      items: [
+        'Design emergency lighting independent of everything else.',
+        'Set up the periodic test schedule.',
+        'Prepare the inspection visit before opening.',
+      ],
+    },
+    {
+      type: 'keyfigures',
+      items: [
+        { value: 'Self-contained', label: 'battery emergency luminaires' },
+        { value: '11 s', label: 'restoration measured at test' },
+        { value: 'monthly', label: 'on-load generator test' },
+      ],
+    },
     { type: 'illustration', name: 'clinic-tiers', props: { highlight: 'safety' }, caption: 'Self-contained units have their own battery: they depend on no other source' },
 
     { type: 'heading', text: '1 · Safety lighting' },

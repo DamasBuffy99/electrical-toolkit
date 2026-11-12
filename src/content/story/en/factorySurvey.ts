@@ -6,6 +6,23 @@ export const factorySurveyContent: TopicContent = {
   blocks: [
     { type: 'scene', text: 'Month 1 · Tropica plant, industrial zone' },
     {
+      type: 'objectives',
+      items: [
+        'Read a motor nameplate.',
+        'List the machines and their currents.',
+        'Calculate the demand and choose the transformer.',
+      ],
+    },
+    {
+      type: 'keyfigures',
+      items: [
+        { value: '256 kW', label: 'installed load' },
+        { value: '55 kW', label: 'largest motor, 98 A' },
+        { value: '320 kVA', label: 'requirement with spare' },
+        { value: '400 kVA', label: 'new transformer' },
+      ],
+    },
+    {
       type: 'text',
       text: 'Ibrahim Traoré runs Tropica, a fruit-juice plant working two shifts. He wants to double production: a new bottling line, a new pasteuriser, a bigger cold room. His maintenance manager, Paul Ndiaye, welcomes Awa with a list scribbled in a notebook.',
     },

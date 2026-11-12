@@ -5,6 +5,23 @@ export const buildingServicesContent: TopicContent = {
   subtitle: 'Common services have motors and work for everyone. Awa feeds them from a dedicated board, protects each motor, and cuts the lighting bill the co-owners will pay.',
   blocks: [
     { type: 'scene', text: 'Month 3 · Meeting with the lift installer and the plumber' },
+    {
+      type: 'objectives',
+      items: [
+        'Calculate a three-phase motor current.',
+        'Supply a lift with a variable-speed drive.',
+        'Protect the booster pumps.',
+        'Cut the consumption of common-area lighting.',
+      ],
+    },
+    {
+      type: 'keyfigures',
+      items: [
+        { value: '11 kW', label: 'lift motor, 19.6 A' },
+        { value: '2 × 4 kW', label: 'pumps, 7.9 A each' },
+        { value: '≈ 540 kWh', label: 'saved per month with LEDs' },
+      ],
+    },
     { type: 'illustration', name: 'building-riser', props: { highlight: 'services' }, caption: 'Lift, booster set and common-area lighting: the common-services board' },
     {
       type: 'text',

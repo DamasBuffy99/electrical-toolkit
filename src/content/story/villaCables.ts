@@ -6,6 +6,23 @@ export const villaCablesContent: TopicContent = {
   blocks: [
     { type: 'scene', text: 'Semaine 4 · Bureau d’études' },
     {
+      type: 'objectives',
+      items: [
+        'Choisir une section qui ne chauffe pas (courant admissible corrigé).',
+        'Vérifier la chute de tension au bout du câble.',
+        'Poser un câble enterré dans les règles.',
+      ],
+    },
+    {
+      type: 'keyfigures',
+      items: [
+        { value: '7,6 A', label: 'courant de la pompe' },
+        { value: '80 m', label: 'longueur jusqu’au forage' },
+        { value: '4 mm²', label: 'section retenue' },
+        { value: '2,4 %', label: 'chute de tension' },
+      ],
+    },
+    {
       type: 'text',
       text: 'Dernière étape de conception : choisir la section de chaque câble. Pour la plupart des circuits, la réponse découle du disjoncteur. Un circuit, pourtant, demande un vrai calcul : celui de la pompe du forage, au fond du jardin.',
     },

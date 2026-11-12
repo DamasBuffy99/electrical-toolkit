@@ -6,6 +6,22 @@ export const villaLightingContent: TopicContent = {
   blocks: [
     { type: 'scene', text: 'Semaine 3 · Bureau d’études, puis visite du gros œuvre' },
     {
+      type: 'objectives',
+      items: [
+        'Calculer le nombre de luminaires d’une pièce (méthode des lumens).',
+        'Placer interrupteurs et prises selon l’usage.',
+        'Regrouper les points en circuits.',
+      ],
+    },
+    {
+      type: 'keyfigures',
+      items: [
+        { value: '150 lux', label: 'éclairage général du séjour' },
+        { value: '6', label: 'plafonniers de 2 000 lm' },
+        { value: '8 points', label: 'au plus par circuit d’éclairage' },
+      ],
+    },
+    {
       type: 'text',
       text: 'La puissance est fixée. Awa passe maintenant au détail : chaque point lumineux, chaque interrupteur, chaque prise. Elle commence par le séjour, la pièce où la famille passera ses soirées.',
     },

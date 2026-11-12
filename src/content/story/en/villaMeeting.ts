@@ -6,6 +6,23 @@ export const villaMeetingContent: TopicContent = {
   blocks: [
     { type: 'scene', text: 'Week 1 · Lumen Engineering design office' },
     {
+      type: 'objectives',
+      items: [
+        'Know who does what in a project: client, architect, engineer, contractor.',
+        'Ask the questions that change the design.',
+        'Understand how a project unfolds, from outline design to handover.',
+        'Spot what must be decided now (the foundation earth).',
+      ],
+    },
+    {
+      type: 'keyfigures',
+      items: [
+        { value: '160 m²', label: 'floor area of the villa' },
+        { value: '4', label: 'main project phases' },
+        { value: '1', label: 'urgent item: earth before concrete' },
+      ],
+    },
+    {
       type: 'text',
       text: 'Awa Diallo is an electrical engineer in a small design office. This morning, the architect Jules Agbo sends her a new client: the Mensah family, who are building a 160 m² single-storey villa with three bedrooms. The plans are almost finished; the foundations will be poured in a month.',
     },

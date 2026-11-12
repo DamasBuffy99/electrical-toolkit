@@ -5,6 +5,23 @@ export const buildingBackupContent: TopicContent = {
   subtitle: 'Fatou wants the lift and the water to work during outages. Should the whole building be backed up? Awa compares, sizes the generator and explains why the transfer switch must never get it wrong.',
   blocks: [
     { type: 'scene', text: 'Month 5 · Fatou Sow’s office' },
+    {
+      type: 'objectives',
+      items: [
+        'Choose what the generator must back up.',
+        'Understand the transfer switch and its interlocks.',
+        'Prepare the flats for individual backup.',
+        'Accept the changeover with the inspection body.',
+      ],
+    },
+    {
+      type: 'keyfigures',
+      items: [
+        { value: '22 kVA', label: 'common services backed up' },
+        { value: '40 kVA', label: 'generator' },
+        { value: '12 s', label: 'changeover measured at test' },
+      ],
+    },
     { type: 'illustration', name: 'building-riser', props: { highlight: 'backup' }, caption: 'The generator and the transfer switch back up the common-services board' },
     {
       type: 'dialogue',

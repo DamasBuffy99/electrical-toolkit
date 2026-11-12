@@ -5,6 +5,22 @@ export const factoryFeedersContent: TopicContent = {
   subtitle: 'A motor needs protection against two different dangers: the slow overload that cooks it, and the brutal short circuit. Awa assembles each motor feeder, then the large cable feeding the machine-room panel.',
   blocks: [
     { type: 'scene', text: 'Month 2 · Design office' },
+    {
+      type: 'objectives',
+      items: [
+        'Protect a motor, not just its cable.',
+        'Size the feeder of a motor control centre.',
+        'Check voltage and frequency of an imported machine.',
+      ],
+    },
+    {
+      type: 'keyfigures',
+      items: [
+        { value: '28.3 A', label: 'pump MPCB setting' },
+        { value: '257 A', label: 'MCC feeder current' },
+        { value: '320 A', label: 'setting of the 400 A way' },
+      ],
+    },
     { type: 'illustration', name: 'factory-sld', props: { highlight: 'motors' }, caption: 'The motor feeders of the main LV board' },
     {
       type: 'dialogue',

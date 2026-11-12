@@ -5,6 +5,23 @@ export const buildingShortCircuitContent: TopicContent = {
   subtitle: 'Juste à côté d’un transformateur, un court-circuit peut faire circuler des milliers d’ampères. Un disjoncteur incapable de les couper peut exploser. Awa calcule ce courant pour choisir des appareils assez robustes, sans payer de surplus inutile.',
   blocks: [
     { type: 'scene', text: 'Mois 4 · Bureau d’études, vérification du TGBT' },
+    {
+      type: 'objectives',
+      items: [
+        'Comprendre d’où vient le courant de court-circuit.',
+        'Le calculer rapidement puis en détail (R, X).',
+        'Choisir le pouvoir de coupure des appareils.',
+      ],
+    },
+    {
+      type: 'keyfigures',
+      items: [
+        { value: '5,8 kA', label: 'estimation rapide' },
+        { value: '5,6 kA', label: 'calcul détaillé au TGBT' },
+        { value: '4,5 kA', label: 'au palier du 4e' },
+        { value: '10 kA', label: 'pouvoir de coupure retenu' },
+      ],
+    },
     { type: 'illustration', name: 'building-riser', props: { highlight: 'shortcircuit' }, caption: 'Un court-circuit au TGBT : le transformateur tout proche le nourrit' },
     {
       type: 'dialogue',

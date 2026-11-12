@@ -5,6 +5,24 @@ export const buildingRisersContent: TopicContent = {
   subtitle: 'Comment faire monter 76 kVA jusqu’au 4e étage, donner à chaque famille son compteur, et garantir que la tension reste bonne jusqu’au dernier appartement ?',
   blocks: [
     { type: 'scene', text: 'Mois 3 · Bureau d’études' },
+    {
+      type: 'objectives',
+      items: [
+        'Dimensionner une colonne montante.',
+        'Répartir les logements sur les trois phases.',
+        'Choisir l’emplacement des compteurs.',
+        'Vérifier la chute de tension au dernier étage.',
+      ],
+    },
+    {
+      type: 'keyfigures',
+      items: [
+        { value: '110 A', label: 'courant de la colonne' },
+        { value: '4 × 35 mm²', label: 'câble XLPE' },
+        { value: '45 A', label: 'branchement par logement' },
+        { value: '< 2 %', label: 'chute au 4e étage' },
+      ],
+    },
     { type: 'illustration', name: 'building-riser', props: { highlight: 'risers' }, caption: 'La colonne montante dessert les compteurs de chaque palier' },
     {
       type: 'text',

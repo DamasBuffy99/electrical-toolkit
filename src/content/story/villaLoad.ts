@@ -6,6 +6,24 @@ export const villaLoadContent: TopicContent = {
   blocks: [
     { type: 'scene', text: 'Semaine 2 · Bureau d’études' },
     {
+      type: 'objectives',
+      items: [
+        'Faire le bilan de puissance installée.',
+        'Appliquer les coefficients de foisonnement.',
+        'Vérifier le résultat par une seconde méthode.',
+        'Choisir entre monophasé et triphasé et la puissance d’abonnement.',
+      ],
+    },
+    {
+      type: 'keyfigures',
+      items: [
+        { value: '15,46 kW', label: 'puissance installée' },
+        { value: '10,17 kW', label: 'puissance retenue' },
+        { value: '11,3 kVA', label: 'demande' },
+        { value: '12 kVA tri', label: 'abonnement choisi' },
+      ],
+    },
+    {
       type: 'text',
       text: 'De retour au bureau, Awa reprend le questionnaire des Mensah et liste chaque usage avec sa puissance. C’est la « puissance installée » : ce que la maison consommerait si tout fonctionnait à fond, au même instant.',
     },

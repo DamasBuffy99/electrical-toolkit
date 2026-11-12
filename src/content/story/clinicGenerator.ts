@@ -5,6 +5,25 @@ export const clinicGeneratorContent: TopicContent = {
   subtitle: 'Les groupes doivent reprendre le niveau essentiel en moins de 15 secondes, à chaque coupure, pendant des années. Awa les dimensionne, prévoit la panne du groupe lui-même et explique la séquence de reprise.',
   blocks: [
     { type: 'scene', text: 'Mois 2 · Réunion avec la directrice et le technicien biomédical' },
+    {
+      type: 'objectives',
+      items: [
+        'Dimensionner un groupe électrogène pour une charge secourue.',
+        'Justifier la redondance N+1 dans un établissement de santé.',
+        'Décrire la séquence de reprise et le rôle de l’inverseur.',
+        'Construire le tableau de répartition d’un tableau secouru.',
+        'Vérifier qu’un court-circuit est encore coupé quand le groupe est seul.',
+      ],
+    },
+    {
+      type: 'keyfigures',
+      items: [
+        { value: '2 × 200 kVA', label: 'groupes en N+1' },
+        { value: '≈ 10 s', label: 'du noir à la bascule' },
+        { value: '≈ 870 A', label: 'court-circuit entretenu d’un groupe' },
+        { value: '400 A', label: 'seuil court retard du départ bloc' },
+      ],
+    },
     { type: 'illustration', name: 'clinic-tiers', props: { highlight: 'generator' }, caption: 'Les groupes reprennent le niveau essentiel en moins de 15 secondes' },
     {
       type: 'dialogue',
@@ -81,6 +100,86 @@ export const clinicGeneratorContent: TopicContent = {
     {
       type: 'regional',
       text: 'Un groupe de 200 kVA consomme de l’ordre de 25 à 30 litres de gazole par heure à 60 % de charge. Avec quatre heures de coupure par jour, c’est environ 110 litres par jour : prévoir une cuve de plusieurs milliers de litres, un contrat de livraison, et un stock tampon pour les périodes de pénurie de carburant.',
+    },
+
+    { type: 'heading', text: '4 · Le tableau secouru du bloc et le court-circuit sur groupe' },
+    {
+      type: 'text',
+      text: 'Le TGBT secouru alimente plusieurs tableaux d’étage. Celui du bloc opératoire porte les équipements essentiels : traitement d’air des salles, stérilisation, air et vide médicaux, prises « rouges » des chambres. Les prises vitales, elles, sont derrière les onduleurs. Voici son tableau de répartition.',
+    },
+    {
+      type: 'panelSchedule',
+      panel: {
+        name: 'TD-ES Bloc opératoire',
+        location: 'Gaine technique, niveau bloc',
+        voltage: '230/400 V · 3P+N+PE · TN-S',
+        panelType: 'Armoire forme 3b, repérage rouge (secouru)',
+        mounting: 'Au sol',
+        scRating: 'Icu 15 kA',
+        main: 'Inter-sectionneur 4P 125 A',
+        feeder: '5G35 mm² Cu, MCCB 125 A électronique, Ir 100 A',
+        left: [
+          { desc: 'Traitement d’air salles (CTA) 15 kW', kva: 17.6, cb: 'MCCB 40 A', poles: 3, wire: '5G10 mm²' },
+          { desc: 'Stérilisation (autoclave) 24 kW', kva: 24, cb: 'C40 3P', poles: 3, wire: '5G10 mm²' },
+          { desc: 'Éclairage couloirs bloc', kva: 1.2, cb: 'C10', wire: '1,5 mm²' },
+          { desc: 'Prises rouges ch. 1–6 (RCBO 30 mA)', kva: 2.0, cb: 'C16 DD', wire: '2,5 mm²' },
+          { desc: 'Prises rouges ch. 7–12 (RCBO 30 mA)', kva: 2.0, cb: 'C16 DD', wire: '2,5 mm²' },
+          { desc: '', spare: true },
+          { desc: '', spare: true },
+          { desc: '', spare: true },
+        ],
+        right: [
+          { desc: 'Compresseur air médical 7,5 kW', kva: 10, cb: 'DM 13–18 A', poles: 3, wire: '4G4 mm²' },
+          { desc: 'Pompe à vide médical 5,5 kW', kva: 7.4, cb: 'DM 9–14 A', poles: 3, wire: '4G2,5 mm²' },
+          { desc: 'Réfrigérateurs pharmacie, vaccins', kva: 0.8, cb: 'C16 DD', wire: '2,5 mm²' },
+          { desc: 'Prises rouges couloir bloc', kva: 1.5, cb: 'C16 DD', wire: '2,5 mm²' },
+          { desc: 'Appel malade, contrôle d’accès', kva: 0.6, cb: 'C10', wire: '1,5 mm²' },
+          { desc: '', spare: true },
+          { desc: '', spare: true },
+          { desc: '', spare: true },
+        ],
+        demandFactor: 0.75,
+        spareMargin: 15,
+      },
+    },
+    {
+      type: 'calc',
+      title: 'Ce que dit le bas du tableau',
+      steps: [
+        { label: 'Puissance installée, puis coefficient de simultanéité 0,75', formula: 'S_{inst} ≈ 67,1 kVA   →   S = 0,75 × 67,1 ≈ 50,3 kVA' },
+        { label: 'Avec 15 % de réserve', formula: 'I = \\frac{50 300 × 1,15}{\\sqrt{3} × 400} ≈ 83,5 A' },
+        { label: 'Réglage du départ au TGBT secouru et câble', formula: 'I = 83,5 A ≤ I_r = 100 A ≤ I_Z(35 mm²) ≈ 130 A' },
+      ],
+      result: 'Départ MCCB 125 A réglé à 100 A, câble 5G35 mm² ; déséquilibre ≈ 3,6 %',
+    },
+    {
+      type: 'dialogue',
+      speaker: 'Marc Adjovi (supervision)',
+      role: 'team',
+      text: 'Ta note de sélectivité est faite avec les 14 kA du transformateur. Et quand c’est le groupe qui alimente, le court-circuit vaut combien ?',
+    },
+    {
+      type: 'calc',
+      title: 'Court-circuit sur le départ bloc, groupe seul',
+      steps: [
+        { label: 'Courant nominal d’un groupe de 200 kVA', formula: 'I_n = \\frac{200 000}{\\sqrt{3} × 400} ≈ 289 A' },
+        { label: 'Premières millisecondes (réactance subtransitoire X_d″ ≈ 12 %)', formula: 'I_{cc}″ ≈ \\frac{289}{0,12} ≈ 2,4 kA  (décroît en quelques dizaines de ms)' },
+        { label: 'Courant entretenu, alternateur à excitation renforcée (AREP ou PMG)', formula: 'I_{cc,entretenu} ≈ 3 × I_n ≈ 870 A pendant 10 s' },
+        { label: 'MCCB thermomagnétique 125 A : magnétique fixe', formula: 'I_m = 10 × 125 = 1 250 A > 870 A  ✗' },
+        { label: 'MCCB électronique : court retard réglé bas', formula: 'I_{sd} = 4 × I_r = 400 A < 870 A ✓   ;   t_{sd} = 0,1 s' },
+      ],
+      result: 'Déclencheur électronique avec I_{sd} = 400 A : le défaut est coupé en 0,1 s même sur groupe',
+    },
+    {
+      type: 'decision',
+      title: 'Protection des départs secourus',
+      choice: 'Déclencheurs électroniques à court retard réglable sur tous les départs du TGBT secouru, alternateurs à excitation renforcée',
+      reasons: [
+        'Sur groupe, le courant de court-circuit est 15 fois plus faible que sur le transformateur : un magnétique réglé pour le réseau ne le voit plus.',
+        'Le court retard à 400 A reste au-dessus des magnétiques des petits départs (C16 : 160 A au plus) : la sélectivité est conservée.',
+        'L’excitation renforcée maintient environ 3 I_n pendant 10 s ; sans elle, la tension du groupe s’effondre et plus rien ne déclenche.',
+      ],
+      rejected: 'Des MCCB thermomagnétiques classiques : corrects sur le réseau, mais un court-circuit sur groupe ne serait coupé que par le thermique, en plusieurs secondes, avec un risque d’incendie.',
     },
 
     { type: 'heading', text: 'À retenir' },

@@ -6,6 +6,23 @@ export const villaBasicsContent: TopicContent = {
   blocks: [
     { type: 'scene', text: 'Week 2 · At the Mensahs’, over coffee' },
     {
+      type: 'objectives',
+      items: [
+        'Relate voltage, current and power.',
+        'Tell kW and kVA apart (power factor).',
+        'Compare single-phase and three-phase.',
+        'Go from power to energy and to the bill.',
+      ],
+    },
+    {
+      type: 'keyfigures',
+      items: [
+        { value: '230 / 400 V', label: 'single-phase / three-phase' },
+        { value: '960 kWh', label: 'estimated monthly consumption' },
+        { value: '≈ 100,000 FCFA', label: 'monthly bill, order of magnitude' },
+      ],
+    },
+    {
       type: 'dialogue',
       speaker: 'Koffi Mensah',
       role: 'client',

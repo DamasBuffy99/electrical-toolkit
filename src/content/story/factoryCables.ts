@@ -6,6 +6,23 @@ export const factoryCablesContent: TopicContent = {
   blocks: [
     { type: 'scene', text: 'Mois 2 · Visite du futur tracé des chemins de câbles' },
     {
+      type: 'objectives',
+      items: [
+        'Appliquer les facteurs de correction de température et de groupement.',
+        'Vérifier la chute de tension d’un long câble.',
+        'Dimensionner un gros feeder en jouant sur la pose.',
+      ],
+    },
+    {
+      type: 'keyfigures',
+      items: [
+        { value: '40 °C', label: 'sous la charpente' },
+        { value: '0,91 × 0,75', label: 'facteurs de correction' },
+        { value: '35 mm²', label: 'câble du compresseur' },
+        { value: '150 mm²', label: 'feeder seul sur son chemin' },
+      ],
+    },
+    {
       type: 'text',
       text: 'Paul montre à Awa le chemin de câbles qui longe la charpente, à 5 m de haut, sous la tôle. Il y passera six câbles de puissance côte à côte : compresseur, pompes, nettoyage. En saison chaude, Paul y a mesuré 40 °C.',
     },

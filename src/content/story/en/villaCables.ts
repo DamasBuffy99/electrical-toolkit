@@ -6,6 +6,23 @@ export const villaCablesContent: TopicContent = {
   blocks: [
     { type: 'scene', text: 'Week 4 · Design office' },
     {
+      type: 'objectives',
+      items: [
+        'Choose a cross-section that does not overheat (corrected ampacity).',
+        'Check the voltage drop at the end of the cable.',
+        'Lay a buried cable properly.',
+      ],
+    },
+    {
+      type: 'keyfigures',
+      items: [
+        { value: '7.6 A', label: 'pump current' },
+        { value: '80 m', label: 'length to the borehole' },
+        { value: '4 mm²', label: 'cross-section chosen' },
+        { value: '2.4 %', label: 'voltage drop' },
+      ],
+    },
+    {
       type: 'text',
       text: 'Last design step: choosing the cross-section of each cable. For most circuits the answer follows from the breaker. One circuit, however, needs a real calculation: the borehole pump at the bottom of the garden.',
     },

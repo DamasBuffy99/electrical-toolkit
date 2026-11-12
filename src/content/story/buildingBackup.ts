@@ -5,6 +5,23 @@ export const buildingBackupContent: TopicContent = {
   subtitle: 'Fatou veut que l’ascenseur et l’eau fonctionnent pendant les coupures. Faut-il secourir tout l’immeuble ? Awa compare, dimensionne le groupe et explique pourquoi l’inverseur ne doit jamais se tromper.',
   blocks: [
     { type: 'scene', text: 'Mois 5 · Bureau de Fatou Sow' },
+    {
+      type: 'objectives',
+      items: [
+        'Choisir ce que le groupe doit secourir.',
+        'Comprendre l’inverseur de sources et ses verrouillages.',
+        'Préparer les logements à un secours individuel.',
+        'Réceptionner la bascule avec le bureau de contrôle.',
+      ],
+    },
+    {
+      type: 'keyfigures',
+      items: [
+        { value: '22 kVA', label: 'services communs à secourir' },
+        { value: '40 kVA', label: 'groupe électrogène' },
+        { value: '12 s', label: 'bascule mesurée aux essais' },
+      ],
+    },
     { type: 'illustration', name: 'building-riser', props: { highlight: 'backup' }, caption: 'Le groupe et l’inverseur secourent le tableau des services généraux' },
     {
       type: 'dialogue',

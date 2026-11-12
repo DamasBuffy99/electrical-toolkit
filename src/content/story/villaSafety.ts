@@ -6,6 +6,24 @@ export const villaSafetyContent: TopicContent = {
   blocks: [
     { type: 'scene', text: 'Semaine 4 · Chez les Mensah' },
     {
+      type: 'objectives',
+      items: [
+        'Comprendre les effets du courant sur le corps.',
+        'Voir comment naît un défaut d’isolement.',
+        'Expliquer le fonctionnement du différentiel 30 mA.',
+        'Calculer la résistance de terre admissible en TT.',
+      ],
+    },
+    {
+      type: 'keyfigures',
+      items: [
+        { value: '30 mA', label: 'sensibilité des différentiels' },
+        { value: '50 V', label: 'tension de contact limite' },
+        { value: '≤ 100 Ω', label: 'terre visée avec un 500 mA' },
+        { value: '38 Ω', label: 'terre mesurée' },
+      ],
+    },
+    {
       type: 'dialogue',
       speaker: 'Esther Mensah',
       role: 'client',

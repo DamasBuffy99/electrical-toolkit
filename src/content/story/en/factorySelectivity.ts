@@ -6,6 +6,24 @@ export const factorySelectivityContent: TopicContent = {
   blocks: [
     { type: 'scene', text: 'Month 3 · Ibrahim Traoré’s office' },
     {
+      type: 'objectives',
+      items: [
+        'Calculate the short-circuit current at each level.',
+        'Know the three ways to achieve discrimination.',
+        'Set the protections of the main board and feeders.',
+        'Coordinate with the MV fuse.',
+      ],
+    },
+    {
+      type: 'keyfigures',
+      items: [
+        { value: '14.4 kA', label: 'short circuit at the main board' },
+        { value: '0.2 s', label: 'incomer delay' },
+        { value: '0.1 s', label: 'delay of the 400 A way' },
+        { value: '25 A', label: 'MV fuse' },
+      ],
+    },
+    {
       type: 'dialogue',
       speaker: 'Ibrahim Traoré',
       role: 'client',

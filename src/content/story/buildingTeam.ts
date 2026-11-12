@@ -6,6 +6,22 @@ export const buildingTeamContent: TopicContent = {
   blocks: [
     { type: 'scene', text: 'Mois 2 · Bureau de Fatou Sow' },
     {
+      type: 'objectives',
+      items: [
+        'Connaître les acteurs d’un projet collectif et leur ordre d’entrée.',
+        'Distinguer conception, supervision, travaux, achats et plans d’exécution.',
+        'Comprendre le rôle du bureau de contrôle et le circuit des documents.',
+      ],
+    },
+    {
+      type: 'keyfigures',
+      items: [
+        { value: '2', label: 'ingénieurs côté bureau d’études' },
+        { value: '3', label: 'ingénieurs côté entreprise' },
+        { value: '1', label: 'bureau de contrôle indépendant' },
+      ],
+    },
+    {
       type: 'dialogue',
       speaker: 'Fatou Sow',
       role: 'client',

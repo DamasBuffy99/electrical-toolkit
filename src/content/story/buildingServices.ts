@@ -5,6 +5,23 @@ export const buildingServicesContent: TopicContent = {
   subtitle: 'Les services communs ont des moteurs et fonctionnent pour tout le monde. Awa les alimente depuis un tableau dédié, protège chaque moteur, et réduit la facture d’éclairage que paieront les copropriétaires.',
   blocks: [
     { type: 'scene', text: 'Mois 3 · Réunion avec l’ascensoriste et le plombier' },
+    {
+      type: 'objectives',
+      items: [
+        'Calculer le courant d’un moteur triphasé.',
+        'Alimenter un ascenseur à variateur.',
+        'Protéger les pompes du surpresseur.',
+        'Réduire la consommation de l’éclairage commun.',
+      ],
+    },
+    {
+      type: 'keyfigures',
+      items: [
+        { value: '11 kW', label: 'moteur d’ascenseur, 19,6 A' },
+        { value: '2 × 4 kW', label: 'pompes, 7,9 A chacune' },
+        { value: '≈ 540 kWh', label: 'économisés par mois en LED' },
+      ],
+    },
     { type: 'illustration', name: 'building-riser', props: { highlight: 'services' }, caption: 'Ascenseur, surpresseur et éclairage des communs : le tableau des services généraux' },
     {
       type: 'text',

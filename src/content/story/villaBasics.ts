@@ -6,6 +6,23 @@ export const villaBasicsContent: TopicContent = {
   blocks: [
     { type: 'scene', text: 'Semaine 2 · Chez les Mensah, autour d’un café' },
     {
+      type: 'objectives',
+      items: [
+        'Relier tension, courant et puissance.',
+        'Distinguer kW et kVA (cos φ).',
+        'Comparer monophasé et triphasé.',
+        'Passer de la puissance à l’énergie et à la facture.',
+      ],
+    },
+    {
+      type: 'keyfigures',
+      items: [
+        { value: '230 / 400 V', label: 'monophasé / triphasé' },
+        { value: '960 kWh', label: 'consommation mensuelle estimée' },
+        { value: '≈ 100 000 FCFA', label: 'facture mensuelle, ordre de grandeur' },
+      ],
+    },
+    {
       type: 'dialogue',
       speaker: 'Koffi Mensah',
       role: 'client',

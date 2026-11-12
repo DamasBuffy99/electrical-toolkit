@@ -6,6 +6,23 @@ export const villaHandoverContent: TopicContent = {
   blocks: [
     { type: 'scene', text: 'Months 2 to 5 · On site' },
     {
+      type: 'objectives',
+      items: [
+        'Follow the site stages, from chasing to finishing.',
+        'Carry out the tests before energising.',
+        'Hand the client a complete file.',
+      ],
+    },
+    {
+      type: 'keyfigures',
+      items: [
+        { value: '≥ 0.5 MΩ', label: 'minimum insulation required' },
+        { value: '200 MΩ', label: 'insulation measured' },
+        { value: '38 Ω', label: 'earth resistance' },
+        { value: '14', label: 'circuits tested and labelled' },
+      ],
+    },
+    {
       type: 'text',
       text: 'Moussa Keïta, the electrical contractor’s site manager, has received the construction drawings. Awa visits once a week. Every visit follows the same thread: compare what is installed with what is drawn, before it gets hidden.',
     },

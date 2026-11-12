@@ -6,6 +6,24 @@ export const villaSafetyContent: TopicContent = {
   blocks: [
     { type: 'scene', text: 'Week 4 · At the Mensahs’' },
     {
+      type: 'objectives',
+      items: [
+        'Understand the effects of current on the body.',
+        'See how an insulation fault arises.',
+        'Explain how the 30 mA RCD works.',
+        'Calculate the allowed earth resistance in TT.',
+      ],
+    },
+    {
+      type: 'keyfigures',
+      items: [
+        { value: '30 mA', label: 'RCD sensitivity' },
+        { value: '50 V', label: 'touch voltage limit' },
+        { value: '≤ 100 Ω', label: 'target earth with a 500 mA device' },
+        { value: '38 Ω', label: 'measured earth' },
+      ],
+    },
+    {
       type: 'dialogue',
       speaker: 'Esther Mensah',
       role: 'client',

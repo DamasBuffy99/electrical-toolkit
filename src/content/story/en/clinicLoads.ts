@@ -6,6 +6,23 @@ export const clinicLoadsContent: TopicContent = {
   blocks: [
     { type: 'scene', text: 'Month 1 · Espoir Clinic, director’s office' },
     {
+      type: 'objectives',
+      items: [
+        'Classify the loads of a healthcare facility: vital, essential, normal.',
+        'Draw up the load per tier.',
+        'Turn this classification into separate boards.',
+      ],
+    },
+    {
+      type: 'keyfigures',
+      items: [
+        { value: '18 kW', label: 'vital tier (0 s)' },
+        { value: '107 kW', label: 'essential tier (≤ 15 s)' },
+        { value: '118 kVA', label: 'to back up' },
+        { value: '400 kVA', label: 'transformer' },
+      ],
+    },
+    {
       type: 'text',
       text: 'Dr Aïcha Bello is opening Espoir Clinic: 30 inpatient beds, two operating theatres, four intensive-care beds, a laboratory, radiology and a sterilisation unit. She once worked in a hospital where an outage in the middle of an operation left the team in the dark for long seconds. She still talks about it.',
     },

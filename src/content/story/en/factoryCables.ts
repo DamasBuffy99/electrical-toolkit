@@ -6,6 +6,23 @@ export const factoryCablesContent: TopicContent = {
   blocks: [
     { type: 'scene', text: 'Month 2 · Visit along the future cable-tray route' },
     {
+      type: 'objectives',
+      items: [
+        'Apply temperature and grouping correction factors.',
+        'Check the voltage drop of a long cable.',
+        'Size a large feeder by changing how it is laid.',
+      ],
+    },
+    {
+      type: 'keyfigures',
+      items: [
+        { value: '40 °C', label: 'under the roof' },
+        { value: '0.91 × 0.75', label: 'correction factors' },
+        { value: '35 mm²', label: 'compressor cable' },
+        { value: '150 mm²', label: 'feeder alone on its tray' },
+      ],
+    },
+    {
       type: 'text',
       text: 'Paul shows Awa the cable tray running along the roof structure, 5 m up, under the metal sheeting. Six power cables will run side by side on it: compressor, pumps, CIP. In the hot season, Paul measured 40 °C there.',
     },

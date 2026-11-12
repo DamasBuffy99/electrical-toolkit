@@ -6,6 +6,22 @@ export const villaLightingContent: TopicContent = {
   blocks: [
     { type: 'scene', text: 'Week 3 · Design office, then a visit to the structural works' },
     {
+      type: 'objectives',
+      items: [
+        'Work out the number of luminaires in a room (lumen method).',
+        'Place switches and sockets according to use.',
+        'Group the points into circuits.',
+      ],
+    },
+    {
+      type: 'keyfigures',
+      items: [
+        { value: '150 lux', label: 'general lighting, living room' },
+        { value: '6', label: 'ceiling lights of 2,000 lm' },
+        { value: '8 points', label: 'at most per lighting circuit' },
+      ],
+    },
+    {
       type: 'text',
       text: 'The power is set. Awa now moves to the detail: every lighting point, every switch, every socket. She starts with the living room, where the family will spend its evenings.',
     },

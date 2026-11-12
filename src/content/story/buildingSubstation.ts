@@ -5,6 +5,24 @@ export const buildingSubstationContent: TopicContent = {
   subtitle: 'Quelle taille de transformateur ? Quel type ? Comment dimensionner son local, et celui du futur groupe électrogène ? Awa répond en pensant à la sécurité, à l’entretien et au budget de Fatou.',
   blocks: [
     { type: 'scene', text: 'Mois 2 · Réunion avec l’architecte et la promotrice' },
+    {
+      type: 'objectives',
+      items: [
+        'Choisir la puissance du transformateur avec une réserve.',
+        'Connaître le contenu d’un poste MT/BT.',
+        'Dimensionner les locaux du transformateur et du groupe.',
+        'Vérifier une variante de matériel avant approbation.',
+      ],
+    },
+    {
+      type: 'keyfigures',
+      items: [
+        { value: '160 kVA', label: 'transformateur sec' },
+        { value: '20/0,4 kV', label: 'rapport de tension' },
+        { value: '231 A', label: 'courant BT' },
+        { value: 'u_k 4 %', label: 'tension de court-circuit' },
+      ],
+    },
     { type: 'illustration', name: 'building-riser', props: { highlight: 'substation' }, caption: 'Le poste MT/BT et le tableau général basse tension (TGBT) au rez-de-chaussée' },
 
     { type: 'heading', text: '1 · Choisir la puissance du transformateur' },

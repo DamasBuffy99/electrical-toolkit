@@ -6,6 +6,23 @@ export const buildingFeasibilityContent: TopicContent = {
   blocks: [
     { type: 'scene', text: 'Month 1 · Office of Fatou Sow, developer' },
     {
+      type: 'objectives',
+      items: [
+        'Estimate a building’s power before the detailed drawings.',
+        'Apply diversity between flats.',
+        'Ask the utility about the connection.',
+      ],
+    },
+    {
+      type: 'keyfigures',
+      items: [
+        { value: '16 × 9 kVA', label: 'flats' },
+        { value: '76 kVA', label: 'flats after diversity' },
+        { value: '19 kVA', label: 'common services' },
+        { value: '95 kVA', label: 'total demand' },
+      ],
+    },
+    {
       type: 'text',
       text: 'Fatou Sow has bought a plot to build Les Palmiers residence: a ground floor with a car park and plant rooms, then four floors of four flats (two-bedroom flats of about 90 m²), a lift and a water tank with a booster set. She has seen the Mensah villa and wants the same rigour, but above all she has a question about money.',
     },

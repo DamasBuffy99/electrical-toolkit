@@ -6,6 +6,23 @@ export const factorySurveyContent: TopicContent = {
   blocks: [
     { type: 'scene', text: 'Mois 1 · Usine Tropica, zone industrielle' },
     {
+      type: 'objectives',
+      items: [
+        'Lire la plaque signalétique d’un moteur.',
+        'Dresser la liste des machines et leurs courants.',
+        'Calculer la puissance appelée et choisir le transformateur.',
+      ],
+    },
+    {
+      type: 'keyfigures',
+      items: [
+        { value: '256 kW', label: 'puissance installée' },
+        { value: '55 kW', label: 'plus gros moteur, 98 A' },
+        { value: '320 kVA', label: 'besoin avec réserve' },
+        { value: '400 kVA', label: 'nouveau transformateur' },
+      ],
+    },
+    {
       type: 'text',
       text: 'Ibrahim Traoré dirige Tropica, une usine de jus de fruits qui tourne en deux équipes. Il veut doubler la production : nouvelle ligne d’embouteillage, nouveau pasteurisateur, chambre froide plus grande. Son responsable de maintenance, Paul Ndiaye, accueille Awa avec une liste griffonnée sur un carnet.',
     },

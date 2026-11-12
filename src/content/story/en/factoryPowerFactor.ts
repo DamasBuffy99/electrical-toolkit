@@ -6,6 +6,23 @@ export const factoryPowerFactorContent: TopicContent = {
   blocks: [
     { type: 'scene', text: 'Month 6 · Plant in service, Ibrahim’s office' },
     {
+      type: 'objectives',
+      items: [
+        'Diagnose a poor power factor from measurements.',
+        'Calculate the capacitor bank.',
+        'Quantify the gains: bill, transformer, cables.',
+      ],
+    },
+    {
+      type: 'keyfigures',
+      items: [
+        { value: 'PF 0.80', label: 'before correction' },
+        { value: '86 kvar', label: 'calculated need' },
+        { value: '100 kvar', label: 'detuned bank' },
+        { value: '256 → 216 kVA', label: 'apparent power drawn' },
+      ],
+    },
+    {
       type: 'dialogue',
       speaker: 'Ibrahim Traoré',
       role: 'client',
