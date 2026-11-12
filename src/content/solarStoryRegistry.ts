@@ -9,6 +9,10 @@ import { scNeedsContent } from './solarStory/scNeeds';
 import { scInvertersContent } from './solarStory/scInverters';
 import { scBatteryContent } from './solarStory/scBattery';
 import { scFieldContent } from './solarStory/scField';
+import { stProfileContent } from './solarStory/stProfile';
+import { stStringsContent } from './solarStory/stStrings';
+import { stSafetyContent } from './solarStory/stSafety';
+import { stEconomicsContent } from './solarStory/stEconomics';
 
 import { svNeedsContent as svNeedsContentEn } from './solarStory/en/svNeeds';
 import { svDesignContent as svDesignContentEn } from './solarStory/en/svDesign';
@@ -18,6 +22,10 @@ import { scNeedsContent as scNeedsContentEn } from './solarStory/en/scNeeds';
 import { scInvertersContent as scInvertersContentEn } from './solarStory/en/scInverters';
 import { scBatteryContent as scBatteryContentEn } from './solarStory/en/scBattery';
 import { scFieldContent as scFieldContentEn } from './solarStory/en/scField';
+import { stProfileContent as stProfileContentEn } from './solarStory/en/stProfile';
+import { stStringsContent as stStringsContentEn } from './solarStory/en/stStrings';
+import { stSafetyContent as stSafetyContentEn } from './solarStory/en/stSafety';
+import { stEconomicsContent as stEconomicsContentEn } from './solarStory/en/stEconomics';
 
 export const SOLAR_STORY_CONTENT_FR: Record<string, TopicContent | undefined> = {
   'sv-needs': svNeedsContent,
@@ -28,6 +36,10 @@ export const SOLAR_STORY_CONTENT_FR: Record<string, TopicContent | undefined> = 
   'sc-inverters': scInvertersContent,
   'sc-battery': scBatteryContent,
   'sc-field': scFieldContent,
+  'st-profile': stProfileContent,
+  'st-strings': stStringsContent,
+  'st-safety': stSafetyContent,
+  'st-economics': stEconomicsContent,
 };
 
 export const SOLAR_STORY_CONTENT_EN: Record<string, TopicContent | undefined> = {
@@ -39,6 +51,10 @@ export const SOLAR_STORY_CONTENT_EN: Record<string, TopicContent | undefined> = 
   'sc-inverters': scInvertersContentEn,
   'sc-battery': scBatteryContentEn,
   'sc-field': scFieldContentEn,
+  'st-profile': stProfileContentEn,
+  'st-strings': stStringsContentEn,
+  'st-safety': stSafetyContentEn,
+  'st-economics': stEconomicsContentEn,
 };
 
 export function getSolarStoryContent(lang: Lang, id: string): TopicContent | undefined {

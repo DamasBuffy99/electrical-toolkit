@@ -93,8 +93,8 @@ export const SOLAR_STORY_SECTIONS: CourseSection[] = [
         id: 'st-profile',
         title: 'Autoconsommer sans injecter',
         titleEn: 'Self-consuming without exporting',
-        transition: 'La puissance est fixée à 100 kWc. Reste à organiser 182 modules en chaînes de 1 000 V.',
-        transitionEn: 'The power is set at 100 kWp. 182 modules must now be organised into 1,000 V strings.',
+        transition: 'La puissance est fixée à 100 kWc. Reste à organiser 180 modules en chaînes de 1 000 V.',
+        transitionEn: 'The power is set at 100 kWp. 180 modules must now be organised into 1,000 V strings.',
       },
       {
         id: 'st-strings',
